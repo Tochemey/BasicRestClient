@@ -2,7 +2,7 @@
 using System.Net;
 using System.Text;
 
-namespace BasicHttpClient.HttpClient
+namespace BasicRestClient.HttpClient
 {
     /// <summary>
     ///     This class represents the Http Request Parameters

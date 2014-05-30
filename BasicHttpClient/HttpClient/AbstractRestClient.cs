@@ -4,16 +4,16 @@ using System.IO;
 using System.Net;
 using System.Text;
 
-namespace BasicHttpClient.HttpClient
+namespace BasicRestClient.HttpClient
 {
-    public abstract class AbstractHttpClient
+    public abstract class AbstractRestClient
     {
         protected static string UrlEncoded = "application/x-www-form-urlencoded;charset=UTF-8";
         protected static string Multipart = "multipart/form-data";
         protected static string Accept = "application/json";
         protected bool Connected;
 
-        protected AbstractHttpClient(string baseUrl, IRequestHandler requestHandler, IRequestLogger requestLogger)
+        protected AbstractRestClient(string baseUrl, IRequestHandler requestHandler, IRequestLogger requestLogger)
         {
             RequestLogger = requestLogger;
             RequestHandler = requestHandler;
@@ -27,7 +27,7 @@ namespace BasicHttpClient.HttpClient
         ///     Constructs a client with empty baseUrl. Prevent sub-classes from calling
         ///     this as it doesn't result in an instance of the subclass
         /// </summary>
-        protected AbstractHttpClient() : this("")
+        protected AbstractRestClient() : this("")
         {
         }
 
@@ -35,7 +35,7 @@ namespace BasicHttpClient.HttpClient
         ///     Constructs a new client with base URL that will be appended in the request methods.
         /// </summary>
         /// <param name="baseUrl">Base Url</param>
-        protected AbstractHttpClient(string baseUrl) : this(baseUrl, new BasicRequestHandler())
+        protected AbstractRestClient(string baseUrl) : this(baseUrl, new BasicRequestHandler())
         {
         }
 
@@ -44,7 +44,7 @@ namespace BasicHttpClient.HttpClient
         /// </summary>
         /// <param name="baseUrl">Base Url</param>
         /// <param name="requestHandler">Request Handler</param>
-        protected AbstractHttpClient(string baseUrl, IRequestHandler requestHandler)
+        protected AbstractRestClient(string baseUrl, IRequestHandler requestHandler)
             : this(baseUrl, requestHandler, new ConsoleRequestLogger(true))
         {
         }

@@ -7,8 +7,8 @@
     <ProjectGuid>{6382BB54-B5E1-4827-85EA-3F13F4AC90E6}</ProjectGuid>
     <OutputType>Exe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>BasicHttpClient</RootNamespace>
-    <AssemblyName>BasicHttpClient</AssemblyName>
+    <RootNamespace>BasicRestClient</RootNamespace>
+    <AssemblyName>BasicRestClient</AssemblyName>
     <TargetFrameworkVersion>v4.5.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
@@ -43,8 +43,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Demo.cs" />
-    <Compile Include="HttpClient\AbstractHttpClient.cs" />
-    <Compile Include="HttpClient\BasicHttpClient.cs" />
+    <Compile Include="HttpClient\AbstractRestClient.cs" />
+    <Compile Include="HttpClient\BasicRestClient.cs" />
     <Compile Include="HttpClient\BasicRequestHandler.cs" />
     <Compile Include="HttpClient\ConsoleRequestLogger.cs" />
     <Compile Include="HttpClient\HttpDelete.cs" />

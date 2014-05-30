@@ -1,4 +1,4 @@
-﻿namespace BasicHttpClient.HttpClient
+﻿namespace BasicRestClient.HttpClient
 {
     public class HttpPost : HttpRequest
     {

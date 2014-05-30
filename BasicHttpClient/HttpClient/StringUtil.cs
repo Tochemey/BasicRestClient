@@ -3,7 +3,7 @@ using System.Linq;
 using System.Text;
 using System.Text.RegularExpressions;
 
-namespace BasicHttpClient.HttpClient
+namespace BasicRestClient.HttpClient
 {
     public static class StringUtil
     {

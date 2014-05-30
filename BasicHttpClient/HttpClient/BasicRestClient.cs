@@ -1,18 +1,18 @@
-﻿namespace BasicHttpClient.HttpClient
+﻿namespace BasicRestClient.HttpClient
 {
-    public class BasicHttpClient : AbstractHttpClient
+    public class BasicRestClient : AbstractRestClient
     {
-        public BasicHttpClient(bool logRequest)
+        public BasicRestClient(bool logRequest)
         {
             LogRequest = logRequest;
         }
 
-        public BasicHttpClient(string baseUrl, IRequestHandler requestHandler) : base(baseUrl, requestHandler)
+        public BasicRestClient(string baseUrl, IRequestHandler requestHandler) : base(baseUrl, requestHandler)
         {
             LogRequest = true;
         }
 
-        public BasicHttpClient(string baseUrl, IRequestHandler requestHandler, bool logRequest)
+        public BasicRestClient(string baseUrl, IRequestHandler requestHandler, bool logRequest)
             : base(baseUrl, requestHandler, new ConsoleRequestLogger(logRequest))
         {
         }
@@ -21,18 +21,18 @@
         /// Constructs the default client with baseUrl.
         /// </summary>
         /// <param name="baseUrl"></param>
-        public BasicHttpClient(string baseUrl) : base(baseUrl)
+        public BasicRestClient(string baseUrl) : base(baseUrl)
         {
         }
 
         /// <summary>
         /// Constructs the default client with empty baseUrl.
         /// </summary>
-        public BasicHttpClient() : this("")
+        public BasicRestClient() : this("")
         {
         }
 
-        public BasicHttpClient(string baseUrl, bool logRequest)
+        public BasicRestClient(string baseUrl, bool logRequest)
             : this(baseUrl, new BasicRequestHandler(new ConsoleRequestLogger(logRequest)))
         {
         }

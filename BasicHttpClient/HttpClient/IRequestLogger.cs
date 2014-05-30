@@ -1,6 +1,6 @@
 ﻿using System.Net;
 
-namespace BasicHttpClient.HttpClient
+namespace BasicRestClient.HttpClient
 {
     public interface IRequestLogger
     {

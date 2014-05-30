@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Net;
 
-namespace BasicHttpClient.HttpClient
+namespace BasicRestClient.HttpClient
 {
     public class ConsoleRequestLogger : IRequestLogger
     {

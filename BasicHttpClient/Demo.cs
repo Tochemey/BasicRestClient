@@ -1,7 +1,7 @@
 ﻿using System;
-using BasicHttpClient.HttpClient;
+using BasicRestClient.HttpClient;
 
-namespace BasicHttpClient
+namespace BasicRestClient
 {
     class Demo
     {
@@ -14,7 +14,7 @@ namespace BasicHttpClient
             const string baseUrl = "http://"+ hostname + "/v3";
 
             // New instance of the Http Client
-            var httpClient = new HttpClient.BasicHttpClient(baseUrl);
+            var httpClient = new HttpClient.BasicRestClient(baseUrl);
 
             // Set the Basic Authorization header
             httpClient.BasicAuth(clientId, clientSecret);

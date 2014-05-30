@@ -2,7 +2,7 @@
 using System.IO;
 using System.Net;
 
-namespace BasicHttpClient.HttpClient
+namespace BasicRestClient.HttpClient
 {
     public class BasicRequestHandler : IRequestHandler
     {
