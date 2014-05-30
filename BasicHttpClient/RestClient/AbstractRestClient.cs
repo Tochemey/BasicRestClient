@@ -4,7 +4,7 @@ using System.IO;
 using System.Net;
 using System.Text;
 
-namespace BasicRestClient.HttpClient
+namespace BasicRestClient.RestClient
 {
     public abstract class AbstractRestClient
     {

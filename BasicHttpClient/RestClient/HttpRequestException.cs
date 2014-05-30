@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace BasicRestClient.HttpClient
+namespace BasicRestClient.RestClient
 {
     public class HttpRequestException : Exception
     {

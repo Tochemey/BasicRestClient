@@ -1,4 +1,4 @@
-﻿namespace BasicRestClient.HttpClient
+﻿namespace BasicRestClient.RestClient
 {
     public class HttpHead: HttpRequest
     {

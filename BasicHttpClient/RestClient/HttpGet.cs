@@ -1,15 +1,15 @@
-﻿namespace BasicRestClient.HttpClient
+﻿namespace BasicRestClient.RestClient
 {
-    public class HttpDelete: HttpRequest
+    public class HttpGet: HttpRequest
     {
         /// <summary>
-        /// Constructs an HTTP DELETE request
+        /// Constructs an HTTP GET request
         /// </summary>
         /// <param name="path">Partial URL</param>
         /// <param name="parameters">Name-value pairs to be appended to the URL</param>
-        public HttpDelete(string path, ParameterMap parameters) : base(path, parameters)
+        public HttpGet(string path, ParameterMap parameters) : base(path, parameters)
         {
-            HttpMethod = "DELETE";
+            HttpMethod = "GET";
             Path = path;
             ContentType = UrlEncoded;
         }

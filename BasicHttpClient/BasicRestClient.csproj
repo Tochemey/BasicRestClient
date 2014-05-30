@@ -43,22 +43,22 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Demo.cs" />
-    <Compile Include="HttpClient\AbstractRestClient.cs" />
-    <Compile Include="HttpClient\BasicRestClient.cs" />
-    <Compile Include="HttpClient\BasicRequestHandler.cs" />
-    <Compile Include="HttpClient\ConsoleRequestLogger.cs" />
-    <Compile Include="HttpClient\HttpDelete.cs" />
-    <Compile Include="HttpClient\HttpGet.cs" />
-    <Compile Include="HttpClient\HttpHead.cs" />
-    <Compile Include="HttpClient\HttpPost.cs" />
-    <Compile Include="HttpClient\HttpPut.cs" />
-    <Compile Include="HttpClient\HttpRequest.cs" />
-    <Compile Include="HttpClient\HttpRequestException.cs" />
-    <Compile Include="HttpClient\HttpResponse.cs" />
-    <Compile Include="HttpClient\IRequestHandler.cs" />
-    <Compile Include="HttpClient\IRequestLogger.cs" />
-    <Compile Include="HttpClient\ParameterMap.cs" />
-    <Compile Include="HttpClient\StringUtil.cs" />
+    <Compile Include="RestClient\AbstractRestClient.cs" />
+    <Compile Include="RestClient\BasicRestClient.cs" />
+    <Compile Include="RestClient\BasicRequestHandler.cs" />
+    <Compile Include="RestClient\ConsoleRequestLogger.cs" />
+    <Compile Include="RestClient\HttpDelete.cs" />
+    <Compile Include="RestClient\HttpGet.cs" />
+    <Compile Include="RestClient\HttpHead.cs" />
+    <Compile Include="RestClient\HttpPost.cs" />
+    <Compile Include="RestClient\HttpPut.cs" />
+    <Compile Include="RestClient\HttpRequest.cs" />
+    <Compile Include="RestClient\HttpRequestException.cs" />
+    <Compile Include="RestClient\HttpResponse.cs" />
+    <Compile Include="RestClient\IRequestHandler.cs" />
+    <Compile Include="RestClient\IRequestLogger.cs" />
+    <Compile Include="RestClient\ParameterMap.cs" />
+    <Compile Include="RestClient\StringUtil.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

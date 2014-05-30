@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Net;
 
-namespace BasicRestClient.HttpClient
+namespace BasicRestClient.RestClient
 {
     public class HttpResponse
     {
