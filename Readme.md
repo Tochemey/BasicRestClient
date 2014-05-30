@@ -2,7 +2,7 @@
 Basic Http Client
 =======================
     
-A minimal HTTP client that uses .Net HttpWebRequest API to make requests. 
+A minimal Rest client that uses .Net HttpWebRequest API to make requests. 
 It is mainly a wrapper around the famous and robust .Net HttpWebRequest API.
 It features a simple interface for making Web requests. 
 It has been written and tested on an environment using .Net Framework 4.5.1. 
@@ -24,14 +24,14 @@ Currently the following HTTP verb are supported:
 It also has a smooth error handling and request logging features.
 
 ## Usage
-Copy the few file in the HttpClient folder or clone it into your project and with some few namespace refactoring you are good to go.
+Copy the few file in the RestClient folder or clone it into your project and with some few namespace refactoring you are good to go.
 
-Example code to post data from a Web Server with a Basic Authorization. This example has been used against the [SMSGH Ltd](http://www.smsgh.com/) HTTP API [Our developer site](http://developers.smsgh.com/)
+Example code to post data from a Web Server with a Basic Authorization. This example has been used against the [SMSGH Ltd](http://www.smsgh.com/) HTTP API [developer site](http://developers.smsgh.com/)
 
 ```c#
 
     using System;
-    using BasicHttpClient.HttpClient;
+    using BasicRestClient.RestClient;
 
     namespace BasicHttpClient
     {
@@ -46,12 +46,12 @@ Example code to post data from a Web Server with a Basic Authorization. This exa
                 const string baseUrl = "http://"+ hostname + "/v3";
 
                 // New instance of the Http Client
-                var httpClient = new HttpClient.BasicHttpClient(baseUrl);
+                var restClient = new RestClient.BasicRestClient(baseUrl);
 
                 // Set the Basic Authorization header
-                httpClient.BasicAuth(clientId, clientSecret);
-                httpClient.ConnectionTimeout = 200;
-                httpClient.ReadWriteTimeout = 200;
+                restClient.BasicAuth(clientId, clientSecret);
+                restClient.ConnectionTimeout = 200;
+                restClient.ReadWriteTimeout = 200;
 
                 // Set the Params to send
                 var parameters = new ParameterMap();
@@ -63,12 +63,12 @@ Example code to post data from a Web Server with a Basic Authorization. This exa
                 try
                 {
                     string resource = "/messages/";
-                    HttpResponse response = httpClient.Post(resource, parameters);
+                    HttpResponse response = restClient.Post(resource, parameters);
                     Console.WriteLine("Server Response Status " + response.Status);
 
 
                     resource = "/account/profile";
-                    response = httpClient.Get(resource);
+                    response = restClient.Get(resource);
                     Console.WriteLine("Server Response Status " + response.Status);
                 }
                 catch (Exception e)
