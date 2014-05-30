@@ -1,5 +1,5 @@
 ﻿
-Basic Http Client
+Basic Rest Client
 =======================
     
 A minimal Rest client that uses .Net HttpWebRequest API to make requests. 
