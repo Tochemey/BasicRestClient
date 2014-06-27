@@ -55,6 +55,8 @@
     <Compile Include="RestClient\HttpRequest.cs" />
     <Compile Include="RestClient\HttpRequestException.cs" />
     <Compile Include="RestClient\HttpResponse.cs" />
+    <Compile Include="RestClient\HttpWebRequestAsyncState.cs" />
+    <Compile Include="RestClient\HttpWebResponseAsyncState.cs" />
     <Compile Include="RestClient\IRequestHandler.cs" />
     <Compile Include="RestClient\IRequestLogger.cs" />
     <Compile Include="RestClient\ParameterMap.cs" />
