@@ -3,28 +3,32 @@ using BasicRestClient.RestClient;
 
 namespace BasicRestClient
 {
+    /// <summary>
+    /// This Demo is done against the SMSGH HTTP API
+    /// </summary>
     class Demo
     {
+            const string ClientId = "dodcaawu";
+            const string ClientSecret = "rzbycqfx";
+            const string Hostname = "api.smsgh.com";
+
+            const string BaseUrl = "http://"+ Hostname + "/v3";
+
         static void Main(string[] args)
         {
-            const string clientId = "djwgbadp";
-            const string clientSecret = "ewhrfxat";
-            const string hostname = "api.smsgh.com";
-
-            const string baseUrl = "http://"+ hostname + "/v3";
 
             // New instance of the Http Client
-            var httpClient = new RestClient.BasicRestClient(baseUrl);
+            var httpClient = new RestClient.BasicRestClient(BaseUrl);
 
             // Set the Basic Authorization header
-            httpClient.BasicAuth(clientId, clientSecret);
+            httpClient.BasicAuth(ClientId, ClientSecret);
             httpClient.ConnectionTimeout = 200;
             httpClient.ReadWriteTimeout = 200;
 
             // Set the Params to send
             var parameters = new ParameterMap();
-            parameters.Set("From", "user12")
-                .Set("To", "+233247064654")
+            parameters.Set("From", "Arsene")
+                .Set("To", "+233247063817")
                 .Set("Content","Hello ")
                 .Set("RegisteredDelivery", "true");
 
@@ -32,12 +36,14 @@ namespace BasicRestClient
             {
                 string resource = "/messages/";
                 HttpResponse response = httpClient.Post(resource, parameters);
-                Console.WriteLine("Server Response Status " + response.Status);
-
+                Console.WriteLine("Message Sent: Server Response Status " + response.Status);
 
                 resource = "/account/profile";
                 response = httpClient.Get(resource);
-                Console.WriteLine("Server Response Status " + response.Status);
+                Console.WriteLine("Account Profile : Server Response Status " + response.Status);
+                GetAccountProfileAsync();
+
+                SendMessageAsync(resource, parameters);
             }
             catch (Exception e)
             {
@@ -53,6 +59,32 @@ namespace BasicRestClient
             }
 
             Console.ReadKey();
+        }
+
+        static async void GetAccountProfileAsync()
+        {
+            var httpClient = new RestClient.BasicRestClient(BaseUrl);
+            httpClient.BasicAuth(ClientId, ClientSecret);
+            httpClient.ConnectionTimeout = 200;
+            httpClient.ReadWriteTimeout = 200;
+
+            const string resource = "/account/profile";
+            var response = await httpClient.GetAsync(resource);
+            Console.WriteLine();
+            Console.WriteLine("Account Profile : Server Response Status " + response.Status);
+        }
+
+        static async void SendMessageAsync(string resource, ParameterMap parameters)
+        {
+            var httpClient = new RestClient.BasicRestClient(BaseUrl);
+            httpClient.BasicAuth(ClientId, ClientSecret);
+            httpClient.ConnectionTimeout = 200;
+            httpClient.ReadWriteTimeout = 200;
+
+            var response = await httpClient.PostAsync(resource, parameters);
+            Console.WriteLine();
+            if(response != null) Console.WriteLine("Send Message Async : Server Response Status " + response.Status);  
+            else Console.WriteLine("Send Message Async : NO RESPONSE" );
         }
     }
 }

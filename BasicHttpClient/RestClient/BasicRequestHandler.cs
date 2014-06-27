@@ -1,6 +1,7 @@
 ﻿using System;
 using System.IO;
 using System.Net;
+using System.Threading.Tasks;
 
 namespace BasicRestClient.RestClient
 {
@@ -11,9 +12,7 @@ namespace BasicRestClient.RestClient
             Logger = logger;
         }
 
-        public BasicRequestHandler() : this(new ConsoleRequestLogger(true))
-        {
-        }
+        public BasicRequestHandler() : this(new ConsoleRequestLogger(true)) {}
 
         protected IRequestLogger Logger { private set; get; }
 
@@ -25,8 +24,7 @@ namespace BasicRestClient.RestClient
             return urlConnection;
         }
 
-        public void PrepareConnection(HttpWebRequest urlConnection, string method, string contentType, string accept,
-            int readWriteTimeout, int connectionTimeout)
+        public void PrepareConnection(HttpWebRequest urlConnection, string method, string contentType, string accept, int readWriteTimeout, int connectionTimeout)
         {
             if (!contentType.IsEmpty()) urlConnection.ContentType = contentType.Trim();
             if (!accept.IsEmpty()) urlConnection.Accept = accept.Trim();
@@ -40,8 +38,7 @@ namespace BasicRestClient.RestClient
         public void WriteStream(Stream outputStream, byte[] content)
         {
             if (content != null && content.Length != 0)
-                using (outputStream)
-                {
+                using (outputStream) {
                     outputStream.Write(content, 0, content.Length);
                 }
         }
@@ -59,23 +56,64 @@ namespace BasicRestClient.RestClient
         public bool OnError(HttpRequestException error)
         {
             HttpResponse response = error.HttpResponse;
-            if (Logger.IsLoggingEnabled())
-            {
+            if (Logger.IsLoggingEnabled()) {
                 Logger.Log("BasicRequestHandler.onError got");
                 Logger.Log(error.Message);
             }
 
-            if (response != null)
-            {
+            if (response != null) {
                 int status = response.Status;
                 if (status > 0) return true; // Perhaps a 404, 501, or something that will be fixed later
             }
             return false;
         }
-    }
 
-    //public void WriteStream(HttpWebRequest urlConnection, byte[] content)
-    //{
-    //    if(content != null && content.Length != 0) urlConnection.GetRequestStream().Write(content, 0, content.Length);
-    //}
+        public async Task<Stream> OpenOutputAsync(HttpWebRequest urlConnection)
+        {
+            var asyncState = new HttpWebRequestAsyncState {HttpWebRequest = urlConnection};
+            try {
+                return await Task.Factory.FromAsync<Stream>(urlConnection.BeginGetRequestStream, urlConnection.EndGetRequestStream, asyncState, TaskCreationOptions.None);
+            }
+            catch {}
+            return null;
+        }
+
+        public async Task<HttpWebRequestAsyncState> WriteStreamAsync(HttpWebRequest urlConnection, Stream outputStream, byte[] content)
+        {
+            // Let us get the state
+            var requestAsyncState = new HttpWebRequestAsyncState {HttpWebRequest = urlConnection, RequestBytes = content};
+            try {
+                using (Stream requestStream = outputStream)
+                {
+                    await requestStream.WriteAsync(requestAsyncState.RequestBytes, 0, requestAsyncState.RequestBytes.Length);
+                }                    
+            }
+            catch (Exception exception) {
+                requestAsyncState.Exception = exception;
+            }
+            return requestAsyncState;
+        }
+
+        public async Task<HttpWebResponseAsyncState> OpenInputAsync(HttpWebRequestAsyncState requestState)
+        {
+            if (requestState == null) return null;
+            var httpWebResponseAsyncState = new HttpWebResponseAsyncState();
+
+            // Let us get the requestState properties
+            HttpWebRequestAsyncState httpWebRequestAsyncState2 = requestState;
+
+            // Let us the httpWebResponseAsyncState properties
+            httpWebResponseAsyncState.HttpWebRequest = httpWebRequestAsyncState2.HttpWebRequest;
+            HttpWebRequest hwr2 = httpWebRequestAsyncState2.HttpWebRequest;
+            try {
+                httpWebResponseAsyncState.WebResponse =  await Task.Factory.FromAsync<WebResponse>(hwr2.BeginGetResponse, hwr2.EndGetResponse, httpWebRequestAsyncState2, TaskCreationOptions.None);
+            }
+            catch (Exception exception) {
+                // Here we could not get any response from the server due to the exception
+                httpWebResponseAsyncState.WebResponse = null;
+                httpWebResponseAsyncState.Exception = exception;
+            }
+            return httpWebResponseAsyncState;
+        }
+    }
 }

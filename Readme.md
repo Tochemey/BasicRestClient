@@ -33,43 +33,49 @@ Example code to post data from a Web Server with a Basic Authorization. This exa
     using System;
     using BasicRestClient.RestClient;
 
-    namespace BasicHttpClient
+    namespace BasicRestClient
     {
+        /// <summary>
+        /// This Demo is done against the SMSGH HTTP API
+        /// </summary>
         class Demo
         {
+                const string ClientId = "dodcaawu";
+                const string ClientSecret = "rzbycqfx";
+                const string Hostname = "api.smsgh.com";
+
+                const string BaseUrl = "http://"+ Hostname + "/v3";
+
             static void Main(string[] args)
             {
-                const string clientId = "user123";
-                const string clientSecret = "password123";
-                const string hostname = "api.smsgh.com";
-
-                const string baseUrl = "http://"+ hostname + "/v3";
 
                 // New instance of the Http Client
-                var restClient = new RestClient.BasicRestClient(baseUrl);
+                var httpClient = new RestClient.BasicRestClient(BaseUrl);
 
                 // Set the Basic Authorization header
-                restClient.BasicAuth(clientId, clientSecret);
-                restClient.ConnectionTimeout = 200;
-                restClient.ReadWriteTimeout = 200;
+                httpClient.BasicAuth(ClientId, ClientSecret);
+                httpClient.ConnectionTimeout = 200;
+                httpClient.ReadWriteTimeout = 200;
 
                 // Set the Params to send
                 var parameters = new ParameterMap();
-                parameters.Set("From", "user12")
-                    .Set("To", "+233247064654")
+                parameters.Set("From", "Arsene")
+                    .Set("To", "+233247063817")
                     .Set("Content","Hello ")
                     .Set("RegisteredDelivery", "true");
 
                 try
                 {
                     string resource = "/messages/";
-                    HttpResponse response = restClient.Post(resource, parameters);
-                    Console.WriteLine("Server Response Status " + response.Status);
-
+                    HttpResponse response = httpClient.Post(resource, parameters);
+                    Console.WriteLine("Message Sent: Server Response Status " + response.Status);
 
                     resource = "/account/profile";
-                    response = restClient.Get(resource);
-                    Console.WriteLine("Server Response Status " + response.Status);
+                    response = httpClient.Get(resource);
+                    Console.WriteLine("Account Profile : Server Response Status " + response.Status);
+                    GetAccountProfileAsync();
+
+                    SendMessageAsync(resource, parameters);
                 }
                 catch (Exception e)
                 {
@@ -86,8 +92,35 @@ Example code to post data from a Web Server with a Basic Authorization. This exa
 
                 Console.ReadKey();
             }
+
+            static async void GetAccountProfileAsync()
+            {
+                var httpClient = new RestClient.BasicRestClient(BaseUrl);
+                httpClient.BasicAuth(ClientId, ClientSecret);
+                httpClient.ConnectionTimeout = 200;
+                httpClient.ReadWriteTimeout = 200;
+
+                const string resource = "/account/profile";
+                var response = await httpClient.GetAsync(resource);
+                Console.WriteLine();
+                Console.WriteLine("Account Profile : Server Response Status " + response.Status);
+            }
+
+            static async void SendMessageAsync(string resource, ParameterMap parameters)
+            {
+                var httpClient = new RestClient.BasicRestClient(BaseUrl);
+                httpClient.BasicAuth(ClientId, ClientSecret);
+                httpClient.ConnectionTimeout = 200;
+                httpClient.ReadWriteTimeout = 200;
+
+                var response = await httpClient.PostAsync(resource, parameters);
+                Console.WriteLine();
+                if(response != null) Console.WriteLine("Send Message Async : Server Response Status " + response.Status);  
+                else Console.WriteLine("Send Message Async : NO RESPONSE" );
+            }
         }
     }
+
 ```
 
 ### Notes
@@ -99,5 +132,4 @@ The status code is an integer and the response body is a json data string. So an
 ## Milestone
 
 * Support of SSL
-* Asynchronous Requests for scalability sake
 
