@@ -23,6 +23,9 @@ Currently the following HTTP verb are supported:
 
 It also has a smooth error handling and request logging features.
 
+### Noteworthy
+All these verbs can be executed synchronously and asynchronously.(refer to demo)
+
 ## Usage
 Copy the few file in the RestClient folder or clone it into your project and with some few namespace refactoring you are good to go.
 
