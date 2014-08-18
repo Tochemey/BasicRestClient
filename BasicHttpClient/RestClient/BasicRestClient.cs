@@ -37,6 +37,8 @@
         {
         }
 
+        public BasicRestClient(string baseUrl, string accept) : base(baseUrl, accept) { }
+
         public bool LogRequest { private set; get; }
     }
 }

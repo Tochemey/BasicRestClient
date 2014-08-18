@@ -11,8 +11,9 @@ namespace BasicRestClient.RestClient
     {
         protected static string UrlEncoded = "application/x-www-form-urlencoded;charset=UTF-8";
         protected static string Multipart = "multipart/form-data";
-        protected static string Accept = "application/json";
         protected bool Connected;
+
+        protected string accept { private set; get; }
 
         protected AbstractRestClient(string baseUrl, IRequestHandler requestHandler, IRequestLogger requestLogger)
         {
@@ -22,6 +23,7 @@ namespace BasicRestClient.RestClient
             RequestHeaders = new Dictionary<string, string>();
             ConnectionTimeout = 2000; //Default 2s, deliberately short.
             ReadWriteTimeout = 8000; // Default 8s, reasonably short if accidentally called from the UI thread
+            accept = "application/json";
         }
 
         /// <summary>
@@ -35,6 +37,11 @@ namespace BasicRestClient.RestClient
         /// </summary>
         /// <param name="baseUrl">Base Url</param>
         protected AbstractRestClient(string baseUrl) : this(baseUrl, new BasicRequestHandler()) {}
+
+        protected AbstractRestClient(string baseUrl, string acceptMime) : this(baseUrl)
+        {
+            accept = acceptMime;
+        }
 
         /// <summary>
         ///     Construct a client with baseUrl and RequestHandler.
@@ -53,18 +60,18 @@ namespace BasicRestClient.RestClient
         /// <param name="path">Whole or partial URL string, will be appended to baseUrl</param>
         /// <param name="httpMethod">Request method</param>
         /// <param name="contentType">MIME type of the request</param>
-        /// <param name="accept">MIME type of the response</param>
+        /// <param name="acceptMime">MIME type of the response</param>
         /// <param name="content">Request data</param>
         /// <returns>Response object</returns>
         /// <exception cref="Exception"></exception>
-        protected HttpResponse DoHttpMethod(string path, string httpMethod, string contentType, string accept, byte[] content)
+        protected HttpResponse DoHttpMethod(string path, string httpMethod, string contentType, string acceptMime, byte[] content)
         {
             HttpResponse response = null;
             try {
                 Connected = false;
                 // Let us open the connection, prepare it for writing and reading data.
                 HttpWebRequest urlConnection = OpenConnection(path);
-                PrepareConnection(urlConnection, httpMethod, contentType, accept);
+                PrepareConnection(urlConnection, httpMethod, contentType, acceptMime);
                 AppendRequestHeaders(urlConnection);
                 Connected = true;
                 if (RequestLogger.IsLoggingEnabled()) RequestLogger.LogRequest(urlConnection, content);
@@ -233,7 +240,7 @@ namespace BasicRestClient.RestClient
         {
             HttpResponse httpResponse = null;
             try {
-                httpResponse = DoHttpMethod(httpRequest.Path, httpRequest.HttpMethod, httpRequest.ContentType, Accept, httpRequest.Content);
+                httpResponse = DoHttpMethod(httpRequest.Path, httpRequest.HttpMethod, httpRequest.ContentType, accept, httpRequest.Content);
             }
             catch (HttpRequestException hre) {
                 RequestHandler.OnError(hre);
@@ -256,7 +263,7 @@ namespace BasicRestClient.RestClient
             HttpResponse httpResponse = null;
             try
             {
-                httpResponse = await DoHttpMethodAsync(httpRequest.Path, httpRequest.HttpMethod, httpRequest.ContentType, Accept, httpRequest.Content);
+                httpResponse = await DoHttpMethodAsync(httpRequest.Path, httpRequest.HttpMethod, httpRequest.ContentType, accept, httpRequest.Content);
             }
             catch (HttpRequestException hre)
             {
