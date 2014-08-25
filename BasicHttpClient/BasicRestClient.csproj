@@ -50,6 +50,7 @@
     <Compile Include="RestClient\BasicRestClient.cs" />
     <Compile Include="RestClient\BasicRequestHandler.cs" />
     <Compile Include="RestClient\ConsoleRequestLogger.cs" />
+    <Compile Include="RestClient\FileExtensionMimeTypeMapping.cs" />
     <Compile Include="RestClient\HttpDelete.cs" />
     <Compile Include="RestClient\HttpGet.cs" />
     <Compile Include="RestClient\HttpHead.cs" />
@@ -58,13 +59,18 @@
     <Compile Include="RestClient\HttpRequest.cs" />
     <Compile Include="RestClient\HttpRequestException.cs" />
     <Compile Include="RestClient\HttpResponse.cs" />
+    <Compile Include="RestClient\HttpUploadHelper.cs" />
     <Compile Include="RestClient\HttpWebRequestAsyncState.cs" />
     <Compile Include="RestClient\HttpWebResponseAsyncState.cs" />
     <Compile Include="RestClient\IRequestHandler.cs" />
     <Compile Include="RestClient\IRequestLogger.cs" />
+    <Compile Include="RestClient\MimePart.cs" />
     <Compile Include="RestClient\ParameterMap.cs" />
+    <Compile Include="RestClient\StreamMimePart.cs" />
+    <Compile Include="RestClient\StringMimePart.cs" />
     <Compile Include="RestClient\StringUtil.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="RestClient\UploadFile.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

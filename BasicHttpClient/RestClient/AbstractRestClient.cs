@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.Specialized;
 using System.IO;
 using System.Net;
 using System.Text;
@@ -12,8 +13,6 @@ namespace BasicRestClient.RestClient
         protected static string UrlEncoded = "application/x-www-form-urlencoded;charset=UTF-8";
         protected static string Multipart = "multipart/form-data";
         protected bool Connected;
-
-        protected string accept { private set; get; }
 
         protected AbstractRestClient(string baseUrl, IRequestHandler requestHandler, IRequestLogger requestLogger)
         {
@@ -86,15 +85,19 @@ namespace BasicRestClient.RestClient
                     if (serverResponse != null) {
                         using (Stream inputStream = RequestHandler.OpenInput(urlConnection)) {
                             if (inputStream != null) {
-                                var buffer = new byte[serverResponse.ContentLength];
-                                int bytesRead = 0;
-                                int totalBytesRead = bytesRead;
-                                while (totalBytesRead < buffer.Length) {
-                                    bytesRead = inputStream.Read(buffer, bytesRead, buffer.Length - bytesRead);
-                                    totalBytesRead += bytesRead;
+                                if (serverResponse.ContentLength > 0) {
+                                    var buffer = new byte[serverResponse.ContentLength];
+                                    int bytesRead = 0;
+                                    int totalBytesRead = bytesRead;
+                                    while (totalBytesRead < buffer.Length) {
+                                        bytesRead = inputStream.Read(buffer, bytesRead, buffer.Length - bytesRead);
+                                        totalBytesRead += bytesRead;
+                                    }
+                                    response = new HttpResponse(urlConnection.Address.AbsoluteUri, urlConnection.Headers, Convert.ToInt32(serverResponse.StatusCode), buffer);
                                 }
-
-                                response = new HttpResponse(urlConnection.Address.AbsoluteUri, urlConnection.Headers, Convert.ToInt32(serverResponse.StatusCode), buffer);
+                                else {
+                                    response = new HttpResponse(urlConnection.Address.AbsoluteUri, urlConnection.Headers, Convert.ToInt32(serverResponse.StatusCode), null);
+                                }
                             }
                         }
                     }
@@ -139,18 +142,18 @@ namespace BasicRestClient.RestClient
         /// <param name="path">Whole or partial URL string, will be appended to baseUrl</param>
         /// <param name="httpMethod">Request method</param>
         /// <param name="contentType">MIME type of the request</param>
-        /// <param name="accept">MIME type of the response</param>
+        /// <param name="acceptMime">MIME type of the response</param>
         /// <param name="content">Request data</param>
         /// <returns>Response object</returns>
         /// <exception cref="Exception"></exception>
-        protected async Task<HttpResponse> DoHttpMethodAsync(string path, string httpMethod, string contentType, string accept, byte[] content)
+        protected async Task<HttpResponse> DoHttpMethodAsync(string path, string httpMethod, string contentType, string acceptMime, byte[] content)
         {
             HttpResponse response = null;
             try {
                 Connected = false;
                 // Let us open the connection, prepare it for writing and reading data.
                 HttpWebRequest urlConnection = OpenConnection(path);
-                PrepareConnection(urlConnection, httpMethod, contentType, accept);
+                PrepareConnection(urlConnection, httpMethod, contentType, acceptMime);
                 AppendRequestHeaders(urlConnection);
                 Connected = true;
                 if (RequestLogger.IsLoggingEnabled()) RequestLogger.LogRequest(urlConnection, content);
@@ -162,34 +165,33 @@ namespace BasicRestClient.RestClient
                     if (requestAsyncState.Exception != null) throw requestAsyncState.Exception;
                 }
                 else {
-                    requestAsyncState = new HttpWebRequestAsyncState { HttpWebRequest = urlConnection };
+                    requestAsyncState = new HttpWebRequestAsyncState {HttpWebRequest = urlConnection};
                 }
                 //Let us read the response
-                HttpWebResponseAsyncState responseAsyncState =  await RequestHandler.OpenInputAsync(requestAsyncState);
+                HttpWebResponseAsyncState responseAsyncState = await RequestHandler.OpenInputAsync(requestAsyncState);
                 if (responseAsyncState == null) return null;
 
                 if (responseAsyncState.Exception == null) {
-                    using (var serverResponse = responseAsyncState.WebResponse as HttpWebResponse)
-                    {
-                        if (serverResponse != null)
-                        {
-                            using (Stream inputStream = RequestHandler.OpenInput(urlConnection))
-                            {
-                                if (inputStream != null)
-                                {
-                                    var buffer = new byte[serverResponse.ContentLength];
-                                    int bytesRead = 0;
-                                    int totalBytesRead = bytesRead;
-                                    while (totalBytesRead < buffer.Length)
-                                    {
-                                        bytesRead = inputStream.Read(buffer, bytesRead, buffer.Length - bytesRead);
-                                        totalBytesRead += bytesRead;
+                    using (var serverResponse = urlConnection.GetResponse() as HttpWebResponse) {
+                        if (serverResponse != null) {
+                            using (Stream inputStream = RequestHandler.OpenInput(urlConnection)) {
+                                if (inputStream != null) {
+                                    if (serverResponse.ContentLength > 0) {
+                                        var buffer = new byte[serverResponse.ContentLength];
+                                        int bytesRead = 0;
+                                        int totalBytesRead = bytesRead;
+                                        while (totalBytesRead < buffer.Length) {
+                                            bytesRead = inputStream.Read(buffer, bytesRead, buffer.Length - bytesRead);
+                                            totalBytesRead += bytesRead;
+                                        }
+                                        response = new HttpResponse(urlConnection.Address.AbsoluteUri, urlConnection.Headers, Convert.ToInt32(serverResponse.StatusCode), buffer);
                                     }
-
-                                    response = new HttpResponse(urlConnection.Address.AbsoluteUri, urlConnection.Headers, Convert.ToInt32(serverResponse.StatusCode), buffer);
+                                    else {
+                                        response = new HttpResponse(urlConnection.Address.AbsoluteUri, urlConnection.Headers, Convert.ToInt32(serverResponse.StatusCode), null);
+                                    }
                                 }
                             }
-                        }                            
+                        }
                     }
                 }
                 else {
@@ -261,16 +263,13 @@ namespace BasicRestClient.RestClient
         public async Task<HttpResponse> ExecuteAsync(HttpRequest httpRequest)
         {
             HttpResponse httpResponse = null;
-            try
-            {
+            try {
                 httpResponse = await DoHttpMethodAsync(httpRequest.Path, httpRequest.HttpMethod, httpRequest.ContentType, accept, httpRequest.Content);
             }
-            catch (HttpRequestException hre)
-            {
+            catch (HttpRequestException hre) {
                 RequestHandler.OnError(hre);
             }
-            catch (Exception e)
-            {
+            catch (Exception e) {
                 RequestHandler.OnError(new HttpRequestException(e, httpResponse));
             }
             return httpResponse;
@@ -305,10 +304,10 @@ namespace BasicRestClient.RestClient
         /// <param name="urlConnection">HttpWebrequest instance</param>
         /// <param name="method">Http Method</param>
         /// <param name="contentType">The ContentType. It stands for the request mime type to send</param>
-        /// <param name="accept">The Accept Header. It stands for the response mime type expected</param>
-        protected void PrepareConnection(HttpWebRequest urlConnection, string method, string contentType, string accept)
+        /// <param name="acceptMime">The Accept Header. It stands for the response mime type expected</param>
+        protected void PrepareConnection(HttpWebRequest urlConnection, string method, string contentType, string acceptMime)
         {
-            RequestHandler.PrepareConnection(urlConnection, method, contentType, accept, ReadWriteTimeout, ConnectionTimeout);
+            RequestHandler.PrepareConnection(urlConnection, method, contentType, acceptMime, ReadWriteTimeout, ConnectionTimeout);
         }
 
         /// <summary>
@@ -388,13 +387,93 @@ namespace BasicRestClient.RestClient
         {
             // Open the output stream to write onto it
             Stream outputStream = await RequestHandler.OpenOutputAsync(urlConnection);
-            if(outputStream == null) return null;
+            if (outputStream == null) return null;
             return await RequestHandler.WriteStreamAsync(urlConnection, outputStream, content);
         }
 
         #endregion
 
         #region HTTP Methods
+
+        /// <summary>
+        ///     This method uploads files onto the remote server using the POST method
+        /// </summary>
+        /// <param name="path">Resource Path</param>
+        /// <param name="uploadFiles">Files to upload</param>
+        /// <param name="parameters">Additional form data</param>
+        /// <returns>HttpResponse Object</returns>
+        /// <exception cref="HttpRequestException"></exception>
+        /// <exception cref="Exception"></exception>
+        public HttpResponse PostFiles(string path, UploadFile[] uploadFiles, ParameterMap parameters, string acceptMime)
+        {
+            HttpResponse response = null;
+            try {
+                Connected = false;
+                // Let us open the connection, prepare it for writing and reading data.
+                HttpWebRequest urlConnection = OpenConnection(path);
+                urlConnection.Accept = acceptMime;
+                urlConnection.KeepAlive = true;
+                urlConnection.ReadWriteTimeout = ReadWriteTimeout*1000;
+                urlConnection.Timeout = ConnectionTimeout*1000;
+                urlConnection.Method = "POST";
+                urlConnection.Headers.Add("Accept-Charset", "UTF-8");
+                AppendRequestHeaders(urlConnection);
+                Connected = true;
+
+                // Build form data to send to the server.
+                // Let us set the form data
+                NameValueCollection form = parameters.ToNameValueCollection();
+
+                // upload the files
+                HttpWebResponse resp = HttpUploadHelper.Upload(urlConnection, uploadFiles, form);
+                using (resp) {
+                    if (resp != null) {
+                        using (Stream inputStream = resp.GetResponseStream()) {
+                            if (inputStream != null) {
+                                var buffer = new byte[resp.ContentLength];
+                                int bytesRead = 0;
+                                int totalBytesRead = bytesRead;
+                                while (totalBytesRead < buffer.Length) {
+                                    bytesRead = inputStream.Read(buffer, bytesRead, buffer.Length - bytesRead);
+                                    totalBytesRead += bytesRead;
+                                }
+                                response = new HttpResponse(urlConnection.Address.AbsoluteUri, urlConnection.Headers, Convert.ToInt32(resp.StatusCode), buffer);
+                            }
+                        }
+                    }
+                }
+                return response;
+            }
+            catch (Exception e) {
+                if (e.GetType() == typeof (WebException)) {
+                    var ex = e as WebException;
+                    try {
+                        response = ReadStreamError(ex);
+                    }
+                    catch (Exception ee) {
+                        // Must catch IOException, but swallow to show first cause only
+                        RequestLogger.Log(ee.StackTrace);
+                    }
+                    finally {
+                        if (response == null || response.Status <= 0)
+                            throw new HttpRequestException(e, response);
+                    }
+                }
+                else {
+                    // Different Exception 
+                    // Must catch IOException, but swallow to show first cause only
+                    RequestLogger.Log(e.ToString());
+                }
+            }
+            finally {
+                // Here we log the Http Response
+                if (RequestLogger.IsLoggingEnabled()) {
+                    RequestLogger.LogResponse(response);
+                }
+            }
+            return response;
+        }
+
 
         /// <summary>
         ///     Execute a DELETE request and return the response. The supplied parameters  are URL encoded and sent as the query
@@ -459,7 +538,7 @@ namespace BasicRestClient.RestClient
         public async Task<HttpResponse> GetAsync(string path)
         {
             return await GetAsync(path, null);
-        } 
+        }
 
         /// <summary>
         ///     Execute a POST request with parameter map and return the response.
@@ -545,7 +624,7 @@ namespace BasicRestClient.RestClient
         public async Task<HttpResponse> PutAsync(string path, string contentType, byte[] data)
         {
             return await ExecuteAsync(new HttpPut(path, null, contentType, data));
-        } 
+        }
 
         /// <summary>
         ///     Execute a HEAD request and return the response. The supplied parameters  are URL encoded and sent as the query
@@ -595,5 +674,7 @@ namespace BasicRestClient.RestClient
         public int ReadWriteTimeout { set; get; }
 
         #endregion
+
+        protected string accept { private set; get; }
     }
 }

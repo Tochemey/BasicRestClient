@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Collections.Specialized;
 using System.Net;
 using System.Text;
 
@@ -94,6 +95,17 @@ namespace BasicRestClient.RestClient
             return sb.ToString();
         }
 
+
+        public NameValueCollection ToNameValueCollection()
+        {
+            var form = new NameValueCollection();
+            foreach (string key in _map.Keys)
+            {
+                string val = _map[key];
+                if (!val.IsEmpty()) form[key] = val;
+            }
+            return form;
+        }
         /// <summary>
         /// Return a URL encoded byte array in UTF-8 charset.
         /// </summary>
