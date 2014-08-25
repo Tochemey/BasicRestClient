@@ -21,7 +21,8 @@ Currently the following HTTP verb are supported:
 * HEAD
 * DELETE
 
-It also has a smooth error handling and request logging features.
+It also has a smooth error handling and request logging features. 
+Moreover file upload functionalities have been added to make file upload smooth from C# program.
 
 ### Noteworthy
 All these verbs can be executed synchronously and asynchronously.(refer to demo)
