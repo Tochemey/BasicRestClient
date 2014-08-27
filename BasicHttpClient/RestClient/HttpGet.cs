@@ -10,7 +10,6 @@
         public HttpGet(string path, ParameterMap parameters) : base(path, parameters)
         {
             HttpMethod = "GET";
-            Path = path;
             ContentType = UrlEncoded;
         }
     }

@@ -10,7 +10,6 @@
         public HttpHead(string path, ParameterMap parameters) : base(path, parameters)
         {
             HttpMethod = "HEAD";
-            Path = path;
             ContentType = UrlEncoded;
         }
     }

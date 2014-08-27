@@ -10,7 +10,6 @@
         public HttpDelete(string path, ParameterMap parameters) : base(path, parameters)
         {
             HttpMethod = "DELETE";
-            Path = path;
             ContentType = UrlEncoded;
         }
     }
