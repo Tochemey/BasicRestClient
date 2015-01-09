@@ -73,7 +73,7 @@ namespace BasicRestClient.RestClient
                 PrepareConnection(urlConnection, httpMethod, contentType, acceptMime);
                 AppendRequestHeaders(urlConnection);
                 Connected = true;
-                if (RequestLogger.IsLoggingEnabled()) RequestLogger.LogRequest(urlConnection, content);
+                if (RequestLogger.IsLoggingEnabled()) RequestLogger.LogRequest(urlConnection, WebUtility.UrlDecode(Encoding.UTF8.GetString(content)));
 
                 // Write the request
                 if (content != null) WriteOutptStream(urlConnection, content);
@@ -156,7 +156,7 @@ namespace BasicRestClient.RestClient
                 PrepareConnection(urlConnection, httpMethod, contentType, acceptMime);
                 AppendRequestHeaders(urlConnection);
                 Connected = true;
-                if (RequestLogger.IsLoggingEnabled()) RequestLogger.LogRequest(urlConnection, content);
+                if (RequestLogger.IsLoggingEnabled()) RequestLogger.LogRequest(urlConnection, WebUtility.UrlDecode(Encoding.UTF8.GetString(content)));
 
                 HttpWebRequestAsyncState requestAsyncState;
                 // Write the request
