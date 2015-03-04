@@ -4,19 +4,18 @@ using BasicRestClient.RestClient;
 namespace BasicRestClient
 {
     /// <summary>
-    /// This Demo is done against the SMSGH HTTP API
+    ///     This Demo is done against the SMSGH HTTP API
     /// </summary>
-    class Demo
+    internal class Demo
     {
-            const string ClientId = "dodcaawu";
-            const string ClientSecret = "rzbycqfx";
-            const string Hostname = "api.smsgh.com";
+        private const string ClientId = "dodcaawu";
+        private const string ClientSecret = "rzbycqfx";
+        private const string Hostname = "api.smsgh.com";
 
-            const string BaseUrl = "http://"+ Hostname + "/v3";
+        private const string BaseUrl = "http://" + Hostname + "/v3";
 
-        static void Main(string[] args)
+        private static void Main(string[] args)
         {
-
             // New instance of the Http Client
             var httpClient = new RestClient.BasicRestClient(BaseUrl);
 
@@ -27,13 +26,9 @@ namespace BasicRestClient
 
             // Set the Params to send
             var parameters = new ParameterMap();
-            parameters.Set("From", "Arsene")
-                .Set("To", "+233248067917")
-                .Set("Content","Hello ")
-                .Set("RegisteredDelivery", "true");
+            parameters.Set("From", "Arsene").Set("To", "+233248067917").Set("Content", "Hello ").Set("RegisteredDelivery", "true");
 
-            try
-            {
+            try {
                 string resource = "/messages/";
                 HttpResponse response = httpClient.Post(resource, parameters);
                 Console.WriteLine("Message Sent: Server Response Status " + response.Status);
@@ -45,15 +40,10 @@ namespace BasicRestClient
 
                 SendMessageAsync(resource, parameters);
             }
-            catch (Exception e)
-            {
-                if (e.GetType() == typeof (HttpRequestException))
-                {
+            catch (Exception e) {
+                if (e.GetType() == typeof (HttpRequestException)) {
                     var ex = e as HttpRequestException;
-                    if (ex != null)
-                    {
-                        Console.WriteLine("Error Status Code " + ex.HttpResponse.Status);
-                    }
+                    if (ex != null) Console.WriteLine("Error Status Code " + ex.HttpResponse.Status);
                 }
                 else throw;
             }
@@ -61,7 +51,7 @@ namespace BasicRestClient
             Console.ReadKey();
         }
 
-        static async void GetAccountProfileAsync()
+        private static async void GetAccountProfileAsync()
         {
             var httpClient = new RestClient.BasicRestClient(BaseUrl);
             httpClient.BasicAuth(ClientId, ClientSecret);
@@ -69,22 +59,22 @@ namespace BasicRestClient
             httpClient.ReadWriteTimeout = 200;
 
             const string resource = "/account/profile";
-            var response = await httpClient.GetAsync(resource);
+            HttpResponse response = await httpClient.GetAsync(resource);
             Console.WriteLine();
             Console.WriteLine("Account Profile : Server Response Status " + response.Status);
         }
 
-        static async void SendMessageAsync(string resource, ParameterMap parameters)
+        private static async void SendMessageAsync(string resource, ParameterMap parameters)
         {
             var httpClient = new RestClient.BasicRestClient(BaseUrl);
             httpClient.BasicAuth(ClientId, ClientSecret);
             httpClient.ConnectionTimeout = 200;
             httpClient.ReadWriteTimeout = 200;
 
-            var response = await httpClient.PostAsync(resource, parameters);
+            HttpResponse response = await httpClient.PostAsync(resource, parameters);
             Console.WriteLine();
-            if(response != null) Console.WriteLine("Send Message Async : Server Response Status " + response.Status);  
-            else Console.WriteLine("Send Message Async : NO RESPONSE" );
+            if (response != null) Console.WriteLine("Send Message Async : Server Response Status " + response.Status);
+            else Console.WriteLine("Send Message Async : NO RESPONSE");
         }
     }
 }

@@ -12,8 +12,8 @@ namespace BasicRestClient.RestClient
 {
     public abstract class MimePart
     {
-        NameValueCollection _headers = new NameValueCollection();
-        byte[] _header;
+        private readonly NameValueCollection _headers = new NameValueCollection();
+        private byte[] _header;
 
         public NameValueCollection Headers
         {
@@ -25,15 +25,16 @@ namespace BasicRestClient.RestClient
             get { return _header; }
         }
 
+        public abstract Stream Data { get; }
+
         public long GenerateHeaderFooterData(string boundary)
         {
-            StringBuilder sb = new StringBuilder();
+            var sb = new StringBuilder();
 
             sb.Append("--");
             sb.Append(boundary);
             sb.AppendLine();
-            foreach (string key in _headers.AllKeys)
-            {
+            foreach (string key in _headers.AllKeys) {
                 sb.Append(key);
                 sb.Append(": ");
                 sb.AppendLine(_headers[key]);
@@ -44,7 +45,5 @@ namespace BasicRestClient.RestClient
 
             return _header.Length + Data.Length + 2;
         }
-
-        public abstract Stream Data { get; }
     }
 }

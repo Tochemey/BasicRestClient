@@ -10,19 +10,16 @@ namespace BasicRestClient.RestClient
 {
     public class StreamMimePart : MimePart
     {
-        Stream _data;
+        private Stream _data;
+
+        public override Stream Data
+        {
+            get { return _data; }
+        }
 
         public void SetStream(Stream stream)
         {
             _data = stream;
-        }
-
-        public override Stream Data
-        {
-            get
-            {
-                return _data;
-            }
         }
     }
 }

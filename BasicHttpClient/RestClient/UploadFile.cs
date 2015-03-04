@@ -18,15 +18,11 @@ namespace BasicRestClient.RestClient
             ContentType = contentType;
         }
 
-        public UploadFile(string fileName, string fieldName, string contentType)
-            : this(File.OpenRead(fileName), fieldName, Path.GetFileName(fileName), contentType)
-        { }
+        public UploadFile(string fileName, string fieldName, string contentType) : this(File.OpenRead(fileName), fieldName, Path.GetFileName(fileName), contentType) {}
 
-        public UploadFile(string fileName)
-            : this(fileName, null, "application/octet-stream")
-        { }
+        public UploadFile(string fileName) : this(fileName, null, "application/octet-stream") {}
 
-        public UploadFile(string fileName, string fieldName) : this(fileName, fieldName, "application/octet-stream") { }
+        public UploadFile(string fileName, string fieldName) : this(fileName, fieldName, "application/octet-stream") {}
         public Stream Data { get; set; }
 
         public string FieldName { get; set; }

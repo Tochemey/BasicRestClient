@@ -569,13 +569,9 @@ namespace BasicRestClient.RestClient
 
         public static string GetMimeType(string extension)
         {
-            if (extension == null) {
-                throw new ArgumentNullException("extension");
-            }
+            if (extension == null) throw new ArgumentNullException("extension");
 
-            if (!extension.StartsWith(".")) {
-                extension = "." + extension;
-            }
+            if (!extension.StartsWith(".")) extension = "." + extension;
 
             string mime;
 

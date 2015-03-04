@@ -112,8 +112,7 @@ namespace BasicRestClient.RestClient
         public NameValueCollection ToNameValueCollection()
         {
             var form = new NameValueCollection();
-            foreach (string key in _map.Keys)
-            {
+            foreach (string key in _map.Keys) {
                 string val = _map[key];
                 form[key] = val;
             }

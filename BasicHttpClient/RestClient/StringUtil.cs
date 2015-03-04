@@ -45,12 +45,9 @@ namespace BasicRestClient.RestClient
                 return null;
             if (string0.IsAlphanumeric()) return string0.Trim();
             if (string0.IsWord()) return string0.Trim();
-            return string0
-                .RegexReplace("-{2,}", "-") // transforms multiple --- in - use to comment in sql scripts
+            return string0.RegexReplace("-{2,}", "-") // transforms multiple --- in - use to comment in sql scripts
                 .RegexReplace(@"[*/]+", string.Empty) // removes / and * used also to comment in sql scripts
-                .RegexReplace(
-                    @"(;|\s)(exec|execute|select|insert|update|delete|create|alter|drop|rename|truncate|backup|restore)\s",
-                    string.Empty, RegexOptions.IgnoreCase);
+                .RegexReplace(@"(;|\s)(exec|execute|select|insert|update|delete|create|alter|drop|rename|truncate|backup|restore)\s", string.Empty, RegexOptions.IgnoreCase);
         }
 
         /// <summary>
@@ -75,8 +72,7 @@ namespace BasicRestClient.RestClient
         public static bool IsValidFileName(this string filename, bool platformIndependent)
         {
             string sPattern = @"^(?!^(PRN|AUX|CLOCK\$|NUL|CON|COM\d|LPT\d|\..*)(\..+)?$)[^\x00-\x1f\\?*:\"";|/]+$";
-            if (platformIndependent)
-            {
+            if (platformIndependent) {
                 sPattern =
                     @"^(([a-zA-Z]:|\\)\\)?(((\.)|(\.\.)|([^\\/:\*\?""\|<>\. ](([^\\/:\*\?""\|<>\. ])|([^\\/:\*\?""\|<>]*[^\\/:\*\?""\|<>\. ]))?))\\)*[^\\/:\*\?""\|<>\. ](([^\\/:\*\?""\|<>\. ])|([^\\/:\*\?""\|<>]*[^\\/:\*\?""\|<>\. ]))?$";
             }
@@ -92,25 +88,13 @@ namespace BasicRestClient.RestClient
         public static string StripQuotes(this string string0)
         {
             // if the string is not null nor empty
-            if (!string0.IsEmpty() && string0.Length == 0)
-            {
-                return string0;
-            }
+            if (!string0.IsEmpty() && string0.Length == 0) return string0;
 
             // if the first and the last characters are quoted, just do 1 substring
             char[] stringToArray = string0.ToCharArray();
-            if (string0.Length > 1 && stringToArray[0].Equals('"') && stringToArray[string0.Length - 1].Equals('"'))
-            {
-                return string0.Substring(1, string0.Length - 1);
-            }
-            if (stringToArray[0].Equals('"'))
-            {
-                string0 = string0.Substring(1);
-            }
-            else if (stringToArray[string0.Length - 1].Equals('"'))
-            {
-                string0 = string0.Substring(0, string0.Length - 1);
-            }
+            if (string0.Length > 1 && stringToArray[0].Equals('"') && stringToArray[string0.Length - 1].Equals('"')) return string0.Substring(1, string0.Length - 1);
+            if (stringToArray[0].Equals('"')) string0 = string0.Substring(1);
+            else if (stringToArray[string0.Length - 1].Equals('"')) string0 = string0.Substring(0, string0.Length - 1);
             return string0;
         }
 
@@ -148,10 +132,7 @@ namespace BasicRestClient.RestClient
         {
             // convert the string into characters array and loop through the array
             char[] stringArray = string0.ToCharArray();
-            for (int i = 0; i < stringArray.Length; i++)
-            {
-                if (!stringArray[i].IsSafeChar()) return false;
-            }
+            for (int i = 0; i < stringArray.Length; i++) if (!stringArray[i].IsSafeChar()) return false;
             return true;
         }
 
@@ -188,10 +169,8 @@ namespace BasicRestClient.RestClient
         public static bool IsMoney(this string string0, string currencyPosition)
         {
             // When the string is null return false
-            if (!string0.IsEmpty())
-            {
-                const string moneyRegex =
-                    "(?!0,?\\d)(?:\\d{1,3}(?:([,\\.])\\d{3})?(?:\\1\\d{3})*|(?:\\d+))((?!\\1)[,\\.]\\d{2})?";
+            if (!string0.IsEmpty()) {
+                const string moneyRegex = "(?!0,?\\d)(?:\\d{1,3}(?:([,\\.])\\d{3})?(?:\\1\\d{3})*|(?:\\d+))((?!\\1)[,\\.]\\d{2})?";
                 string regex = "^(?!\\x{00a2})\\p{Sc}?" + moneyRegex + "$";
                 if (IsEmpty(currencyPosition) && currencyPosition.Equals("right"))
                     regex = "^" + moneyRegex + "(?<!\\x{00a2})\\p{Sc}?$";
@@ -207,10 +186,7 @@ namespace BasicRestClient.RestClient
         /// <returns>bool. True when it is avlid email address and false on the contrary</returns>
         public static bool IsValidEmail(this string string0)
         {
-            return
-                new Regex(
-                    "^[_A-Za-z0-9-]+(\\.[_A-Za-z0-9-]+)*@[A-Za-z0-9]+(\\.[A-Za-z0-9]+)*(\\.[A-Za-z]{2,}|com|org|net|edu|gov|mil|biz|info|mobi|name|aero|asia|jobs|museum)$")
-                    .IsMatch(string0);
+            return new Regex("^[_A-Za-z0-9-]+(\\.[_A-Za-z0-9-]+)*@[A-Za-z0-9]+(\\.[A-Za-z0-9]+)*(\\.[A-Za-z]{2,}|com|org|net|edu|gov|mil|biz|info|mobi|name|aero|asia|jobs|museum)$").IsMatch(string0);
         }
 
         /// <summary>
@@ -267,10 +243,7 @@ namespace BasicRestClient.RestClient
         public static bool HasMiniLength(this string string0, int miniLength)
         {
             if (string0.IsEmpty() && miniLength != 0) return false;
-            if (!string0.IsEmpty())
-            {
-                return (string0.Trim().Length >= miniLength);
-            }
+            if (!string0.IsEmpty()) return (string0.Trim().Length >= miniLength);
 
             return false;
         }
@@ -285,10 +258,7 @@ namespace BasicRestClient.RestClient
         {
             if (string0.IsEmpty() && maxLength != 0 && maxLength > 0) return true;
             if (string0.IsEmpty() && maxLength != 0 && maxLength < 0) return false;
-            if (!string0.IsEmpty())
-            {
-                return (string0.Trim().Length <= maxLength);
-            }
+            if (!string0.IsEmpty()) return (string0.Trim().Length <= maxLength);
 
             return false;
         }
@@ -304,9 +274,7 @@ namespace BasicRestClient.RestClient
         public static bool IsValidTime(this string string0)
         {
             return
-                new Regex(
-                    "^((([0]?[1-9]|1[0-2])(:|\\.)[0-5][0-9]((:|\\.)[0-5][0-9])?( )?(AM|am|aM|Am|PM|pm|pM|Pm))|(([0]?[0-9]|1[0-9]|2[0-3])(:|\\.)[0-5][0-9]((:|\\.)[0-5][0-9])?))$")
-                    .IsMatch(string0);
+                new Regex("^((([0]?[1-9]|1[0-2])(:|\\.)[0-5][0-9]((:|\\.)[0-5][0-9])?( )?(AM|am|aM|Am|PM|pm|pM|Pm))|(([0]?[0-9]|1[0-9]|2[0-3])(:|\\.)[0-5][0-9]((:|\\.)[0-5][0-9])?))$").IsMatch(string0);
         }
 
         /// <summary>
@@ -323,10 +291,7 @@ namespace BasicRestClient.RestClient
         public static bool IsPhoneNumber(this string string0, string standard)
         {
             const string standardFormat = "^\\+(?:[0-9] ?){6,14}[0-9]$"; //ITU-T E.164 standard
-            if (!IsEmpty(standard) && standard.Equals("EPP"))
-            {
-                return new Regex("^\\+[0-9]{1,3}\\.[0-9]{4,14}(?:x\\.+)?$").IsMatch(string0);
-            }
+            if (!IsEmpty(standard) && standard.Equals("EPP")) return new Regex("^\\+[0-9]{1,3}\\.[0-9]{4,14}(?:x\\.+)?$").IsMatch(string0);
             return new Regex(standardFormat).IsMatch(string0);
         }
 
@@ -355,41 +320,41 @@ namespace BasicRestClient.RestClient
         public static bool IsValidDate(this string string0, string format)
         {
             // When the format is not defined
-            if (format.IsEmpty())
-            {
+            if (format.IsEmpty()) {
                 // When the string to check is not null 
-                if (!string0.IsEmpty())
-                {
+                if (!string0.IsEmpty()) {
                     return
                         new Regex(
                             "^(?:(?:(?:(?:(?:1[6-9]|[2-9]\\d)?(?:0[48]|[2468][048]|[13579][26])|(?:(?:16|[2468][048]|[3579][26])00)))(\\/|-|\\.|\\x20)(?:0?2\\1(?:29)))|(?:(?:(?:1[6-9]|[2-9]\\d)?\\d{2})(\\/|-|\\.|\\x20)(?:(?:(?:0?[13578]|1[02])\\2(?:31))|(?:(?:0?[1,3-9]|1[0-2])\\2(29|30))|(?:(?:0?[1-9])|(?:1[0-2]))\\2(?:0?[1-9]|1\\d|2[0-8]))))$")
                             .IsMatch(string0.Trim());
                 }
             }
-            else
-            {
-                if (!string0.IsEmpty())
-                {
+            else {
+                if (!string0.IsEmpty()) {
                     // Based upon the format given the check will be done accordingly
                     string regex = "";
-                    if (string.Equals(format.Trim(), "dmy"))
+                    if (string.Equals(format.Trim(), "dmy")) {
                         regex =
                             "^(?:(?:31(\\/|-|\\.|\\x20)(?:0?[13578]|1[02]))\\1|(?:(?:29|30)(\\/|-|\\.|\\x20)(?:0?[1,3-9]|1[0-2])\\2))(?:(?:1[6-9]|[2-9]\\d)?\\d{2})$|^(?:29(\\/|-|\\.|\\x20)0?2\\3(?:(?:(?:1[6-9]|[2-9]\\d)?(?:0[48]|[2468][048]|[13579][26])|(?:(?:16|[2468][048]|[3579][26])00))))$|^(?:0?[1-9]|1\\d|2[0-8])(\\/|-|\\.|\\x20)(?:(?:0?[1-9])|(?:1[0-2]))\\4(?:(?:1[6-9]|[2-9]\\d)?\\d{2})$";
-                    if (string.Equals(format.Trim(), "mdy"))
+                    }
+                    if (string.Equals(format.Trim(), "mdy")) {
                         regex =
                             "^(?:(?:(?:0?[13578]|1[02])(\\/|-|\\.|\\x20)31)\\1|(?:(?:0?[13-9]|1[0-2])(\\/|-|\\.|\\x20)(?:29|30)\\2))(?:(?:1[6-9]|[2-9]\\d)?\\d{2})$|^(?:0?2(\\/|-|\\.|\\x20)29\\3(?:(?:(?:1[6-9]|[2-9]\\d)?(?:0[48]|[2468][048]|[13579][26])|(?:(?:16|[2468][048]|[3579][26])00))))$|^(?:(?:0?[1-9])|(?:1[0-2]))(\\/|-|\\.|\\x20)(?:0?[1-9]|1\\d|2[0-8])\\4(?:(?:1[6-9]|[2-9]\\d)?\\d{2})$";
-                    if (string.Equals(format.Trim(), "ymd"))
+                    }
+                    if (string.Equals(format.Trim(), "ymd")) {
                         regex =
                             "^(?:(?:(?:(?:(?:1[6-9]|[2-9]\\d)?(?:0[48]|[2468][048]|[13579][26])|(?:(?:16|[2468][048]|[3579][26])00)))(\\/|-|\\.|\\x20)(?:0?2\\1(?:29)))|(?:(?:(?:1[6-9]|[2-9]\\d)?\\d{2})(\\/|-|\\.|\\x20)(?:(?:(?:0?[13578]|1[02])\\2(?:31))|(?:(?:0?[1,3-9]|1[0-2])\\2(29|30))|(?:(?:0?[1-9])|(?:1[0-2]))\\2(?:0?[1-9]|1\\d|2[0-8]))))$";
-                    if (string.Equals(format.Trim(), "dMy"))
+                    }
+                    if (string.Equals(format.Trim(), "dMy")) {
                         regex =
                             "^((31(?!\\ (Feb(ruary)?|Apr(il)?|June?|(Sep(?=\\b|t)t?|Nov)(ember)?)))|((30|29)(?!\\ Feb(ruary)?))|(29(?=\\ Feb(ruary)?\\ (((1[6-9]|[2-9]\\d)(0[48]|[2468][048]|[13579][26])|((16|[2468][048]|[3579][26])00)))))|(0?[1-9])|1\\d|2[0-8])\\ (Jan(uary)?|Feb(ruary)?|Ma(r(ch)?|y)|Apr(il)?|Ju((ly?)|(ne?))|Aug(ust)?|Oct(ober)?|(Sep(?=\\b|t)t?|Nov|Dec)(ember)?)\\ ((1[6-9]|[2-9]\\d)\\d{2})$";
-                    if (string.Equals(format.Trim(), "Mdy"))
+                    }
+                    if (string.Equals(format.Trim(), "Mdy")) {
                         regex =
                             "^(?:(((Jan(uary)?|Ma(r(ch)?|y)|Jul(y)?|Aug(ust)?|Oct(ober)?|Dec(ember)?)\\ 31)|((Jan(uary)?|Ma(r(ch)?|y)|Apr(il)?|Ju((ly?)|(ne?))|Aug(ust)?|Oct(ober)?|(Sep)(tember)?|(Nov|Dec)(ember)?)\\ (0?[1-9]|([12]\\d)|30))|(Feb(ruary)?\\ (0?[1-9]|1\\d|2[0-8]|(29(?=,?\\ ((1[6-9]|[2-9]\\d)(0[48]|[2468][048]|[13579][26])|((16|[2468][048]|[3579][26])00)))))))\\,?\\ ((1[6-9]|[2-9]\\d)\\d{2}))$";
+                    }
                     if (string.Equals(format.Trim(), "My"))
-                        regex =
-                            "^(Jan(uary)?|Feb(ruary)?|Ma(r(ch)?|y)|Apr(il)?|Ju((ly?)|(ne?))|Aug(ust)?|Oct(ober)?|(Sep(?=\\b|t)t?|Nov|Dec)(ember)?)[ /]((1[6-9]|[2-9]\\d)\\d{2})$";
+                        regex = "^(Jan(uary)?|Feb(ruary)?|Ma(r(ch)?|y)|Apr(il)?|Ju((ly?)|(ne?))|Aug(ust)?|Oct(ober)?|(Sep(?=\\b|t)t?|Nov|Dec)(ember)?)[ /]((1[6-9]|[2-9]\\d)\\d{2})$";
                     if (string.Equals(format.Trim(), "my"))
                         regex = "^(((0[123456789]|10|11|12)([- /\\.])(([1][9][0-9][0-9])|([2][0-9][0-9][0-9]))))$";
 
@@ -409,9 +374,7 @@ namespace BasicRestClient.RestClient
         /// <returns>bool</returns>
         public static bool IsValidTimeAs24H(this string string0)
         {
-            return
-                new Regex("^((0?[1-9]|1[012])(:[0-5]\\d){0,2} ?([AP]M|[ap]m))$|^([01]\\d|2[0-3])(:[0-5]\\d){0,2}$").
-                    IsMatch(string0);
+            return new Regex("^((0?[1-9]|1[012])(:[0-5]\\d){0,2} ?([AP]M|[ap]m))$|^([01]\\d|2[0-3])(:[0-5]\\d){0,2}$").IsMatch(string0);
         }
 
         /// <summary>
@@ -438,8 +401,7 @@ namespace BasicRestClient.RestClient
             string[] parts = string0.Split(' ');
 
             // check the parts 
-            if (parts.Length > 1)
-            {
+            if (parts.Length > 1) {
                 // Get the time part
                 string time = parts[parts.Length - 1];
 
@@ -550,8 +512,7 @@ namespace BasicRestClient.RestClient
         public static string Capitalize(this string string0)
         {
             // When the string is not null
-            if (!string0.IsEmpty())
-            {
+            if (!string0.IsEmpty()) {
                 if (string0.Length == 1) return string0.ToUpper();
                 var sb = new StringBuilder(string0.Length);
                 sb.Append(string0.Substring(0, 1).ToUpper());
@@ -563,27 +524,24 @@ namespace BasicRestClient.RestClient
 
 
         /// <summary>
-        /// Checks whether an object is a boolean or not
+        ///     Checks whether an object is a boolean or not
         /// </summary>
         /// <param name="check"></param>
         /// <returns></returns>
         public static bool IsBoolean(this object check)
         {
-            var list = new List<object>() {"1", "0", true, false, 1, 0};
+            var list = new List<object> {"1", "0", true, false, 1, 0};
             return list.Contains(check);
         }
 
         /// <summary>
-        /// Cheks whether a string is a valid UUID or GUID
+        ///     Cheks whether a string is a valid UUID or GUID
         /// </summary>
         /// <param name="check"></param>
         /// <returns></returns>
         public static bool IsUuid(this string check)
         {
-            return
-                new Regex(
-                    "/^[a-fA-F0-9]{8}-[a-fA-F0-9]{4}-[0-5][a-fA-F0-9]{3}-[089aAbB][a-fA-F0-9]{3}-[a-fA-F0-9]{12}$/")
-                    .IsMatch(check);
+            return new Regex("/^[a-fA-F0-9]{8}-[a-fA-F0-9]{4}-[0-5][a-fA-F0-9]{3}-[089aAbB][a-fA-F0-9]{3}-[a-fA-F0-9]{12}$/").IsMatch(check);
         }
 
         #region Private Routines
@@ -593,8 +551,7 @@ namespace BasicRestClient.RestClient
             return Regex.Replace(stringValue, matchPattern, toReplaceWith);
         }
 
-        private static string RegexReplace(this string stringValue, string matchPattern, string toReplaceWith,
-            RegexOptions regexOptions)
+        private static string RegexReplace(this string stringValue, string matchPattern, string toReplaceWith, RegexOptions regexOptions)
         {
             return Regex.Replace(stringValue, matchPattern, toReplaceWith, regexOptions);
         }
@@ -609,15 +566,12 @@ namespace BasicRestClient.RestClient
             string pattern = "";
 
             // check whether the dictionnary contains the key IPv6
-            if (!IpPatterns.ContainsKey("IPv6"))
-            {
+            if (!IpPatterns.ContainsKey("IPv6")) {
                 pattern = "((([0-9A-Fa-f]{1,4}:){7}(([0-9A-Fa-f]{1,4})|:))|(([0-9A-Fa-f]{1,4}:){6}";
                 pattern += "(:|((25[0-5]|2[0-4]\\d|[01]?\\d{1,2})(\\.(25[0-5]|2[0-4]\\d|[01]?\\d{1,2})){3})";
                 pattern += "|(:[0-9A-Fa-f]{1,4})))|(([0-9A-Fa-f]{1,4}:){5}((:((25[0-5]|2[0-4]\\d|[01]?\\d{1,2})";
-                pattern +=
-                    "(\\.(25[0-5]|2[0-4]\\d|[01]?\\d{1,2})){3})?)|((:[0-9A-Fa-f]{1,4}){1,2})))|(([0-9A-Fa-f]{1,4}:)";
-                pattern +=
-                    "{4}(:[0-9A-Fa-f]{1,4}){0,1}((:((25[0-5]|2[0-4]\\d|[01]?\\d{1,2})(\\.(25[0-5]|2[0-4]\\d|[01]?\\d{1,2}))";
+                pattern += "(\\.(25[0-5]|2[0-4]\\d|[01]?\\d{1,2})){3})?)|((:[0-9A-Fa-f]{1,4}){1,2})))|(([0-9A-Fa-f]{1,4}:)";
+                pattern += "{4}(:[0-9A-Fa-f]{1,4}){0,1}((:((25[0-5]|2[0-4]\\d|[01]?\\d{1,2})(\\.(25[0-5]|2[0-4]\\d|[01]?\\d{1,2}))";
                 pattern += "{3})?)|((:[0-9A-Fa-f]{1,4}){1,2})))|(([0-9A-Fa-f]{1,4}:){3}(:[0-9A-Fa-f]{1,4}){0,2}";
                 pattern += "((:((25[0-5]|2[0-4]\\d|[01]?\\d{1,2})(\\.(25[0-5]|2[0-4]\\d|[01]?\\d{1,2})){3})?)|";
                 pattern += "((:[0-9A-Fa-f]{1,4}){1,2})))|(([0-9A-Fa-f]{1,4}:){2}(:[0-9A-Fa-f]{1,4}){0,3}";
@@ -626,23 +580,19 @@ namespace BasicRestClient.RestClient
                 pattern += "{0,4}((:((25[0-5]|2[0-4]\\d|[01]?\\d{1,2})(\\.(25[0-5]|2[0-4]\\d|[01]?\\d{1,2})){3})?)";
                 pattern += "|((:[0-9A-Fa-f]{1,4}){1,2})))|(:(:[0-9A-Fa-f]{1,4}){0,5}((:((25[0-5]|2[0-4]";
                 pattern += "\\d|[01]?\\d{1,2})(\\.(25[0-5]|2[0-4]\\d|[01]?\\d{1,2})){3})?)|((:[0-9A-Fa-f]{1,4})";
-                pattern +=
-                    "{1,2})))|(((25[0-5]|2[0-4]\\d|[01]?\\d{1,2})(\\.(25[0-5]|2[0-4]\\d|[01]?\\d{1,2})){3})))(%.+)?";
+                pattern += "{1,2})))|(((25[0-5]|2[0-4]\\d|[01]?\\d{1,2})(\\.(25[0-5]|2[0-4]\\d|[01]?\\d{1,2})){3})))(%.+)?";
 
                 // add to the dictionary the IPv6 pattern
                 IpPatterns.Add("IPv6", pattern);
             }
 
             // check whether the dictionary contains the key IPv4
-            if (!IpPatterns.ContainsKey("IPv4"))
-            {
-                pattern =
-                    "(?:(?:25[0-5]|2[0-4][0-9]|(?:(?:1[0-9])?|[1-9]?)[0-9])\\.){3}(?:25[0-5]|2[0-4][0-9]|(?:(?:1[0-9])?|[1-9]?)[0-9])";
+            if (!IpPatterns.ContainsKey("IPv4")) {
+                pattern = "(?:(?:25[0-5]|2[0-4][0-9]|(?:(?:1[0-9])?|[1-9]?)[0-9])\\.){3}(?:25[0-5]|2[0-4][0-9]|(?:(?:1[0-9])?|[1-9]?)[0-9])";
                 IpPatterns.Add("IPv4", pattern);
             }
         }
 
         #endregion
     }
-
 }
