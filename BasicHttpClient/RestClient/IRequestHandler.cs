@@ -38,30 +38,33 @@ namespace BasicRestClient.RestClient
         Task<HttpWebRequestAsyncState> WriteStreamAsync(HttpWebRequest urlConnection, Stream outputStream, byte[] content);
 
         /// <summary>
-        /// Optionally opens the output stream. This hook may be useful in rare cases to check or modify connection properties before writing.
-        /// The HTTP response code on urlConnection is not yet populated at the time this method is invoked.
+        ///     Optionally opens the output stream. This hook may be useful in rare cases to check or modify connection properties
+        ///     before writing.
+        ///     The HTTP response code on urlConnection is not yet populated at the time this method is invoked.
         /// </summary>
         /// <param name="urlConnection">an open WebRequest url connection</param>
         /// <returns></returns>
         Stream OpenOutput(HttpWebRequest urlConnection);
 
         /// <summary>
-        /// Optionally opens the output stream asynchronously. This hook may be useful in rare cases to check or modify connection properties before writing.
-        /// The HTTP response code on urlConnection is not yet populated at the time this method is invoked.
+        ///     Optionally opens the output stream asynchronously. This hook may be useful in rare cases to check or modify
+        ///     connection properties before writing.
+        ///     The HTTP response code on urlConnection is not yet populated at the time this method is invoked.
         /// </summary>
         /// <param name="urlConnection">an open WebRequest url connection</param>
         /// <returns></returns>
         Task<Stream> OpenOutputAsync(HttpWebRequest urlConnection);
 
         /// <summary>
-        /// Optionally opens the input stream. May want to check the HTTP response code first to avoid unnecessarily opening the stream
+        ///     Optionally opens the input stream. May want to check the HTTP response code first to avoid unnecessarily opening
+        ///     the stream
         /// </summary>
         /// <param name="urlConnection">an open WebRequest url connection</param>
         /// <returns></returns>
         Stream OpenInput(HttpWebRequest urlConnection);
 
         /// <summary>
-        /// Optionally opens the input stream asynchronously to receive server responses. 
+        ///     Optionally opens the input stream asynchronously to receive server responses.
         /// </summary>
         /// <returns></returns>
         Task<HttpWebResponseAsyncState> OpenInputAsync(HttpWebRequestAsyncState requestStateTask);

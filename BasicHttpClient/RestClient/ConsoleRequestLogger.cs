@@ -5,12 +5,12 @@ namespace BasicRestClient.RestClient
 {
     public class ConsoleRequestLogger : IRequestLogger
     {
+        private readonly bool _loggingEnabled;
+
         public ConsoleRequestLogger(bool logging)
         {
             _loggingEnabled = logging;
         }
-
-        private readonly bool _loggingEnabled;
 
         public bool IsLoggingEnabled()
         {
@@ -32,8 +32,7 @@ namespace BasicRestClient.RestClient
 
         public void LogResponse(HttpResponse response)
         {
-            if (response != null)
-            {
+            if (response != null) {
                 Log("=== HTTP Response ===");
                 Log("Receive url: " + response.Url);
                 Log("Status: " + response.Status);
@@ -44,10 +43,8 @@ namespace BasicRestClient.RestClient
 
         protected void LogHeaders(WebHeaderCollection headers)
         {
-            if (headers != null)
-            {
-                foreach (string key in headers.AllKeys)
-                {
+            if (headers != null) {
+                foreach (string key in headers.AllKeys) {
                     string values = headers[key];
                     Log(key + ":" + values);
                 }

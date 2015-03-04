@@ -12,32 +12,20 @@
             LogRequest = true;
         }
 
-        public BasicRestClient(string baseUrl, IRequestHandler requestHandler, bool logRequest)
-            : base(baseUrl, requestHandler, new ConsoleRequestLogger(logRequest))
-        {
-        }
+        public BasicRestClient(string baseUrl, IRequestHandler requestHandler, bool logRequest) : base(baseUrl, requestHandler, new ConsoleRequestLogger(logRequest)) {}
 
         /// <summary>
-        /// Constructs the default client with baseUrl.
+        ///     Constructs the default client with baseUrl.
         /// </summary>
         /// <param name="baseUrl"></param>
-        public BasicRestClient(string baseUrl) : base(baseUrl)
-        {
-        }
+        public BasicRestClient(string baseUrl) : base(baseUrl) {}
 
         /// <summary>
-        /// Constructs the default client with empty baseUrl.
+        ///     Constructs the default client with empty baseUrl.
         /// </summary>
-        public BasicRestClient() : this("")
-        {
-        }
+        public BasicRestClient() : this("") {}
 
-        public BasicRestClient(string baseUrl, bool logRequest)
-            : this(baseUrl, new BasicRequestHandler(new ConsoleRequestLogger(logRequest)))
-        {
-        }
-
-        public BasicRestClient(string baseUrl, string accept) : base(baseUrl, accept) { }
+        public BasicRestClient(string baseUrl, bool logRequest) : this(baseUrl, new BasicRequestHandler(new ConsoleRequestLogger(logRequest))) {}
 
         public bool LogRequest { private set; get; }
     }

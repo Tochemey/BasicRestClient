@@ -1,8 +1,6 @@
 // http://aspnetupload.com
 // Copyright © 2009 Krystalware, Inc.
-//
-// This work is licensed under a Creative Commons Attribution-Share Alike 3.0 United States License
-// http://creativecommons.org/licenses/by-sa/3.0/us/
+
 
 using System;
 using System.Collections.Generic;
@@ -22,12 +20,10 @@ namespace BasicRestClient.RestClient
         {
             HttpWebResponse resp = Upload((HttpWebRequest) WebRequest.Create(url), files, form);
 
-            using (Stream s = resp.GetResponseStream())
-                if (s != null)
-                    using (var sr = new StreamReader(s)) {
-                        return sr.ReadToEnd();
-                    }
-            return null;
+            using (Stream s = resp.GetResponseStream()) {
+                if (s == null) return null;
+                using (var sr = new StreamReader(s)) return sr.ReadToEnd();
+            }
         }
 
         public static HttpWebResponse Upload(HttpWebRequest req, UploadFile[] files, NameValueCollection form)
@@ -79,9 +75,10 @@ namespace BasicRestClient.RestClient
                 return (HttpWebResponse) req.GetResponse();
             }
             catch {
-                foreach (MimePart part in mimeParts)
+                foreach (MimePart part in mimeParts) {
                     if (part.Data != null)
                         part.Data.Dispose();
+                }
 
                 throw;
             }

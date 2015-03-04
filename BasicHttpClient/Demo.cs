@@ -28,7 +28,7 @@ namespace BasicRestClient
             // Set the Params to send
             var parameters = new ParameterMap();
             parameters.Set("From", "Arsene")
-                .Set("To", "+233247063817")
+                .Set("To", "+233248067917")
                 .Set("Content","Hello ")
                 .Set("RegisteredDelivery", "true");
 

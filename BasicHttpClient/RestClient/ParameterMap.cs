@@ -81,13 +81,11 @@ namespace BasicRestClient.RestClient
         public string UrlEncode()
         {
             var sb = new StringBuilder();
-            foreach (string key in _map.Keys)
-            {
+            foreach (string key in _map.Keys) {
                 if (sb.Length > 0) sb.Append("&");
                 sb.Append(key);
                 string val = _map[key];
-                if (!val.IsEmpty())
-                {
+                if (!val.IsEmpty()) {
                     sb.Append("=");
                     sb.Append(WebUtility.UrlEncode(val));
                 }
@@ -95,6 +93,21 @@ namespace BasicRestClient.RestClient
             return sb.ToString();
         }
 
+        /// <summary>
+        ///     Return a URL encoded byte array in UTF-8 charset.
+        /// </summary>
+        /// <returns></returns>
+        public byte[] UrlEncodeBytes()
+        {
+            byte[] bytes = Encoding.UTF8.GetBytes(UrlEncode());
+            return bytes;
+        }
+
+        public ParameterMap Parse(Dictionary<string, string> map)
+        {
+            foreach (string key in map.Keys) _map.Add(key, map[key]);
+            return this;
+        }
 
         public NameValueCollection ToNameValueCollection()
         {
@@ -102,18 +115,9 @@ namespace BasicRestClient.RestClient
             foreach (string key in _map.Keys)
             {
                 string val = _map[key];
-                if (!val.IsEmpty()) form[key] = val;
+                form[key] = val;
             }
             return form;
-        }
-        /// <summary>
-        /// Return a URL encoded byte array in UTF-8 charset.
-        /// </summary>
-        /// <returns></returns>
-        public byte[] UrlEncodeBytes()
-        {
-            byte[] bytes = Encoding.UTF8.GetBytes(UrlEncode());
-            return bytes;
         }
     }
 }

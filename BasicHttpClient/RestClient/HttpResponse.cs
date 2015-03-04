@@ -7,8 +7,7 @@ namespace BasicRestClient.RestClient
     {
         public HttpResponse(HttpWebRequest urlConnection, byte[] body)
         {
-            using (var response = urlConnection.GetResponse() as HttpWebResponse)
-            {
+            using (var response = urlConnection.GetResponse() as HttpWebResponse) {
                 if (response != null) Status = Convert.ToInt32(response.StatusCode);
                 Url = urlConnection.Address.AbsoluteUri;
                 Headers = urlConnection.Headers;
@@ -16,6 +15,13 @@ namespace BasicRestClient.RestClient
             }
         }
 
+        public HttpResponse(string url, int status)
+        {
+            Url = url;
+            Status = status;
+            Body = null;
+            Headers = null;
+        }
 
         public HttpResponse(string url, WebHeaderCollection headers, int status, byte[] body)
         {
@@ -39,10 +45,7 @@ namespace BasicRestClient.RestClient
         /// <returns></returns>
         public string GetBodyAsString()
         {
-            if (Body != null)
-            {
-                return Body.GetString();
-            }
+            if (Body != null) return Body.GetString();
             return string.Empty;
         }
     }
