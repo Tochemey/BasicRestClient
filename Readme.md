@@ -136,4 +136,5 @@ The status code is an integer and the response body is a json data string. So an
 ## Milestone
 
 * Support of SSL
+* Support for Portable Class Library
 
