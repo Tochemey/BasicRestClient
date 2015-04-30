@@ -7,12 +7,14 @@ namespace BasicRestClient.RestClient
 {
     public class BasicRequestHandler : IRequestHandler
     {
-        public BasicRequestHandler(IRequestLogger logger)
+        protected readonly int ConnectionLimit;
+        public BasicRequestHandler(IRequestLogger logger, int connectionLimit)
         {
             Logger = logger;
+            ConnectionLimit = connectionLimit;
         }
 
-        public BasicRequestHandler() : this(new ConsoleRequestLogger(true)) {}
+        public BasicRequestHandler(int connectionLimit) : this(new ConsoleRequestLogger(true), connectionLimit) {}
 
         protected IRequestLogger Logger { private set; get; }
 
@@ -28,6 +30,7 @@ namespace BasicRestClient.RestClient
         {
             if (!contentType.IsEmpty()) urlConnection.ContentType = contentType.Trim();
             if (!accept.IsEmpty()) urlConnection.Accept = accept.Trim();
+            urlConnection.ServicePoint.ConnectionLimit = ConnectionLimit;
             urlConnection.KeepAlive = true;
             urlConnection.ReadWriteTimeout = readWriteTimeout*1000;
             urlConnection.Timeout = connectionTimeout*1000;

@@ -29,13 +29,14 @@ namespace BasicRestClient.RestClient
         ///     Constructs a client with empty baseUrl. Prevent sub-classes from calling
         ///     this as it doesn't result in an instance of the subclass
         /// </summary>
-        protected AbstractRestClient() : this("") {}
+        protected AbstractRestClient(int connectionLimit) : this("", connectionLimit) { }
 
         /// <summary>
         ///     Constructs a new client with base URL that will be appended in the request methods.
         /// </summary>
         /// <param name="baseUrl">Base Url</param>
-        protected AbstractRestClient(string baseUrl) : this(baseUrl, new BasicRequestHandler()) {}
+        /// <param name="connectionLimit"></param>
+        protected AbstractRestClient(string baseUrl, int connectionLimit) : this(baseUrl, new BasicRequestHandler(connectionLimit)) { }
 
         /// <summary>
         ///     Construct a client with baseUrl and RequestHandler.

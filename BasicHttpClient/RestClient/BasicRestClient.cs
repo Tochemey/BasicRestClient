@@ -2,7 +2,7 @@
 {
     public class BasicRestClient : AbstractRestClient
     {
-        public BasicRestClient(bool logRequest)
+        public BasicRestClient(bool logRequest, int connectionLimit) : base(connectionLimit)
         {
             LogRequest = logRequest;
         }
@@ -18,15 +18,18 @@
         ///     Constructs the default client with baseUrl.
         /// </summary>
         /// <param name="baseUrl"></param>
-        public BasicRestClient(string baseUrl) : base(baseUrl) {}
+        public BasicRestClient(string baseUrl) : base(baseUrl, 100) {}
+
+        public BasicRestClient(string baseUrl, int connectionLimit) : base(baseUrl, connectionLimit) { }
 
         /// <summary>
         ///     Constructs the default client with empty baseUrl.
         /// </summary>
         public BasicRestClient() : this("") {}
 
-        public BasicRestClient(string baseUrl, bool logRequest) : this(baseUrl, new BasicRequestHandler(new ConsoleRequestLogger(logRequest))) {}
+        public BasicRestClient(string baseUrl, bool logRequest, int connectionLimit) : this(baseUrl, new BasicRequestHandler(new ConsoleRequestLogger(logRequest), connectionLimit)) {}
 
         public bool LogRequest { private set; get; }
+
     }
 }
