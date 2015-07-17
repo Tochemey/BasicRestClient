@@ -14,6 +14,12 @@
             }
         }
 
+
+        protected HttpRequest(string path)
+        {
+            if (!path.IsEmpty()) Path = path;
+        }
+
         public string Path { set; get; } // avoid null in URL
         public string HttpMethod { set; get; }
         public string ContentType { set; get; }

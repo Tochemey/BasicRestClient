@@ -13,5 +13,12 @@
             Path = path;
             ContentType = UrlEncoded;
         }
+
+        public HttpGet(string path, string contentype) : base(path)
+        {
+            HttpMethod = "GET";
+            Path = path;
+            ContentType = contentype;            
+        }
     }
 }

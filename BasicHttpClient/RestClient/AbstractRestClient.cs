@@ -313,7 +313,6 @@ namespace BasicRestClient.RestClient
             return response;
         }
 
-
         /// <summary>
         ///     This method wraps the call to doHttpMethod and invokes the custom error
         ///     handler in case of exception. It may be overridden by other clients in order to wrap the exception handling for
