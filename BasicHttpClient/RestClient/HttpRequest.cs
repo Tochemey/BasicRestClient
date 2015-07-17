@@ -3,6 +3,7 @@
     public abstract class HttpRequest
     {
         protected static string UrlEncoded = "application/x-www-form-urlencoded;charset=UTF-8";
+        protected static string AcceptHeader = "application/xml";
 
         protected HttpRequest(string path, ParameterMap parameters)
         {
@@ -24,5 +25,6 @@
         public string HttpMethod { set; get; }
         public string ContentType { set; get; }
         public byte[] Content { set; get; }
+        public string Accept { set; get; }
     }
 }

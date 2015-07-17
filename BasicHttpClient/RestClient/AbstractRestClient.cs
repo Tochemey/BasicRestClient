@@ -29,14 +29,14 @@ namespace BasicRestClient.RestClient
         ///     Constructs a client with empty baseUrl. Prevent sub-classes from calling
         ///     this as it doesn't result in an instance of the subclass
         /// </summary>
-        protected AbstractRestClient(int connectionLimit) : this("", connectionLimit) { }
+        protected AbstractRestClient(int connectionLimit) : this("", connectionLimit) {}
 
         /// <summary>
         ///     Constructs a new client with base URL that will be appended in the request methods.
         /// </summary>
         /// <param name="baseUrl">Base Url</param>
         /// <param name="connectionLimit"></param>
-        protected AbstractRestClient(string baseUrl, int connectionLimit) : this(baseUrl, new BasicRequestHandler(connectionLimit)) { }
+        protected AbstractRestClient(string baseUrl, int connectionLimit) : this(baseUrl, new BasicRequestHandler(connectionLimit)) {}
 
         /// <summary>
         ///     Construct a client with baseUrl and RequestHandler.
@@ -69,7 +69,8 @@ namespace BasicRestClient.RestClient
                 PrepareConnection(urlConnection, httpMethod, contentType, accept);
                 AppendRequestHeaders(urlConnection);
                 Connected = true;
-                if (RequestLogger.IsLoggingEnabled() && content != null) RequestLogger.LogRequest(urlConnection, WebUtility.UrlDecode(Encoding.UTF8.GetString(content)));
+                if (RequestLogger.IsLoggingEnabled()
+                    && content != null) RequestLogger.LogRequest(urlConnection, WebUtility.UrlDecode(Encoding.UTF8.GetString(content)));
 
                 // Write the request
                 if (content != null) WriteOutptStream(urlConnection, content);
@@ -80,25 +81,20 @@ namespace BasicRestClient.RestClient
                 using (var serverResponse = urlConnection.GetResponse() as HttpWebResponse) {
                     if (serverResponse != null) {
                         using (Stream inputStream = RequestHandler.OpenInput(urlConnection)) {
-                            if (inputStream != null)
-                            {
-                                if (serverResponse.ContentLength > 0)
-                                {
+                            if (inputStream != null) {
+                                if (serverResponse.ContentLength > 0) {
                                     var buffer = new byte[serverResponse.ContentLength];
                                     int bytesRead = 0;
                                     int totalBytesRead = bytesRead;
-                                    while (totalBytesRead < buffer.Length)
-                                    {
+                                    while (totalBytesRead < buffer.Length) {
                                         bytesRead = inputStream.Read(buffer, bytesRead, buffer.Length - bytesRead);
                                         totalBytesRead += bytesRead;
                                     }
 
                                     response = new HttpResponse(urlConnection.Address.AbsoluteUri, urlConnection.Headers, Convert.ToInt32(serverResponse.StatusCode), buffer);
                                 }
-                                else
-                                {
-                                    using (var sr = new StreamReader(inputStream))
-                                    {
+                                else {
+                                    using (var sr = new StreamReader(inputStream)) {
                                         byte[] buffer = Encoding.ASCII.GetBytes(sr.ReadToEnd());
                                         response = new HttpResponse(urlConnection.Address.AbsoluteUri, urlConnection.Headers, Convert.ToInt32(serverResponse.StatusCode), buffer);
                                     }
@@ -118,7 +114,8 @@ namespace BasicRestClient.RestClient
                         RequestLogger.Log(ee.StackTrace);
                     }
                     finally {
-                        if (response == null || response.Status <= 0)
+                        if (response == null
+                            || response.Status <= 0)
                             throw new HttpRequestException(e, response);
                     }
                 }
@@ -157,7 +154,8 @@ namespace BasicRestClient.RestClient
                 PrepareConnection(urlConnection, httpMethod, contentType, accept);
                 AppendRequestHeaders(urlConnection);
                 Connected = true;
-                if (RequestLogger.IsLoggingEnabled() && content != null) RequestLogger.LogRequest(urlConnection, WebUtility.UrlDecode(Encoding.UTF8.GetString(content)));
+                if (RequestLogger.IsLoggingEnabled()
+                    && content != null) RequestLogger.LogRequest(urlConnection, WebUtility.UrlDecode(Encoding.UTF8.GetString(content)));
 
                 HttpWebRequestAsyncState requestAsyncState;
                 // Write the request
@@ -212,7 +210,8 @@ namespace BasicRestClient.RestClient
                         RequestLogger.Log(ee.StackTrace);
                     }
                     finally {
-                        if (response == null || response.Status <= 0)
+                        if (response == null
+                            || response.Status <= 0)
                             throw new HttpRequestException(e, response);
                     }
                 }
@@ -296,7 +295,8 @@ namespace BasicRestClient.RestClient
                         RequestLogger.Log(ee.StackTrace);
                     }
                     finally {
-                        if (response == null || response.Status <= 0)
+                        if (response == null
+                            || response.Status <= 0)
                             throw new HttpRequestException(e, response);
                     }
                 }
@@ -323,7 +323,7 @@ namespace BasicRestClient.RestClient
         public HttpResponse Execute(HttpRequest httpRequest)
         {
             HttpResponse httpResponse = null;
-            try { httpResponse = DoHttpMethod(httpRequest.Path, httpRequest.HttpMethod, httpRequest.ContentType, Accept, httpRequest.Content); }
+            try { httpResponse = DoHttpMethod(httpRequest.Path, httpRequest.HttpMethod, httpRequest.ContentType, httpRequest.Accept, httpRequest.Content); }
             catch (HttpRequestException hre) {
                 RequestHandler.OnError(hre);
             }
@@ -343,7 +343,7 @@ namespace BasicRestClient.RestClient
         public async Task<HttpResponse> ExecuteAsync(HttpRequest httpRequest)
         {
             HttpResponse httpResponse = null;
-            try { httpResponse = await DoHttpMethodAsync(httpRequest.Path, httpRequest.HttpMethod, httpRequest.ContentType, Accept, httpRequest.Content); }
+            try { httpResponse = await DoHttpMethodAsync(httpRequest.Path, httpRequest.HttpMethod, httpRequest.ContentType, httpRequest.Accept, httpRequest.Content); }
             catch (HttpRequestException hre) {
                 RequestHandler.OnError(hre);
             }
@@ -503,6 +503,11 @@ namespace BasicRestClient.RestClient
         public async Task<HttpResponse> DeleteAsync(string path)
         {
             return await DeleteAsync(path, null);
+        }
+
+        public HttpResponse Delete(string path, string accept, ParameterMap parameters)
+        {
+            return Execute(new HttpDelete(path, parameters) {Accept = accept});
         }
 
         /// <summary>
