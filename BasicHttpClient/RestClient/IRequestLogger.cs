@@ -1,9 +1,7 @@
 ﻿using System.Net;
 
-namespace BasicRestClient.RestClient
-{
-    public interface IRequestLogger
-    {
+namespace BasicRestClient.RestClient {
+    public interface IRequestLogger {
         bool IsLoggingEnabled();
         void Log(string mesg);
 

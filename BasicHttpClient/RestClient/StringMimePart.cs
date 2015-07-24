@@ -7,20 +7,12 @@
 using System.IO;
 using System.Text;
 
-namespace BasicRestClient.RestClient
-{
-    public class StringMimePart : MimePart
-    {
+namespace BasicRestClient.RestClient {
+    public class StringMimePart : MimePart {
         private Stream _data;
 
-        public string StringData
-        {
-            set { _data = new MemoryStream(Encoding.UTF8.GetBytes(value)); }
-        }
+        public string StringData { set { _data = new MemoryStream(Encoding.UTF8.GetBytes(value)); } }
 
-        public override Stream Data
-        {
-            get { return _data; }
-        }
+        public override Stream Data => _data;
     }
 }

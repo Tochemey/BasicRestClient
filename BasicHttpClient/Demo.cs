@@ -1,21 +1,17 @@
 ﻿using System;
 using BasicRestClient.RestClient;
 
-namespace BasicRestClient
-{
+namespace BasicRestClient {
     /// <summary>
     ///     This Demo is done against the SMSGH HTTP API
     /// </summary>
-    internal class Demo
-    {
+    internal class Demo {
         private const string ClientId = "dodcaawu";
         private const string ClientSecret = "rzbycqfx";
         private const string Hostname = "api.smsgh.com";
-
         private const string BaseUrl = "http://" + Hostname + "/v3";
 
-        private static void Main(string[] args)
-        {
+        private static void Main(string[] args) {
             // New instance of the Http Client
             var httpClient = new RestClient.BasicRestClient(BaseUrl);
 
@@ -29,8 +25,8 @@ namespace BasicRestClient
             parameters.Set("From", "Arsene").Set("To", "+233248067917").Set("Content", "Hello ").Set("RegisteredDelivery", "true");
 
             try {
-                string resource = "/messages/";
-                HttpResponse response = httpClient.Post(resource, parameters);
+                var resource = "/messages/";
+                var response = httpClient.Post(resource, parameters);
                 Console.WriteLine("Message Sent: Server Response Status " + response.Status);
 
                 resource = "/account/profile";
@@ -51,27 +47,25 @@ namespace BasicRestClient
             Console.ReadKey();
         }
 
-        private static async void GetAccountProfileAsync()
-        {
+        private static async void GetAccountProfileAsync() {
             var httpClient = new RestClient.BasicRestClient(BaseUrl);
             httpClient.BasicAuth(ClientId, ClientSecret);
             httpClient.ConnectionTimeout = 200;
             httpClient.ReadWriteTimeout = 200;
 
             const string resource = "/account/profile";
-            HttpResponse response = await httpClient.GetAsync(resource);
+            var response = await httpClient.GetAsync(resource);
             Console.WriteLine();
             Console.WriteLine("Account Profile : Server Response Status " + response.Status);
         }
 
-        private static async void SendMessageAsync(string resource, ParameterMap parameters)
-        {
+        private static async void SendMessageAsync(string resource, ParameterMap parameters) {
             var httpClient = new RestClient.BasicRestClient(BaseUrl);
             httpClient.BasicAuth(ClientId, ClientSecret);
             httpClient.ConnectionTimeout = 200;
             httpClient.ReadWriteTimeout = 200;
 
-            HttpResponse response = await httpClient.PostAsync(resource, parameters);
+            var response = await httpClient.PostAsync(resource, parameters);
             Console.WriteLine();
             if (response != null) Console.WriteLine("Send Message Async : Server Response Status " + response.Status);
             else Console.WriteLine("Send Message Async : NO RESPONSE");
