@@ -1,10 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace BasicRestClient.RestClient
-{
-    public class FileExtensionMimeTypeMapping
-    {
+namespace BasicRestClient.RestClient {
+    public class FileExtensionMimeTypeMapping {
         private static readonly Dictionary<string, string> MimeTypes = new Dictionary<string, string> {
             {".323", "text/h323"},
             {".3g2", "video/3gpp2"},
@@ -564,11 +562,10 @@ namespace BasicRestClient.RestClient
             {".xtp", "application/octet-stream"},
             {".xwd", "image/x-xwindowdump"},
             {".z", "application/x-compress"},
-            {".zip", "application/x-zip-compressed"},
+            {".zip", "application/x-zip-compressed"}
         };
 
-        public static string GetMimeType(string extension)
-        {
+        public static string GetMimeType(string extension) {
             if (extension == null) throw new ArgumentNullException("extension");
 
             if (!extension.StartsWith(".")) extension = "." + extension;

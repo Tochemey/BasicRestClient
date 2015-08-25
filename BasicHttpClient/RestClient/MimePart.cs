@@ -8,42 +8,28 @@ using System.Collections.Specialized;
 using System.IO;
 using System.Text;
 
-namespace BasicRestClient.RestClient
-{
-    public abstract class MimePart
-    {
-        private readonly NameValueCollection _headers = new NameValueCollection();
-        private byte[] _header;
-
-        public NameValueCollection Headers
-        {
-            get { return _headers; }
-        }
-
-        public byte[] Header
-        {
-            get { return _header; }
-        }
-
+namespace BasicRestClient.RestClient {
+    public abstract class MimePart {
+        public NameValueCollection Headers { get; } = new NameValueCollection();
+        public byte[] Header { get; private set; }
         public abstract Stream Data { get; }
 
-        public long GenerateHeaderFooterData(string boundary)
-        {
+        public long GenerateHeaderFooterData(string boundary) {
             var sb = new StringBuilder();
 
             sb.Append("--");
             sb.Append(boundary);
             sb.AppendLine();
-            foreach (string key in _headers.AllKeys) {
+            foreach (var key in Headers.AllKeys) {
                 sb.Append(key);
                 sb.Append(": ");
-                sb.AppendLine(_headers[key]);
+                sb.AppendLine(Headers[key]);
             }
             sb.AppendLine();
 
-            _header = Encoding.UTF8.GetBytes(sb.ToString());
+            Header = Encoding.UTF8.GetBytes(sb.ToString());
 
-            return _header.Length + Data.Length + 2;
+            return Header.Length + Data.Length + 2;
         }
     }
 }

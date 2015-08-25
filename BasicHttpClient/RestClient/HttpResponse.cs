@@ -1,12 +1,9 @@
 ﻿using System;
 using System.Net;
 
-namespace BasicRestClient.RestClient
-{
-    public class HttpResponse
-    {
-        public HttpResponse(HttpWebRequest urlConnection, byte[] body)
-        {
+namespace BasicRestClient.RestClient {
+    public class HttpResponse {
+        public HttpResponse(HttpWebRequest urlConnection, byte[] body) {
             using (var response = urlConnection.GetResponse() as HttpWebResponse) {
                 if (response != null) Status = Convert.ToInt32(response.StatusCode);
                 Url = urlConnection.Address.AbsoluteUri;
@@ -15,16 +12,14 @@ namespace BasicRestClient.RestClient
             }
         }
 
-        public HttpResponse(string url, int status)
-        {
+        public HttpResponse(string url, int status) {
             Url = url;
             Status = status;
             Body = null;
             Headers = null;
         }
 
-        public HttpResponse(string url, WebHeaderCollection headers, int status, byte[] body)
-        {
+        public HttpResponse(string url, WebHeaderCollection headers, int status, byte[] body) {
             Url = url;
             Headers = headers;
             Status = status;
@@ -32,19 +27,15 @@ namespace BasicRestClient.RestClient
         }
 
         public int Status { private set; get; }
-
         public string Url { private set; get; }
-
         public WebHeaderCollection Headers { private set; get; }
-
-        public byte[] Body { private set; get; }
+        public byte[] Body { get; }
 
         /// <summary>
         ///     Returns the Body as UTF-8 string
         /// </summary>
         /// <returns></returns>
-        public string GetBodyAsString()
-        {
+        public string GetBodyAsString() {
             if (Body != null) return Body.GetString();
             return string.Empty;
         }

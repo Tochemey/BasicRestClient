@@ -3,64 +3,32 @@ using System.Collections.Specialized;
 using System.Net;
 using System.Text;
 
-namespace BasicRestClient.RestClient
-{
+namespace BasicRestClient.RestClient {
     /// <summary>
     ///     This class represents the Http Request Parameters
     /// </summary>
-    public class ParameterMap : Dictionary<string, string>
-    {
+    public class ParameterMap : Dictionary<string, string> {
         private readonly Dictionary<string, string> _map = new Dictionary<string, string>();
 
-        public new void Clear()
-        {
-            _map.Clear();
-        }
+        public new void Clear() { _map.Clear(); }
 
-        public new bool ContainsKey(string key)
-        {
-            return _map.ContainsKey(key);
-        }
+        public new bool ContainsKey(string key) { return _map.ContainsKey(key); }
 
-        public new bool ContainsValue(string value)
-        {
-            return _map.ContainsValue(value);
-        }
+        public new bool ContainsValue(string value) { return _map.ContainsValue(value); }
 
-        public string Get(string key)
-        {
-            return _map[key];
-        }
+        public string Get(string key) { return _map[key]; }
 
-        public bool IsEmpty()
-        {
-            return _map.Count != 0;
-        }
+        public bool IsEmpty() { return _map.Count != 0; }
 
-        public KeyCollection KeySet()
-        {
-            return _map.Keys;
-        }
+        public KeyCollection KeySet() { return _map.Keys; }
 
-        public new void Add(string key, string val)
-        {
-            _map.Add(key, val);
-        }
+        public new void Add(string key, string val) { _map.Add(key, val); }
 
-        public new bool Remove(string key)
-        {
-            return _map.Remove(key);
-        }
+        public new bool Remove(string key) { return _map.Remove(key); }
 
-        public new int Count()
-        {
-            return _map.Count;
-        }
+        public new int Count() { return _map.Count; }
 
-        public new ValueCollection Values()
-        {
-            return _map.Values;
-        }
+        public new ValueCollection Values() { return _map.Values; }
 
         /// <summary>
         ///     Convenience method returns this class so multiple calls can be chained
@@ -68,8 +36,7 @@ namespace BasicRestClient.RestClient
         /// <param name="key">Key</param>
         /// <param name="val">Value </param>
         /// <returns></returns>
-        public ParameterMap Set(string key, string val)
-        {
+        public ParameterMap Set(string key, string val) {
             _map.Add(key, val);
             return this;
         }
@@ -78,13 +45,12 @@ namespace BasicRestClient.RestClient
         ///     Returns URL encoded data
         /// </summary>
         /// <returns></returns>
-        public string UrlEncode()
-        {
+        public string UrlEncode() {
             var sb = new StringBuilder();
-            foreach (string key in _map.Keys) {
+            foreach (var key in _map.Keys) {
                 if (sb.Length > 0) sb.Append("&");
                 sb.Append(key);
-                string val = _map[key];
+                var val = _map[key];
                 if (!val.IsEmpty()) {
                     sb.Append("=");
                     sb.Append(WebUtility.UrlEncode(val));
@@ -97,23 +63,20 @@ namespace BasicRestClient.RestClient
         ///     Return a URL encoded byte array in UTF-8 charset.
         /// </summary>
         /// <returns></returns>
-        public byte[] UrlEncodeBytes()
-        {
-            byte[] bytes = Encoding.UTF8.GetBytes(UrlEncode());
+        public byte[] UrlEncodeBytes() {
+            var bytes = Encoding.UTF8.GetBytes(UrlEncode());
             return bytes;
         }
 
-        public ParameterMap Parse(Dictionary<string, string> map)
-        {
-            foreach (string key in map.Keys) _map.Add(key, map[key]);
+        public ParameterMap Parse(Dictionary<string, string> map) {
+            foreach (var key in map.Keys) _map.Add(key, map[key]);
             return this;
         }
 
-        public NameValueCollection ToNameValueCollection()
-        {
+        public NameValueCollection ToNameValueCollection() {
             var form = new NameValueCollection();
-            foreach (string key in _map.Keys) {
-                string val = _map[key];
+            foreach (var key in _map.Keys) {
+                var val = _map[key];
                 form[key] = val;
             }
             return form;

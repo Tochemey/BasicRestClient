@@ -2,10 +2,8 @@
 using System.Net;
 using System.Threading.Tasks;
 
-namespace BasicRestClient.RestClient
-{
-    public interface IRequestHandler
-    {
+namespace BasicRestClient.RestClient {
+    public interface IRequestHandler {
         /// <summary>
         ///     Opens an HTTP connection.
         /// </summary>

@@ -1,14 +1,11 @@
-﻿namespace BasicRestClient.RestClient
-{
-    public class HttpPost : HttpRequest
-    {
+﻿namespace BasicRestClient.RestClient {
+    public class HttpPost : HttpRequest {
         /// <summary>
         ///     Constructs an HTTP POST request with name-value pairs to be sent in the request BODY.
         /// </summary>
         /// <param name="path">Partial URL</param>
         /// <param name="parameters">Name-value pairs to be sent in request BODY</param>
-        public HttpPost(string path, ParameterMap parameters) : base(path, parameters)
-        {
+        public HttpPost(string path, ParameterMap parameters) : base(path, parameters) {
             HttpMethod = "POST";
             Path = path;
             ContentType = UrlEncoded;
@@ -26,8 +23,7 @@
         /// <param name="parameters">Optional name-value pairs to be appended to QUERY STRING</param>
         /// <param name="contentType">Content Type</param>
         /// <param name="data">Content to post</param>
-        public HttpPost(string path, ParameterMap parameters, string contentType, byte[] data) : base(path, parameters)
-        {
+        public HttpPost(string path, ParameterMap parameters, string contentType, byte[] data) : base(path, parameters) {
             HttpMethod = "POST";
             Path = path;
             ContentType = contentType;
@@ -35,7 +31,7 @@
         }
 
         /// <summary>
-        ///     Constructs an HTTP POST request with arbitrary content. 
+        ///     Constructs an HTTP POST request with arbitrary content.
         ///     the content is sent in the request BODY. This is not a common use case and is therefore not represented in the
         ///     post() methods in
         ///     AbstractRestClient, but is nevertheless possible using this constructor
@@ -43,8 +39,7 @@
         /// <param name="path">Partial URL</param>
         /// <param name="contentType">Content Type</param>
         /// <param name="data">Content to post</param>
-        public HttpPost(string path, string contentType, byte[] data) : base(path)
-        {
+        public HttpPost(string path, string contentType, byte[] data) : base(path) {
             HttpMethod = "POST";
             Path = path;
             ContentType = contentType;
