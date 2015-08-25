@@ -8,7 +8,7 @@ namespace BasicRestClient
     /// </summary>
     internal class Demo
     {
-        private const string ClientId = "dodcaawu";
+        private const string ClientId = "dodcaawe";
         private const string ClientSecret = "rzbycqfx";
         private const string Hostname = "api.smsgh.com";
 
