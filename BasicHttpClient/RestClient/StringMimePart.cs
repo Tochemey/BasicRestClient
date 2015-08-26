@@ -11,8 +11,10 @@ namespace BasicRestClient.RestClient {
     public class StringMimePart : MimePart {
         private Stream _data;
 
+        /// <summary>
+        /// </summary>
         public string StringData { set { _data = new MemoryStream(Encoding.UTF8.GetBytes(value)); } }
 
-        public override Stream Data => _data;
+        public override Stream Data { get { return _data; } }
     }
 }

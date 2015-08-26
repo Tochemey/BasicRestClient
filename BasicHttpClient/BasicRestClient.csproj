@@ -22,6 +22,7 @@
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <LangVersion>5</LangVersion>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -47,8 +48,10 @@
   <ItemGroup>
     <Compile Include="Demo.cs" />
     <Compile Include="RestClient\AbstractRestClient.cs" />
-    <Compile Include="RestClient\BasicRestClient.cs" />
-    <Compile Include="RestClient\BasicRequestHandler.cs" />
+    <Compile Include="RestClient\HttpRequestExceptionEventArgs.cs" />
+    <Compile Include="RestClient\HttpResponseEventArgs.cs" />
+    <Compile Include="RestClient\RestClient.cs" />
+    <Compile Include="RestClient\HttpRequestHandler.cs" />
     <Compile Include="RestClient\ConsoleRequestLogger.cs" />
     <Compile Include="RestClient\FileExtensionMimeTypeMapping.cs" />
     <Compile Include="RestClient\HttpDelete.cs" />
@@ -57,9 +60,10 @@
     <Compile Include="RestClient\HttpPost.cs" />
     <Compile Include="RestClient\HttpPut.cs" />
     <Compile Include="RestClient\HttpRequest.cs" />
+    <Compile Include="RestClient\HttpRequestEventArgs.cs" />
     <Compile Include="RestClient\HttpRequestException.cs" />
     <Compile Include="RestClient\HttpResponse.cs" />
-    <Compile Include="RestClient\HttpUploadHelper.cs" />
+    <Compile Include="RestClient\HttpFileUploader.cs" />
     <Compile Include="RestClient\HttpWebRequestAsyncState.cs" />
     <Compile Include="RestClient\HttpWebResponseAsyncState.cs" />
     <Compile Include="RestClient\IRequestHandler.cs" />
@@ -70,7 +74,7 @@
     <Compile Include="RestClient\StringMimePart.cs" />
     <Compile Include="RestClient\StringUtil.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="RestClient\UploadFile.cs" />
+    <Compile Include="RestClient\HttpFile.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

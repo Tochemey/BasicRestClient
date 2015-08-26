@@ -10,26 +10,44 @@ using System.Text;
 
 namespace BasicRestClient.RestClient {
     public abstract class MimePart {
-        public NameValueCollection Headers { get; } = new NameValueCollection();
-        public byte[] Header { get; private set; }
+        private readonly NameValueCollection _headers = new NameValueCollection();
+        private byte[] _header;
+
+        /// <summary>
+        ///     Http Headers collections
+        /// </summary>
+        public NameValueCollection Headers { get { return _headers; } }
+
+        /// <summary>
+        ///     Http Headers Array
+        /// </summary>
+        public byte[] Header { get { return _header; } }
+
+        /// <summary>
+        ///     Data Stream
+        /// </summary>
         public abstract Stream Data { get; }
 
+        /// <summary>
+        /// </summary>
+        /// <param name="boundary"></param>
+        /// <returns></returns>
         public long GenerateHeaderFooterData(string boundary) {
             var sb = new StringBuilder();
 
             sb.Append("--");
             sb.Append(boundary);
             sb.AppendLine();
-            foreach (var key in Headers.AllKeys) {
+            foreach (string key in _headers.AllKeys) {
                 sb.Append(key);
                 sb.Append(": ");
-                sb.AppendLine(Headers[key]);
+                sb.AppendLine(_headers[key]);
             }
             sb.AppendLine();
 
-            Header = Encoding.UTF8.GetBytes(sb.ToString());
+            _header = Encoding.UTF8.GetBytes(sb.ToString());
 
-            return Header.Length + Data.Length + 2;
+            return _header.Length + Data.Length + 2;
         }
     }
 }

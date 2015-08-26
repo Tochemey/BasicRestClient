@@ -9,8 +9,12 @@ using System.IO;
 namespace BasicRestClient.RestClient {
     public class StreamMimePart : MimePart {
         private Stream _data;
-        public override Stream Data => _data;
 
+        public override Stream Data { get { return _data; } }
+
+        /// <summary>
+        /// </summary>
+        /// <param name="stream"></param>
         public void SetStream(Stream stream) { _data = stream; }
     }
 }

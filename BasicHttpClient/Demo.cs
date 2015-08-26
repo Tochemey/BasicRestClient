@@ -6,14 +6,14 @@ namespace BasicRestClient {
     ///     This Demo is done against the SMSGH HTTP API
     /// </summary>
     internal class Demo {
-        private const string ClientId = "dodcaawu";
-        private const string ClientSecret = "rzbycqfx";
+        private const string ClientId = "ganofzhg";
+        private const string ClientSecret = "abyocwua";
         private const string Hostname = "api.smsgh.com";
         private const string BaseUrl = "http://" + Hostname + "/v3";
 
         private static void Main(string[] args) {
             // New instance of the Http Client
-            var httpClient = new RestClient.BasicRestClient(BaseUrl);
+            var httpClient = new RestClient.RestClient(BaseUrl);
 
             // Set the Basic Authorization header
             httpClient.BasicAuth(ClientId, ClientSecret);
@@ -25,16 +25,16 @@ namespace BasicRestClient {
             parameters.Set("From", "Arsene").Set("To", "+233248067917").Set("Content", "Hello ").Set("RegisteredDelivery", "true");
 
             try {
-                var resource = "/messages/";
-                var response = httpClient.Post(resource, parameters);
-                Console.WriteLine("Message Sent: Server Response Status " + response.Status);
+                //var resource = "/messages/";
+                //var response = httpClient.Post(resource, parameters);
+                //Console.WriteLine("Message Sent: Server Response Status " + response.Status);
 
-                resource = "/account/profile";
-                response = httpClient.Get(resource);
-                Console.WriteLine("Account Profile : Server Response Status " + response.Status);
+                //resource = "/account/profile";
+                //response = httpClient.Get(resource);
+                //Console.WriteLine("Account Profile : Server Response Status " + response.Status);
                 GetAccountProfileAsync();
 
-                SendMessageAsync(resource, parameters);
+                //SendMessageAsync(resource, parameters);
             }
             catch (Exception e) {
                 if (e.GetType() == typeof (HttpRequestException)) {
@@ -48,7 +48,7 @@ namespace BasicRestClient {
         }
 
         private static async void GetAccountProfileAsync() {
-            var httpClient = new RestClient.BasicRestClient(BaseUrl);
+            var httpClient = new RestClient.RestClient(BaseUrl);
             httpClient.BasicAuth(ClientId, ClientSecret);
             httpClient.ConnectionTimeout = 200;
             httpClient.ReadWriteTimeout = 200;
@@ -60,7 +60,7 @@ namespace BasicRestClient {
         }
 
         private static async void SendMessageAsync(string resource, ParameterMap parameters) {
-            var httpClient = new RestClient.BasicRestClient(BaseUrl);
+            var httpClient = new RestClient.RestClient(BaseUrl);
             httpClient.BasicAuth(ClientId, ClientSecret);
             httpClient.ConnectionTimeout = 200;
             httpClient.ReadWriteTimeout = 200;

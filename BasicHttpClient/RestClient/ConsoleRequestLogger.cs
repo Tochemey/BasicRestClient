@@ -13,9 +13,9 @@ namespace BasicRestClient.RestClient {
 
         public void LogRequest(HttpWebRequest urlConnection, object content) {
             Log("=== HTTP Request ===");
-            Log($"{urlConnection.Method}  {urlConnection.Address}");
-            if (content is string) Log("Content: " + content);
+            Log(String.Format("{0}  {1}", urlConnection.Method, urlConnection.Address));
             LogHeaders(urlConnection.Headers);
+            if (content is string) Log("Content: " + content);
         }
 
         public void LogResponse(HttpResponse response) {

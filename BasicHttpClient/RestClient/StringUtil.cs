@@ -14,9 +14,7 @@ namespace BasicRestClient.RestClient {
         /// </summary>
         /// <param name="string0">THe string to check</param>
         /// <returns>bool</returns>
-        public static bool IsAlphanumeric(this string string0) {
-            return new Regex("^[a-zA-Z0-9-\\s+]*$").IsMatch(string0);
-        }
+        public static bool IsAlphanumeric(this string string0) { return new Regex("^[a-zA-Z0-9-\\s+]*$").IsMatch(string0); }
 
         /// <summary>
         ///     Check whether the given string contains only alphabetic characters. True when it contains only alphabetic
@@ -24,9 +22,7 @@ namespace BasicRestClient.RestClient {
         /// </summary>
         /// <param name="string0">The string to check</param>
         /// <returns>bool</returns>
-        public static bool IsWord(this string string0) {
-            return new Regex("^[a-zA-Z]$").IsMatch(string0);
-        }
+        public static bool IsWord(this string string0) { return new Regex("^[a-zA-Z]$").IsMatch(string0); }
 
         /// <summary>
         ///     This function sanitze string against SQL Injections
@@ -48,12 +44,7 @@ namespace BasicRestClient.RestClient {
         /// </summary>
         /// <param name="url">Url to check</param>
         /// <returns>true when valid and false on the contrary</returns>
-        public static bool IsValidUrl(this string url) {
-            return
-                new Regex(
-                    "^(?:(?:(ht|f)tps?|file|news|gopher)://)?(([\\w!~*'()\\.&=+$%-]+: )?[\\w!~*'()\\.&=+$%-]+@)?(([0-9]{1,3}\\.){3}[0-9]{1,3}|([\\w!~*'()-]+\\.)*([\\w^-][\\w-]{0,61})?[\\w]\\.[a-z]{2,6})(:[0-9]{1,4})?((/*)|(/+[\\w!~*'()\\.;?:@&=+$,%#-]+)+/*)$")
-                    .IsMatch(url);
-        }
+        public static bool IsValidUrl(this string url) { return new Regex("^(?:(?:(ht|f)tps?|file|news|gopher)://)?(([\\w!~*'()\\.&=+$%-]+: )?[\\w!~*'()\\.&=+$%-]+@)?(([0-9]{1,3}\\.){3}[0-9]{1,3}|([\\w!~*'()-]+\\.)*([\\w^-][\\w-]{0,61})?[\\w]\\.[a-z]{2,6})(:[0-9]{1,4})?((/*)|(/+[\\w!~*'()\\.;?:@&=+$,%#-]+)+/*)$").IsMatch(url); }
 
         /// <summary>
         ///     Thos function check whether a filename is a valid filename.
@@ -63,10 +54,7 @@ namespace BasicRestClient.RestClient {
         /// <returns></returns>
         public static bool IsValidFileName(this string filename, bool platformIndependent) {
             var sPattern = @"^(?!^(PRN|AUX|CLOCK\$|NUL|CON|COM\d|LPT\d|\..*)(\..+)?$)[^\x00-\x1f\\?*:\"";|/]+$";
-            if (platformIndependent) {
-                sPattern =
-                    @"^(([a-zA-Z]:|\\)\\)?(((\.)|(\.\.)|([^\\/:\*\?""\|<>\. ](([^\\/:\*\?""\|<>\. ])|([^\\/:\*\?""\|<>]*[^\\/:\*\?""\|<>\. ]))?))\\)*[^\\/:\*\?""\|<>\. ](([^\\/:\*\?""\|<>\. ])|([^\\/:\*\?""\|<>]*[^\\/:\*\?""\|<>\. ]))?$";
-            }
+            if (platformIndependent) sPattern = @"^(([a-zA-Z]:|\\)\\)?(((\.)|(\.\.)|([^\\/:\*\?""\|<>\. ](([^\\/:\*\?""\|<>\. ])|([^\\/:\*\?""\|<>]*[^\\/:\*\?""\|<>\. ]))?))\\)*[^\\/:\*\?""\|<>\. ](([^\\/:\*\?""\|<>\. ])|([^\\/:\*\?""\|<>]*[^\\/:\*\?""\|<>\. ]))?$";
             return (Regex.IsMatch(filename, sPattern, RegexOptions.CultureInvariant));
         }
 
@@ -134,9 +122,7 @@ namespace BasicRestClient.RestClient {
         /// </summary>
         /// <param name="string0">String to check</param>
         /// <returns>bool. True when it is empty and false on the contrary</returns>
-        public static bool IsEmpty(this string string0) {
-            return string.IsNullOrEmpty(string0);
-        }
+        public static bool IsEmpty(this string string0) { return string.IsNullOrEmpty(string0); }
 
         /// <summary>
         ///     Checks numeric. True when the string is numeric string and false on the contrary
@@ -175,9 +161,7 @@ namespace BasicRestClient.RestClient {
         /// </summary>
         /// <param name="string0">String to check</param>
         /// <returns>bool. True when it is avlid email address and false on the contrary</returns>
-        public static bool IsValidEmail(this string string0) {
-            return new Regex("^[_A-Za-z0-9-]+(\\.[_A-Za-z0-9-]+)*@[A-Za-z0-9]+(\\.[A-Za-z0-9]+)*(\\.[A-Za-z]{2,}|com|org|net|edu|gov|mil|biz|info|mobi|name|aero|asia|jobs|museum)$").IsMatch(string0);
-        }
+        public static bool IsValidEmail(this string string0) { return new Regex("^[_A-Za-z0-9-]+(\\.[_A-Za-z0-9-]+)*@[A-Za-z0-9]+(\\.[A-Za-z0-9]+)*(\\.[A-Za-z]{2,}|com|org|net|edu|gov|mil|biz|info|mobi|name|aero|asia|jobs|museum)$").IsMatch(string0); }
 
         /// <summary>
         ///     Checks IPv4
@@ -216,9 +200,7 @@ namespace BasicRestClient.RestClient {
         /// </summary>
         /// <param name="string0">String to check</param>
         /// <returns>bool. True when it is a valid IP and false on the contrary</returns>
-        public static bool IsValidIp(this string string0) {
-            return string0.IsValidIPv4() || string0.IsValidIPv6();
-        }
+        public static bool IsValidIp(this string string0) { return string0.IsValidIPv4() || string0.IsValidIPv6(); }
 
         /// <summary>
         ///     Check whether the given string has a minimum length
@@ -260,10 +242,7 @@ namespace BasicRestClient.RestClient {
         /// </summary>
         /// <param name="string0">String to validate</param>
         /// <returns>bool</returns>
-        public static bool IsValidTime(this string string0) {
-            return
-                new Regex("^((([0]?[1-9]|1[0-2])(:|\\.)[0-5][0-9]((:|\\.)[0-5][0-9])?( )?(AM|am|aM|Am|PM|pm|pM|Pm))|(([0]?[0-9]|1[0-9]|2[0-3])(:|\\.)[0-5][0-9]((:|\\.)[0-5][0-9])?))$").IsMatch(string0);
-        }
+        public static bool IsValidTime(this string string0) { return new Regex("^((([0]?[1-9]|1[0-2])(:|\\.)[0-5][0-9]((:|\\.)[0-5][0-9])?( )?(AM|am|aM|Am|PM|pm|pM|Pm))|(([0]?[0-9]|1[0-9]|2[0-3])(:|\\.)[0-5][0-9]((:|\\.)[0-5][0-9])?))$").IsMatch(string0); }
 
         /// <summary>
         ///     Checks that a value is a valid phone number
@@ -307,37 +286,17 @@ namespace BasicRestClient.RestClient {
             // When the format is not defined
             if (format.IsEmpty()) {
                 // When the string to check is not null 
-                if (!string0.IsEmpty()) {
-                    return
-                        new Regex(
-                            "^(?:(?:(?:(?:(?:1[6-9]|[2-9]\\d)?(?:0[48]|[2468][048]|[13579][26])|(?:(?:16|[2468][048]|[3579][26])00)))(\\/|-|\\.|\\x20)(?:0?2\\1(?:29)))|(?:(?:(?:1[6-9]|[2-9]\\d)?\\d{2})(\\/|-|\\.|\\x20)(?:(?:(?:0?[13578]|1[02])\\2(?:31))|(?:(?:0?[1,3-9]|1[0-2])\\2(29|30))|(?:(?:0?[1-9])|(?:1[0-2]))\\2(?:0?[1-9]|1\\d|2[0-8]))))$")
-                            .IsMatch(string0.Trim());
-                }
+                if (!string0.IsEmpty()) return new Regex("^(?:(?:(?:(?:(?:1[6-9]|[2-9]\\d)?(?:0[48]|[2468][048]|[13579][26])|(?:(?:16|[2468][048]|[3579][26])00)))(\\/|-|\\.|\\x20)(?:0?2\\1(?:29)))|(?:(?:(?:1[6-9]|[2-9]\\d)?\\d{2})(\\/|-|\\.|\\x20)(?:(?:(?:0?[13578]|1[02])\\2(?:31))|(?:(?:0?[1,3-9]|1[0-2])\\2(29|30))|(?:(?:0?[1-9])|(?:1[0-2]))\\2(?:0?[1-9]|1\\d|2[0-8]))))$").IsMatch(string0.Trim());
             }
             else {
                 if (!string0.IsEmpty()) {
                     // Based upon the format given the check will be done accordingly
                     var regex = "";
-                    if (string.Equals(format.Trim(), "dmy")) {
-                        regex =
-                            "^(?:(?:31(\\/|-|\\.|\\x20)(?:0?[13578]|1[02]))\\1|(?:(?:29|30)(\\/|-|\\.|\\x20)(?:0?[1,3-9]|1[0-2])\\2))(?:(?:1[6-9]|[2-9]\\d)?\\d{2})$|^(?:29(\\/|-|\\.|\\x20)0?2\\3(?:(?:(?:1[6-9]|[2-9]\\d)?(?:0[48]|[2468][048]|[13579][26])|(?:(?:16|[2468][048]|[3579][26])00))))$|^(?:0?[1-9]|1\\d|2[0-8])(\\/|-|\\.|\\x20)(?:(?:0?[1-9])|(?:1[0-2]))\\4(?:(?:1[6-9]|[2-9]\\d)?\\d{2})$";
-                    }
-                    if (string.Equals(format.Trim(), "mdy")) {
-                        regex =
-                            "^(?:(?:(?:0?[13578]|1[02])(\\/|-|\\.|\\x20)31)\\1|(?:(?:0?[13-9]|1[0-2])(\\/|-|\\.|\\x20)(?:29|30)\\2))(?:(?:1[6-9]|[2-9]\\d)?\\d{2})$|^(?:0?2(\\/|-|\\.|\\x20)29\\3(?:(?:(?:1[6-9]|[2-9]\\d)?(?:0[48]|[2468][048]|[13579][26])|(?:(?:16|[2468][048]|[3579][26])00))))$|^(?:(?:0?[1-9])|(?:1[0-2]))(\\/|-|\\.|\\x20)(?:0?[1-9]|1\\d|2[0-8])\\4(?:(?:1[6-9]|[2-9]\\d)?\\d{2})$";
-                    }
-                    if (string.Equals(format.Trim(), "ymd")) {
-                        regex =
-                            "^(?:(?:(?:(?:(?:1[6-9]|[2-9]\\d)?(?:0[48]|[2468][048]|[13579][26])|(?:(?:16|[2468][048]|[3579][26])00)))(\\/|-|\\.|\\x20)(?:0?2\\1(?:29)))|(?:(?:(?:1[6-9]|[2-9]\\d)?\\d{2})(\\/|-|\\.|\\x20)(?:(?:(?:0?[13578]|1[02])\\2(?:31))|(?:(?:0?[1,3-9]|1[0-2])\\2(29|30))|(?:(?:0?[1-9])|(?:1[0-2]))\\2(?:0?[1-9]|1\\d|2[0-8]))))$";
-                    }
-                    if (string.Equals(format.Trim(), "dMy")) {
-                        regex =
-                            "^((31(?!\\ (Feb(ruary)?|Apr(il)?|June?|(Sep(?=\\b|t)t?|Nov)(ember)?)))|((30|29)(?!\\ Feb(ruary)?))|(29(?=\\ Feb(ruary)?\\ (((1[6-9]|[2-9]\\d)(0[48]|[2468][048]|[13579][26])|((16|[2468][048]|[3579][26])00)))))|(0?[1-9])|1\\d|2[0-8])\\ (Jan(uary)?|Feb(ruary)?|Ma(r(ch)?|y)|Apr(il)?|Ju((ly?)|(ne?))|Aug(ust)?|Oct(ober)?|(Sep(?=\\b|t)t?|Nov|Dec)(ember)?)\\ ((1[6-9]|[2-9]\\d)\\d{2})$";
-                    }
-                    if (string.Equals(format.Trim(), "Mdy")) {
-                        regex =
-                            "^(?:(((Jan(uary)?|Ma(r(ch)?|y)|Jul(y)?|Aug(ust)?|Oct(ober)?|Dec(ember)?)\\ 31)|((Jan(uary)?|Ma(r(ch)?|y)|Apr(il)?|Ju((ly?)|(ne?))|Aug(ust)?|Oct(ober)?|(Sep)(tember)?|(Nov|Dec)(ember)?)\\ (0?[1-9]|([12]\\d)|30))|(Feb(ruary)?\\ (0?[1-9]|1\\d|2[0-8]|(29(?=,?\\ ((1[6-9]|[2-9]\\d)(0[48]|[2468][048]|[13579][26])|((16|[2468][048]|[3579][26])00)))))))\\,?\\ ((1[6-9]|[2-9]\\d)\\d{2}))$";
-                    }
+                    if (string.Equals(format.Trim(), "dmy")) regex = "^(?:(?:31(\\/|-|\\.|\\x20)(?:0?[13578]|1[02]))\\1|(?:(?:29|30)(\\/|-|\\.|\\x20)(?:0?[1,3-9]|1[0-2])\\2))(?:(?:1[6-9]|[2-9]\\d)?\\d{2})$|^(?:29(\\/|-|\\.|\\x20)0?2\\3(?:(?:(?:1[6-9]|[2-9]\\d)?(?:0[48]|[2468][048]|[13579][26])|(?:(?:16|[2468][048]|[3579][26])00))))$|^(?:0?[1-9]|1\\d|2[0-8])(\\/|-|\\.|\\x20)(?:(?:0?[1-9])|(?:1[0-2]))\\4(?:(?:1[6-9]|[2-9]\\d)?\\d{2})$";
+                    if (string.Equals(format.Trim(), "mdy")) regex = "^(?:(?:(?:0?[13578]|1[02])(\\/|-|\\.|\\x20)31)\\1|(?:(?:0?[13-9]|1[0-2])(\\/|-|\\.|\\x20)(?:29|30)\\2))(?:(?:1[6-9]|[2-9]\\d)?\\d{2})$|^(?:0?2(\\/|-|\\.|\\x20)29\\3(?:(?:(?:1[6-9]|[2-9]\\d)?(?:0[48]|[2468][048]|[13579][26])|(?:(?:16|[2468][048]|[3579][26])00))))$|^(?:(?:0?[1-9])|(?:1[0-2]))(\\/|-|\\.|\\x20)(?:0?[1-9]|1\\d|2[0-8])\\4(?:(?:1[6-9]|[2-9]\\d)?\\d{2})$";
+                    if (string.Equals(format.Trim(), "ymd")) regex = "^(?:(?:(?:(?:(?:1[6-9]|[2-9]\\d)?(?:0[48]|[2468][048]|[13579][26])|(?:(?:16|[2468][048]|[3579][26])00)))(\\/|-|\\.|\\x20)(?:0?2\\1(?:29)))|(?:(?:(?:1[6-9]|[2-9]\\d)?\\d{2})(\\/|-|\\.|\\x20)(?:(?:(?:0?[13578]|1[02])\\2(?:31))|(?:(?:0?[1,3-9]|1[0-2])\\2(29|30))|(?:(?:0?[1-9])|(?:1[0-2]))\\2(?:0?[1-9]|1\\d|2[0-8]))))$";
+                    if (string.Equals(format.Trim(), "dMy")) regex = "^((31(?!\\ (Feb(ruary)?|Apr(il)?|June?|(Sep(?=\\b|t)t?|Nov)(ember)?)))|((30|29)(?!\\ Feb(ruary)?))|(29(?=\\ Feb(ruary)?\\ (((1[6-9]|[2-9]\\d)(0[48]|[2468][048]|[13579][26])|((16|[2468][048]|[3579][26])00)))))|(0?[1-9])|1\\d|2[0-8])\\ (Jan(uary)?|Feb(ruary)?|Ma(r(ch)?|y)|Apr(il)?|Ju((ly?)|(ne?))|Aug(ust)?|Oct(ober)?|(Sep(?=\\b|t)t?|Nov|Dec)(ember)?)\\ ((1[6-9]|[2-9]\\d)\\d{2})$";
+                    if (string.Equals(format.Trim(), "Mdy")) regex = "^(?:(((Jan(uary)?|Ma(r(ch)?|y)|Jul(y)?|Aug(ust)?|Oct(ober)?|Dec(ember)?)\\ 31)|((Jan(uary)?|Ma(r(ch)?|y)|Apr(il)?|Ju((ly?)|(ne?))|Aug(ust)?|Oct(ober)?|(Sep)(tember)?|(Nov|Dec)(ember)?)\\ (0?[1-9]|([12]\\d)|30))|(Feb(ruary)?\\ (0?[1-9]|1\\d|2[0-8]|(29(?=,?\\ ((1[6-9]|[2-9]\\d)(0[48]|[2468][048]|[13579][26])|((16|[2468][048]|[3579][26])00)))))))\\,?\\ ((1[6-9]|[2-9]\\d)\\d{2}))$";
                     if (string.Equals(format.Trim(), "My"))
                         regex = "^(Jan(uary)?|Feb(ruary)?|Ma(r(ch)?|y)|Apr(il)?|Ju((ly?)|(ne?))|Aug(ust)?|Oct(ober)?|(Sep(?=\\b|t)t?|Nov|Dec)(ember)?)[ /]((1[6-9]|[2-9]\\d)\\d{2})$";
                     if (string.Equals(format.Trim(), "my"))
@@ -357,9 +316,7 @@ namespace BasicRestClient.RestClient {
         /// </summary>
         /// <param name="string0">The string to check</param>
         /// <returns>bool</returns>
-        public static bool IsValidTimeAs24H(this string string0) {
-            return new Regex("^((0?[1-9]|1[012])(:[0-5]\\d){0,2} ?([AP]M|[ap]m))$|^([01]\\d|2[0-3])(:[0-5]\\d){0,2}$").IsMatch(string0);
-        }
+        public static bool IsValidTimeAs24H(this string string0) { return new Regex("^((0?[1-9]|1[012])(:[0-5]\\d){0,2} ?([AP]M|[ap]m))$|^([01]\\d|2[0-3])(:[0-5]\\d){0,2}$").IsMatch(string0); }
 
         /// <summary>
         ///     Validates a datetime value.
@@ -405,9 +362,7 @@ namespace BasicRestClient.RestClient {
         /// <param name="string0">The string to check</param>
         /// <param name="networkPrefix"></param>
         /// <returns>bool</returns>
-        public static bool IsValidGhMsisdn(this string string0, string networkPrefix) {
-            return new Regex("^[0]?" + networkPrefix + "[0-9]{6,14}$").IsMatch(string0);
-        }
+        public static bool IsValidGhMsisdn(this string string0, string networkPrefix) { return new Regex("^[0]?" + networkPrefix + "[0-9]{6,14}$").IsMatch(string0); }
 
         /// <summary>
         ///     Checks if both strings are equal to each other.  Safely handles the case
@@ -442,9 +397,7 @@ namespace BasicRestClient.RestClient {
         /// <param name="string0">The string to compare</param>
         /// <param name="string1">The string compared to</param>
         /// <returns>bool</returns>
-        public static bool IsEqual(this string string0, string string1) {
-            return string0.IsEqual(string1, true);
-        }
+        public static bool IsEqual(this string string0, string string1) { return string0.IsEqual(string1, true); }
 
         /// <summary>
         ///     Get 7-bit ASCII character array from input String. The lower 7 bits of each character in the input string is
@@ -452,18 +405,14 @@ namespace BasicRestClient.RestClient {
         /// </summary>
         /// <param name="string0"></param>
         /// <returns>byte[]</returns>
-        public static byte[] GetAsciiBytes(this string string0) {
-            return Encoding.ASCII.GetBytes(string0);
-        }
+        public static byte[] GetAsciiBytes(this string string0) { return Encoding.ASCII.GetBytes(string0); }
 
         /// <summary>
         ///     Get string value of an array byte
         /// </summary>
         /// <param name="input">Byte array whose string value is needed</param>
         /// <returns>string</returns>
-        public static string GetAsciiString(this byte[] input) {
-            return Encoding.ASCII.GetString(input);
-        }
+        public static string GetAsciiString(this byte[] input) { return Encoding.ASCII.GetString(input); }
 
         public static string GetString(this byte[] input) { return Encoding.UTF8.GetString(input); }
 
@@ -473,9 +422,7 @@ namespace BasicRestClient.RestClient {
         /// </summary>
         /// <param name="obj">Object to check</param>
         /// <returns>string</returns>
-        public static string ToStringWithNullAsEmpty(this object obj) {
-            return obj?.ToString() ?? "";
-        }
+        public static string ToStringWithNullAsEmpty(this object obj) { return (obj == null) ? "" : obj.ToString(); }
 
         /// <summary>
         ///     Safely capitalizes a string by converting the first character to upper
@@ -503,7 +450,14 @@ namespace BasicRestClient.RestClient {
         /// <param name="check"></param>
         /// <returns></returns>
         public static bool IsBoolean(this object check) {
-            var list = new List<object> {"1", "0", true, false, 1, 0};
+            var list = new List<object> {
+                "1",
+                "0",
+                true,
+                false,
+                1,
+                0
+            };
             return list.Contains(check);
         }
 
@@ -512,17 +466,13 @@ namespace BasicRestClient.RestClient {
         /// </summary>
         /// <param name="check"></param>
         /// <returns></returns>
-        public static bool IsUuid(this string check) {
-            return new Regex("/^[a-fA-F0-9]{8}-[a-fA-F0-9]{4}-[0-5][a-fA-F0-9]{3}-[089aAbB][a-fA-F0-9]{3}-[a-fA-F0-9]{12}$/").IsMatch(check);
-        }
+        public static bool IsUuid(this string check) { return new Regex("/^[a-fA-F0-9]{8}-[a-fA-F0-9]{4}-[0-5][a-fA-F0-9]{3}-[089aAbB][a-fA-F0-9]{3}-[a-fA-F0-9]{12}$/").IsMatch(check); }
 
         #region Private Routines
 
         private static string RegexReplace(this string stringValue, string matchPattern, string toReplaceWith) { return Regex.Replace(stringValue, matchPattern, toReplaceWith); }
 
-        private static string RegexReplace(this string stringValue, string matchPattern, string toReplaceWith, RegexOptions regexOptions) {
-            return Regex.Replace(stringValue, matchPattern, toReplaceWith, regexOptions);
-        }
+        private static string RegexReplace(this string stringValue, string matchPattern, string toReplaceWith, RegexOptions regexOptions) { return Regex.Replace(stringValue, matchPattern, toReplaceWith, regexOptions); }
 
 
         // This property holds some characters that are not often allowed in most applications

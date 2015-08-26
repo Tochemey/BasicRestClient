@@ -4,15 +4,15 @@ using System.Net;
 using System.Threading.Tasks;
 
 namespace BasicRestClient.RestClient {
-    public class BasicRequestHandler : IRequestHandler {
+    public class HttpRequestHandler : IRequestHandler {
         protected readonly int ConnectionLimit;
 
-        public BasicRequestHandler(IRequestLogger logger, int connectionLimit) {
+        public HttpRequestHandler(IRequestLogger logger, int connectionLimit) {
             Logger = logger;
             ConnectionLimit = connectionLimit;
         }
 
-        public BasicRequestHandler(int connectionLimit) : this(new ConsoleRequestLogger(true), connectionLimit) { }
+        public HttpRequestHandler(int connectionLimit) : this(new ConsoleRequestLogger(true), connectionLimit) { }
         protected IRequestLogger Logger { get; }
 
         public HttpWebRequest OpenConnection(string url) {
@@ -50,12 +50,17 @@ namespace BasicRestClient.RestClient {
                 Logger.Log(error.Message);
             }
 
-            var status = response?.Status;
-            return status > 0;
+            if (response != null) {
+                int status = response.Status;
+                if (status > 0) return true; // Perhaps a 404, 501, or something that will be fixed later
+            }
+            return false;
         }
 
         public async Task<Stream> OpenOutputAsync(HttpWebRequest urlConnection) {
-            var asyncState = new HttpWebRequestAsyncState {HttpWebRequest = urlConnection};
+            var asyncState = new HttpWebRequestAsyncState {
+                HttpWebRequest = urlConnection
+            };
             try { return await Task.Factory.FromAsync<Stream>(urlConnection.BeginGetRequestStream, urlConnection.EndGetRequestStream, asyncState, TaskCreationOptions.None); }
             catch {}
             return null;
@@ -63,7 +68,10 @@ namespace BasicRestClient.RestClient {
 
         public async Task<HttpWebRequestAsyncState> WriteStreamAsync(HttpWebRequest urlConnection, Stream outputStream, byte[] content) {
             // Let us get the state
-            var requestAsyncState = new HttpWebRequestAsyncState {HttpWebRequest = urlConnection, RequestBytes = content};
+            var requestAsyncState = new HttpWebRequestAsyncState {
+                HttpWebRequest = urlConnection,
+                RequestBytes = content
+            };
             try { using (var requestStream = outputStream) await requestStream.WriteAsync(requestAsyncState.RequestBytes, 0, requestAsyncState.RequestBytes.Length); }
             catch (Exception exception) {
                 requestAsyncState.Exception = exception;
