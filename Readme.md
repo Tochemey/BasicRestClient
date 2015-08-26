@@ -5,12 +5,12 @@ Mini .Net Rest Client
 A minimal Rest client that uses .Net HttpWebRequest API to make requests. 
 It is mainly a wrapper around the famous and robust .Net HttpWebRequest API.
 It features a simple interface for making Web requests. 
-It has been written and tested on an environment using .Net Framework 4.5.1. 
+It has been written and tested on an environment using .Net Framework 4.5.1 or later. 
 Please bear with me there are better libraries out there. I just want to have fun and also control over what I have done. 
 It is easy at that stage to fix issues and respond to users worries or bugs.
 
 ## Requirements
-As stated in the brief introduction the library requires the .Net Framework 4.5.1.
+As stated in the brief introduction the library requires the .Net Framework 4.5.1. or later
 
 ## Features
 Currently the following HTTP verb are supported:
@@ -25,7 +25,14 @@ It also has a smooth error handling and request logging features.
 Moreover file upload functionalities have been added to make file upload smooth from C# program.
 
 ### Noteworthy
-All these verbs can be executed synchronously and asynchronously.(refer to demo)
+* All these verbs can be executed synchronously and asynchronously.(refer to demo)
+* Once can wait for the Server response and handle it the way he/she wants it. However some events have been added that can help developer to really what has happened to Http Request. The following events can be used:
+    - Sending : Fires when the Http Request is being sent
+    - Success : Fires when the Server responds with a status code of 2XX
+    - Error : Fires when an Exception has occured during the request processing
+    - Failure : Fires when the Server responds with a status code of 4XX or 5XX
+    - Complete : Fires when the Http Request has gone to the Web Server and awaiting for response.
+* One can also currently upload file on a Web Server synchronously and asynchronously using the *PostFiles* or *PostFilesAsync* methods.
 
 ## Usage
 Copy the few file in the RestClient folder or clone it into your project and with some few namespace refactoring you are good to go.
@@ -129,9 +136,9 @@ Example code to post data from a Web Server with a Basic Authorization. This exa
 
 ### Notes
 
-The server response stored in is an instance of HttpResponse class. The most important sections of that object
-are the Status code and the response body. 
+* The server response stored in is an instance of HttpResponse class. The most important sections of that object are the Status code and the response body. 
 The status code is an integer and the response body is a json data string. So any .Net Json library can parse the json string.
+* Also bear in mind that you can return other response format apart JSON.
 
 ## Milestone
 
