@@ -201,7 +201,11 @@ namespace BasicRestClient.RestClient {
                 // Write the request
                 if (content != null) {
                     requestAsyncState = await WriteOutptStreamAsync(urlConnection, content);
-                    if (requestAsyncState.Exception != null) throw requestAsyncState.Exception;
+                    if (requestAsyncState.Exception != null) {
+                        var err = new HttpRequestException(requestAsyncState.Exception, null);
+                        if (Error != null) Error(this, new HttpRequestExceptionEventArgs(err));
+                        throw err;
+                    }
                 }
                 else {
                     requestAsyncState = new HttpWebRequestAsyncState {
@@ -227,7 +231,9 @@ namespace BasicRestClient.RestClient {
                 }
                 else {
                     // Throw the exception because we will catch it
-                    throw responseAsyncState.Exception;
+                    var err = new HttpRequestException(responseAsyncState.Exception, null);
+                    if (Error != null) Error(this, new HttpRequestExceptionEventArgs(err));
+                    throw err;
                 }
                 if (Complete != null) Complete(this, new HttpResponseEventArgs(response));
                 FireSuccessEvent(response);
@@ -254,6 +260,7 @@ namespace BasicRestClient.RestClient {
                     // Different Exception 
                     // Must catch IOException, but swallow to show first cause only
                     RequestLogger.Log(e.ToString());
+                    throw;
                 }
             }
             finally {
@@ -348,7 +355,7 @@ namespace BasicRestClient.RestClient {
                             var err = new HttpRequestException(e, response);
                             if (Error != null) Error(this, new HttpRequestExceptionEventArgs(err));
                             throw err;
-                        }                        
+                        }
                     }
                 }
                 else {
@@ -443,6 +450,7 @@ namespace BasicRestClient.RestClient {
                     // Different Exception 
                     // Must catch IOException, but swallow to show first cause only
                     RequestLogger.Log(e.ToString());
+                    throw;
                 }
             }
             finally {
@@ -817,14 +825,14 @@ namespace BasicRestClient.RestClient {
         ///     Use to set the HTTP Payload
         /// </summary>
         /// <returns></returns>
-        public ParameterMap NewParams() { return new ParameterMap(); }
+        public ParameterMap Payload() { return new ParameterMap(); }
 
         #endregion
 
         #region AbstractHttpClient Properties
 
-        protected string BaseUrl { get; }
-        public IRequestHandler RequestHandler { get; }
+        protected string BaseUrl { get; private set; }
+        public IRequestHandler RequestHandler { get; private set; }
         public IRequestLogger RequestLogger { set; get; }
 
         public Dictionary<string, string> RequestHeaders { set; get; }
