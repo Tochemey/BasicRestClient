@@ -70,8 +70,8 @@ Example code to post data from a Web Server with a Basic Authorization. This exa
 
                 // Set the Params to send
                 var parameters = new ParameterMap();
-                parameters.Set("From", "Arsene")
-                    .Set("To", "+233247063817")
+                parameters.Set("From", "Me")
+                    .Set("To", "+233547678912")
                     .Set("Content","Hello ")
                     .Set("RegisteredDelivery", "true");
 
