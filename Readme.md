@@ -136,7 +136,7 @@ Example code to post data from a Web Server with a Basic Authorization. This exa
 
 ### Notes
 
-* The server response stored in is an instance of HttpResponse class. The most important sections of that object are the Status code and the response body. 
+* The server response is an instance of HttpResponse class. The most important sections of that object are the Status code and the response body. 
 The status code is an integer and the response body is a json data string. So any .Net Json library can parse the json string.
 * Also bear in mind that you can return other response format apart JSON.
 
