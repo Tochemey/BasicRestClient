@@ -26,7 +26,7 @@ Moreover file upload functionalities have been added to make file upload smooth 
 
 ### Noteworthy
 * All these verbs can be executed synchronously and asynchronously.(refer to demo)
-* Once can wait for the Server response and handle it the way he/she wants it. However some events have been added that can help developer to really what has happened to Http Request. The following events can be used:
+* One can wait for the Server response and handle it the way he/she wants it. However some events have been added that can help developer really know what has happened to Http Request. The following events can be used:
     - Sending : Fires when the Http Request is being sent
     - Success : Fires when the Server responds with a status code of 2XX
     - Error : Fires when an Exception has occured during the request processing
@@ -136,7 +136,7 @@ Example code to post data from a Web Server with a Basic Authorization. This exa
 
 ### Notes
 
-* The server response stored in is an instance of HttpResponse class. The most important sections of that object are the Status code and the response body. 
+* The server response is an instance of HttpResponse class. The most important sections of that object are the Status code and the response body. 
 The status code is an integer and the response body is a json data string. So any .Net Json library can parse the json string.
 * Also bear in mind that you can return other response format apart JSON.
 
