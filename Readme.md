@@ -6,7 +6,6 @@ A minimal Rest client that uses .Net HttpWebRequest API to make requests.
 It is mainly a wrapper around the famous and robust .Net HttpWebRequest API.
 It features a simple interface for making Web requests. 
 It has been written and tested on an environment using .Net Framework 4.5.1 or later. 
-Please bear with me there are better libraries out there. I just want to have fun and also control over what I have done. 
 It is easy at that stage to fix issues and respond to users worries or bugs.
 
 ## Requirements
@@ -34,8 +33,17 @@ Moreover file upload functionalities have been added to make file upload smooth 
     - Complete : Fires when the Http Request has gone to the Web Server and awaiting for response.
 * One can also currently upload file on a Web Server synchronously and asynchronously using the *PostFiles* or *PostFilesAsync* methods.
 
+## **License**
+[Apache License 2.0](http://www.apache.org/licenses/LICENSE-2.0.txt)
+
 ## Usage
-Copy the few file in the RestClient folder or clone it into your project and with some few namespace refactoring you are good to go.
+There are two ways to use it:
+* Copy the few file in the RestClient folder or clone it into your project and with some few namespace refactoring you are good to go.
+* Via Nuget: 
+
+```c#
+ Install-Package BasicRestClient
+```
 
 Example code to post data from a Web Server with a Basic Authorization. This example has been used against the [SMSGH Ltd](http://www.smsgh.com/) HTTP API [developer site](http://developers.smsgh.com/)
 

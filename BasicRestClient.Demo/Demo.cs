@@ -1,17 +1,33 @@
-﻿using System;
+/*
+    Copyright 2015 Arsene Tochemey GANDOTE
+
+    Licensed under the Apache License, Version 2.0 (the "License");
+    you may not use this file except in compliance with the License.
+    You may obtain a copy of the License at
+
+       http://www.apache.org/licenses/LICENSE-2.0
+
+    Unless required by applicable law or agreed to in writing, software
+    distributed under the License is distributed on an "AS IS" BASIS,
+    WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+    See the License for the specific language governing permissions and
+    limitations under the License.
+*/
+
+using System;
 using BasicRestClient.RestClient;
 
-namespace BasicRestClient {
+namespace BasicRestClient.Demo {
     /// <summary>
     ///     This Demo is done against the SMSGH HTTP API
     /// </summary>
-    internal class Demo {
+    public class Demo {
         private const string ClientId = "ganofzhg";
         private const string ClientSecret = "abyocwua";
         private const string Hostname = "api.smsgh.com";
         private const string BaseUrl = "http://" + Hostname + "/v3";
 
-        private static void Main(string[] args) {
+        public static void Main(string[] args) {
             // New instance of the Http Client
             var httpClient = new RestClient.RestClient(BaseUrl);
 

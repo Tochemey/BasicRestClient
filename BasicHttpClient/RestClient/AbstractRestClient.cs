@@ -1,4 +1,20 @@
-﻿using System;
+﻿/*
+    Copyright 2015 Arsene Tochemey GANDOTE
+
+    Licensed under the Apache License, Version 2.0 (the "License");
+    you may not use this file except in compliance with the License.
+    You may obtain a copy of the License at
+
+       http://www.apache.org/licenses/LICENSE-2.0
+
+    Unless required by applicable law or agreed to in writing, software
+    distributed under the License is distributed on an "AS IS" BASIS,
+    WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+    See the License for the specific language governing permissions and
+    limitations under the License.
+*/
+
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Net;
@@ -230,15 +246,13 @@ namespace BasicRestClient.RestClient {
                     }
                 }
                 else {
-                    if (responseAsyncState.Exception.GetType() == typeof(WebException))
-                    {
+                    if (responseAsyncState.Exception.GetType() == typeof (WebException)) {
                         var ex = responseAsyncState.Exception as WebException;
-                        response = ex.Status == WebExceptionStatus.Timeout ? new HttpResponse(urlConnection.Address.AbsoluteUri, (int)HttpStatusCode.RequestTimeout) : ReadStreamError(ex);
+                        response = ex.Status == WebExceptionStatus.Timeout ? new HttpResponse(urlConnection.Address.AbsoluteUri, (int) HttpStatusCode.RequestTimeout) : ReadStreamError(ex);
                     }
-                    else
-                    {
+                    else {
                         // Throw the exception because we will catch it
-                        var err = new HttpRequestException(responseAsyncState.Exception, new HttpResponse(urlConnection.Address.AbsoluteUri, (int)HttpStatusCode.ServiceUnavailable));
+                        var err = new HttpRequestException(responseAsyncState.Exception, new HttpResponse(urlConnection.Address.AbsoluteUri, (int) HttpStatusCode.ServiceUnavailable));
                         if (Error != null) Error(this, new HttpRequestExceptionEventArgs(err));
                         throw err;
                     }
@@ -284,12 +298,12 @@ namespace BasicRestClient.RestClient {
         /// </summary>
         /// <param name="response"></param>
         private void FireSuccessEvent(HttpResponse response) {
-            if (response != null) {
-                string status = Convert.ToString(response.Status);
-                string regex = @"^(2\d\d)$";
-                if (string.IsNullOrEmpty(status)
-                    && Regex.IsMatch(status, regex)) if (Success != null) Success(this, new HttpResponseEventArgs(response));
-            }
+            if (response == null) return;
+            string status = Convert.ToString(response.Status);
+            string regex = @"^(2\d\d)$";
+            if (!string.IsNullOrEmpty(status)
+                || !Regex.IsMatch(status, regex)) return;
+            if (Success != null) Success(this, new HttpResponseEventArgs(response));
         }
 
         /// <summary>

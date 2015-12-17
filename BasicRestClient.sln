@@ -1,9 +1,11 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 2013
-VisualStudioVersion = 12.0.30723.0
+# Visual Studio 14
+VisualStudioVersion = 14.0.23107.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BasicRestClient", "BasicHttpClient\BasicRestClient.csproj", "{6382BB54-B5E1-4827-85EA-3F13F4AC90E6}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BasicRestClient.Demo", "BasicRestClient.Demo\BasicRestClient.Demo.csproj", "{8A22695E-9807-434E-8A29-1D95F0A43AD6}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +17,10 @@ Global
 		{6382BB54-B5E1-4827-85EA-3F13F4AC90E6}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{6382BB54-B5E1-4827-85EA-3F13F4AC90E6}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{6382BB54-B5E1-4827-85EA-3F13F4AC90E6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8A22695E-9807-434E-8A29-1D95F0A43AD6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8A22695E-9807-434E-8A29-1D95F0A43AD6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8A22695E-9807-434E-8A29-1D95F0A43AD6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8A22695E-9807-434E-8A29-1D95F0A43AD6}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
