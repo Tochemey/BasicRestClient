@@ -230,10 +230,18 @@ namespace BasicRestClient.RestClient {
                     }
                 }
                 else {
-                    // Throw the exception because we will catch it
-                    var err = new HttpRequestException(responseAsyncState.Exception, null);
-                    if (Error != null) Error(this, new HttpRequestExceptionEventArgs(err));
-                    throw err;
+                    if (responseAsyncState.Exception.GetType() == typeof(WebException))
+                    {
+                        var ex = responseAsyncState.Exception as WebException;
+                        response = ex.Status == WebExceptionStatus.Timeout ? new HttpResponse(urlConnection.Address.AbsoluteUri, (int)HttpStatusCode.RequestTimeout) : ReadStreamError(ex);
+                    }
+                    else
+                    {
+                        // Throw the exception because we will catch it
+                        var err = new HttpRequestException(responseAsyncState.Exception, new HttpResponse(urlConnection.Address.AbsoluteUri, (int)HttpStatusCode.ServiceUnavailable));
+                        if (Error != null) Error(this, new HttpRequestExceptionEventArgs(err));
+                        throw err;
+                    }
                 }
                 if (Complete != null) Complete(this, new HttpResponseEventArgs(response));
                 FireSuccessEvent(response);
@@ -551,32 +559,15 @@ namespace BasicRestClient.RestClient {
         protected HttpResponse ReadStreamError(WebException ex) {
             if (ex.Response.GetResponseStream() == null) return null;
             using (var response = ex.Response as HttpWebResponse) {
-                if (response != null) {
-                    using (var stream = ex.Response.GetResponseStream()) {
-                        if (stream == null) return null;
-                        if (response.ContentLength > 0) {
-                            var buffer = new byte[response.ContentLength];
-                            var bytesRead = 0;
-                            var totalBytesRead = bytesRead;
-                            while (totalBytesRead < buffer.Length) {
-                                bytesRead = stream.Read(buffer, bytesRead, buffer.Length - bytesRead);
-                                totalBytesRead += bytesRead;
-                            }
-                            var responseBody = buffer;
-
-                            var status = Convert.ToInt32(response.StatusCode);
-                            var url = response.ResponseUri.AbsoluteUri;
-                            var headers = response.Headers;
-                            return new HttpResponse(url, headers, status, responseBody);
-                        }
-                        using (var sr = new StreamReader(stream)) {
-                            var buffer = Encoding.ASCII.GetBytes(sr.ReadToEnd());
-                            return new HttpResponse(response.ResponseUri.AbsoluteUri, response.Headers, Convert.ToInt32(response.StatusCode), buffer);
-                        }
+                if (response == null) return null;
+                using (var stream = ex.Response.GetResponseStream()) {
+                    if (stream == null) return null;
+                    using (var sr = new StreamReader(stream)) {
+                        var buffer = Encoding.ASCII.GetBytes(sr.ReadToEnd());
+                        return new HttpResponse(response.ResponseUri.AbsoluteUri, response.Headers, Convert.ToInt32(response.StatusCode), buffer);
                     }
                 }
             }
-            return null;
         }
 
         /// <summary>
