@@ -6,7 +6,6 @@ A minimal Rest client that uses .Net HttpWebRequest API to make requests.
 It is mainly a wrapper around the famous and robust .Net HttpWebRequest API.
 It features a simple interface for making Web requests. 
 It has been written and tested on an environment using .Net Framework 4.5.1 or later. 
-It is easy at that stage to fix issues and respond to users worries or bugs.
 
 ## Requirements
 As stated in the brief introduction the library requires the .Net Framework 4.5.1. or later
@@ -150,6 +149,5 @@ The status code is an integer and the response body is a json data string. So an
 
 ## Milestone
 
-* Support of SSL
 * Support for Portable Class Library
 
