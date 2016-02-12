@@ -27,9 +27,24 @@ namespace BasicRestClient.RestClient {
     ///     Abstract class.
     /// </summary>
     public abstract class AbstractRestClient {
+        /// <summary>
+        /// Default URL encoded
+        /// </summary>
         protected static string UrlEncoded = "application/x-www-form-urlencoded;charset=UTF-8";
+
+        /// <summary>
+        /// Default multipart. This is used internally by the Rest Client in case none is provided.
+        /// </summary>
         protected static string Multipart = "multipart/form-data";
+
+        /// <summary>
+        /// Default Accept header used
+        /// </summary>
         protected static string Accept = "application/xml";
+
+        /// <summary>
+        /// States whether the Rest Client is connected or not.
+        /// </summary>
         protected bool Connected;
 
         #region HTTP Events 
@@ -69,6 +84,12 @@ namespace BasicRestClient.RestClient {
 
         #endregion
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="baseUrl"></param>
+        /// <param name="requestHandler"></param>
+        /// <param name="requestLogger"></param>
         protected AbstractRestClient(string baseUrl, IRequestHandler requestHandler, IRequestLogger requestLogger) {
             RequestLogger = requestLogger;
             RequestHandler = requestHandler;
