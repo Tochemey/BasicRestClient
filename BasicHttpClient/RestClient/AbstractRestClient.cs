@@ -162,12 +162,12 @@ namespace BasicRestClient.RestClient {
                                     totalBytesRead += bytesRead;
                                 }
 
-                                response = new HttpResponse(urlConnection.Address.AbsoluteUri, urlConnection.Headers, Convert.ToInt32(serverResponse.StatusCode), buffer);
+                                response = new HttpResponse(serverResponse.ResponseUri.AbsoluteUri, serverResponse.Headers, Convert.ToInt32(serverResponse.StatusCode), buffer);
                             }
                             else {
                                 using (var sr = new StreamReader(inputStream)) {
                                     var buffer = Encoding.ASCII.GetBytes(sr.ReadToEnd());
-                                    response = new HttpResponse(urlConnection.Address.AbsoluteUri, urlConnection.Headers, Convert.ToInt32(serverResponse.StatusCode), buffer);
+                                    response = new HttpResponse(serverResponse.ResponseUri.AbsoluteUri, serverResponse.Headers, Convert.ToInt32(serverResponse.StatusCode), buffer);
                                 }
                             }
                         }
