@@ -29,7 +29,7 @@ namespace BasicRestClient.RestClient {
         }
 
         public HttpRequestHandler(int connectionLimit) : this(new ConsoleRequestLogger(true), connectionLimit) { }
-        protected IRequestLogger Logger { get; }
+        protected IRequestLogger Logger { get; private set; }
 
         public HttpWebRequest OpenConnection(string url) {
             var uri = new Uri(url);

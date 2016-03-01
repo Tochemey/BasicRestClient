@@ -45,7 +45,7 @@ namespace BasicRestClient.RestClient {
         public int Status { private set; get; }
         public string Url { private set; get; }
         public WebHeaderCollection Headers { private set; get; }
-        public byte[] Body { get; }
+        public byte[] Body { get; private set; }
 
         /// <summary>
         ///     Returns the Body as UTF-8 string

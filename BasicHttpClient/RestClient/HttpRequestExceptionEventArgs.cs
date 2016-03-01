@@ -24,6 +24,6 @@ namespace BasicRestClient.RestClient {
         /// <summary>
         ///     HttpRequest Exception
         /// </summary>
-        public HttpRequestException Exception { get; }
+        public HttpRequestException Exception { get; private set; }
     }
 }

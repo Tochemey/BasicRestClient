@@ -26,6 +26,6 @@ namespace BasicRestClient.RestClient {
         /// <summary>
         ///     Http Request
         /// </summary>
-        public HttpRequest Request { get; }
+        public HttpRequest Request { get; private set; }
     }
 }
