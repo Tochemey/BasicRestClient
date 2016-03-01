@@ -23,7 +23,6 @@ namespace BasicRestClient.RestClient {
         /// <param name="parameters">Name-value pairs to be appended to the URL</param>
         public HttpDelete(string path, ParameterMap parameters) : base(path, parameters) {
             HttpMethod = "DELETE";
-            Path = path;
             ContentType = UrlEncoded;
         }
     }

@@ -23,7 +23,6 @@ namespace BasicRestClient.RestClient {
         /// <param name="parameters">Name-value pairs to be sent in request BODY</param>
         public HttpPost(string path, ParameterMap parameters) : base(path, parameters) {
             HttpMethod = "POST";
-            Path = path;
             ContentType = UrlEncoded;
             if (parameters != null) Content = parameters.UrlEncodeBytes();
         }
@@ -41,7 +40,6 @@ namespace BasicRestClient.RestClient {
         /// <param name="data">Content to post</param>
         public HttpPost(string path, ParameterMap parameters, string contentType, byte[] data) : base(path, parameters) {
             HttpMethod = "POST";
-            Path = path;
             ContentType = contentType;
             Content = data;
         }
@@ -57,7 +55,6 @@ namespace BasicRestClient.RestClient {
         /// <param name="data">Content to post</param>
         public HttpPost(string path, string contentType, byte[] data) : base(path) {
             HttpMethod = "POST";
-            Path = path;
             ContentType = contentType;
             Content = data;
         }
