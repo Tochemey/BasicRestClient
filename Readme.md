@@ -38,11 +38,8 @@ Moreover file upload functionalities have been added to make file upload smooth 
 ## Usage
 There are two ways to use it:
 * Copy the few file in the RestClient folder or clone it into your project and with some few namespace refactoring you are good to go.
-* Via Nuget: 
+* Download the DLLs from the release tabs
 
-```c#
- Install-Package BasicRestClient
-```
 
 Example code to post data from a Web Server with a Basic Authorization. This example has been used against the [SMSGH Ltd](http://www.smsgh.com/) HTTP API [developer site](http://developers.smsgh.com/)
 
