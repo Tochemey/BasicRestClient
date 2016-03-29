@@ -18,13 +18,28 @@ using System;
 using System.Net;
 
 namespace BasicRestClient.RestClient {
+    /// <summary>
+    /// 
+    /// </summary>
     public class ConsoleRequestLogger : IRequestLogger {
         private readonly bool _loggingEnabled;
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="logging"></param>
         public ConsoleRequestLogger(bool logging) { _loggingEnabled = logging; }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <returns></returns>
         public bool IsLoggingEnabled() { return _loggingEnabled; }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="mesg"></param>
         public void Log(string mesg) { Console.WriteLine(mesg); }
 
         public void LogRequest(HttpWebRequest urlConnection, object content) {
@@ -43,6 +58,10 @@ namespace BasicRestClient.RestClient {
             Log("Content:\n" + response.GetBodyAsString());
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="headers"></param>
         protected void LogHeaders(WebHeaderCollection headers) {
             if (headers == null) return;
             foreach (var key in headers.AllKeys) {

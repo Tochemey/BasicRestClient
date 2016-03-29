@@ -17,8 +17,19 @@
 using System.Net;
 
 namespace BasicRestClient.RestClient {
+    /// <summary>
+    /// 
+    /// </summary>
     public interface IRequestLogger {
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <returns></returns>
         bool IsLoggingEnabled();
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="mesg"></param>
         void Log(string mesg);
 
         /// <summary>
