@@ -63,7 +63,7 @@ Example code to post data from a Web Server with a Basic Authorization. This exa
                 const string ClientSecret = "rzbycqfx";
                 const string Hostname = "api.smsgh.com";
 
-                const string BaseUrl = "http://"+ Hostname + "/v3";
+                const string BaseUrl = "https://"+ Hostname + "/v3";
 
             static void Main(string[] args)
             {
