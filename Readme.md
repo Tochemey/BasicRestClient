@@ -31,6 +31,9 @@ Moreover file upload functionalities have been added to make file upload smooth 
     - Failure : Fires when the Server responds with a status code of 4XX or 5XX
     - Complete : Fires when the Http Request has gone to the Web Server and awaiting for response.
 * One can also currently upload file on a Web Server synchronously and asynchronously using the *PostFiles* or *PostFilesAsync* methods.
+* One can now verify SSL certificates.
+    - By default SSL errors are ignored
+    - To verify SSL certificate you have to set the SSLCertificate property of the RestClient class after implementing either the DefaultSslPolicy or the AbstractSSLPolicy class
 
 ## **License**
 [Apache License 2.0](http://www.apache.org/licenses/LICENSE-2.0.txt)

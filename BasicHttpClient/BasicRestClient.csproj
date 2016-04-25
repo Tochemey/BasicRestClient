@@ -49,6 +49,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="RestClient\AbstractRestClient.cs" />
+    <Compile Include="RestClient\AbstractSSLPolicy.cs" />
+    <Compile Include="RestClient\DefaultSslPolicy.cs" />
     <Compile Include="RestClient\HttpRequestExceptionEventArgs.cs" />
     <Compile Include="RestClient\HttpResponseEventArgs.cs" />
     <Compile Include="RestClient\RestClient.cs" />

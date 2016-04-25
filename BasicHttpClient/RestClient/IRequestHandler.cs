@@ -19,6 +19,9 @@ using System.Net;
 using System.Threading.Tasks;
 
 namespace BasicRestClient.RestClient {
+    /// <summary>
+    /// Http Request handler
+    /// </summary>
     public interface IRequestHandler {
         /// <summary>
         ///     Opens an HTTP connection.
@@ -37,7 +40,8 @@ namespace BasicRestClient.RestClient {
         /// <param name="accept">Http Response excepted format</param>
         /// <param name="readWriteTimeout">Read and Write Timeout</param>
         /// <param name="connectionTimeout">Connection Timeout</param>
-        void PrepareConnection(HttpWebRequest urlConnection, string method, string contentType, string accept, int readWriteTimeout, int connectionTimeout);
+        /// <param name="certificateFile">Ignore SSL Certificate</param>
+        void PrepareConnection(HttpWebRequest urlConnection, string method, string contentType, string accept, int readWriteTimeout, int connectionTimeout, string certificateFile = null);
 
         /// <summary>
         ///     Writes to an open, prepared connection.
