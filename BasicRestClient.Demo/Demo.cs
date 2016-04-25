@@ -25,7 +25,7 @@ namespace BasicRestClient.Demo {
         private const string ClientId = "ganofzhg";
         private const string ClientSecret = "abyocwua";
         private const string Hostname = "api.smsgh.com";
-        private const string BaseUrl = "http://" + Hostname + "/v3";
+        private const string BaseUrl = "https://" + Hostname + "/v3";
 
         public static void Main(string[] args) {
             // New instance of the Http Client
