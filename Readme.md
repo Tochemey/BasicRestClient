@@ -33,7 +33,8 @@ Moreover file upload functionalities have been added to make file upload smooth 
 * One can also currently upload file on a Web Server synchronously and asynchronously using the *PostFiles* or *PostFilesAsync* methods.
 * One can now verify SSL certificates.
     - By default SSL errors are ignored
-    - To verify SSL certificate you have to set the SSLCertificate property of the RestClient class after implementing either the DefaultSslPolicy or the AbstractSSLPolicy class
+    - To verify SSL certificate you have to set the SSLCertificate property of the RestClient class after implementing the AbstractSSLPolicy class
+    - The AbstractSSLPolicy helps implement the SSL certificate verification mechanism.
 
 ## **License**
 [Apache License 2.0](http://www.apache.org/licenses/LICENSE-2.0.txt)
