@@ -20,6 +20,9 @@ using System.Text;
 using System.Text.RegularExpressions;
 
 namespace BasicRestClient.RestClient {
+    /// <summary>
+    /// String Extension methods
+    /// </summary>
     public static class StringUtil {
         private const string Safe = ":~!@#$%^&*()-_+=/\\,.[]{}|?<>";
         private const string Printable = ": ~`!@#$%^&*()-_+=/\\,.[]{}|?<>\"'";
@@ -122,7 +125,7 @@ namespace BasicRestClient.RestClient {
         ///     information you don't want a user to be able to type just anything in.
         ///     This method does not allow any whitespace characters, newlines, carriage returns.
         ///     Primarily allows [a-z] [A-Z] [0-9] and a few other useful ASCII characters
-        ///     such as ":~!@#$%^*()-_+=/\\,.[]{}|?<>" (but not the quote chars)
+        ///     such as ":~!@#$%^*()-_+=/\\,.[]{}|? and so on" (but not the quote chars)
         /// </summary>
         /// <param name="string0">It is used to identify the string to check</param>
         /// <returns>bool. true when it is safe or false</returns>
@@ -278,6 +281,11 @@ namespace BasicRestClient.RestClient {
             return new Regex(standardFormat).IsMatch(string0);
         }
 
+        /// <summary>
+        /// Check that a value is a valid phone number.
+        /// </summary>
+        /// <param name="string0"></param>
+        /// <returns></returns>
         public static bool IsPhoneNumber(this string string0) {
             const string standardFormat = "^\\+(?:[0-9] ?){6,14}[0-9]$";
             return new Regex(standardFormat).IsMatch(string0);
