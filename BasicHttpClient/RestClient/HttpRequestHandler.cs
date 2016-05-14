@@ -51,6 +51,30 @@ namespace BasicRestClient.RestClient {
         protected IRequestLogger Logger { get; private set; }
 
         /// <summary>
+        ///     Raises whenever an error occurs
+        /// </summary>
+        /// <param name="error"></param>
+        /// <returns></returns>
+        public bool OnError(HttpRequestException error)
+        {
+            var response = error.HttpResponse;
+            if (Logger.IsLoggingEnabled())
+            {
+                Logger.Log("BasicRequestHandler.onError got");
+                Logger.Log(error.Message);
+            }
+
+            if (response != null)
+            {
+                var status = response.Status;
+                if (status > 0)
+                    return true;
+                // Perhaps a 404, 501, or something that will be fixed later
+            }
+            return false;
+        }
+
+        /// <summary>
         ///     Attempt to create the connection to the remote server
         /// </summary>
         /// <param name="url">Remote server URL</param>
@@ -61,6 +85,88 @@ namespace BasicRestClient.RestClient {
             if (urlConnection == null)
                 throw new WebException("Cannot Initialize the Http request");
             return urlConnection;
+        }
+
+        /// <summary>
+        ///     Makes ready the input stream to read data
+        /// </summary>
+        /// <param name="urlConnection"></param>
+        /// <returns></returns>
+        public Stream OpenInput(HttpWebRequest urlConnection)
+        {
+            return urlConnection.GetResponse()
+                .GetResponseStream();
+        }
+
+        /// <summary>
+        ///     Does the same thing like <see cref="OpenInput" /> but asynchronously
+        /// </summary>
+        /// <param name="requestState"></param>
+        /// <returns></returns>
+        public async Task<HttpWebResponseAsyncState> OpenInputAsync(
+            HttpWebRequestAsyncState requestState)
+        {
+            if (requestState == null) return null;
+            var httpWebResponseAsyncState = new HttpWebResponseAsyncState();
+
+            // Let us get the requestState properties
+            var httpWebRequestAsyncState2 = requestState;
+
+            // Let us the httpWebResponseAsyncState properties
+            httpWebResponseAsyncState.HttpWebRequest =
+                httpWebRequestAsyncState2.HttpWebRequest;
+            var hwr2 = httpWebRequestAsyncState2.HttpWebRequest;
+            try
+            {
+                httpWebResponseAsyncState.WebResponse =
+                    await
+                        Task.Factory.FromAsync<WebResponse>(hwr2.BeginGetResponse,
+                            hwr2.EndGetResponse,
+                            httpWebRequestAsyncState2,
+                            TaskCreationOptions.None);
+            }
+            catch (Exception exception)
+            {
+                // Here we could not get any response from the server due to the exception
+                httpWebResponseAsyncState.WebResponse = null;
+                httpWebResponseAsyncState.Exception = exception;
+            }
+            return httpWebResponseAsyncState;
+        }
+
+        /// <summary>
+        ///     Makes ready the output stream to write data
+        /// </summary>
+        /// <param name="urlConnection"></param>
+        /// <returns></returns>
+        public Stream OpenOutput(HttpWebRequest urlConnection)
+        {
+            return urlConnection.GetRequestStream();
+        }
+
+        /// <summary>
+        ///     Same as <see cref="OpenInput" />. However it is done asynchronously
+        /// </summary>
+        /// <param name="urlConnection"></param>
+        /// <returns></returns>
+        public async Task<Stream> OpenOutputAsync(HttpWebRequest urlConnection)
+        {
+            var asyncState = new HttpWebRequestAsyncState
+            {
+                HttpWebRequest = urlConnection
+            };
+            try
+            {
+                return
+                    await
+                        Task.Factory.FromAsync<Stream>(
+                            urlConnection.BeginGetRequestStream,
+                            urlConnection.EndGetRequestStream,
+                            asyncState,
+                            TaskCreationOptions.None);
+            }
+            catch { }
+            return null;
         }
 
         /// <summary>
@@ -94,7 +200,9 @@ namespace BasicRestClient.RestClient {
                 ServicePointManager.ServerCertificateValidationCallback = (sender,
                     certificate,
                     chain,
-                    errors) => errors == SslPolicyErrors.None;
+                    errors) => errors == SslPolicyErrors.None || errors == SslPolicyErrors.RemoteCertificateChainErrors 
+                    || errors == SslPolicyErrors.RemoteCertificateNameMismatch ||
+                    errors == SslPolicyErrors.RemoteCertificateNotAvailable;
             }
             else {
                 var certificate = new DefaultSslPolicy(certificateFile).X509Certificate;
@@ -126,69 +234,6 @@ namespace BasicRestClient.RestClient {
             if (content != null && content.Length != 0)
                 using (outputStream) outputStream.Write(content, 0, content.Length);
         }
-
-        /// <summary>
-        ///     Makes ready the output stream to write data
-        /// </summary>
-        /// <param name="urlConnection"></param>
-        /// <returns></returns>
-        public Stream OpenOutput(HttpWebRequest urlConnection) {
-            return urlConnection.GetRequestStream();
-        }
-
-        /// <summary>
-        ///     Makes ready the input stream to read data
-        /// </summary>
-        /// <param name="urlConnection"></param>
-        /// <returns></returns>
-        public Stream OpenInput(HttpWebRequest urlConnection) {
-            return urlConnection.GetResponse()
-                .GetResponseStream();
-        }
-
-        /// <summary>
-        ///     Raises whenever an error occurs
-        /// </summary>
-        /// <param name="error"></param>
-        /// <returns></returns>
-        public bool OnError(HttpRequestException error) {
-            var response = error.HttpResponse;
-            if (Logger.IsLoggingEnabled()) {
-                Logger.Log("BasicRequestHandler.onError got");
-                Logger.Log(error.Message);
-            }
-
-            if (response != null) {
-                var status = response.Status;
-                if (status > 0)
-                    return true;
-                        // Perhaps a 404, 501, or something that will be fixed later
-            }
-            return false;
-        }
-
-        /// <summary>
-        ///     Same as <see cref="OpenInput" />. However it is done asynchronously
-        /// </summary>
-        /// <param name="urlConnection"></param>
-        /// <returns></returns>
-        public async Task<Stream> OpenOutputAsync(HttpWebRequest urlConnection) {
-            var asyncState = new HttpWebRequestAsyncState {
-                HttpWebRequest = urlConnection
-            };
-            try {
-                return
-                    await
-                        Task.Factory.FromAsync<Stream>(
-                            urlConnection.BeginGetRequestStream,
-                            urlConnection.EndGetRequestStream,
-                            asyncState,
-                            TaskCreationOptions.None);
-            }
-            catch {}
-            return null;
-        }
-
         /// <summary>
         ///     Does the same thing like <see cref="WriteStream" /> but asynchronously.
         /// </summary>
@@ -216,39 +261,6 @@ namespace BasicRestClient.RestClient {
                 requestAsyncState.Exception = exception;
             }
             return requestAsyncState;
-        }
-
-        /// <summary>
-        ///     Does the same thing like <see cref="OpenInput" /> but asynchronously
-        /// </summary>
-        /// <param name="requestState"></param>
-        /// <returns></returns>
-        public async Task<HttpWebResponseAsyncState> OpenInputAsync(
-            HttpWebRequestAsyncState requestState) {
-            if (requestState == null) return null;
-            var httpWebResponseAsyncState = new HttpWebResponseAsyncState();
-
-            // Let us get the requestState properties
-            var httpWebRequestAsyncState2 = requestState;
-
-            // Let us the httpWebResponseAsyncState properties
-            httpWebResponseAsyncState.HttpWebRequest =
-                httpWebRequestAsyncState2.HttpWebRequest;
-            var hwr2 = httpWebRequestAsyncState2.HttpWebRequest;
-            try {
-                httpWebResponseAsyncState.WebResponse =
-                    await
-                        Task.Factory.FromAsync<WebResponse>(hwr2.BeginGetResponse,
-                            hwr2.EndGetResponse,
-                            httpWebRequestAsyncState2,
-                            TaskCreationOptions.None);
-            }
-            catch (Exception exception) {
-                // Here we could not get any response from the server due to the exception
-                httpWebResponseAsyncState.WebResponse = null;
-                httpWebResponseAsyncState.Exception = exception;
-            }
-            return httpWebResponseAsyncState;
         }
     }
 }
