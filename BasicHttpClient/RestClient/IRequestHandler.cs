@@ -34,14 +34,14 @@ namespace BasicRestClient.RestClient {
         ///     Prepares a previously opened connection. It is called before writing to outputstream.
         ///     So you can set or modify the connection properties
         /// </summary>
-        /// <param name="urlConnection">an open WebRequest url connection</param>
+        /// <param name="httpWebRequest">an open WebRequest url connection</param>
         /// <param name="method">Http Method</param>
         /// <param name="contentType">MIME Type</param>
         /// <param name="accept">Http Response excepted format</param>
         /// <param name="readWriteTimeout">Read and Write Timeout</param>
         /// <param name="connectionTimeout">Connection Timeout</param>
         /// <param name="certificateFile">Ignore SSL Certificate</param>
-        void PrepareConnection(HttpWebRequest urlConnection, string method, string contentType, string accept, int readWriteTimeout, int connectionTimeout, string certificateFile = null);
+        void PrepareConnection(HttpWebRequest httpWebRequest, string method, string contentType, string accept, int readWriteTimeout, int connectionTimeout, string certificateFile = null);
 
         /// <summary>
         ///     Writes to an open, prepared connection.

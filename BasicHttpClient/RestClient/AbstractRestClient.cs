@@ -137,29 +137,29 @@ namespace BasicRestClient.RestClient {
             try {
                 Connected = false;
                 // Let us open the connection, prepare it for writing and reading data.
-                var urlConnection = OpenConnection(path);
-                PrepareConnection(urlConnection,
+                var httpWebRequest = OpenConnection(path);
+                PrepareConnection(httpWebRequest,
                     httpMethod,
                     contentType,
                     accept,
                     SSLCertificate);
-                AppendRequestHeaders(urlConnection);
+                AppendRequestHeaders(httpWebRequest);
                 Connected = true;
                 if (RequestLogger.IsLoggingEnabled())
-                    RequestLogger.LogRequest(urlConnection,
+                    RequestLogger.LogRequest(httpWebRequest,
                         content != null
                             ? WebUtility.UrlDecode(Encoding.UTF8.GetString(content))
                             : string.Empty);
 
                 // Write the request
                 if (content != null)
-                    WriteOutptStream(urlConnection, content);
+                    WriteOutptStream(httpWebRequest, content);
 
                 //Let us read the response
-                using (var serverResponse = urlConnection.GetResponse() as HttpWebResponse
+                using (var serverResponse = httpWebRequest.GetResponse() as HttpWebResponse
                     ) {
                     if (serverResponse != null) {
-                        using (var inputStream = RequestHandler.OpenInput(urlConnection)) {
+                        using (var inputStream = RequestHandler.OpenInput(httpWebRequest)) {
                             if (inputStream == null) return null;
                             if (serverResponse.ContentLength > 0) {
                                 var buffer = new byte[serverResponse.ContentLength];
@@ -273,16 +273,16 @@ namespace BasicRestClient.RestClient {
             try {
                 Connected = false;
                 // Let us open the connection, prepare it for writing and reading data.
-                var urlConnection = OpenConnection(path);
-                PrepareConnection(urlConnection,
+                var httpWebRequest = OpenConnection(path);
+                PrepareConnection(httpWebRequest,
                     httpMethod,
                     contentType,
                     accept,
                     SSLCertificate);
-                AppendRequestHeaders(urlConnection);
+                AppendRequestHeaders(httpWebRequest);
                 Connected = true;
                 if (RequestLogger.IsLoggingEnabled())
-                    RequestLogger.LogRequest(urlConnection,
+                    RequestLogger.LogRequest(httpWebRequest,
                         content != null
                             ? WebUtility.UrlDecode(Encoding.UTF8.GetString(content))
                             : string.Empty);
@@ -291,7 +291,7 @@ namespace BasicRestClient.RestClient {
                 // Write the request
                 if (content != null) {
                     requestAsyncState =
-                        await WriteOutptStreamAsync(urlConnection, content);
+                        await WriteOutptStreamAsync(httpWebRequest, content);
                     if (requestAsyncState.Exception != null) {
                         // at this stage we cannot continue because writing the request result in an exception
                         // so we throw it to catch it appropriately
@@ -300,7 +300,7 @@ namespace BasicRestClient.RestClient {
                 }
                 else {
                     requestAsyncState = new HttpWebRequestAsyncState {
-                        HttpWebRequest = urlConnection
+                        HttpWebRequest = httpWebRequest
                     };
                 }
 
@@ -331,7 +331,7 @@ namespace BasicRestClient.RestClient {
                         var ex = responseAsyncState.Exception as WebException;
                         if (ex != null) {
                             response = ex.Status == WebExceptionStatus.Timeout
-                                ? new HttpResponse(urlConnection.RequestUri.AbsoluteUri,
+                                ? new HttpResponse(httpWebRequest.RequestUri.AbsoluteUri,
                                     null,
                                     (int) ex.Status,
                                     null)
@@ -430,14 +430,14 @@ namespace BasicRestClient.RestClient {
             try {
                 Connected = false;
                 // Let us open the connection, prepare it for writing and reading data.
-                var urlConnection = OpenConnection(path);
-                urlConnection.Accept = Accept;
-                urlConnection.KeepAlive = true;
-                urlConnection.ReadWriteTimeout = ReadWriteTimeout*1000;
-                urlConnection.Timeout = ConnectionTimeout*1000;
-                urlConnection.Method = "POST";
-                urlConnection.Headers.Add("Accept-Charset", "UTF-8");
-                AppendRequestHeaders(urlConnection);
+                var httpWebRequest = OpenConnection(path);
+                httpWebRequest.Accept = Accept;
+                httpWebRequest.KeepAlive = true;
+                httpWebRequest.ReadWriteTimeout = ReadWriteTimeout*1000;
+                httpWebRequest.Timeout = ConnectionTimeout*1000;
+                httpWebRequest.Method = "POST";
+                httpWebRequest.Headers.Add("Accept-Charset", "UTF-8");
+                AppendRequestHeaders(httpWebRequest);
                 Connected = true;
 
                 // Build form data to send to the server.
@@ -445,7 +445,7 @@ namespace BasicRestClient.RestClient {
                 var form = parameters.ToNameValueCollection();
 
                 // upload the files
-                var resp = HttpFileUploader.Upload(urlConnection, httpFiles, form);
+                var resp = HttpFileUploader.Upload(httpWebRequest, httpFiles, form);
                 using (resp) {
                     if (resp == null) return null;
                     using (var inputStream = resp.GetResponseStream()) {
@@ -470,8 +470,8 @@ namespace BasicRestClient.RestClient {
                             using (var sr = new StreamReader(inputStream)) {
                                 var buffer = Encoding.ASCII.GetBytes(sr.ReadToEnd());
                                 response =
-                                    new HttpResponse(urlConnection.Address.AbsoluteUri,
-                                        urlConnection.Headers,
+                                    new HttpResponse(httpWebRequest.Address.AbsoluteUri,
+                                        httpWebRequest.Headers,
                                         Convert.ToInt32(resp.StatusCode),
                                         buffer);
                             }
@@ -535,14 +535,14 @@ namespace BasicRestClient.RestClient {
             try {
                 Connected = false;
                 // Let us open the connection, prepare it for writing and reading data.
-                var urlConnection = OpenConnection(path);
-                urlConnection.Accept = Accept;
-                urlConnection.KeepAlive = true;
-                urlConnection.ReadWriteTimeout = ReadWriteTimeout*1000;
-                urlConnection.Timeout = ConnectionTimeout*1000;
-                urlConnection.Method = "POST";
-                urlConnection.Headers.Add("Accept-Charset", "UTF-8");
-                AppendRequestHeaders(urlConnection);
+                var httpWebRequest = OpenConnection(path);
+                httpWebRequest.Accept = Accept;
+                httpWebRequest.KeepAlive = true;
+                httpWebRequest.ReadWriteTimeout = ReadWriteTimeout*1000;
+                httpWebRequest.Timeout = ConnectionTimeout*1000;
+                httpWebRequest.Method = "POST";
+                httpWebRequest.Headers.Add("Accept-Charset", "UTF-8");
+                AppendRequestHeaders(httpWebRequest);
                 Connected = true;
 
                 // Build form data to send to the server.
@@ -551,7 +551,7 @@ namespace BasicRestClient.RestClient {
 
                 // upload the files
                 var resp =
-                    await HttpFileUploader.UploadAsync(urlConnection, httpFiles, form);
+                    await HttpFileUploader.UploadAsync(httpWebRequest, httpFiles, form);
                 using (resp) {
                     if (resp == null) return null;
                     using (var inputStream = resp.GetResponseStream()) {
@@ -568,8 +568,8 @@ namespace BasicRestClient.RestClient {
                             }
 
                             response = new HttpResponse(
-                                urlConnection.Address.AbsoluteUri,
-                                urlConnection.Headers,
+                                httpWebRequest.Address.AbsoluteUri,
+                                httpWebRequest.Headers,
                                 Convert.ToInt32(resp.StatusCode),
                                 buffer);
                         }
@@ -699,17 +699,17 @@ namespace BasicRestClient.RestClient {
         /// <summary>
         ///     Prepare the HttpWebRequest to fire and receives data
         /// </summary>
-        /// <param name="urlConnection">HttpWebrequest instance</param>
+        /// <param name="httpWebRequest">HttpWebrequest instance</param>
         /// <param name="method">Http Method</param>
         /// <param name="contentType">The ContentType. It stands for the request mime type to send</param>
         /// <param name="accept">The Accept Header. It stands for the response mime type expected</param>
         /// <param name="certificateFile">The Certificate file</param>
-        protected void PrepareConnection(HttpWebRequest urlConnection,
+        protected void PrepareConnection(HttpWebRequest httpWebRequest,
             string method,
             string contentType,
             string accept,
             string certificateFile) {
-            RequestHandler.PrepareConnection(urlConnection,
+            RequestHandler.PrepareConnection(httpWebRequest,
                 method,
                 contentType,
                 accept,
@@ -721,10 +721,10 @@ namespace BasicRestClient.RestClient {
         /// <summary>
         ///     Append all headers added.
         /// </summary>
-        /// <param name="urlConnection">HttpWebrequest instance</param>
-        private void AppendRequestHeaders(HttpWebRequest urlConnection) {
+        /// <param name="httpWebRequest">HttpWebrequest instance</param>
+        private void AppendRequestHeaders(HttpWebRequest httpWebRequest) {
             foreach (var requestHeader in RequestHeaders)
-                urlConnection.Headers.Add(requestHeader.Key, requestHeader.Value);
+                httpWebRequest.Headers.Add(requestHeader.Key, requestHeader.Value);
         }
 
         /// <summary>
@@ -786,13 +786,13 @@ namespace BasicRestClient.RestClient {
         /// <summary>
         ///     Writes the request to the server. Delegates I/O to the RequestHandler
         /// </summary>
-        /// <param name="urlConnection">HttpWebRequest instance</param>
+        /// <param name="httpWebRequest">HttpWebRequest instance</param>
         /// <param name="content">content to be written</param>
         /// <returns>HTTP status code</returns>
-        protected void WriteOutptStream(HttpWebRequest urlConnection,
+        protected void WriteOutptStream(HttpWebRequest httpWebRequest,
             byte[] content) {
             // Open the output stream to write onto it
-            var outputStream = RequestHandler.OpenOutput(urlConnection);
+            var outputStream = RequestHandler.OpenOutput(httpWebRequest);
             if (outputStream != null) {
                 RequestHandler.WriteStream(outputStream, content);
                 outputStream.Close();
@@ -802,18 +802,18 @@ namespace BasicRestClient.RestClient {
         /// <summary>
         ///     Writes the request to the server asynchronously. Delegates I/O to the RequestHandler
         /// </summary>
-        /// <param name="urlConnection">HttpWebRequest instance</param>
+        /// <param name="httpWebRequest">HttpWebRequest instance</param>
         /// <param name="content">content to be written</param>
         /// <returns>HTTP status code</returns>
         protected async Task<HttpWebRequestAsyncState> WriteOutptStreamAsync(
-            HttpWebRequest urlConnection,
+            HttpWebRequest httpWebRequest,
             byte[] content) {
             // Open the output stream to write onto it
-            var outputStream = await RequestHandler.OpenOutputAsync(urlConnection);
+            var outputStream = await RequestHandler.OpenOutputAsync(httpWebRequest);
             if (outputStream == null) return null;
             return
                 await
-                    RequestHandler.WriteStreamAsync(urlConnection, outputStream, content);
+                    RequestHandler.WriteStreamAsync(httpWebRequest, outputStream, content);
         }
 
         #endregion
@@ -1100,7 +1100,7 @@ namespace BasicRestClient.RestClient {
         }
 
         /// <summary>
-        ///     Use to set the HTTP Payload
+        ///     Use to retrieve the HTTP Payload
         /// </summary>
         /// <returns></returns>
         public ParameterMap Payload() {

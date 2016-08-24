@@ -20,10 +20,12 @@ using System.Net;
 using System.Net.Security;
 using System.Threading.Tasks;
 
-namespace BasicRestClient.RestClient {
+namespace BasicRestClient.RestClient
+{
     /// <summary>
     /// </summary>
-    public class HttpRequestHandler : IRequestHandler {
+    public class HttpRequestHandler : IRequestHandler
+    {
         /// <summary>
         ///     Connection Limit
         /// </summary>
@@ -34,7 +36,8 @@ namespace BasicRestClient.RestClient {
         /// <param name="logger"></param>
         /// <param name="connectionLimit"></param>
         public HttpRequestHandler(IRequestLogger logger,
-            int connectionLimit) {
+            int connectionLimit)
+        {
             Logger = logger;
             ConnectionLimit = connectionLimit;
         }
@@ -43,7 +46,8 @@ namespace BasicRestClient.RestClient {
         /// </summary>
         /// <param name="connectionLimit"></param>
         public HttpRequestHandler(int connectionLimit)
-            : this(new ConsoleRequestLogger(true), connectionLimit) {}
+            : this(new ConsoleRequestLogger(true), connectionLimit)
+        {}
 
         /// <summary>
         ///     Request Logger
@@ -79,29 +83,30 @@ namespace BasicRestClient.RestClient {
         /// </summary>
         /// <param name="url">Remote server URL</param>
         /// <returns></returns>
-        public HttpWebRequest OpenConnection(string url) {
+        public HttpWebRequest OpenConnection(string url)
+        {
             var uri = new Uri(url);
-            var urlConnection = WebRequest.CreateHttp(uri);
-            if (urlConnection == null)
+            var httpWebRequest = WebRequest.CreateHttp(uri);
+            if (httpWebRequest == null)
                 throw new WebException("Cannot Initialize the Http request");
-            return urlConnection;
+            return httpWebRequest;
         }
 
         /// <summary>
         ///     Makes ready the input stream to read data
         /// </summary>
-        /// <param name="urlConnection"></param>
+        /// <param name="httpWebRequest"></param>
         /// <returns></returns>
-        public Stream OpenInput(HttpWebRequest urlConnection)
+        public Stream OpenInput(HttpWebRequest httpWebRequest)
         {
-            return urlConnection.GetResponse()
+            return httpWebRequest.GetResponse()
                 .GetResponseStream();
         }
 
         /// <summary>
         ///     Does the same thing like <see cref="OpenInput" /> but asynchronously
         /// </summary>
-        /// <param name="requestState"></param>
+        /// <param name="requestState">the asynchronous request state</param>
         /// <returns></returns>
         public async Task<HttpWebResponseAsyncState> OpenInputAsync(
             HttpWebRequestAsyncState requestState)
@@ -137,83 +142,92 @@ namespace BasicRestClient.RestClient {
         /// <summary>
         ///     Makes ready the output stream to write data
         /// </summary>
-        /// <param name="urlConnection"></param>
+        /// <param name="httpWebRequest">the http web request</param>
         /// <returns></returns>
-        public Stream OpenOutput(HttpWebRequest urlConnection)
+        public Stream OpenOutput(HttpWebRequest httpWebRequest)
         {
-            return urlConnection.GetRequestStream();
+            return httpWebRequest.GetRequestStream();
         }
 
         /// <summary>
         ///     Same as <see cref="OpenInput" />. However it is done asynchronously
         /// </summary>
-        /// <param name="urlConnection"></param>
+        /// <param name="httpWebRequest">the http web request</param>
         /// <returns></returns>
-        public async Task<Stream> OpenOutputAsync(HttpWebRequest urlConnection)
+        public async Task<Stream> OpenOutputAsync(HttpWebRequest httpWebRequest)
         {
             var asyncState = new HttpWebRequestAsyncState
             {
-                HttpWebRequest = urlConnection
+                HttpWebRequest = httpWebRequest
             };
             try
             {
                 return
                     await
                         Task.Factory.FromAsync<Stream>(
-                            urlConnection.BeginGetRequestStream,
-                            urlConnection.EndGetRequestStream,
+                            httpWebRequest.BeginGetRequestStream,
+                            httpWebRequest.EndGetRequestStream,
                             asyncState,
                             TaskCreationOptions.None);
             }
-            catch { }
+            catch {}
             return null;
         }
 
         /// <summary>
         ///     Prepare the connection to handle http requests by setting some default Http headers
         /// </summary>
-        /// <param name="urlConnection"></param>
-        /// <param name="method"></param>
-        /// <param name="contentType"></param>
-        /// <param name="accept"></param>
-        /// <param name="readWriteTimeout"></param>
-        /// <param name="connectionTimeout"></param>
-        /// <param name="certificateFile"></param>
-        public void PrepareConnection(HttpWebRequest urlConnection,
+        /// <param name="httpWebRequest">the http web request object</param>
+        /// <param name="method">the http verb (e.g POST)</param>
+        /// <param name="contentType">the content type
+        ///     <example>application/json</example>
+        /// </param>
+        /// <param name="accept">the content type of the expected response</param>
+        /// <param name="readWriteTimeout">the read timeout</param>
+        /// <param name="connectionTimeout">the connection timeout</param>
+        /// <param name="certificateFile">the SSL certificate file.</param>
+        public void PrepareConnection(HttpWebRequest httpWebRequest,
             string method,
             string contentType,
             string accept,
             int readWriteTimeout,
             int connectionTimeout,
-            string certificateFile = null) {
-            if (!contentType.IsEmpty()) urlConnection.ContentType = contentType.Trim();
-            if (!accept.IsEmpty()) urlConnection.Accept = accept.Trim();
-            urlConnection.ServicePoint.ConnectionLimit = ConnectionLimit;
-            urlConnection.KeepAlive = true;
-            urlConnection.ReadWriteTimeout = readWriteTimeout*1000;
-            urlConnection.Timeout = connectionTimeout*1000;
-            urlConnection.Method = method;
-            urlConnection.Headers.Add("Accept-Charset", "UTF-8");
+            string certificateFile = null)
+        {
+            if (!contentType.IsEmpty()) httpWebRequest.ContentType = contentType.Trim();
+            if (!accept.IsEmpty()) httpWebRequest.Accept = accept.Trim();
+            httpWebRequest.ServicePoint.ConnectionLimit = ConnectionLimit;
+            httpWebRequest.KeepAlive = true;
+            httpWebRequest.ReadWriteTimeout = readWriteTimeout*1000;
+            httpWebRequest.Timeout = connectionTimeout*1000;
+            httpWebRequest.Method = method;
+            httpWebRequest.Headers.Add("Accept-Charset", "UTF-8");
 
             // Here we ignore SSL errors
-            if (string.IsNullOrEmpty(certificateFile)) {
+            if (string.IsNullOrEmpty(certificateFile))
+            {
                 ServicePointManager.ServerCertificateValidationCallback = (sender,
                     certificate,
                     chain,
-                    errors) => errors == SslPolicyErrors.None || errors == SslPolicyErrors.RemoteCertificateChainErrors 
+                    errors) =>
+                    errors == SslPolicyErrors.None ||
+                    errors == SslPolicyErrors.RemoteCertificateChainErrors
                     || errors == SslPolicyErrors.RemoteCertificateNameMismatch ||
                     errors == SslPolicyErrors.RemoteCertificateNotAvailable;
             }
-            else {
+            else
+            {
                 var certificate = new DefaultSslPolicy(certificateFile).X509Certificate;
-                if (certificate == null) {
+                if (certificate == null)
+                {
                     // Here we have invalid certificate because the user has state that we should check the certificate
                     ServicePointManager.ServerCertificateValidationCallback = (sender,
                         x509Certificate,
                         chain,
                         errors) => false;
                 }
-                else {
+                else
+                {
                     ServicePointManager.ServerCertificateValidationCallback = (sender,
                         x509Certificate,
                         chain,
@@ -227,30 +241,35 @@ namespace BasicRestClient.RestClient {
         /// <summary>
         ///     Write data to the remote Server
         /// </summary>
-        /// <param name="outputStream"></param>
-        /// <param name="content"></param>
+        /// <param name="outputStream">the output stream</param>
+        /// <param name="content">the bytes to write to the stream</param>
         public void WriteStream(Stream outputStream,
-            byte[] content) {
+            byte[] content)
+        {
             if (content != null && content.Length != 0)
                 using (outputStream) outputStream.Write(content, 0, content.Length);
         }
+
         /// <summary>
         ///     Does the same thing like <see cref="WriteStream" /> but asynchronously.
         /// </summary>
-        /// <param name="urlConnection"></param>
-        /// <param name="outputStream"></param>
-        /// <param name="content"></param>
+        /// <param name="httpWebRequest">the http web request</param>
+        /// <param name="outputStream">the output stream</param>
+        /// <param name="content">the bytes to write to the stream</param>
         /// <returns></returns>
         public async Task<HttpWebRequestAsyncState> WriteStreamAsync(
-            HttpWebRequest urlConnection,
+            HttpWebRequest httpWebRequest,
             Stream outputStream,
-            byte[] content) {
+            byte[] content)
+        {
             // Let us get the state
-            var requestAsyncState = new HttpWebRequestAsyncState {
-                HttpWebRequest = urlConnection,
+            var requestAsyncState = new HttpWebRequestAsyncState
+            {
+                HttpWebRequest = httpWebRequest,
                 RequestBytes = content
             };
-            try {
+            try
+            {
                 using (var requestStream = outputStream)
                     await
                         requestStream.WriteAsync(requestAsyncState.RequestBytes,
