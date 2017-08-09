@@ -15,6 +15,9 @@
 */
 
 namespace BasicRestClient.RestClient {
+    /// <summary>
+    /// 
+    /// </summary>
     public class HttpGet : HttpRequest {
         /// <summary>
         ///     Constructs an HTTP GET request
@@ -26,23 +29,47 @@ namespace BasicRestClient.RestClient {
             ContentType = UrlEncoded;
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="path"></param>
+        /// <param name="contentype"></param>
         public HttpGet(string path, string contentype) : base(path) {
             HttpMethod = "GET";
             ContentType = contentype;
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="path"></param>
+        /// <param name="contentype"></param>
+        /// <param name="accept"></param>
         public HttpGet(string path, string contentype, string accept) : base(path) {
             HttpMethod = "GET";
             ContentType = contentype;
             Accept = accept;
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="path"></param>
+        /// <param name="contentype"></param>
+        /// <param name="accept"></param>
+        /// <param name="parameters"></param>
         public HttpGet(string path, string contentype, string accept, ParameterMap parameters) : base(path, parameters) {
             HttpMethod = "GET";
             ContentType = contentype;
             Accept = accept;
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="path"></param>
+        /// <param name="contentype"></param>
+        /// <param name="parameters"></param>
         public HttpGet(string path, string contentype, ParameterMap parameters) : base(path, parameters) {
             HttpMethod = "GET";
             ContentType = contentype;

@@ -15,6 +15,9 @@
 */
 
 namespace BasicRestClient.RestClient {
+    /// <summary>
+    /// 
+    /// </summary>
     public class HttpPost : HttpRequest {
         /// <summary>
         ///     Constructs an HTTP POST request with name-value pairs to be sent in the request BODY.
@@ -27,25 +30,6 @@ namespace BasicRestClient.RestClient {
             ContentType = UrlEncoded;
             Accept = accept;
             if (parameters != null) Content = parameters.UrlEncodeBytes();
-        }
-
-        /// <summary>
-        ///     Constructs an HTTP POST request with arbitrary content. If parameters is non-null, the name-value pairs will be
-        ///     appended to the QUERY STRING while
-        ///     the content is sent in the request BODY. This is not a common use case and is therefore not represented in the
-        ///     post() methods in
-        ///     AbstractClient , but is nevertheless possible using this constructor
-        /// </summary>
-        /// <param name="path">Partial URL</param>
-        /// <param name="parameters">Optional name-value pairs to be appended to QUERY STRING</param>
-        /// <param name="contentType">Content Type</param>
-        /// <param name="accept">Accept header</param>
-        /// <param name="data">Content to post</param>
-        public HttpPost(string path, ParameterMap parameters, string contentType, string accept, byte[] data) : base(path, parameters) {
-            HttpMethod = "POST";
-            ContentType = contentType;
-            Content = data;
-            Accept = accept;
         }
 
         /// <summary>

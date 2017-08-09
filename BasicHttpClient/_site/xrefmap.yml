@@ -547,13 +547,6 @@ references:
   href: api/BasicRestClient.RestClient.HttpPost.html#BasicRestClient_RestClient_HttpPost
   commentId: T:BasicRestClient.RestClient.HttpPost
   fullName: BasicRestClient.RestClient.HttpPost
-- uid: BasicRestClient.RestClient.HttpPost.#ctor(System.String,BasicRestClient.RestClient.ParameterMap,System.String,System.String,System.Byte[])
-  name: HttpPost(String, ParameterMap, String, String, Byte[])
-  href: api/BasicRestClient.RestClient.HttpPost.html#BasicRestClient_RestClient_HttpPost__ctor_System_String_BasicRestClient_RestClient_ParameterMap_System_String_System_String_System_Byte___
-  commentId: M:BasicRestClient.RestClient.HttpPost.#ctor(System.String,BasicRestClient.RestClient.ParameterMap,System.String,System.String,System.Byte[])
-  name.vb: HttpPost(String, ParameterMap, String, String, Byte())
-  fullName: BasicRestClient.RestClient.HttpPost.HttpPost(System.String, BasicRestClient.RestClient.ParameterMap, System.String, System.String, System.Byte[])
-  fullName.vb: BasicRestClient.RestClient.HttpPost.HttpPost(System.String, BasicRestClient.RestClient.ParameterMap, System.String, System.String, System.Byte())
 - uid: BasicRestClient.RestClient.HttpPost.#ctor(System.String,System.String,BasicRestClient.RestClient.ParameterMap)
   name: HttpPost(String, String, ParameterMap)
   href: api/BasicRestClient.RestClient.HttpPost.html#BasicRestClient_RestClient_HttpPost__ctor_System_String_System_String_BasicRestClient_RestClient_ParameterMap_

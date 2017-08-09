@@ -11,16 +11,17 @@ using System.Threading.Tasks;
 
 #endregion
 
-namespace BasicRestClient.RestClient {
+namespace BasicRestClient.RestClient
+{
     /// <summary>
     ///     Abstract class.
     /// </summary>
-    public abstract class AbstractRestClient {
+    public abstract class AbstractRestClient
+    {
         /// <summary>
         ///     Default URL encoded
         /// </summary>
-        protected static string UrlEncoded =
-            "application/x-www-form-urlencoded;charset=UTF-8";
+        protected static string UrlEncoded = "application/x-www-form-urlencoded;charset=UTF-8";
 
         /// <summary>
         ///     Default multipart. This is used internally by the Rest Client in case none is provided.
@@ -33,14 +34,14 @@ namespace BasicRestClient.RestClient {
         protected static string Accept = "application/xml";
 
         /// <summary>
+        ///     Timer that helps us know how long an http request has lasted
+        /// </summary>
+        private readonly Stopwatch _stopwatch;
+
+        /// <summary>
         ///     States whether the Rest Client is connected or not.
         /// </summary>
         protected bool Connected;
-
-        /// <summary>
-        /// Timer that helps us know how long an http request has lasted
-        /// </summary>
-        private Stopwatch _stopwatch;
 
         /// <summary>
         /// </summary>
@@ -49,7 +50,8 @@ namespace BasicRestClient.RestClient {
         /// <param name="requestLogger"></param>
         protected AbstractRestClient(string baseUrl,
             IRequestHandler requestHandler,
-            IRequestLogger requestLogger) {
+            IRequestLogger requestLogger)
+        {
             RequestLogger = requestLogger;
             RequestHandler = requestHandler;
             BaseUrl = baseUrl;
@@ -65,7 +67,9 @@ namespace BasicRestClient.RestClient {
         ///     Constructs a client with empty baseUrl. Prevent sub-classes from calling
         ///     this as it doesn't result in an instance of the subclass
         /// </summary>
-        protected AbstractRestClient(int connectionLimit) : this("", connectionLimit) {}
+        protected AbstractRestClient(int connectionLimit) : this("",
+            connectionLimit)
+        { }
 
         /// <summary>
         ///     Constructs a new client with base URL that will be appended in the request methods.
@@ -73,7 +77,9 @@ namespace BasicRestClient.RestClient {
         /// <param name="baseUrl">Base Url</param>
         /// <param name="connectionLimit"></param>
         protected AbstractRestClient(string baseUrl,
-            int connectionLimit) : this(baseUrl, new HttpRequestHandler(connectionLimit)) {}
+            int connectionLimit) : this(baseUrl,
+            new HttpRequestHandler(connectionLimit))
+        { }
 
         /// <summary>
         ///     Construct a client with baseUrl and RequestHandler.
@@ -81,20 +87,22 @@ namespace BasicRestClient.RestClient {
         /// <param name="baseUrl">Base Url</param>
         /// <param name="requestHandler">Request Handler</param>
         protected AbstractRestClient(string baseUrl,
-            IRequestHandler requestHandler)
-            : this(baseUrl, requestHandler, new ConsoleRequestLogger(true)) {}
+            IRequestHandler requestHandler) : this(baseUrl,
+            requestHandler,
+            new ConsoleRequestLogger(true))
+        { }
 
         #region HTTP Events 
 
         /// <summary>
         ///     Event fired when the request is about to be sent to the Server
         /// </summary>
-        public event EventHandler<HttpRequestEventArgs> Sending = delegate {};
+        public event EventHandler<HttpRequestEventArgs> Sending = delegate { };
 
         /// <summary>
         ///     Event fired when the request has been completed successful
         /// </summary>
-        public event EventHandler<HttpResponseEventArgs> Success = delegate {};
+        public event EventHandler<HttpResponseEventArgs> Success = delegate { };
 
         /// <summary>
         ///     Event fired when there are exceptions. One can ignore the exception thrown and subscribe to this event.
@@ -103,12 +111,12 @@ namespace BasicRestClient.RestClient {
         ///     When subscribe to this event one can ignore the throwable exception like this:
         ///     catch(Exception e){}
         /// </remarks>
-        public event EventHandler<HttpRequestExceptionEventArgs> Error = delegate {};
+        public event EventHandler<HttpRequestExceptionEventArgs> Error = delegate { };
 
         /// <summary>
         ///     Event fired when the request has been completed it is successful or not.
         /// </summary>
-        public event EventHandler<HttpResponseEventArgs> Complete = delegate {};
+        public event EventHandler<HttpResponseEventArgs> Complete = delegate { };
 
         /// <summary>
         ///     Event fired when the request has return 4xx error codes.
@@ -117,7 +125,7 @@ namespace BasicRestClient.RestClient {
         ///         catch(Exception e){}
         ///     </remarks>
         /// </summary>
-        public event EventHandler<HttpResponseEventArgs> Failure = delegate {};
+        public event EventHandler<HttpResponseEventArgs> Failure = delegate { };
 
         #endregion
 
@@ -139,9 +147,11 @@ namespace BasicRestClient.RestClient {
             string httpMethod,
             string contentType,
             string accept,
-            byte[] content) {
+            byte[] content)
+        {
             HttpResponse response = null;
-            try {
+            try
+            {
                 Connected = false;
                 // Let us open the connection, prepare it for writing and reading data.
                 var httpWebRequest = OpenConnection(path);
@@ -154,29 +164,31 @@ namespace BasicRestClient.RestClient {
                 Connected = true;
                 if (RequestLogger.IsLoggingEnabled())
                     RequestLogger.LogRequest(httpWebRequest,
-                        content != null
-                            ? WebUtility.UrlDecode(Encoding.UTF8.GetString(content))
-                            : string.Empty);
+                        content != null ? WebUtility.UrlDecode(Encoding.UTF8.GetString(content)) : string.Empty);
 
                 // Write the request
                 if (content != null)
                 {
                     _stopwatch.Start();
-                    WriteOutptStream(httpWebRequest, content);
+                    WriteOutptStream(httpWebRequest,
+                        content);
                 }
 
                 //Let us read the response
                 var serverResponse = httpWebRequest.GetResponse() as HttpWebResponse;
-                using (serverResponse
-                    ) {
-                    if (serverResponse != null) {
-                        using (var inputStream = RequestHandler.OpenInput(httpWebRequest)) {
+                using (serverResponse)
+                {
+                    if (serverResponse != null)
+                        using (var inputStream = RequestHandler.OpenInput(httpWebRequest))
+                        {
                             if (inputStream == null) return null;
-                            if (serverResponse.ContentLength > 0) {
+                            if (serverResponse.ContentLength > 0)
+                            {
                                 var buffer = new byte[serverResponse.ContentLength];
                                 var bytesRead = 0;
                                 var totalBytesRead = bytesRead;
-                                while (totalBytesRead < buffer.Length) {
+                                while (totalBytesRead < buffer.Length)
+                                {
                                     bytesRead = inputStream.Read(buffer,
                                         bytesRead,
                                         buffer.Length - bytesRead);
@@ -184,85 +196,101 @@ namespace BasicRestClient.RestClient {
                                 }
                                 _stopwatch.Stop();
 
-                                response =
-                                    new HttpResponse(
-                                        serverResponse.ResponseUri.AbsoluteUri,
+                                response = new HttpResponse(serverResponse.ResponseUri.AbsoluteUri,
+                                    serverResponse.Headers,
+                                    Convert.ToInt32(serverResponse.StatusCode),
+                                    buffer,
+                                    _stopwatch.ElapsedMilliseconds);
+                            }
+                            else
+                            {
+                                _stopwatch.Stop();
+                                using (var sr = new StreamReader(inputStream))
+                                {
+                                    var buffer = Encoding.ASCII.GetBytes(sr.ReadToEnd());
+                                    response = new HttpResponse(serverResponse.ResponseUri.AbsoluteUri,
                                         serverResponse.Headers,
                                         Convert.ToInt32(serverResponse.StatusCode),
-                                        buffer, _stopwatch.ElapsedMilliseconds);
-                            }
-                            else {
-                                _stopwatch.Stop();
-                                using (var sr = new StreamReader(inputStream)) {
-                                    var buffer = Encoding.ASCII.GetBytes(sr.ReadToEnd());
-                                    response =
-                                        new HttpResponse(
-                                            serverResponse.ResponseUri.AbsoluteUri,
-                                            serverResponse.Headers,
-                                            Convert.ToInt32(serverResponse.StatusCode),
-                                            buffer, _stopwatch.ElapsedMilliseconds);
+                                        buffer,
+                                        _stopwatch.ElapsedMilliseconds);
                                 }
                             }
                         }
-                    }
                 }
 
                 if (Complete != null)
-                    Complete(this, new HttpResponseEventArgs(response));
+                    Complete(this,
+                        new HttpResponseEventArgs(response));
                 FireSuccessEvent(response);
                 return response;
             }
-            catch (Exception e) {
-                if (e.GetType() == typeof (WebException)) {
+            catch (Exception e)
+            {
+                if (e.GetType() == typeof(WebException))
+                {
                     var ex = e as WebException;
-                    try {
+                    try
+                    {
                         _stopwatch.Stop();
                         response = ReadStreamError(ex);
                         response.Elapsed = _stopwatch.ElapsedMilliseconds;
                     }
-                    catch (Exception ee) {
+                    catch (Exception ee)
+                    {
                         // Must catch IOException, but swallow to show first cause only
                         RequestLogger.Log(ee.Message);
                     }
-                    finally {
-                        if (response == null || response.Status <= 0) {
-                            var err = new HttpRequestException(e, response);
+                    finally
+                    {
+                        if (response == null || response.Status <= 0)
+                        {
+                            var err = new HttpRequestException(e,
+                                response);
                             if (Error != null)
-                                Error(this, new HttpRequestExceptionEventArgs(err));
+                                Error(this,
+                                    new HttpRequestExceptionEventArgs(err));
                         }
                     }
                 }
-                else if (e.GetType() == typeof (UriFormatException)) {
+                else if (e.GetType() == typeof(UriFormatException))
+                {
                     var ufe = e as UriFormatException;
-                    if (ufe != null) {
+                    if (ufe != null)
+                    {
                         // Different Exception 
                         // Must catch IOException, but swallow to show first cause only
                         RequestLogger.Log(ufe.Message);
                         response = null;
                         if (Error != null)
                             Error(this,
-                                new HttpRequestExceptionEventArgs(
-                                    new HttpRequestException(ufe, null)));
+                                new HttpRequestExceptionEventArgs(new HttpRequestException(ufe,
+                                    null)));
                     }
                 }
-                else {
+                else
+                {
                     // Different Exception 
                     // Must catch IOException, but swallow to show first cause only
                     RequestLogger.Log(e.ToString());
-                    if (Error != null) {
-                        var hre = new HttpRequestException(e, null);
-                        Error(this, new HttpRequestExceptionEventArgs(hre));
+                    if (Error != null)
+                    {
+                        var hre = new HttpRequestException(e,
+                            null);
+                        Error(this,
+                            new HttpRequestExceptionEventArgs(hre));
                         response = null;
                     }
                 }
             }
-            finally {
+            finally
+            {
                 // Here we log the Http Response
                 if (RequestLogger.IsLoggingEnabled()) RequestLogger.LogResponse(response);
             }
 
             if (Failure != null)
-                Failure(this, new HttpResponseEventArgs(response));
+                Failure(this,
+                    new HttpResponseEventArgs(response));
             return response;
         }
 
@@ -282,9 +310,11 @@ namespace BasicRestClient.RestClient {
             string httpMethod,
             string contentType,
             string accept,
-            byte[] content) {
+            byte[] content)
+        {
             HttpResponse response = null;
-            try {
+            try
+            {
                 Connected = false;
                 // Let us open the connection, prepare it for writing and reading data.
                 var httpWebRequest = OpenConnection(path);
@@ -297,108 +327,121 @@ namespace BasicRestClient.RestClient {
                 Connected = true;
                 if (RequestLogger.IsLoggingEnabled())
                     RequestLogger.LogRequest(httpWebRequest,
-                        content != null
-                            ? WebUtility.UrlDecode(Encoding.UTF8.GetString(content))
-                            : string.Empty);
+                        content != null ? WebUtility.UrlDecode(Encoding.UTF8.GetString(content)) : string.Empty);
 
                 HttpWebRequestAsyncState requestAsyncState;
                 // Write the request
-                if (content != null) {
+                if (content != null)
+                {
                     _stopwatch.Start();
-                    requestAsyncState =
-                        await WriteOutptStreamAsync(httpWebRequest, content);
-                    if (requestAsyncState.Exception != null) {
-                        // at this stage we cannot continue because writing the request result in an exception
-                        // so we throw it to catch it appropriately
-                        throw requestAsyncState.Exception;
-                    }
+                    requestAsyncState = await WriteOutptStreamAsync(httpWebRequest,
+                        content);
+                    if (requestAsyncState.Exception != null) throw requestAsyncState.Exception;
                 }
-                else {
-                    requestAsyncState = new HttpWebRequestAsyncState {
+                else
+                {
+                    requestAsyncState = new HttpWebRequestAsyncState
+                    {
                         HttpWebRequest = httpWebRequest
                     };
                 }
 
                 //Let us read the response
-                var responseAsyncState =
-                    await RequestHandler.OpenInputAsync(requestAsyncState);
-                if (responseAsyncState == null) response = new HttpResponse();
-                else if (responseAsyncState.Exception == null) {
-                    using (
-                        var serverResponse =
-                            responseAsyncState.WebResponse as HttpWebResponse) {
+                var responseAsyncState = await RequestHandler.OpenInputAsync(requestAsyncState);
+                if (responseAsyncState == null) { response = new HttpResponse(); }
+                else if (responseAsyncState.Exception == null)
+                {
+                    using (var serverResponse = responseAsyncState.WebResponse as HttpWebResponse)
+                    {
                         if (serverResponse == null) return null;
                         var address = serverResponse.ResponseUri.AbsoluteUri;
                         var headers = serverResponse.Headers;
                         var statusCode = Convert.ToInt32(serverResponse.StatusCode);
                         using (var stream = serverResponse.GetResponseStream())
-                        using (var sr = new StreamReader(stream)) {
+                        using (var sr = new StreamReader(stream))
+                        {
                             var buffer = Encoding.ASCII.GetBytes(sr.ReadToEnd());
                             _stopwatch.Stop();
                             response = new HttpResponse(address,
                                 headers,
                                 statusCode,
-                                buffer, _stopwatch.ElapsedMilliseconds);
+                                buffer,
+                                _stopwatch.ElapsedMilliseconds);
                         }
                     }
                 }
-                else {
-                    if (responseAsyncState.Exception.GetType() == typeof (WebException)) {
+                else
+                {
+                    if (responseAsyncState.Exception.GetType() == typeof(WebException))
+                    {
                         var ex = responseAsyncState.Exception as WebException;
-                        if (ex != null) {
+                        if (ex != null)
+                        {
                             _stopwatch.Stop();
-                            response = ex.Status == WebExceptionStatus.Timeout
-                                ? new HttpResponse(httpWebRequest.RequestUri.AbsoluteUri,
-                                    null,
-                                    (int) ex.Status,
-                                    null, _stopwatch.ElapsedMilliseconds)
-                                : ReadStreamError(ex);
+                            response = ex.Status == WebExceptionStatus.Timeout ? new HttpResponse(httpWebRequest.RequestUri.AbsoluteUri,
+                                null,
+                                (int) ex.Status,
+                                null,
+                                _stopwatch.ElapsedMilliseconds) : ReadStreamError(ex);
                         }
                     }
-                    else {
+                    else
+                    {
                         // Throw the exception because we will catch it
                         throw responseAsyncState.Exception;
                     }
                 }
                 if (Complete != null)
-                    Complete(this, new HttpResponseEventArgs(response));
+                    Complete(this,
+                        new HttpResponseEventArgs(response));
                 FireSuccessEvent(response);
                 return response;
             }
-            catch (Exception e) {
-                if (e.GetType() == typeof (WebException)) {
+            catch (Exception e)
+            {
+                if (e.GetType() == typeof(WebException))
+                {
                     var ex = e as WebException;
-                    try {
+                    try
+                    {
                         _stopwatch.Stop();
                         response = ReadStreamError(ex);
                         response.Elapsed = _stopwatch.ElapsedMilliseconds;
                     }
-                    catch (Exception ee) {
+                    catch (Exception ee)
+                    {
                         // Must catch IOException, but swallow to show first cause only
                         RequestLogger.Log(ee.Message);
                     }
-                    finally {
-                        if (response == null || response.Status <= 0) {
-                            var err = new HttpRequestException(e, response);
+                    finally
+                    {
+                        if (response == null || response.Status <= 0)
+                        {
+                            var err = new HttpRequestException(e,
+                                response);
                             if (Error != null)
-                                Error(this, new HttpRequestExceptionEventArgs(err));
+                                Error(this,
+                                    new HttpRequestExceptionEventArgs(err));
                         }
                     }
                 }
-                else if (e.GetType() == typeof (UriFormatException)) {
+                else if (e.GetType() == typeof(UriFormatException))
+                {
                     var ufe = e as UriFormatException;
-                    if (ufe != null) {
+                    if (ufe != null)
+                    {
                         // Different Exception 
                         // Must catch IOException, but swallow to show first cause only
                         RequestLogger.Log(ufe.Message);
                         response = null;
                         if (Error != null)
                             Error(this,
-                                new HttpRequestExceptionEventArgs(
-                                    new HttpRequestException(ufe, null)));
+                                new HttpRequestExceptionEventArgs(new HttpRequestException(ufe,
+                                    null)));
                     }
                 }
-                else {
+                else
+                {
                     // Different Exception 
                     // Must catch IOException, but swallow to show first cause only
                     RequestLogger.Log(e.Message);
@@ -411,12 +454,14 @@ namespace BasicRestClient.RestClient {
                     response = null;
                 }
             }
-            finally {
+            finally
+            {
                 // Here we log the Http Response
                 if (RequestLogger.IsLoggingEnabled()) RequestLogger.LogResponse(response);
             }
             if (Failure != null)
-                Failure(this, new HttpResponseEventArgs(response));
+                Failure(this,
+                    new HttpResponseEventArgs(response));
             return response;
         }
 
@@ -424,13 +469,16 @@ namespace BasicRestClient.RestClient {
         ///     Handle the Success event
         /// </summary>
         /// <param name="response"></param>
-        private void FireSuccessEvent(HttpResponse response) {
+        private void FireSuccessEvent(HttpResponse response)
+        {
             if (response == null) return;
             var status = Convert.ToString(response.Status);
             var regex = @"^(2\d\d)$";
-            if (!string.IsNullOrEmpty(status) || !Regex.IsMatch(status, regex)) return;
+            if (!string.IsNullOrEmpty(status) || !Regex.IsMatch(status,
+                    regex)) return;
             if (Success != null)
-                Success(this, new HttpResponseEventArgs(response));
+                Success(this,
+                    new HttpResponseEventArgs(response));
         }
 
         /// <summary>
@@ -444,18 +492,21 @@ namespace BasicRestClient.RestClient {
         /// <exception cref="Exception"></exception>
         public HttpResponse PostFiles(string path,
             HttpFile[] httpFiles,
-            ParameterMap parameters) {
+            ParameterMap parameters)
+        {
             HttpResponse response = null;
-            try {
+            try
+            {
                 Connected = false;
                 // Let us open the connection, prepare it for writing and reading data.
                 var httpWebRequest = OpenConnection(path);
                 httpWebRequest.Accept = Accept;
                 httpWebRequest.KeepAlive = true;
-                httpWebRequest.ReadWriteTimeout = ReadWriteTimeout*1000;
-                httpWebRequest.Timeout = ConnectionTimeout*1000;
+                httpWebRequest.ReadWriteTimeout = ReadWriteTimeout * 1000;
+                httpWebRequest.Timeout = ConnectionTimeout * 1000;
                 httpWebRequest.Method = "POST";
-                httpWebRequest.Headers.Add("Accept-Charset", "UTF-8");
+                httpWebRequest.Headers.Add("Accept-Charset",
+                    "UTF-8");
                 AppendRequestHeaders(httpWebRequest);
                 Connected = true;
 
@@ -464,16 +515,22 @@ namespace BasicRestClient.RestClient {
                 var form = parameters.ToNameValueCollection();
 
                 // upload the files
-                var resp = HttpFileUploader.Upload(httpWebRequest, httpFiles, form);
-                using (resp) {
+                var resp = HttpFileUploader.Upload(httpWebRequest,
+                    httpFiles,
+                    form);
+                using (resp)
+                {
                     if (resp == null) return null;
-                    using (var inputStream = resp.GetResponseStream()) {
+                    using (var inputStream = resp.GetResponseStream())
+                    {
                         if (inputStream == null) return null;
-                        if (resp.ContentLength > 0) {
+                        if (resp.ContentLength > 0)
+                        {
                             var buffer = new byte[resp.ContentLength];
                             var bytesRead = 0;
                             var totalBytesRead = bytesRead;
-                            while (totalBytesRead < buffer.Length) {
+                            while (totalBytesRead < buffer.Length)
+                            {
                                 bytesRead = inputStream.Read(buffer,
                                     bytesRead,
                                     buffer.Length - bytesRead);
@@ -485,56 +542,66 @@ namespace BasicRestClient.RestClient {
                                 Convert.ToInt32(resp.StatusCode),
                                 buffer);
                         }
-                        else {
-                            using (var sr = new StreamReader(inputStream)) {
+                        else
+                        {
+                            using (var sr = new StreamReader(inputStream))
+                            {
                                 var buffer = Encoding.ASCII.GetBytes(sr.ReadToEnd());
-                                response =
-                                    new HttpResponse(httpWebRequest.Address.AbsoluteUri,
-                                        httpWebRequest.Headers,
-                                        Convert.ToInt32(resp.StatusCode),
-                                        buffer);
+                                response = new HttpResponse(httpWebRequest.Address.AbsoluteUri,
+                                    httpWebRequest.Headers,
+                                    Convert.ToInt32(resp.StatusCode),
+                                    buffer);
                             }
                         }
                     }
                 }
                 if (Complete != null)
-                    Complete(this, new HttpResponseEventArgs(response));
+                    Complete(this,
+                        new HttpResponseEventArgs(response));
                 FireSuccessEvent(response);
                 return response;
             }
-            catch (Exception e) {
+            catch (Exception e)
+            {
                 RequestLogger.Log(e.StackTrace);
-                if (e.GetType() == typeof (WebException)) {
+                if (e.GetType() == typeof(WebException))
+                {
                     var ex = e as WebException;
-                    try {
-                        response = ReadStreamError(ex);
-                    }
-                    catch (Exception ee) {
+                    try { response = ReadStreamError(ex); }
+                    catch (Exception ee)
+                    {
                         // Must catch IOException, but swallow to show first cause only
                         RequestLogger.Log(ee.StackTrace);
                     }
-                    finally {
-                        if (response == null || response.Status <= 0) {
-                            var err = new HttpRequestException(e, response);
+                    finally
+                    {
+                        if (response == null || response.Status <= 0)
+                        {
+                            var err = new HttpRequestException(e,
+                                response);
                             if (Error != null)
-                                Error(this, new HttpRequestExceptionEventArgs(err));
+                                Error(this,
+                                    new HttpRequestExceptionEventArgs(err));
                             throw err;
                         }
                     }
                 }
-                else {
+                else
+                {
                     // Different Exception 
                     // Must catch IOException, but swallow to show first cause only
                     RequestLogger.Log(e.ToString());
                     throw;
                 }
             }
-            finally {
+            finally
+            {
                 // Here we log the Http Response
                 if (RequestLogger.IsLoggingEnabled()) RequestLogger.LogResponse(response);
             }
             if (Failure != null)
-                Failure(this, new HttpResponseEventArgs(response));
+                Failure(this,
+                    new HttpResponseEventArgs(response));
             return response;
         }
 
@@ -549,18 +616,21 @@ namespace BasicRestClient.RestClient {
         /// <exception cref="Exception"></exception>
         public async Task<HttpResponse> PostFilesAsync(string path,
             HttpFile[] httpFiles,
-            ParameterMap parameters) {
+            ParameterMap parameters)
+        {
             HttpResponse response = null;
-            try {
+            try
+            {
                 Connected = false;
                 // Let us open the connection, prepare it for writing and reading data.
                 var httpWebRequest = OpenConnection(path);
                 httpWebRequest.Accept = Accept;
                 httpWebRequest.KeepAlive = true;
-                httpWebRequest.ReadWriteTimeout = ReadWriteTimeout*1000;
-                httpWebRequest.Timeout = ConnectionTimeout*1000;
+                httpWebRequest.ReadWriteTimeout = ReadWriteTimeout * 1000;
+                httpWebRequest.Timeout = ConnectionTimeout * 1000;
                 httpWebRequest.Method = "POST";
-                httpWebRequest.Headers.Add("Accept-Charset", "UTF-8");
+                httpWebRequest.Headers.Add("Accept-Charset",
+                    "UTF-8");
                 AppendRequestHeaders(httpWebRequest);
                 Connected = true;
 
@@ -569,31 +639,37 @@ namespace BasicRestClient.RestClient {
                 var form = parameters.ToNameValueCollection();
 
                 // upload the files
-                var resp =
-                    await HttpFileUploader.UploadAsync(httpWebRequest, httpFiles, form);
-                using (resp) {
+                var resp = await HttpFileUploader.UploadAsync(httpWebRequest,
+                    httpFiles,
+                    form);
+                using (resp)
+                {
                     if (resp == null) return null;
-                    using (var inputStream = resp.GetResponseStream()) {
+                    using (var inputStream = resp.GetResponseStream())
+                    {
                         if (inputStream == null) return null;
-                        if (resp.ContentLength > 0) {
+                        if (resp.ContentLength > 0)
+                        {
                             var buffer = new byte[resp.ContentLength];
                             var bytesRead = 0;
                             var totalBytesRead = bytesRead;
-                            while (totalBytesRead < buffer.Length) {
+                            while (totalBytesRead < buffer.Length)
+                            {
                                 bytesRead = inputStream.Read(buffer,
                                     bytesRead,
                                     buffer.Length - bytesRead);
                                 totalBytesRead += bytesRead;
                             }
 
-                            response = new HttpResponse(
-                                httpWebRequest.Address.AbsoluteUri,
+                            response = new HttpResponse(httpWebRequest.Address.AbsoluteUri,
                                 httpWebRequest.Headers,
                                 Convert.ToInt32(resp.StatusCode),
                                 buffer);
                         }
-                        else {
-                            using (var sr = new StreamReader(inputStream)) {
+                        else
+                        {
+                            using (var sr = new StreamReader(inputStream))
+                            {
                                 var buffer = Encoding.ASCII.GetBytes(sr.ReadToEnd());
                                 response = new HttpResponse(resp.ResponseUri.AbsoluteUri,
                                     resp.Headers,
@@ -604,43 +680,52 @@ namespace BasicRestClient.RestClient {
                     }
                 }
                 if (Complete != null)
-                    Complete(this, new HttpResponseEventArgs(response));
+                    Complete(this,
+                        new HttpResponseEventArgs(response));
                 FireSuccessEvent(response);
                 return response;
             }
-            catch (Exception e) {
+            catch (Exception e)
+            {
                 RequestLogger.Log(e.StackTrace);
-                if (e.GetType() == typeof (WebException)) {
+                if (e.GetType() == typeof(WebException))
+                {
                     var ex = e as WebException;
-                    try {
-                        response = ReadStreamError(ex);
-                    }
-                    catch (Exception ee) {
+                    try { response = ReadStreamError(ex); }
+                    catch (Exception ee)
+                    {
                         // Must catch IOException, but swallow to show first cause only
                         RequestLogger.Log(ee.StackTrace);
                     }
-                    finally {
-                        if (response == null || response.Status <= 0) {
-                            var err = new HttpRequestException(e, response);
+                    finally
+                    {
+                        if (response == null || response.Status <= 0)
+                        {
+                            var err = new HttpRequestException(e,
+                                response);
                             if (Error != null)
-                                Error(this, new HttpRequestExceptionEventArgs(err));
+                                Error(this,
+                                    new HttpRequestExceptionEventArgs(err));
                             throw err;
                         }
                     }
                 }
-                else {
+                else
+                {
                     // Different Exception 
                     // Must catch IOException, but swallow to show first cause only
                     RequestLogger.Log(e.ToString());
                     throw;
                 }
             }
-            finally {
+            finally
+            {
                 // Here we log the Http Response
                 if (RequestLogger.IsLoggingEnabled()) RequestLogger.LogResponse(response);
             }
             if (Failure != null)
-                Failure(this, new HttpResponseEventArgs(response));
+                Failure(this,
+                    new HttpResponseEventArgs(response));
             return response;
         }
 
@@ -651,22 +736,25 @@ namespace BasicRestClient.RestClient {
         /// </summary>
         /// <param name="httpRequest">HttpRequest instance</param>
         /// <returns>Response object (may be null if request did not complete) <see cref="HttpResponse" /></returns>
-        public HttpResponse Execute(HttpRequest httpRequest) {
+        public HttpResponse Execute(HttpRequest httpRequest)
+        {
             HttpResponse httpResponse = null;
-            try {
+            try
+            {
                 if (Sending != null)
-                    Sending(this, new HttpRequestEventArgs(httpRequest));
+                    Sending(this,
+                        new HttpRequestEventArgs(httpRequest));
                 httpResponse = DoHttpMethod(httpRequest.Path,
                     httpRequest.HttpMethod,
                     httpRequest.ContentType,
                     httpRequest.Accept,
                     httpRequest.Content);
             }
-            catch (HttpRequestException hre) {
-                RequestHandler.OnError(hre);
-            }
-            catch (Exception e) {
-                RequestHandler.OnError(new HttpRequestException(e, httpResponse));
+            catch (HttpRequestException hre) { RequestHandler.OnError(hre); }
+            catch (Exception e)
+            {
+                RequestHandler.OnError(new HttpRequestException(e,
+                    httpResponse));
             }
             return httpResponse;
         }
@@ -678,24 +766,25 @@ namespace BasicRestClient.RestClient {
         /// </summary>
         /// <param name="httpRequest">HttpRequest instance</param>
         /// <returns>Response object (may be null if request did not complete) <see cref="HttpResponse" /></returns>
-        public async Task<HttpResponse> ExecuteAsync(HttpRequest httpRequest) {
+        public async Task<HttpResponse> ExecuteAsync(HttpRequest httpRequest)
+        {
             HttpResponse httpResponse = null;
-            try {
+            try
+            {
                 if (Sending != null)
-                    Sending(this, new HttpRequestEventArgs(httpRequest));
-                httpResponse =
-                    await
-                        DoHttpMethodAsync(httpRequest.Path,
-                            httpRequest.HttpMethod,
-                            httpRequest.ContentType,
-                            httpRequest.Accept,
-                            httpRequest.Content);
+                    Sending(this,
+                        new HttpRequestEventArgs(httpRequest));
+                httpResponse = await DoHttpMethodAsync(httpRequest.Path,
+                    httpRequest.HttpMethod,
+                    httpRequest.ContentType,
+                    httpRequest.Accept,
+                    httpRequest.Content);
             }
-            catch (HttpRequestException hre) {
-                RequestHandler.OnError(hre);
-            }
-            catch (Exception e) {
-                RequestHandler.OnError(new HttpRequestException(e, httpResponse));
+            catch (HttpRequestException hre) { RequestHandler.OnError(hre); }
+            catch (Exception e)
+            {
+                RequestHandler.OnError(new HttpRequestException(e,
+                    httpResponse));
             }
             return httpResponse;
         }
@@ -709,7 +798,8 @@ namespace BasicRestClient.RestClient {
         /// <param name="path">Appended to this client's baseUrl</param>
         /// <returns>An open connection (or null)</returns>
         /// <exception cref="UriFormatException"></exception>
-        protected HttpWebRequest OpenConnection(string path) {
+        protected HttpWebRequest OpenConnection(string path)
+        {
             var requestUrl = BaseUrl + path;
             var uri = new Uri(requestUrl);
             return RequestHandler.OpenConnection(requestUrl);
@@ -727,7 +817,8 @@ namespace BasicRestClient.RestClient {
             string method,
             string contentType,
             string accept,
-            string certificateFile) {
+            string certificateFile)
+        {
             RequestHandler.PrepareConnection(httpWebRequest,
                 method,
                 contentType,
@@ -741,15 +832,18 @@ namespace BasicRestClient.RestClient {
         ///     Append all headers added.
         /// </summary>
         /// <param name="httpWebRequest">HttpWebrequest instance</param>
-        private void AppendRequestHeaders(HttpWebRequest httpWebRequest) {
+        private void AppendRequestHeaders(HttpWebRequest httpWebRequest)
+        {
             foreach (var requestHeader in RequestHeaders)
-                httpWebRequest.Headers.Add(requestHeader.Key, requestHeader.Value);
+                httpWebRequest.Headers.Add(requestHeader.Key,
+                    requestHeader.Value);
         }
 
         /// <summary>
         ///     Clear the Request Headers
         /// </summary>
-        public void ClearHeaders() {
+        public void ClearHeaders()
+        {
             RequestHeaders.Clear();
         }
 
@@ -758,20 +852,26 @@ namespace BasicRestClient.RestClient {
         /// </summary>
         /// <param name="ex">WebException Error</param>
         /// <returns>HttpResponse, may be null</returns>
-        protected HttpResponse ReadStreamError(WebException ex) {
+        protected HttpResponse ReadStreamError(WebException ex)
+        {
             var status = ex.Status;
             HttpResponse resp = null;
             if (Error != null)
                 Error(this,
-                    new HttpRequestExceptionEventArgs(new HttpRequestException(ex, null)));
-            switch (status) {
+                    new HttpRequestExceptionEventArgs(new HttpRequestException(ex,
+                        null)));
+            switch (status)
+            {
                 case WebExceptionStatus.ProtocolError:
                     if (ex.Response.GetResponseStream() == null) return null;
-                    using (var response = ex.Response as HttpWebResponse) {
+                    using (var response = ex.Response as HttpWebResponse)
+                    {
                         if (response == null) return null;
-                        using (var stream = ex.Response.GetResponseStream()) {
+                        using (var stream = ex.Response.GetResponseStream())
+                        {
                             if (stream == null) return null;
-                            using (var sr = new StreamReader(stream)) {
+                            using (var sr = new StreamReader(stream))
+                            {
                                 var buffer = Encoding.ASCII.GetBytes(sr.ReadToEnd());
                                 resp = new HttpResponse(response.ResponseUri.AbsoluteUri,
                                     response.Headers,
@@ -785,8 +885,7 @@ namespace BasicRestClient.RestClient {
                 case WebExceptionStatus.ConnectionClosed:
                     if (Error != null)
                         Error(this,
-                            new HttpRequestExceptionEventArgs(new HttpRequestException(
-                                ex,
+                            new HttpRequestExceptionEventArgs(new HttpRequestException(ex,
                                 null)));
                     RequestLogger.Log(ex.Message);
                     resp = new HttpResponse(string.Empty,
@@ -809,11 +908,14 @@ namespace BasicRestClient.RestClient {
         /// <param name="content">content to be written</param>
         /// <returns>HTTP status code</returns>
         protected void WriteOutptStream(HttpWebRequest httpWebRequest,
-            byte[] content) {
+            byte[] content)
+        {
             // Open the output stream to write onto it
             var outputStream = RequestHandler.OpenOutput(httpWebRequest);
-            if (outputStream != null) {
-                RequestHandler.WriteStream(outputStream, content);
+            if (outputStream != null)
+            {
+                RequestHandler.WriteStream(outputStream,
+                    content);
                 outputStream.Close();
             }
         }
@@ -824,15 +926,15 @@ namespace BasicRestClient.RestClient {
         /// <param name="httpWebRequest">HttpWebRequest instance</param>
         /// <param name="content">content to be written</param>
         /// <returns>HTTP status code</returns>
-        protected async Task<HttpWebRequestAsyncState> WriteOutptStreamAsync(
-            HttpWebRequest httpWebRequest,
-            byte[] content) {
+        protected async Task<HttpWebRequestAsyncState> WriteOutptStreamAsync(HttpWebRequest httpWebRequest,
+            byte[] content)
+        {
             // Open the output stream to write onto it
             var outputStream = await RequestHandler.OpenOutputAsync(httpWebRequest);
             if (outputStream == null) return null;
-            return
-                await
-                    RequestHandler.WriteStreamAsync(httpWebRequest, outputStream, content);
+            return await RequestHandler.WriteStreamAsync(httpWebRequest,
+                outputStream,
+                content);
         }
 
         #endregion
@@ -854,7 +956,7 @@ namespace BasicRestClient.RestClient {
         }
 
         /// <summary>
-        ///     Execute a DELETE request asynchronously
+        ///     Execute a DELETE request asynchronously using form-urlencoded mimetype
         /// </summary>
         /// <param name="path">Resource path</param>
         /// <param name="parameters">HTTP Payload</param>
@@ -878,7 +980,7 @@ namespace BasicRestClient.RestClient {
         }
 
         /// <summary>
-        ///     Execute a DELETE request
+        ///     Execute a DELETE request using form-urlencoded mimetype
         /// </summary>
         /// <param name="path">Resource path</param>
         /// <param name="accept">Response Accept header</param>
@@ -910,7 +1012,7 @@ namespace BasicRestClient.RestClient {
         }
 
         /// <summary>
-        ///     Execute a GET request asynchronously.
+        ///     Execute a GET request asynchronously using form-urlencoded mimetype.
         /// </summary>
         /// <param name="path">Resource Path</param>
         /// <param name="accept">Accept header</param>
@@ -960,7 +1062,7 @@ namespace BasicRestClient.RestClient {
         }
 
         /// <summary>
-        ///     Execute a POST request with parameter map and return the response.
+        ///     Execute a POST request with parameter map and return the response using form-urlencoded mimetype.
         /// </summary>
         /// <param name="path">Resource path</param>
         /// <param name="accept">Accept header</param>
@@ -989,14 +1091,13 @@ namespace BasicRestClient.RestClient {
             byte[] data)
         {
             return Execute(new HttpPost(path,
-                null,
                 contentType,
                 accept,
                 data));
         }
 
         /// <summary>
-        ///     Execute a Post request asynchronously.
+        ///     Execute a Post request asynchronously using form-urlencoded mimetype.
         /// </summary>
         /// <param name="path">Resource Url</param>
         /// <param name="accept">Accept header</param>
@@ -1025,20 +1126,20 @@ namespace BasicRestClient.RestClient {
             byte[] data)
         {
             return await ExecuteAsync(new HttpPost(path,
-                null,
                 contentType,
                 accept,
                 data));
         }
 
         /// <summary>
-        ///     Execute a Post request asynchronously
+        ///     Execute a Post request asynchronously using form-urlencoded mimetype.
         /// </summary>
         /// <param name="path">Resource path</param>
         /// <param name="parameters">POST Payload</param>
         /// <param name="accept">Accept header</param>
         /// <returns>Response Object <see cref="HttpResponse" /></returns>
-        public async Task<HttpResponse> PostAsync(string path, ParameterMap parameters,
+        public async Task<HttpResponse> PostAsync(string path,
+            ParameterMap parameters,
             string accept)
         {
             return await ExecuteAsync(new HttpPost(path,
@@ -1198,10 +1299,7 @@ namespace BasicRestClient.RestClient {
         public void BasicAuth(string username,
             string password)
         {
-            var encoded = string.Format("Basic {0}",
-                Convert.ToBase64String(Encoding.UTF8.GetBytes(string.Format("{0}:{1}",
-                    username,
-                    password))));
+            var encoded = $"Basic {Convert.ToBase64String(Encoding.UTF8.GetBytes($"{username}:{password}"))}";
             RequestHeaders.Add("Authorization",
                 encoded);
         }
@@ -1222,12 +1320,12 @@ namespace BasicRestClient.RestClient {
         /// <summary>
         ///     Base URL
         /// </summary>
-        protected string BaseUrl { get; private set; }
+        protected string BaseUrl { get; }
 
         /// <summary>
         ///     Http request handler. One can implement one or use the built-in one that serves properly http requests
         /// </summary>
-        public IRequestHandler RequestHandler { get; private set; }
+        public IRequestHandler RequestHandler { get; }
 
         /// <summary>
         ///     Http request/response logger. The built-in one logs request/response to the console.
