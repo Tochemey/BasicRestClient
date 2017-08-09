@@ -1,0 +1,20 @@
+### YamlMime:XRefMap
+sorted: true
+references:
+- uid: BasicRestClient.Demo
+  name: BasicRestClient.Demo
+  href: api/BasicRestClient.Demo.html#BasicRestClient_Demo
+  commentId: N:BasicRestClient.Demo
+  fullName: BasicRestClient.Demo
+- uid: BasicRestClient.Demo.Demo
+  name: Demo
+  href: api/BasicRestClient.Demo.Demo.html#BasicRestClient_Demo_Demo
+  commentId: T:BasicRestClient.Demo.Demo
+  fullName: BasicRestClient.Demo.Demo
+- uid: BasicRestClient.Demo.Demo.Main(System.String[])
+  name: Main(String[])
+  href: api/BasicRestClient.Demo.Demo.html#BasicRestClient_Demo_Demo_Main_System_String___
+  commentId: M:BasicRestClient.Demo.Demo.Main(System.String[])
+  name.vb: Main(String())
+  fullName: BasicRestClient.Demo.Demo.Main(System.String[])
+  fullName.vb: BasicRestClient.Demo.Demo.Main(System.String())

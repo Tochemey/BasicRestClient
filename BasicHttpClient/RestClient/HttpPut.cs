@@ -32,7 +32,7 @@ namespace BasicRestClient.RestClient {
         ///     appended to the QUERY STRING while
         ///     the content is sent in the request BODY. This is not a common use case and is therefore not represented in the
         ///     put() methods in
-        ///     AbstractRestClient, but is nevertheless possible using this constructor
+        ///     AbstractClient, but is nevertheless possible using this constructor
         /// </summary>
         /// <param name="path">Partial URL</param>
         /// <param name="parameters">Optional name-value pairs to be appended to QUERY STRING</param>
@@ -49,7 +49,7 @@ namespace BasicRestClient.RestClient {
         ///     appended to the QUERY STRING while
         ///     the content is sent in the request BODY. This is not a common use case and is therefore not represented in the
         ///     put() methods in
-        ///     AbstractRestClient, but is nevertheless possible using this constructor
+        ///     AbstractClient, but is nevertheless possible using this constructor
         /// </summary>
         /// <param name="path">Partial URL</param>
         /// <param name="contentType">Content Type</param>

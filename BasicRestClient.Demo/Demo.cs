@@ -70,7 +70,7 @@ namespace BasicRestClient.Demo {
             httpClient.ReadWriteTimeout = 200;
 
             const string resource = "/account/profile";
-            var response = await httpClient.GetAsync(resource);
+            var response = await httpClient.GetAsync(resource, "application/json");
             Console.WriteLine();
             Console.WriteLine("Account Profile : Server Response Status " + response.Status);
         }
@@ -81,7 +81,7 @@ namespace BasicRestClient.Demo {
             httpClient.ConnectionTimeout = 200;
             httpClient.ReadWriteTimeout = 200;
 
-            var response = await httpClient.PostAsync(resource, parameters);
+            var response = await httpClient.PostAsync(resource, "application/json", parameters);
             Console.WriteLine();
             if (response != null) Console.WriteLine("Send Message Async : Server Response Status " + response.Status);
             else Console.WriteLine("Send Message Async : NO RESPONSE");

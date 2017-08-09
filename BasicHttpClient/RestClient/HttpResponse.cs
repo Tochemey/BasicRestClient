@@ -63,11 +63,13 @@ namespace BasicRestClient.RestClient {
         /// <param name="headers"></param>
         /// <param name="status"></param>
         /// <param name="body"></param>
-        public HttpResponse(string url, WebHeaderCollection headers, int status, byte[] body) {
+        /// <param name="elapsed"></param>
+        public HttpResponse(string url, WebHeaderCollection headers, int status, byte[] body, long elapsed = 0L) {
             Url = url;
             Headers = headers;
             Status = status;
             Body = body;
+            Elapsed = elapsed;
         }
 
         /// <summary>
@@ -92,9 +94,14 @@ namespace BasicRestClient.RestClient {
         ///     Returns the Body as UTF-8 string
         /// </summary>
         /// <returns></returns>
-        public string GetBodyAsString() {
-            if (Body != null) return Body.GetString();
-            return string.Empty;
+        public string GetBodyAsString()
+        {
+            return Body != null ? Body.GetString() : string.Empty;
         }
+
+        /// <summary>
+        /// The time duration of the request/response
+        /// </summary>
+        public long Elapsed { get; set; }
     }
 }

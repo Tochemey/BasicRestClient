@@ -1,0 +1,1320 @@
+### YamlMime:XRefMap
+sorted: true
+references:
+- uid: BasicRestClient.RestClient
+  name: BasicRestClient.RestClient
+  href: api/BasicRestClient.RestClient.html#BasicRestClient_RestClient
+  commentId: N:BasicRestClient.RestClient
+  fullName: BasicRestClient.RestClient
+- uid: BasicRestClient.RestClient.AbstractRestClient
+  name: AbstractRestClient
+  href: api/BasicRestClient.RestClient.AbstractRestClient.html#BasicRestClient_RestClient_AbstractRestClient
+  commentId: T:BasicRestClient.RestClient.AbstractRestClient
+  fullName: BasicRestClient.RestClient.AbstractRestClient
+- uid: BasicRestClient.RestClient.AbstractRestClient.#ctor(System.Int32)
+  name: AbstractRestClient(Int32)
+  href: api/BasicRestClient.RestClient.AbstractRestClient.html#BasicRestClient_RestClient_AbstractRestClient__ctor_System_Int32_
+  commentId: M:BasicRestClient.RestClient.AbstractRestClient.#ctor(System.Int32)
+  fullName: BasicRestClient.RestClient.AbstractRestClient.AbstractRestClient(System.Int32)
+- uid: BasicRestClient.RestClient.AbstractRestClient.#ctor(System.String,BasicRestClient.RestClient.IRequestHandler)
+  name: AbstractRestClient(String, IRequestHandler)
+  href: api/BasicRestClient.RestClient.AbstractRestClient.html#BasicRestClient_RestClient_AbstractRestClient__ctor_System_String_BasicRestClient_RestClient_IRequestHandler_
+  commentId: M:BasicRestClient.RestClient.AbstractRestClient.#ctor(System.String,BasicRestClient.RestClient.IRequestHandler)
+  fullName: BasicRestClient.RestClient.AbstractRestClient.AbstractRestClient(System.String, BasicRestClient.RestClient.IRequestHandler)
+- uid: BasicRestClient.RestClient.AbstractRestClient.#ctor(System.String,BasicRestClient.RestClient.IRequestHandler,BasicRestClient.RestClient.IRequestLogger)
+  name: AbstractRestClient(String, IRequestHandler, IRequestLogger)
+  href: api/BasicRestClient.RestClient.AbstractRestClient.html#BasicRestClient_RestClient_AbstractRestClient__ctor_System_String_BasicRestClient_RestClient_IRequestHandler_BasicRestClient_RestClient_IRequestLogger_
+  commentId: M:BasicRestClient.RestClient.AbstractRestClient.#ctor(System.String,BasicRestClient.RestClient.IRequestHandler,BasicRestClient.RestClient.IRequestLogger)
+  fullName: BasicRestClient.RestClient.AbstractRestClient.AbstractRestClient(System.String, BasicRestClient.RestClient.IRequestHandler, BasicRestClient.RestClient.IRequestLogger)
+- uid: BasicRestClient.RestClient.AbstractRestClient.#ctor(System.String,System.Int32)
+  name: AbstractRestClient(String, Int32)
+  href: api/BasicRestClient.RestClient.AbstractRestClient.html#BasicRestClient_RestClient_AbstractRestClient__ctor_System_String_System_Int32_
+  commentId: M:BasicRestClient.RestClient.AbstractRestClient.#ctor(System.String,System.Int32)
+  fullName: BasicRestClient.RestClient.AbstractRestClient.AbstractRestClient(System.String, System.Int32)
+- uid: BasicRestClient.RestClient.AbstractRestClient.Accept
+  name: Accept
+  href: api/BasicRestClient.RestClient.AbstractRestClient.html#BasicRestClient_RestClient_AbstractRestClient_Accept
+  commentId: F:BasicRestClient.RestClient.AbstractRestClient.Accept
+  fullName: BasicRestClient.RestClient.AbstractRestClient.Accept
+- uid: BasicRestClient.RestClient.AbstractRestClient.BaseUrl
+  name: BaseUrl
+  href: api/BasicRestClient.RestClient.AbstractRestClient.html#BasicRestClient_RestClient_AbstractRestClient_BaseUrl
+  commentId: P:BasicRestClient.RestClient.AbstractRestClient.BaseUrl
+  fullName: BasicRestClient.RestClient.AbstractRestClient.BaseUrl
+- uid: BasicRestClient.RestClient.AbstractRestClient.BasicAuth(System.String,System.String)
+  name: BasicAuth(String, String)
+  href: api/BasicRestClient.RestClient.AbstractRestClient.html#BasicRestClient_RestClient_AbstractRestClient_BasicAuth_System_String_System_String_
+  commentId: M:BasicRestClient.RestClient.AbstractRestClient.BasicAuth(System.String,System.String)
+  fullName: BasicRestClient.RestClient.AbstractRestClient.BasicAuth(System.String, System.String)
+- uid: BasicRestClient.RestClient.AbstractRestClient.ClearHeaders
+  name: ClearHeaders()
+  href: api/BasicRestClient.RestClient.AbstractRestClient.html#BasicRestClient_RestClient_AbstractRestClient_ClearHeaders
+  commentId: M:BasicRestClient.RestClient.AbstractRestClient.ClearHeaders
+  fullName: BasicRestClient.RestClient.AbstractRestClient.ClearHeaders()
+- uid: BasicRestClient.RestClient.AbstractRestClient.Complete
+  name: Complete
+  href: api/BasicRestClient.RestClient.AbstractRestClient.html#BasicRestClient_RestClient_AbstractRestClient_Complete
+  commentId: E:BasicRestClient.RestClient.AbstractRestClient.Complete
+  fullName: BasicRestClient.RestClient.AbstractRestClient.Complete
+- uid: BasicRestClient.RestClient.AbstractRestClient.Connected
+  name: Connected
+  href: api/BasicRestClient.RestClient.AbstractRestClient.html#BasicRestClient_RestClient_AbstractRestClient_Connected
+  commentId: F:BasicRestClient.RestClient.AbstractRestClient.Connected
+  fullName: BasicRestClient.RestClient.AbstractRestClient.Connected
+- uid: BasicRestClient.RestClient.AbstractRestClient.ConnectionTimeout
+  name: ConnectionTimeout
+  href: api/BasicRestClient.RestClient.AbstractRestClient.html#BasicRestClient_RestClient_AbstractRestClient_ConnectionTimeout
+  commentId: P:BasicRestClient.RestClient.AbstractRestClient.ConnectionTimeout
+  fullName: BasicRestClient.RestClient.AbstractRestClient.ConnectionTimeout
+- uid: BasicRestClient.RestClient.AbstractRestClient.Delete(System.String,BasicRestClient.RestClient.ParameterMap)
+  name: Delete(String, ParameterMap)
+  href: api/BasicRestClient.RestClient.AbstractRestClient.html#BasicRestClient_RestClient_AbstractRestClient_Delete_System_String_BasicRestClient_RestClient_ParameterMap_
+  commentId: M:BasicRestClient.RestClient.AbstractRestClient.Delete(System.String,BasicRestClient.RestClient.ParameterMap)
+  fullName: BasicRestClient.RestClient.AbstractRestClient.Delete(System.String, BasicRestClient.RestClient.ParameterMap)
+- uid: BasicRestClient.RestClient.AbstractRestClient.Delete(System.String,System.String,BasicRestClient.RestClient.ParameterMap)
+  name: Delete(String, String, ParameterMap)
+  href: api/BasicRestClient.RestClient.AbstractRestClient.html#BasicRestClient_RestClient_AbstractRestClient_Delete_System_String_System_String_BasicRestClient_RestClient_ParameterMap_
+  commentId: M:BasicRestClient.RestClient.AbstractRestClient.Delete(System.String,System.String,BasicRestClient.RestClient.ParameterMap)
+  fullName: BasicRestClient.RestClient.AbstractRestClient.Delete(System.String, System.String, BasicRestClient.RestClient.ParameterMap)
+- uid: BasicRestClient.RestClient.AbstractRestClient.DeleteAsync(System.String)
+  name: DeleteAsync(String)
+  href: api/BasicRestClient.RestClient.AbstractRestClient.html#BasicRestClient_RestClient_AbstractRestClient_DeleteAsync_System_String_
+  commentId: M:BasicRestClient.RestClient.AbstractRestClient.DeleteAsync(System.String)
+  fullName: BasicRestClient.RestClient.AbstractRestClient.DeleteAsync(System.String)
+- uid: BasicRestClient.RestClient.AbstractRestClient.DeleteAsync(System.String,BasicRestClient.RestClient.ParameterMap)
+  name: DeleteAsync(String, ParameterMap)
+  href: api/BasicRestClient.RestClient.AbstractRestClient.html#BasicRestClient_RestClient_AbstractRestClient_DeleteAsync_System_String_BasicRestClient_RestClient_ParameterMap_
+  commentId: M:BasicRestClient.RestClient.AbstractRestClient.DeleteAsync(System.String,BasicRestClient.RestClient.ParameterMap)
+  fullName: BasicRestClient.RestClient.AbstractRestClient.DeleteAsync(System.String, BasicRestClient.RestClient.ParameterMap)
+- uid: BasicRestClient.RestClient.AbstractRestClient.DoHttpMethod(System.String,System.String,System.String,System.String,System.Byte[])
+  name: DoHttpMethod(String, String, String, String, Byte[])
+  href: api/BasicRestClient.RestClient.AbstractRestClient.html#BasicRestClient_RestClient_AbstractRestClient_DoHttpMethod_System_String_System_String_System_String_System_String_System_Byte___
+  commentId: M:BasicRestClient.RestClient.AbstractRestClient.DoHttpMethod(System.String,System.String,System.String,System.String,System.Byte[])
+  name.vb: DoHttpMethod(String, String, String, String, Byte())
+  fullName: BasicRestClient.RestClient.AbstractRestClient.DoHttpMethod(System.String, System.String, System.String, System.String, System.Byte[])
+  fullName.vb: BasicRestClient.RestClient.AbstractRestClient.DoHttpMethod(System.String, System.String, System.String, System.String, System.Byte())
+- uid: BasicRestClient.RestClient.AbstractRestClient.DoHttpMethodAsync(System.String,System.String,System.String,System.String,System.Byte[])
+  name: DoHttpMethodAsync(String, String, String, String, Byte[])
+  href: api/BasicRestClient.RestClient.AbstractRestClient.html#BasicRestClient_RestClient_AbstractRestClient_DoHttpMethodAsync_System_String_System_String_System_String_System_String_System_Byte___
+  commentId: M:BasicRestClient.RestClient.AbstractRestClient.DoHttpMethodAsync(System.String,System.String,System.String,System.String,System.Byte[])
+  name.vb: DoHttpMethodAsync(String, String, String, String, Byte())
+  fullName: BasicRestClient.RestClient.AbstractRestClient.DoHttpMethodAsync(System.String, System.String, System.String, System.String, System.Byte[])
+  fullName.vb: BasicRestClient.RestClient.AbstractRestClient.DoHttpMethodAsync(System.String, System.String, System.String, System.String, System.Byte())
+- uid: BasicRestClient.RestClient.AbstractRestClient.Error
+  name: Error
+  href: api/BasicRestClient.RestClient.AbstractRestClient.html#BasicRestClient_RestClient_AbstractRestClient_Error
+  commentId: E:BasicRestClient.RestClient.AbstractRestClient.Error
+  fullName: BasicRestClient.RestClient.AbstractRestClient.Error
+- uid: BasicRestClient.RestClient.AbstractRestClient.Execute(BasicRestClient.RestClient.HttpRequest)
+  name: Execute(HttpRequest)
+  href: api/BasicRestClient.RestClient.AbstractRestClient.html#BasicRestClient_RestClient_AbstractRestClient_Execute_BasicRestClient_RestClient_HttpRequest_
+  commentId: M:BasicRestClient.RestClient.AbstractRestClient.Execute(BasicRestClient.RestClient.HttpRequest)
+  fullName: BasicRestClient.RestClient.AbstractRestClient.Execute(BasicRestClient.RestClient.HttpRequest)
+- uid: BasicRestClient.RestClient.AbstractRestClient.ExecuteAsync(BasicRestClient.RestClient.HttpRequest)
+  name: ExecuteAsync(HttpRequest)
+  href: api/BasicRestClient.RestClient.AbstractRestClient.html#BasicRestClient_RestClient_AbstractRestClient_ExecuteAsync_BasicRestClient_RestClient_HttpRequest_
+  commentId: M:BasicRestClient.RestClient.AbstractRestClient.ExecuteAsync(BasicRestClient.RestClient.HttpRequest)
+  fullName: BasicRestClient.RestClient.AbstractRestClient.ExecuteAsync(BasicRestClient.RestClient.HttpRequest)
+- uid: BasicRestClient.RestClient.AbstractRestClient.Failure
+  name: Failure
+  href: api/BasicRestClient.RestClient.AbstractRestClient.html#BasicRestClient_RestClient_AbstractRestClient_Failure
+  commentId: E:BasicRestClient.RestClient.AbstractRestClient.Failure
+  fullName: BasicRestClient.RestClient.AbstractRestClient.Failure
+- uid: BasicRestClient.RestClient.AbstractRestClient.Get(System.String,BasicRestClient.RestClient.ParameterMap)
+  name: Get(String, ParameterMap)
+  href: api/BasicRestClient.RestClient.AbstractRestClient.html#BasicRestClient_RestClient_AbstractRestClient_Get_System_String_BasicRestClient_RestClient_ParameterMap_
+  commentId: M:BasicRestClient.RestClient.AbstractRestClient.Get(System.String,BasicRestClient.RestClient.ParameterMap)
+  fullName: BasicRestClient.RestClient.AbstractRestClient.Get(System.String, BasicRestClient.RestClient.ParameterMap)
+- uid: BasicRestClient.RestClient.AbstractRestClient.GetAsync(BasicRestClient.RestClient.ParameterMap,System.String)
+  name: GetAsync(ParameterMap, String)
+  href: api/BasicRestClient.RestClient.AbstractRestClient.html#BasicRestClient_RestClient_AbstractRestClient_GetAsync_BasicRestClient_RestClient_ParameterMap_System_String_
+  commentId: M:BasicRestClient.RestClient.AbstractRestClient.GetAsync(BasicRestClient.RestClient.ParameterMap,System.String)
+  fullName: BasicRestClient.RestClient.AbstractRestClient.GetAsync(BasicRestClient.RestClient.ParameterMap, System.String)
+- uid: BasicRestClient.RestClient.AbstractRestClient.GetAsync(System.String,System.String)
+  name: GetAsync(String, String)
+  href: api/BasicRestClient.RestClient.AbstractRestClient.html#BasicRestClient_RestClient_AbstractRestClient_GetAsync_System_String_System_String_
+  commentId: M:BasicRestClient.RestClient.AbstractRestClient.GetAsync(System.String,System.String)
+  fullName: BasicRestClient.RestClient.AbstractRestClient.GetAsync(System.String, System.String)
+- uid: BasicRestClient.RestClient.AbstractRestClient.GetAsync(System.String,System.String,BasicRestClient.RestClient.ParameterMap)
+  name: GetAsync(String, String, ParameterMap)
+  href: api/BasicRestClient.RestClient.AbstractRestClient.html#BasicRestClient_RestClient_AbstractRestClient_GetAsync_System_String_System_String_BasicRestClient_RestClient_ParameterMap_
+  commentId: M:BasicRestClient.RestClient.AbstractRestClient.GetAsync(System.String,System.String,BasicRestClient.RestClient.ParameterMap)
+  fullName: BasicRestClient.RestClient.AbstractRestClient.GetAsync(System.String, System.String, BasicRestClient.RestClient.ParameterMap)
+- uid: BasicRestClient.RestClient.AbstractRestClient.Head(System.String,BasicRestClient.RestClient.ParameterMap)
+  name: Head(String, ParameterMap)
+  href: api/BasicRestClient.RestClient.AbstractRestClient.html#BasicRestClient_RestClient_AbstractRestClient_Head_System_String_BasicRestClient_RestClient_ParameterMap_
+  commentId: M:BasicRestClient.RestClient.AbstractRestClient.Head(System.String,BasicRestClient.RestClient.ParameterMap)
+  fullName: BasicRestClient.RestClient.AbstractRestClient.Head(System.String, BasicRestClient.RestClient.ParameterMap)
+- uid: BasicRestClient.RestClient.AbstractRestClient.HeadAsync
+  name: HeadAsync()
+  href: api/BasicRestClient.RestClient.AbstractRestClient.html#BasicRestClient_RestClient_AbstractRestClient_HeadAsync
+  commentId: M:BasicRestClient.RestClient.AbstractRestClient.HeadAsync
+  fullName: BasicRestClient.RestClient.AbstractRestClient.HeadAsync()
+- uid: BasicRestClient.RestClient.AbstractRestClient.HeadAsync(System.String,BasicRestClient.RestClient.ParameterMap)
+  name: HeadAsync(String, ParameterMap)
+  href: api/BasicRestClient.RestClient.AbstractRestClient.html#BasicRestClient_RestClient_AbstractRestClient_HeadAsync_System_String_BasicRestClient_RestClient_ParameterMap_
+  commentId: M:BasicRestClient.RestClient.AbstractRestClient.HeadAsync(System.String,BasicRestClient.RestClient.ParameterMap)
+  fullName: BasicRestClient.RestClient.AbstractRestClient.HeadAsync(System.String, BasicRestClient.RestClient.ParameterMap)
+- uid: BasicRestClient.RestClient.AbstractRestClient.Multipart
+  name: Multipart
+  href: api/BasicRestClient.RestClient.AbstractRestClient.html#BasicRestClient_RestClient_AbstractRestClient_Multipart
+  commentId: F:BasicRestClient.RestClient.AbstractRestClient.Multipart
+  fullName: BasicRestClient.RestClient.AbstractRestClient.Multipart
+- uid: BasicRestClient.RestClient.AbstractRestClient.OpenConnection(System.String)
+  name: OpenConnection(String)
+  href: api/BasicRestClient.RestClient.AbstractRestClient.html#BasicRestClient_RestClient_AbstractRestClient_OpenConnection_System_String_
+  commentId: M:BasicRestClient.RestClient.AbstractRestClient.OpenConnection(System.String)
+  fullName: BasicRestClient.RestClient.AbstractRestClient.OpenConnection(System.String)
+- uid: BasicRestClient.RestClient.AbstractRestClient.Payload
+  name: Payload()
+  href: api/BasicRestClient.RestClient.AbstractRestClient.html#BasicRestClient_RestClient_AbstractRestClient_Payload
+  commentId: M:BasicRestClient.RestClient.AbstractRestClient.Payload
+  fullName: BasicRestClient.RestClient.AbstractRestClient.Payload()
+- uid: BasicRestClient.RestClient.AbstractRestClient.Post(System.String,System.String,BasicRestClient.RestClient.ParameterMap)
+  name: Post(String, String, ParameterMap)
+  href: api/BasicRestClient.RestClient.AbstractRestClient.html#BasicRestClient_RestClient_AbstractRestClient_Post_System_String_System_String_BasicRestClient_RestClient_ParameterMap_
+  commentId: M:BasicRestClient.RestClient.AbstractRestClient.Post(System.String,System.String,BasicRestClient.RestClient.ParameterMap)
+  fullName: BasicRestClient.RestClient.AbstractRestClient.Post(System.String, System.String, BasicRestClient.RestClient.ParameterMap)
+- uid: BasicRestClient.RestClient.AbstractRestClient.Post(System.String,System.String,System.String,System.Byte[])
+  name: Post(String, String, String, Byte[])
+  href: api/BasicRestClient.RestClient.AbstractRestClient.html#BasicRestClient_RestClient_AbstractRestClient_Post_System_String_System_String_System_String_System_Byte___
+  commentId: M:BasicRestClient.RestClient.AbstractRestClient.Post(System.String,System.String,System.String,System.Byte[])
+  name.vb: Post(String, String, String, Byte())
+  fullName: BasicRestClient.RestClient.AbstractRestClient.Post(System.String, System.String, System.String, System.Byte[])
+  fullName.vb: BasicRestClient.RestClient.AbstractRestClient.Post(System.String, System.String, System.String, System.Byte())
+- uid: BasicRestClient.RestClient.AbstractRestClient.PostAsync(System.String,BasicRestClient.RestClient.ParameterMap,System.String)
+  name: PostAsync(String, ParameterMap, String)
+  href: api/BasicRestClient.RestClient.AbstractRestClient.html#BasicRestClient_RestClient_AbstractRestClient_PostAsync_System_String_BasicRestClient_RestClient_ParameterMap_System_String_
+  commentId: M:BasicRestClient.RestClient.AbstractRestClient.PostAsync(System.String,BasicRestClient.RestClient.ParameterMap,System.String)
+  fullName: BasicRestClient.RestClient.AbstractRestClient.PostAsync(System.String, BasicRestClient.RestClient.ParameterMap, System.String)
+- uid: BasicRestClient.RestClient.AbstractRestClient.PostAsync(System.String,System.String,BasicRestClient.RestClient.ParameterMap)
+  name: PostAsync(String, String, ParameterMap)
+  href: api/BasicRestClient.RestClient.AbstractRestClient.html#BasicRestClient_RestClient_AbstractRestClient_PostAsync_System_String_System_String_BasicRestClient_RestClient_ParameterMap_
+  commentId: M:BasicRestClient.RestClient.AbstractRestClient.PostAsync(System.String,System.String,BasicRestClient.RestClient.ParameterMap)
+  fullName: BasicRestClient.RestClient.AbstractRestClient.PostAsync(System.String, System.String, BasicRestClient.RestClient.ParameterMap)
+- uid: BasicRestClient.RestClient.AbstractRestClient.PostAsync(System.String,System.String,System.String,System.Byte[])
+  name: PostAsync(String, String, String, Byte[])
+  href: api/BasicRestClient.RestClient.AbstractRestClient.html#BasicRestClient_RestClient_AbstractRestClient_PostAsync_System_String_System_String_System_String_System_Byte___
+  commentId: M:BasicRestClient.RestClient.AbstractRestClient.PostAsync(System.String,System.String,System.String,System.Byte[])
+  name.vb: PostAsync(String, String, String, Byte())
+  fullName: BasicRestClient.RestClient.AbstractRestClient.PostAsync(System.String, System.String, System.String, System.Byte[])
+  fullName.vb: BasicRestClient.RestClient.AbstractRestClient.PostAsync(System.String, System.String, System.String, System.Byte())
+- uid: BasicRestClient.RestClient.AbstractRestClient.PostFiles(System.String,BasicRestClient.RestClient.HttpFile[],BasicRestClient.RestClient.ParameterMap)
+  name: PostFiles(String, HttpFile[], ParameterMap)
+  href: api/BasicRestClient.RestClient.AbstractRestClient.html#BasicRestClient_RestClient_AbstractRestClient_PostFiles_System_String_BasicRestClient_RestClient_HttpFile___BasicRestClient_RestClient_ParameterMap_
+  commentId: M:BasicRestClient.RestClient.AbstractRestClient.PostFiles(System.String,BasicRestClient.RestClient.HttpFile[],BasicRestClient.RestClient.ParameterMap)
+  name.vb: PostFiles(String, HttpFile(), ParameterMap)
+  fullName: BasicRestClient.RestClient.AbstractRestClient.PostFiles(System.String, BasicRestClient.RestClient.HttpFile[], BasicRestClient.RestClient.ParameterMap)
+  fullName.vb: BasicRestClient.RestClient.AbstractRestClient.PostFiles(System.String, BasicRestClient.RestClient.HttpFile(), BasicRestClient.RestClient.ParameterMap)
+- uid: BasicRestClient.RestClient.AbstractRestClient.PostFilesAsync(System.String,BasicRestClient.RestClient.HttpFile[],BasicRestClient.RestClient.ParameterMap)
+  name: PostFilesAsync(String, HttpFile[], ParameterMap)
+  href: api/BasicRestClient.RestClient.AbstractRestClient.html#BasicRestClient_RestClient_AbstractRestClient_PostFilesAsync_System_String_BasicRestClient_RestClient_HttpFile___BasicRestClient_RestClient_ParameterMap_
+  commentId: M:BasicRestClient.RestClient.AbstractRestClient.PostFilesAsync(System.String,BasicRestClient.RestClient.HttpFile[],BasicRestClient.RestClient.ParameterMap)
+  name.vb: PostFilesAsync(String, HttpFile(), ParameterMap)
+  fullName: BasicRestClient.RestClient.AbstractRestClient.PostFilesAsync(System.String, BasicRestClient.RestClient.HttpFile[], BasicRestClient.RestClient.ParameterMap)
+  fullName.vb: BasicRestClient.RestClient.AbstractRestClient.PostFilesAsync(System.String, BasicRestClient.RestClient.HttpFile(), BasicRestClient.RestClient.ParameterMap)
+- uid: BasicRestClient.RestClient.AbstractRestClient.PrepareConnection(System.Net.HttpWebRequest,System.String,System.String,System.String,System.String)
+  name: PrepareConnection(HttpWebRequest, String, String, String, String)
+  href: api/BasicRestClient.RestClient.AbstractRestClient.html#BasicRestClient_RestClient_AbstractRestClient_PrepareConnection_System_Net_HttpWebRequest_System_String_System_String_System_String_System_String_
+  commentId: M:BasicRestClient.RestClient.AbstractRestClient.PrepareConnection(System.Net.HttpWebRequest,System.String,System.String,System.String,System.String)
+  fullName: BasicRestClient.RestClient.AbstractRestClient.PrepareConnection(System.Net.HttpWebRequest, System.String, System.String, System.String, System.String)
+- uid: BasicRestClient.RestClient.AbstractRestClient.Put(System.String,System.String,BasicRestClient.RestClient.ParameterMap)
+  name: Put(String, String, ParameterMap)
+  href: api/BasicRestClient.RestClient.AbstractRestClient.html#BasicRestClient_RestClient_AbstractRestClient_Put_System_String_System_String_BasicRestClient_RestClient_ParameterMap_
+  commentId: M:BasicRestClient.RestClient.AbstractRestClient.Put(System.String,System.String,BasicRestClient.RestClient.ParameterMap)
+  fullName: BasicRestClient.RestClient.AbstractRestClient.Put(System.String, System.String, BasicRestClient.RestClient.ParameterMap)
+- uid: BasicRestClient.RestClient.AbstractRestClient.Put(System.String,System.String,System.String,System.Byte[])
+  name: Put(String, String, String, Byte[])
+  href: api/BasicRestClient.RestClient.AbstractRestClient.html#BasicRestClient_RestClient_AbstractRestClient_Put_System_String_System_String_System_String_System_Byte___
+  commentId: M:BasicRestClient.RestClient.AbstractRestClient.Put(System.String,System.String,System.String,System.Byte[])
+  name.vb: Put(String, String, String, Byte())
+  fullName: BasicRestClient.RestClient.AbstractRestClient.Put(System.String, System.String, System.String, System.Byte[])
+  fullName.vb: BasicRestClient.RestClient.AbstractRestClient.Put(System.String, System.String, System.String, System.Byte())
+- uid: BasicRestClient.RestClient.AbstractRestClient.PutAsync(System.String,System.String)
+  name: PutAsync(String, String)
+  href: api/BasicRestClient.RestClient.AbstractRestClient.html#BasicRestClient_RestClient_AbstractRestClient_PutAsync_System_String_System_String_
+  commentId: M:BasicRestClient.RestClient.AbstractRestClient.PutAsync(System.String,System.String)
+  fullName: BasicRestClient.RestClient.AbstractRestClient.PutAsync(System.String, System.String)
+- uid: BasicRestClient.RestClient.AbstractRestClient.PutAsync(System.String,System.String,BasicRestClient.RestClient.ParameterMap)
+  name: PutAsync(String, String, ParameterMap)
+  href: api/BasicRestClient.RestClient.AbstractRestClient.html#BasicRestClient_RestClient_AbstractRestClient_PutAsync_System_String_System_String_BasicRestClient_RestClient_ParameterMap_
+  commentId: M:BasicRestClient.RestClient.AbstractRestClient.PutAsync(System.String,System.String,BasicRestClient.RestClient.ParameterMap)
+  fullName: BasicRestClient.RestClient.AbstractRestClient.PutAsync(System.String, System.String, BasicRestClient.RestClient.ParameterMap)
+- uid: BasicRestClient.RestClient.AbstractRestClient.PutAsync(System.String,System.String,System.String,System.Byte[])
+  name: PutAsync(String, String, String, Byte[])
+  href: api/BasicRestClient.RestClient.AbstractRestClient.html#BasicRestClient_RestClient_AbstractRestClient_PutAsync_System_String_System_String_System_String_System_Byte___
+  commentId: M:BasicRestClient.RestClient.AbstractRestClient.PutAsync(System.String,System.String,System.String,System.Byte[])
+  name.vb: PutAsync(String, String, String, Byte())
+  fullName: BasicRestClient.RestClient.AbstractRestClient.PutAsync(System.String, System.String, System.String, System.Byte[])
+  fullName.vb: BasicRestClient.RestClient.AbstractRestClient.PutAsync(System.String, System.String, System.String, System.Byte())
+- uid: BasicRestClient.RestClient.AbstractRestClient.ReadStreamError(System.Net.WebException)
+  name: ReadStreamError(WebException)
+  href: api/BasicRestClient.RestClient.AbstractRestClient.html#BasicRestClient_RestClient_AbstractRestClient_ReadStreamError_System_Net_WebException_
+  commentId: M:BasicRestClient.RestClient.AbstractRestClient.ReadStreamError(System.Net.WebException)
+  fullName: BasicRestClient.RestClient.AbstractRestClient.ReadStreamError(System.Net.WebException)
+- uid: BasicRestClient.RestClient.AbstractRestClient.ReadWriteTimeout
+  name: ReadWriteTimeout
+  href: api/BasicRestClient.RestClient.AbstractRestClient.html#BasicRestClient_RestClient_AbstractRestClient_ReadWriteTimeout
+  commentId: P:BasicRestClient.RestClient.AbstractRestClient.ReadWriteTimeout
+  fullName: BasicRestClient.RestClient.AbstractRestClient.ReadWriteTimeout
+- uid: BasicRestClient.RestClient.AbstractRestClient.RequestHandler
+  name: RequestHandler
+  href: api/BasicRestClient.RestClient.AbstractRestClient.html#BasicRestClient_RestClient_AbstractRestClient_RequestHandler
+  commentId: P:BasicRestClient.RestClient.AbstractRestClient.RequestHandler
+  fullName: BasicRestClient.RestClient.AbstractRestClient.RequestHandler
+- uid: BasicRestClient.RestClient.AbstractRestClient.RequestHeaders
+  name: RequestHeaders
+  href: api/BasicRestClient.RestClient.AbstractRestClient.html#BasicRestClient_RestClient_AbstractRestClient_RequestHeaders
+  commentId: P:BasicRestClient.RestClient.AbstractRestClient.RequestHeaders
+  fullName: BasicRestClient.RestClient.AbstractRestClient.RequestHeaders
+- uid: BasicRestClient.RestClient.AbstractRestClient.RequestLogger
+  name: RequestLogger
+  href: api/BasicRestClient.RestClient.AbstractRestClient.html#BasicRestClient_RestClient_AbstractRestClient_RequestLogger
+  commentId: P:BasicRestClient.RestClient.AbstractRestClient.RequestLogger
+  fullName: BasicRestClient.RestClient.AbstractRestClient.RequestLogger
+- uid: BasicRestClient.RestClient.AbstractRestClient.Sending
+  name: Sending
+  href: api/BasicRestClient.RestClient.AbstractRestClient.html#BasicRestClient_RestClient_AbstractRestClient_Sending
+  commentId: E:BasicRestClient.RestClient.AbstractRestClient.Sending
+  fullName: BasicRestClient.RestClient.AbstractRestClient.Sending
+- uid: BasicRestClient.RestClient.AbstractRestClient.SSLCertificate
+  name: SSLCertificate
+  href: api/BasicRestClient.RestClient.AbstractRestClient.html#BasicRestClient_RestClient_AbstractRestClient_SSLCertificate
+  commentId: P:BasicRestClient.RestClient.AbstractRestClient.SSLCertificate
+  fullName: BasicRestClient.RestClient.AbstractRestClient.SSLCertificate
+- uid: BasicRestClient.RestClient.AbstractRestClient.Success
+  name: Success
+  href: api/BasicRestClient.RestClient.AbstractRestClient.html#BasicRestClient_RestClient_AbstractRestClient_Success
+  commentId: E:BasicRestClient.RestClient.AbstractRestClient.Success
+  fullName: BasicRestClient.RestClient.AbstractRestClient.Success
+- uid: BasicRestClient.RestClient.AbstractRestClient.UrlEncoded
+  name: UrlEncoded
+  href: api/BasicRestClient.RestClient.AbstractRestClient.html#BasicRestClient_RestClient_AbstractRestClient_UrlEncoded
+  commentId: F:BasicRestClient.RestClient.AbstractRestClient.UrlEncoded
+  fullName: BasicRestClient.RestClient.AbstractRestClient.UrlEncoded
+- uid: BasicRestClient.RestClient.AbstractRestClient.WriteOutptStream(System.Net.HttpWebRequest,System.Byte[])
+  name: WriteOutptStream(HttpWebRequest, Byte[])
+  href: api/BasicRestClient.RestClient.AbstractRestClient.html#BasicRestClient_RestClient_AbstractRestClient_WriteOutptStream_System_Net_HttpWebRequest_System_Byte___
+  commentId: M:BasicRestClient.RestClient.AbstractRestClient.WriteOutptStream(System.Net.HttpWebRequest,System.Byte[])
+  name.vb: WriteOutptStream(HttpWebRequest, Byte())
+  fullName: BasicRestClient.RestClient.AbstractRestClient.WriteOutptStream(System.Net.HttpWebRequest, System.Byte[])
+  fullName.vb: BasicRestClient.RestClient.AbstractRestClient.WriteOutptStream(System.Net.HttpWebRequest, System.Byte())
+- uid: BasicRestClient.RestClient.AbstractRestClient.WriteOutptStreamAsync(System.Net.HttpWebRequest,System.Byte[])
+  name: WriteOutptStreamAsync(HttpWebRequest, Byte[])
+  href: api/BasicRestClient.RestClient.AbstractRestClient.html#BasicRestClient_RestClient_AbstractRestClient_WriteOutptStreamAsync_System_Net_HttpWebRequest_System_Byte___
+  commentId: M:BasicRestClient.RestClient.AbstractRestClient.WriteOutptStreamAsync(System.Net.HttpWebRequest,System.Byte[])
+  name.vb: WriteOutptStreamAsync(HttpWebRequest, Byte())
+  fullName: BasicRestClient.RestClient.AbstractRestClient.WriteOutptStreamAsync(System.Net.HttpWebRequest, System.Byte[])
+  fullName.vb: BasicRestClient.RestClient.AbstractRestClient.WriteOutptStreamAsync(System.Net.HttpWebRequest, System.Byte())
+- uid: BasicRestClient.RestClient.AbstractSSLPolicy
+  name: AbstractSSLPolicy
+  href: api/BasicRestClient.RestClient.AbstractSSLPolicy.html#BasicRestClient_RestClient_AbstractSSLPolicy
+  commentId: T:BasicRestClient.RestClient.AbstractSSLPolicy
+  fullName: BasicRestClient.RestClient.AbstractSSLPolicy
+- uid: BasicRestClient.RestClient.AbstractSSLPolicy.#ctor(System.String)
+  name: AbstractSSLPolicy(String)
+  href: api/BasicRestClient.RestClient.AbstractSSLPolicy.html#BasicRestClient_RestClient_AbstractSSLPolicy__ctor_System_String_
+  commentId: M:BasicRestClient.RestClient.AbstractSSLPolicy.#ctor(System.String)
+  fullName: BasicRestClient.RestClient.AbstractSSLPolicy.AbstractSSLPolicy(System.String)
+- uid: BasicRestClient.RestClient.AbstractSSLPolicy.CertificateFileLocation
+  name: CertificateFileLocation
+  href: api/BasicRestClient.RestClient.AbstractSSLPolicy.html#BasicRestClient_RestClient_AbstractSSLPolicy_CertificateFileLocation
+  commentId: P:BasicRestClient.RestClient.AbstractSSLPolicy.CertificateFileLocation
+  fullName: BasicRestClient.RestClient.AbstractSSLPolicy.CertificateFileLocation
+- uid: BasicRestClient.RestClient.AbstractSSLPolicy.CheckCertificate(System.Net.ServicePoint,System.Security.Cryptography.X509Certificates.X509Certificate,System.Net.WebRequest,System.Int32)
+  name: CheckCertificate(ServicePoint, X509Certificate, WebRequest, Int32)
+  href: api/BasicRestClient.RestClient.AbstractSSLPolicy.html#BasicRestClient_RestClient_AbstractSSLPolicy_CheckCertificate_System_Net_ServicePoint_System_Security_Cryptography_X509Certificates_X509Certificate_System_Net_WebRequest_System_Int32_
+  commentId: M:BasicRestClient.RestClient.AbstractSSLPolicy.CheckCertificate(System.Net.ServicePoint,System.Security.Cryptography.X509Certificates.X509Certificate,System.Net.WebRequest,System.Int32)
+  fullName: BasicRestClient.RestClient.AbstractSSLPolicy.CheckCertificate(System.Net.ServicePoint, System.Security.Cryptography.X509Certificates.X509Certificate, System.Net.WebRequest, System.Int32)
+- uid: BasicRestClient.RestClient.AbstractSSLPolicy.CheckValidationResult(System.Net.ServicePoint,System.Security.Cryptography.X509Certificates.X509Certificate,System.Net.WebRequest,System.Int32)
+  name: CheckValidationResult(ServicePoint, X509Certificate, WebRequest, Int32)
+  href: api/BasicRestClient.RestClient.AbstractSSLPolicy.html#BasicRestClient_RestClient_AbstractSSLPolicy_CheckValidationResult_System_Net_ServicePoint_System_Security_Cryptography_X509Certificates_X509Certificate_System_Net_WebRequest_System_Int32_
+  commentId: M:BasicRestClient.RestClient.AbstractSSLPolicy.CheckValidationResult(System.Net.ServicePoint,System.Security.Cryptography.X509Certificates.X509Certificate,System.Net.WebRequest,System.Int32)
+  fullName: BasicRestClient.RestClient.AbstractSSLPolicy.CheckValidationResult(System.Net.ServicePoint, System.Security.Cryptography.X509Certificates.X509Certificate, System.Net.WebRequest, System.Int32)
+- uid: BasicRestClient.RestClient.AbstractSSLPolicy.X509Certificate
+  name: X509Certificate
+  href: api/BasicRestClient.RestClient.AbstractSSLPolicy.html#BasicRestClient_RestClient_AbstractSSLPolicy_X509Certificate
+  commentId: P:BasicRestClient.RestClient.AbstractSSLPolicy.X509Certificate
+  fullName: BasicRestClient.RestClient.AbstractSSLPolicy.X509Certificate
+- uid: BasicRestClient.RestClient.ConsoleRequestLogger
+  name: ConsoleRequestLogger
+  href: api/BasicRestClient.RestClient.ConsoleRequestLogger.html#BasicRestClient_RestClient_ConsoleRequestLogger
+  commentId: T:BasicRestClient.RestClient.ConsoleRequestLogger
+  fullName: BasicRestClient.RestClient.ConsoleRequestLogger
+- uid: BasicRestClient.RestClient.ConsoleRequestLogger.#ctor(System.Boolean)
+  name: ConsoleRequestLogger(Boolean)
+  href: api/BasicRestClient.RestClient.ConsoleRequestLogger.html#BasicRestClient_RestClient_ConsoleRequestLogger__ctor_System_Boolean_
+  commentId: M:BasicRestClient.RestClient.ConsoleRequestLogger.#ctor(System.Boolean)
+  fullName: BasicRestClient.RestClient.ConsoleRequestLogger.ConsoleRequestLogger(System.Boolean)
+- uid: BasicRestClient.RestClient.ConsoleRequestLogger.IsLoggingEnabled
+  name: IsLoggingEnabled()
+  href: api/BasicRestClient.RestClient.ConsoleRequestLogger.html#BasicRestClient_RestClient_ConsoleRequestLogger_IsLoggingEnabled
+  commentId: M:BasicRestClient.RestClient.ConsoleRequestLogger.IsLoggingEnabled
+  fullName: BasicRestClient.RestClient.ConsoleRequestLogger.IsLoggingEnabled()
+- uid: BasicRestClient.RestClient.ConsoleRequestLogger.Log(System.String)
+  name: Log(String)
+  href: api/BasicRestClient.RestClient.ConsoleRequestLogger.html#BasicRestClient_RestClient_ConsoleRequestLogger_Log_System_String_
+  commentId: M:BasicRestClient.RestClient.ConsoleRequestLogger.Log(System.String)
+  fullName: BasicRestClient.RestClient.ConsoleRequestLogger.Log(System.String)
+- uid: BasicRestClient.RestClient.ConsoleRequestLogger.LogHeaders(System.Net.WebHeaderCollection)
+  name: LogHeaders(WebHeaderCollection)
+  href: api/BasicRestClient.RestClient.ConsoleRequestLogger.html#BasicRestClient_RestClient_ConsoleRequestLogger_LogHeaders_System_Net_WebHeaderCollection_
+  commentId: M:BasicRestClient.RestClient.ConsoleRequestLogger.LogHeaders(System.Net.WebHeaderCollection)
+  fullName: BasicRestClient.RestClient.ConsoleRequestLogger.LogHeaders(System.Net.WebHeaderCollection)
+- uid: BasicRestClient.RestClient.ConsoleRequestLogger.LogRequest(System.Net.HttpWebRequest,System.Object)
+  name: LogRequest(HttpWebRequest, Object)
+  href: api/BasicRestClient.RestClient.ConsoleRequestLogger.html#BasicRestClient_RestClient_ConsoleRequestLogger_LogRequest_System_Net_HttpWebRequest_System_Object_
+  commentId: M:BasicRestClient.RestClient.ConsoleRequestLogger.LogRequest(System.Net.HttpWebRequest,System.Object)
+  fullName: BasicRestClient.RestClient.ConsoleRequestLogger.LogRequest(System.Net.HttpWebRequest, System.Object)
+- uid: BasicRestClient.RestClient.ConsoleRequestLogger.LogResponse(BasicRestClient.RestClient.HttpResponse)
+  name: LogResponse(HttpResponse)
+  href: api/BasicRestClient.RestClient.ConsoleRequestLogger.html#BasicRestClient_RestClient_ConsoleRequestLogger_LogResponse_BasicRestClient_RestClient_HttpResponse_
+  commentId: M:BasicRestClient.RestClient.ConsoleRequestLogger.LogResponse(BasicRestClient.RestClient.HttpResponse)
+  fullName: BasicRestClient.RestClient.ConsoleRequestLogger.LogResponse(BasicRestClient.RestClient.HttpResponse)
+- uid: BasicRestClient.RestClient.DefaultSslPolicy
+  name: DefaultSslPolicy
+  href: api/BasicRestClient.RestClient.DefaultSslPolicy.html#BasicRestClient_RestClient_DefaultSslPolicy
+  commentId: T:BasicRestClient.RestClient.DefaultSslPolicy
+  fullName: BasicRestClient.RestClient.DefaultSslPolicy
+- uid: BasicRestClient.RestClient.DefaultSslPolicy.#ctor
+  name: DefaultSslPolicy()
+  href: api/BasicRestClient.RestClient.DefaultSslPolicy.html#BasicRestClient_RestClient_DefaultSslPolicy__ctor
+  commentId: M:BasicRestClient.RestClient.DefaultSslPolicy.#ctor
+  fullName: BasicRestClient.RestClient.DefaultSslPolicy.DefaultSslPolicy()
+- uid: BasicRestClient.RestClient.DefaultSslPolicy.#ctor(System.String)
+  name: DefaultSslPolicy(String)
+  href: api/BasicRestClient.RestClient.DefaultSslPolicy.html#BasicRestClient_RestClient_DefaultSslPolicy__ctor_System_String_
+  commentId: M:BasicRestClient.RestClient.DefaultSslPolicy.#ctor(System.String)
+  fullName: BasicRestClient.RestClient.DefaultSslPolicy.DefaultSslPolicy(System.String)
+- uid: BasicRestClient.RestClient.DefaultSslPolicy.CheckCertificate(System.Net.ServicePoint,System.Security.Cryptography.X509Certificates.X509Certificate,System.Net.WebRequest,System.Int32)
+  name: CheckCertificate(ServicePoint, X509Certificate, WebRequest, Int32)
+  href: api/BasicRestClient.RestClient.DefaultSslPolicy.html#BasicRestClient_RestClient_DefaultSslPolicy_CheckCertificate_System_Net_ServicePoint_System_Security_Cryptography_X509Certificates_X509Certificate_System_Net_WebRequest_System_Int32_
+  commentId: M:BasicRestClient.RestClient.DefaultSslPolicy.CheckCertificate(System.Net.ServicePoint,System.Security.Cryptography.X509Certificates.X509Certificate,System.Net.WebRequest,System.Int32)
+  fullName: BasicRestClient.RestClient.DefaultSslPolicy.CheckCertificate(System.Net.ServicePoint, System.Security.Cryptography.X509Certificates.X509Certificate, System.Net.WebRequest, System.Int32)
+- uid: BasicRestClient.RestClient.FileExtensionMimeTypeMapping
+  name: FileExtensionMimeTypeMapping
+  href: api/BasicRestClient.RestClient.FileExtensionMimeTypeMapping.html#BasicRestClient_RestClient_FileExtensionMimeTypeMapping
+  commentId: T:BasicRestClient.RestClient.FileExtensionMimeTypeMapping
+  fullName: BasicRestClient.RestClient.FileExtensionMimeTypeMapping
+- uid: BasicRestClient.RestClient.FileExtensionMimeTypeMapping.GetMimeType(System.String)
+  name: GetMimeType(String)
+  href: api/BasicRestClient.RestClient.FileExtensionMimeTypeMapping.html#BasicRestClient_RestClient_FileExtensionMimeTypeMapping_GetMimeType_System_String_
+  commentId: M:BasicRestClient.RestClient.FileExtensionMimeTypeMapping.GetMimeType(System.String)
+  fullName: BasicRestClient.RestClient.FileExtensionMimeTypeMapping.GetMimeType(System.String)
+- uid: BasicRestClient.RestClient.HttpDelete
+  name: HttpDelete
+  href: api/BasicRestClient.RestClient.HttpDelete.html#BasicRestClient_RestClient_HttpDelete
+  commentId: T:BasicRestClient.RestClient.HttpDelete
+  fullName: BasicRestClient.RestClient.HttpDelete
+- uid: BasicRestClient.RestClient.HttpDelete.#ctor(System.String,BasicRestClient.RestClient.ParameterMap)
+  name: HttpDelete(String, ParameterMap)
+  href: api/BasicRestClient.RestClient.HttpDelete.html#BasicRestClient_RestClient_HttpDelete__ctor_System_String_BasicRestClient_RestClient_ParameterMap_
+  commentId: M:BasicRestClient.RestClient.HttpDelete.#ctor(System.String,BasicRestClient.RestClient.ParameterMap)
+  fullName: BasicRestClient.RestClient.HttpDelete.HttpDelete(System.String, BasicRestClient.RestClient.ParameterMap)
+- uid: BasicRestClient.RestClient.HttpFile
+  name: HttpFile
+  href: api/BasicRestClient.RestClient.HttpFile.html#BasicRestClient_RestClient_HttpFile
+  commentId: T:BasicRestClient.RestClient.HttpFile
+  fullName: BasicRestClient.RestClient.HttpFile
+- uid: BasicRestClient.RestClient.HttpFile.#ctor(System.IO.Stream,System.String,System.String,System.String)
+  name: HttpFile(Stream, String, String, String)
+  href: api/BasicRestClient.RestClient.HttpFile.html#BasicRestClient_RestClient_HttpFile__ctor_System_IO_Stream_System_String_System_String_System_String_
+  commentId: M:BasicRestClient.RestClient.HttpFile.#ctor(System.IO.Stream,System.String,System.String,System.String)
+  fullName: BasicRestClient.RestClient.HttpFile.HttpFile(System.IO.Stream, System.String, System.String, System.String)
+- uid: BasicRestClient.RestClient.HttpFile.#ctor(System.String)
+  name: HttpFile(String)
+  href: api/BasicRestClient.RestClient.HttpFile.html#BasicRestClient_RestClient_HttpFile__ctor_System_String_
+  commentId: M:BasicRestClient.RestClient.HttpFile.#ctor(System.String)
+  fullName: BasicRestClient.RestClient.HttpFile.HttpFile(System.String)
+- uid: BasicRestClient.RestClient.HttpFile.#ctor(System.String,System.String)
+  name: HttpFile(String, String)
+  href: api/BasicRestClient.RestClient.HttpFile.html#BasicRestClient_RestClient_HttpFile__ctor_System_String_System_String_
+  commentId: M:BasicRestClient.RestClient.HttpFile.#ctor(System.String,System.String)
+  fullName: BasicRestClient.RestClient.HttpFile.HttpFile(System.String, System.String)
+- uid: BasicRestClient.RestClient.HttpFile.#ctor(System.String,System.String,System.String)
+  name: HttpFile(String, String, String)
+  href: api/BasicRestClient.RestClient.HttpFile.html#BasicRestClient_RestClient_HttpFile__ctor_System_String_System_String_System_String_
+  commentId: M:BasicRestClient.RestClient.HttpFile.#ctor(System.String,System.String,System.String)
+  fullName: BasicRestClient.RestClient.HttpFile.HttpFile(System.String, System.String, System.String)
+- uid: BasicRestClient.RestClient.HttpFile.ContentType
+  name: ContentType
+  href: api/BasicRestClient.RestClient.HttpFile.html#BasicRestClient_RestClient_HttpFile_ContentType
+  commentId: P:BasicRestClient.RestClient.HttpFile.ContentType
+  fullName: BasicRestClient.RestClient.HttpFile.ContentType
+- uid: BasicRestClient.RestClient.HttpFile.Data
+  name: Data
+  href: api/BasicRestClient.RestClient.HttpFile.html#BasicRestClient_RestClient_HttpFile_Data
+  commentId: P:BasicRestClient.RestClient.HttpFile.Data
+  fullName: BasicRestClient.RestClient.HttpFile.Data
+- uid: BasicRestClient.RestClient.HttpFile.FieldName
+  name: FieldName
+  href: api/BasicRestClient.RestClient.HttpFile.html#BasicRestClient_RestClient_HttpFile_FieldName
+  commentId: P:BasicRestClient.RestClient.HttpFile.FieldName
+  fullName: BasicRestClient.RestClient.HttpFile.FieldName
+- uid: BasicRestClient.RestClient.HttpFile.FileName
+  name: FileName
+  href: api/BasicRestClient.RestClient.HttpFile.html#BasicRestClient_RestClient_HttpFile_FileName
+  commentId: P:BasicRestClient.RestClient.HttpFile.FileName
+  fullName: BasicRestClient.RestClient.HttpFile.FileName
+- uid: BasicRestClient.RestClient.HttpFileUploader
+  name: HttpFileUploader
+  href: api/BasicRestClient.RestClient.HttpFileUploader.html#BasicRestClient_RestClient_HttpFileUploader
+  commentId: T:BasicRestClient.RestClient.HttpFileUploader
+  fullName: BasicRestClient.RestClient.HttpFileUploader
+- uid: BasicRestClient.RestClient.HttpFileUploader.Upload(System.Net.HttpWebRequest,BasicRestClient.RestClient.HttpFile[],System.Collections.Specialized.NameValueCollection)
+  name: Upload(HttpWebRequest, HttpFile[], NameValueCollection)
+  href: api/BasicRestClient.RestClient.HttpFileUploader.html#BasicRestClient_RestClient_HttpFileUploader_Upload_System_Net_HttpWebRequest_BasicRestClient_RestClient_HttpFile___System_Collections_Specialized_NameValueCollection_
+  commentId: M:BasicRestClient.RestClient.HttpFileUploader.Upload(System.Net.HttpWebRequest,BasicRestClient.RestClient.HttpFile[],System.Collections.Specialized.NameValueCollection)
+  name.vb: Upload(HttpWebRequest, HttpFile(), NameValueCollection)
+  fullName: BasicRestClient.RestClient.HttpFileUploader.Upload(System.Net.HttpWebRequest, BasicRestClient.RestClient.HttpFile[], System.Collections.Specialized.NameValueCollection)
+  fullName.vb: BasicRestClient.RestClient.HttpFileUploader.Upload(System.Net.HttpWebRequest, BasicRestClient.RestClient.HttpFile(), System.Collections.Specialized.NameValueCollection)
+- uid: BasicRestClient.RestClient.HttpFileUploader.Upload(System.String,BasicRestClient.RestClient.HttpFile[],System.Collections.Specialized.NameValueCollection)
+  name: Upload(String, HttpFile[], NameValueCollection)
+  href: api/BasicRestClient.RestClient.HttpFileUploader.html#BasicRestClient_RestClient_HttpFileUploader_Upload_System_String_BasicRestClient_RestClient_HttpFile___System_Collections_Specialized_NameValueCollection_
+  commentId: M:BasicRestClient.RestClient.HttpFileUploader.Upload(System.String,BasicRestClient.RestClient.HttpFile[],System.Collections.Specialized.NameValueCollection)
+  name.vb: Upload(String, HttpFile(), NameValueCollection)
+  fullName: BasicRestClient.RestClient.HttpFileUploader.Upload(System.String, BasicRestClient.RestClient.HttpFile[], System.Collections.Specialized.NameValueCollection)
+  fullName.vb: BasicRestClient.RestClient.HttpFileUploader.Upload(System.String, BasicRestClient.RestClient.HttpFile(), System.Collections.Specialized.NameValueCollection)
+- uid: BasicRestClient.RestClient.HttpFileUploader.UploadAsync(System.Net.HttpWebRequest,BasicRestClient.RestClient.HttpFile[],System.Collections.Specialized.NameValueCollection)
+  name: UploadAsync(HttpWebRequest, HttpFile[], NameValueCollection)
+  href: api/BasicRestClient.RestClient.HttpFileUploader.html#BasicRestClient_RestClient_HttpFileUploader_UploadAsync_System_Net_HttpWebRequest_BasicRestClient_RestClient_HttpFile___System_Collections_Specialized_NameValueCollection_
+  commentId: M:BasicRestClient.RestClient.HttpFileUploader.UploadAsync(System.Net.HttpWebRequest,BasicRestClient.RestClient.HttpFile[],System.Collections.Specialized.NameValueCollection)
+  name.vb: UploadAsync(HttpWebRequest, HttpFile(), NameValueCollection)
+  fullName: BasicRestClient.RestClient.HttpFileUploader.UploadAsync(System.Net.HttpWebRequest, BasicRestClient.RestClient.HttpFile[], System.Collections.Specialized.NameValueCollection)
+  fullName.vb: BasicRestClient.RestClient.HttpFileUploader.UploadAsync(System.Net.HttpWebRequest, BasicRestClient.RestClient.HttpFile(), System.Collections.Specialized.NameValueCollection)
+- uid: BasicRestClient.RestClient.HttpGet
+  name: HttpGet
+  href: api/BasicRestClient.RestClient.HttpGet.html#BasicRestClient_RestClient_HttpGet
+  commentId: T:BasicRestClient.RestClient.HttpGet
+  fullName: BasicRestClient.RestClient.HttpGet
+- uid: BasicRestClient.RestClient.HttpGet.#ctor(System.String,BasicRestClient.RestClient.ParameterMap)
+  name: HttpGet(String, ParameterMap)
+  href: api/BasicRestClient.RestClient.HttpGet.html#BasicRestClient_RestClient_HttpGet__ctor_System_String_BasicRestClient_RestClient_ParameterMap_
+  commentId: M:BasicRestClient.RestClient.HttpGet.#ctor(System.String,BasicRestClient.RestClient.ParameterMap)
+  fullName: BasicRestClient.RestClient.HttpGet.HttpGet(System.String, BasicRestClient.RestClient.ParameterMap)
+- uid: BasicRestClient.RestClient.HttpGet.#ctor(System.String,System.String)
+  name: HttpGet(String, String)
+  href: api/BasicRestClient.RestClient.HttpGet.html#BasicRestClient_RestClient_HttpGet__ctor_System_String_System_String_
+  commentId: M:BasicRestClient.RestClient.HttpGet.#ctor(System.String,System.String)
+  fullName: BasicRestClient.RestClient.HttpGet.HttpGet(System.String, System.String)
+- uid: BasicRestClient.RestClient.HttpGet.#ctor(System.String,System.String,BasicRestClient.RestClient.ParameterMap)
+  name: HttpGet(String, String, ParameterMap)
+  href: api/BasicRestClient.RestClient.HttpGet.html#BasicRestClient_RestClient_HttpGet__ctor_System_String_System_String_BasicRestClient_RestClient_ParameterMap_
+  commentId: M:BasicRestClient.RestClient.HttpGet.#ctor(System.String,System.String,BasicRestClient.RestClient.ParameterMap)
+  fullName: BasicRestClient.RestClient.HttpGet.HttpGet(System.String, System.String, BasicRestClient.RestClient.ParameterMap)
+- uid: BasicRestClient.RestClient.HttpGet.#ctor(System.String,System.String,System.String)
+  name: HttpGet(String, String, String)
+  href: api/BasicRestClient.RestClient.HttpGet.html#BasicRestClient_RestClient_HttpGet__ctor_System_String_System_String_System_String_
+  commentId: M:BasicRestClient.RestClient.HttpGet.#ctor(System.String,System.String,System.String)
+  fullName: BasicRestClient.RestClient.HttpGet.HttpGet(System.String, System.String, System.String)
+- uid: BasicRestClient.RestClient.HttpGet.#ctor(System.String,System.String,System.String,BasicRestClient.RestClient.ParameterMap)
+  name: HttpGet(String, String, String, ParameterMap)
+  href: api/BasicRestClient.RestClient.HttpGet.html#BasicRestClient_RestClient_HttpGet__ctor_System_String_System_String_System_String_BasicRestClient_RestClient_ParameterMap_
+  commentId: M:BasicRestClient.RestClient.HttpGet.#ctor(System.String,System.String,System.String,BasicRestClient.RestClient.ParameterMap)
+  fullName: BasicRestClient.RestClient.HttpGet.HttpGet(System.String, System.String, System.String, BasicRestClient.RestClient.ParameterMap)
+- uid: BasicRestClient.RestClient.HttpHead
+  name: HttpHead
+  href: api/BasicRestClient.RestClient.HttpHead.html#BasicRestClient_RestClient_HttpHead
+  commentId: T:BasicRestClient.RestClient.HttpHead
+  fullName: BasicRestClient.RestClient.HttpHead
+- uid: BasicRestClient.RestClient.HttpHead.#ctor(System.String,BasicRestClient.RestClient.ParameterMap)
+  name: HttpHead(String, ParameterMap)
+  href: api/BasicRestClient.RestClient.HttpHead.html#BasicRestClient_RestClient_HttpHead__ctor_System_String_BasicRestClient_RestClient_ParameterMap_
+  commentId: M:BasicRestClient.RestClient.HttpHead.#ctor(System.String,BasicRestClient.RestClient.ParameterMap)
+  fullName: BasicRestClient.RestClient.HttpHead.HttpHead(System.String, BasicRestClient.RestClient.ParameterMap)
+- uid: BasicRestClient.RestClient.HttpHead.#ctor(System.String,System.String)
+  name: HttpHead(String, String)
+  href: api/BasicRestClient.RestClient.HttpHead.html#BasicRestClient_RestClient_HttpHead__ctor_System_String_System_String_
+  commentId: M:BasicRestClient.RestClient.HttpHead.#ctor(System.String,System.String)
+  fullName: BasicRestClient.RestClient.HttpHead.HttpHead(System.String, System.String)
+- uid: BasicRestClient.RestClient.HttpHead.#ctor(System.String,System.String,BasicRestClient.RestClient.ParameterMap)
+  name: HttpHead(String, String, ParameterMap)
+  href: api/BasicRestClient.RestClient.HttpHead.html#BasicRestClient_RestClient_HttpHead__ctor_System_String_System_String_BasicRestClient_RestClient_ParameterMap_
+  commentId: M:BasicRestClient.RestClient.HttpHead.#ctor(System.String,System.String,BasicRestClient.RestClient.ParameterMap)
+  fullName: BasicRestClient.RestClient.HttpHead.HttpHead(System.String, System.String, BasicRestClient.RestClient.ParameterMap)
+- uid: BasicRestClient.RestClient.HttpHead.#ctor(System.String,System.String,System.String)
+  name: HttpHead(String, String, String)
+  href: api/BasicRestClient.RestClient.HttpHead.html#BasicRestClient_RestClient_HttpHead__ctor_System_String_System_String_System_String_
+  commentId: M:BasicRestClient.RestClient.HttpHead.#ctor(System.String,System.String,System.String)
+  fullName: BasicRestClient.RestClient.HttpHead.HttpHead(System.String, System.String, System.String)
+- uid: BasicRestClient.RestClient.HttpHead.#ctor(System.String,System.String,System.String,BasicRestClient.RestClient.ParameterMap)
+  name: HttpHead(String, String, String, ParameterMap)
+  href: api/BasicRestClient.RestClient.HttpHead.html#BasicRestClient_RestClient_HttpHead__ctor_System_String_System_String_System_String_BasicRestClient_RestClient_ParameterMap_
+  commentId: M:BasicRestClient.RestClient.HttpHead.#ctor(System.String,System.String,System.String,BasicRestClient.RestClient.ParameterMap)
+  fullName: BasicRestClient.RestClient.HttpHead.HttpHead(System.String, System.String, System.String, BasicRestClient.RestClient.ParameterMap)
+- uid: BasicRestClient.RestClient.HttpPost
+  name: HttpPost
+  href: api/BasicRestClient.RestClient.HttpPost.html#BasicRestClient_RestClient_HttpPost
+  commentId: T:BasicRestClient.RestClient.HttpPost
+  fullName: BasicRestClient.RestClient.HttpPost
+- uid: BasicRestClient.RestClient.HttpPost.#ctor(System.String,BasicRestClient.RestClient.ParameterMap,System.String,System.String,System.Byte[])
+  name: HttpPost(String, ParameterMap, String, String, Byte[])
+  href: api/BasicRestClient.RestClient.HttpPost.html#BasicRestClient_RestClient_HttpPost__ctor_System_String_BasicRestClient_RestClient_ParameterMap_System_String_System_String_System_Byte___
+  commentId: M:BasicRestClient.RestClient.HttpPost.#ctor(System.String,BasicRestClient.RestClient.ParameterMap,System.String,System.String,System.Byte[])
+  name.vb: HttpPost(String, ParameterMap, String, String, Byte())
+  fullName: BasicRestClient.RestClient.HttpPost.HttpPost(System.String, BasicRestClient.RestClient.ParameterMap, System.String, System.String, System.Byte[])
+  fullName.vb: BasicRestClient.RestClient.HttpPost.HttpPost(System.String, BasicRestClient.RestClient.ParameterMap, System.String, System.String, System.Byte())
+- uid: BasicRestClient.RestClient.HttpPost.#ctor(System.String,System.String,BasicRestClient.RestClient.ParameterMap)
+  name: HttpPost(String, String, ParameterMap)
+  href: api/BasicRestClient.RestClient.HttpPost.html#BasicRestClient_RestClient_HttpPost__ctor_System_String_System_String_BasicRestClient_RestClient_ParameterMap_
+  commentId: M:BasicRestClient.RestClient.HttpPost.#ctor(System.String,System.String,BasicRestClient.RestClient.ParameterMap)
+  fullName: BasicRestClient.RestClient.HttpPost.HttpPost(System.String, System.String, BasicRestClient.RestClient.ParameterMap)
+- uid: BasicRestClient.RestClient.HttpPost.#ctor(System.String,System.String,System.String,System.Byte[])
+  name: HttpPost(String, String, String, Byte[])
+  href: api/BasicRestClient.RestClient.HttpPost.html#BasicRestClient_RestClient_HttpPost__ctor_System_String_System_String_System_String_System_Byte___
+  commentId: M:BasicRestClient.RestClient.HttpPost.#ctor(System.String,System.String,System.String,System.Byte[])
+  name.vb: HttpPost(String, String, String, Byte())
+  fullName: BasicRestClient.RestClient.HttpPost.HttpPost(System.String, System.String, System.String, System.Byte[])
+  fullName.vb: BasicRestClient.RestClient.HttpPost.HttpPost(System.String, System.String, System.String, System.Byte())
+- uid: BasicRestClient.RestClient.HttpPut
+  name: HttpPut
+  href: api/BasicRestClient.RestClient.HttpPut.html#BasicRestClient_RestClient_HttpPut
+  commentId: T:BasicRestClient.RestClient.HttpPut
+  fullName: BasicRestClient.RestClient.HttpPut
+- uid: BasicRestClient.RestClient.HttpPut.#ctor(System.String,BasicRestClient.RestClient.ParameterMap)
+  name: HttpPut(String, ParameterMap)
+  href: api/BasicRestClient.RestClient.HttpPut.html#BasicRestClient_RestClient_HttpPut__ctor_System_String_BasicRestClient_RestClient_ParameterMap_
+  commentId: M:BasicRestClient.RestClient.HttpPut.#ctor(System.String,BasicRestClient.RestClient.ParameterMap)
+  fullName: BasicRestClient.RestClient.HttpPut.HttpPut(System.String, BasicRestClient.RestClient.ParameterMap)
+- uid: BasicRestClient.RestClient.HttpPut.#ctor(System.String,BasicRestClient.RestClient.ParameterMap,System.String,System.Byte[])
+  name: HttpPut(String, ParameterMap, String, Byte[])
+  href: api/BasicRestClient.RestClient.HttpPut.html#BasicRestClient_RestClient_HttpPut__ctor_System_String_BasicRestClient_RestClient_ParameterMap_System_String_System_Byte___
+  commentId: M:BasicRestClient.RestClient.HttpPut.#ctor(System.String,BasicRestClient.RestClient.ParameterMap,System.String,System.Byte[])
+  name.vb: HttpPut(String, ParameterMap, String, Byte())
+  fullName: BasicRestClient.RestClient.HttpPut.HttpPut(System.String, BasicRestClient.RestClient.ParameterMap, System.String, System.Byte[])
+  fullName.vb: BasicRestClient.RestClient.HttpPut.HttpPut(System.String, BasicRestClient.RestClient.ParameterMap, System.String, System.Byte())
+- uid: BasicRestClient.RestClient.HttpPut.#ctor(System.String,System.String,System.Byte[])
+  name: HttpPut(String, String, Byte[])
+  href: api/BasicRestClient.RestClient.HttpPut.html#BasicRestClient_RestClient_HttpPut__ctor_System_String_System_String_System_Byte___
+  commentId: M:BasicRestClient.RestClient.HttpPut.#ctor(System.String,System.String,System.Byte[])
+  name.vb: HttpPut(String, String, Byte())
+  fullName: BasicRestClient.RestClient.HttpPut.HttpPut(System.String, System.String, System.Byte[])
+  fullName.vb: BasicRestClient.RestClient.HttpPut.HttpPut(System.String, System.String, System.Byte())
+- uid: BasicRestClient.RestClient.HttpRequest
+  name: HttpRequest
+  href: api/BasicRestClient.RestClient.HttpRequest.html#BasicRestClient_RestClient_HttpRequest
+  commentId: T:BasicRestClient.RestClient.HttpRequest
+  fullName: BasicRestClient.RestClient.HttpRequest
+- uid: BasicRestClient.RestClient.HttpRequest.#ctor(System.String)
+  name: HttpRequest(String)
+  href: api/BasicRestClient.RestClient.HttpRequest.html#BasicRestClient_RestClient_HttpRequest__ctor_System_String_
+  commentId: M:BasicRestClient.RestClient.HttpRequest.#ctor(System.String)
+  fullName: BasicRestClient.RestClient.HttpRequest.HttpRequest(System.String)
+- uid: BasicRestClient.RestClient.HttpRequest.#ctor(System.String,BasicRestClient.RestClient.ParameterMap)
+  name: HttpRequest(String, ParameterMap)
+  href: api/BasicRestClient.RestClient.HttpRequest.html#BasicRestClient_RestClient_HttpRequest__ctor_System_String_BasicRestClient_RestClient_ParameterMap_
+  commentId: M:BasicRestClient.RestClient.HttpRequest.#ctor(System.String,BasicRestClient.RestClient.ParameterMap)
+  fullName: BasicRestClient.RestClient.HttpRequest.HttpRequest(System.String, BasicRestClient.RestClient.ParameterMap)
+- uid: BasicRestClient.RestClient.HttpRequest.Accept
+  name: Accept
+  href: api/BasicRestClient.RestClient.HttpRequest.html#BasicRestClient_RestClient_HttpRequest_Accept
+  commentId: P:BasicRestClient.RestClient.HttpRequest.Accept
+  fullName: BasicRestClient.RestClient.HttpRequest.Accept
+- uid: BasicRestClient.RestClient.HttpRequest.AcceptHeader
+  name: AcceptHeader
+  href: api/BasicRestClient.RestClient.HttpRequest.html#BasicRestClient_RestClient_HttpRequest_AcceptHeader
+  commentId: F:BasicRestClient.RestClient.HttpRequest.AcceptHeader
+  fullName: BasicRestClient.RestClient.HttpRequest.AcceptHeader
+- uid: BasicRestClient.RestClient.HttpRequest.Content
+  name: Content
+  href: api/BasicRestClient.RestClient.HttpRequest.html#BasicRestClient_RestClient_HttpRequest_Content
+  commentId: P:BasicRestClient.RestClient.HttpRequest.Content
+  fullName: BasicRestClient.RestClient.HttpRequest.Content
+- uid: BasicRestClient.RestClient.HttpRequest.ContentType
+  name: ContentType
+  href: api/BasicRestClient.RestClient.HttpRequest.html#BasicRestClient_RestClient_HttpRequest_ContentType
+  commentId: P:BasicRestClient.RestClient.HttpRequest.ContentType
+  fullName: BasicRestClient.RestClient.HttpRequest.ContentType
+- uid: BasicRestClient.RestClient.HttpRequest.HttpMethod
+  name: HttpMethod
+  href: api/BasicRestClient.RestClient.HttpRequest.html#BasicRestClient_RestClient_HttpRequest_HttpMethod
+  commentId: P:BasicRestClient.RestClient.HttpRequest.HttpMethod
+  fullName: BasicRestClient.RestClient.HttpRequest.HttpMethod
+- uid: BasicRestClient.RestClient.HttpRequest.Path
+  name: Path
+  href: api/BasicRestClient.RestClient.HttpRequest.html#BasicRestClient_RestClient_HttpRequest_Path
+  commentId: P:BasicRestClient.RestClient.HttpRequest.Path
+  fullName: BasicRestClient.RestClient.HttpRequest.Path
+- uid: BasicRestClient.RestClient.HttpRequest.UrlEncoded
+  name: UrlEncoded
+  href: api/BasicRestClient.RestClient.HttpRequest.html#BasicRestClient_RestClient_HttpRequest_UrlEncoded
+  commentId: F:BasicRestClient.RestClient.HttpRequest.UrlEncoded
+  fullName: BasicRestClient.RestClient.HttpRequest.UrlEncoded
+- uid: BasicRestClient.RestClient.HttpRequestEventArgs
+  name: HttpRequestEventArgs
+  href: api/BasicRestClient.RestClient.HttpRequestEventArgs.html#BasicRestClient_RestClient_HttpRequestEventArgs
+  commentId: T:BasicRestClient.RestClient.HttpRequestEventArgs
+  fullName: BasicRestClient.RestClient.HttpRequestEventArgs
+- uid: BasicRestClient.RestClient.HttpRequestEventArgs.#ctor(BasicRestClient.RestClient.HttpRequest)
+  name: HttpRequestEventArgs(HttpRequest)
+  href: api/BasicRestClient.RestClient.HttpRequestEventArgs.html#BasicRestClient_RestClient_HttpRequestEventArgs__ctor_BasicRestClient_RestClient_HttpRequest_
+  commentId: M:BasicRestClient.RestClient.HttpRequestEventArgs.#ctor(BasicRestClient.RestClient.HttpRequest)
+  fullName: BasicRestClient.RestClient.HttpRequestEventArgs.HttpRequestEventArgs(BasicRestClient.RestClient.HttpRequest)
+- uid: BasicRestClient.RestClient.HttpRequestEventArgs.Request
+  name: Request
+  href: api/BasicRestClient.RestClient.HttpRequestEventArgs.html#BasicRestClient_RestClient_HttpRequestEventArgs_Request
+  commentId: P:BasicRestClient.RestClient.HttpRequestEventArgs.Request
+  fullName: BasicRestClient.RestClient.HttpRequestEventArgs.Request
+- uid: BasicRestClient.RestClient.HttpRequestException
+  name: HttpRequestException
+  href: api/BasicRestClient.RestClient.HttpRequestException.html#BasicRestClient_RestClient_HttpRequestException
+  commentId: T:BasicRestClient.RestClient.HttpRequestException
+  fullName: BasicRestClient.RestClient.HttpRequestException
+- uid: BasicRestClient.RestClient.HttpRequestException.#ctor(System.Exception,BasicRestClient.RestClient.HttpResponse)
+  name: HttpRequestException(Exception, HttpResponse)
+  href: api/BasicRestClient.RestClient.HttpRequestException.html#BasicRestClient_RestClient_HttpRequestException__ctor_System_Exception_BasicRestClient_RestClient_HttpResponse_
+  commentId: M:BasicRestClient.RestClient.HttpRequestException.#ctor(System.Exception,BasicRestClient.RestClient.HttpResponse)
+  fullName: BasicRestClient.RestClient.HttpRequestException.HttpRequestException(System.Exception, BasicRestClient.RestClient.HttpResponse)
+- uid: BasicRestClient.RestClient.HttpRequestException.HttpResponse
+  name: HttpResponse
+  href: api/BasicRestClient.RestClient.HttpRequestException.html#BasicRestClient_RestClient_HttpRequestException_HttpResponse
+  commentId: P:BasicRestClient.RestClient.HttpRequestException.HttpResponse
+  fullName: BasicRestClient.RestClient.HttpRequestException.HttpResponse
+- uid: BasicRestClient.RestClient.HttpRequestExceptionEventArgs
+  name: HttpRequestExceptionEventArgs
+  href: api/BasicRestClient.RestClient.HttpRequestExceptionEventArgs.html#BasicRestClient_RestClient_HttpRequestExceptionEventArgs
+  commentId: T:BasicRestClient.RestClient.HttpRequestExceptionEventArgs
+  fullName: BasicRestClient.RestClient.HttpRequestExceptionEventArgs
+- uid: BasicRestClient.RestClient.HttpRequestExceptionEventArgs.#ctor(BasicRestClient.RestClient.HttpRequestException)
+  name: HttpRequestExceptionEventArgs(HttpRequestException)
+  href: api/BasicRestClient.RestClient.HttpRequestExceptionEventArgs.html#BasicRestClient_RestClient_HttpRequestExceptionEventArgs__ctor_BasicRestClient_RestClient_HttpRequestException_
+  commentId: M:BasicRestClient.RestClient.HttpRequestExceptionEventArgs.#ctor(BasicRestClient.RestClient.HttpRequestException)
+  fullName: BasicRestClient.RestClient.HttpRequestExceptionEventArgs.HttpRequestExceptionEventArgs(BasicRestClient.RestClient.HttpRequestException)
+- uid: BasicRestClient.RestClient.HttpRequestExceptionEventArgs.Exception
+  name: Exception
+  href: api/BasicRestClient.RestClient.HttpRequestExceptionEventArgs.html#BasicRestClient_RestClient_HttpRequestExceptionEventArgs_Exception
+  commentId: P:BasicRestClient.RestClient.HttpRequestExceptionEventArgs.Exception
+  fullName: BasicRestClient.RestClient.HttpRequestExceptionEventArgs.Exception
+- uid: BasicRestClient.RestClient.HttpRequestHandler
+  name: HttpRequestHandler
+  href: api/BasicRestClient.RestClient.HttpRequestHandler.html#BasicRestClient_RestClient_HttpRequestHandler
+  commentId: T:BasicRestClient.RestClient.HttpRequestHandler
+  fullName: BasicRestClient.RestClient.HttpRequestHandler
+- uid: BasicRestClient.RestClient.HttpRequestHandler.#ctor(BasicRestClient.RestClient.IRequestLogger,System.Int32)
+  name: HttpRequestHandler(IRequestLogger, Int32)
+  href: api/BasicRestClient.RestClient.HttpRequestHandler.html#BasicRestClient_RestClient_HttpRequestHandler__ctor_BasicRestClient_RestClient_IRequestLogger_System_Int32_
+  commentId: M:BasicRestClient.RestClient.HttpRequestHandler.#ctor(BasicRestClient.RestClient.IRequestLogger,System.Int32)
+  fullName: BasicRestClient.RestClient.HttpRequestHandler.HttpRequestHandler(BasicRestClient.RestClient.IRequestLogger, System.Int32)
+- uid: BasicRestClient.RestClient.HttpRequestHandler.#ctor(System.Int32)
+  name: HttpRequestHandler(Int32)
+  href: api/BasicRestClient.RestClient.HttpRequestHandler.html#BasicRestClient_RestClient_HttpRequestHandler__ctor_System_Int32_
+  commentId: M:BasicRestClient.RestClient.HttpRequestHandler.#ctor(System.Int32)
+  fullName: BasicRestClient.RestClient.HttpRequestHandler.HttpRequestHandler(System.Int32)
+- uid: BasicRestClient.RestClient.HttpRequestHandler.ConnectionLimit
+  name: ConnectionLimit
+  href: api/BasicRestClient.RestClient.HttpRequestHandler.html#BasicRestClient_RestClient_HttpRequestHandler_ConnectionLimit
+  commentId: F:BasicRestClient.RestClient.HttpRequestHandler.ConnectionLimit
+  fullName: BasicRestClient.RestClient.HttpRequestHandler.ConnectionLimit
+- uid: BasicRestClient.RestClient.HttpRequestHandler.Logger
+  name: Logger
+  href: api/BasicRestClient.RestClient.HttpRequestHandler.html#BasicRestClient_RestClient_HttpRequestHandler_Logger
+  commentId: P:BasicRestClient.RestClient.HttpRequestHandler.Logger
+  fullName: BasicRestClient.RestClient.HttpRequestHandler.Logger
+- uid: BasicRestClient.RestClient.HttpRequestHandler.OnError(BasicRestClient.RestClient.HttpRequestException)
+  name: OnError(HttpRequestException)
+  href: api/BasicRestClient.RestClient.HttpRequestHandler.html#BasicRestClient_RestClient_HttpRequestHandler_OnError_BasicRestClient_RestClient_HttpRequestException_
+  commentId: M:BasicRestClient.RestClient.HttpRequestHandler.OnError(BasicRestClient.RestClient.HttpRequestException)
+  fullName: BasicRestClient.RestClient.HttpRequestHandler.OnError(BasicRestClient.RestClient.HttpRequestException)
+- uid: BasicRestClient.RestClient.HttpRequestHandler.OpenConnection(System.String)
+  name: OpenConnection(String)
+  href: api/BasicRestClient.RestClient.HttpRequestHandler.html#BasicRestClient_RestClient_HttpRequestHandler_OpenConnection_System_String_
+  commentId: M:BasicRestClient.RestClient.HttpRequestHandler.OpenConnection(System.String)
+  fullName: BasicRestClient.RestClient.HttpRequestHandler.OpenConnection(System.String)
+- uid: BasicRestClient.RestClient.HttpRequestHandler.OpenInput(System.Net.HttpWebRequest)
+  name: OpenInput(HttpWebRequest)
+  href: api/BasicRestClient.RestClient.HttpRequestHandler.html#BasicRestClient_RestClient_HttpRequestHandler_OpenInput_System_Net_HttpWebRequest_
+  commentId: M:BasicRestClient.RestClient.HttpRequestHandler.OpenInput(System.Net.HttpWebRequest)
+  fullName: BasicRestClient.RestClient.HttpRequestHandler.OpenInput(System.Net.HttpWebRequest)
+- uid: BasicRestClient.RestClient.HttpRequestHandler.OpenInputAsync(BasicRestClient.RestClient.HttpWebRequestAsyncState)
+  name: OpenInputAsync(HttpWebRequestAsyncState)
+  href: api/BasicRestClient.RestClient.HttpRequestHandler.html#BasicRestClient_RestClient_HttpRequestHandler_OpenInputAsync_BasicRestClient_RestClient_HttpWebRequestAsyncState_
+  commentId: M:BasicRestClient.RestClient.HttpRequestHandler.OpenInputAsync(BasicRestClient.RestClient.HttpWebRequestAsyncState)
+  fullName: BasicRestClient.RestClient.HttpRequestHandler.OpenInputAsync(BasicRestClient.RestClient.HttpWebRequestAsyncState)
+- uid: BasicRestClient.RestClient.HttpRequestHandler.OpenOutput(System.Net.HttpWebRequest)
+  name: OpenOutput(HttpWebRequest)
+  href: api/BasicRestClient.RestClient.HttpRequestHandler.html#BasicRestClient_RestClient_HttpRequestHandler_OpenOutput_System_Net_HttpWebRequest_
+  commentId: M:BasicRestClient.RestClient.HttpRequestHandler.OpenOutput(System.Net.HttpWebRequest)
+  fullName: BasicRestClient.RestClient.HttpRequestHandler.OpenOutput(System.Net.HttpWebRequest)
+- uid: BasicRestClient.RestClient.HttpRequestHandler.OpenOutputAsync(System.Net.HttpWebRequest)
+  name: OpenOutputAsync(HttpWebRequest)
+  href: api/BasicRestClient.RestClient.HttpRequestHandler.html#BasicRestClient_RestClient_HttpRequestHandler_OpenOutputAsync_System_Net_HttpWebRequest_
+  commentId: M:BasicRestClient.RestClient.HttpRequestHandler.OpenOutputAsync(System.Net.HttpWebRequest)
+  fullName: BasicRestClient.RestClient.HttpRequestHandler.OpenOutputAsync(System.Net.HttpWebRequest)
+- uid: BasicRestClient.RestClient.HttpRequestHandler.PrepareConnection(System.Net.HttpWebRequest,System.String,System.String,System.String,System.Int32,System.Int32,System.String)
+  name: PrepareConnection(HttpWebRequest, String, String, String, Int32, Int32, String)
+  href: api/BasicRestClient.RestClient.HttpRequestHandler.html#BasicRestClient_RestClient_HttpRequestHandler_PrepareConnection_System_Net_HttpWebRequest_System_String_System_String_System_String_System_Int32_System_Int32_System_String_
+  commentId: M:BasicRestClient.RestClient.HttpRequestHandler.PrepareConnection(System.Net.HttpWebRequest,System.String,System.String,System.String,System.Int32,System.Int32,System.String)
+  fullName: BasicRestClient.RestClient.HttpRequestHandler.PrepareConnection(System.Net.HttpWebRequest, System.String, System.String, System.String, System.Int32, System.Int32, System.String)
+- uid: BasicRestClient.RestClient.HttpRequestHandler.WriteStream(System.IO.Stream,System.Byte[])
+  name: WriteStream(Stream, Byte[])
+  href: api/BasicRestClient.RestClient.HttpRequestHandler.html#BasicRestClient_RestClient_HttpRequestHandler_WriteStream_System_IO_Stream_System_Byte___
+  commentId: M:BasicRestClient.RestClient.HttpRequestHandler.WriteStream(System.IO.Stream,System.Byte[])
+  name.vb: WriteStream(Stream, Byte())
+  fullName: BasicRestClient.RestClient.HttpRequestHandler.WriteStream(System.IO.Stream, System.Byte[])
+  fullName.vb: BasicRestClient.RestClient.HttpRequestHandler.WriteStream(System.IO.Stream, System.Byte())
+- uid: BasicRestClient.RestClient.HttpRequestHandler.WriteStreamAsync(System.Net.HttpWebRequest,System.IO.Stream,System.Byte[])
+  name: WriteStreamAsync(HttpWebRequest, Stream, Byte[])
+  href: api/BasicRestClient.RestClient.HttpRequestHandler.html#BasicRestClient_RestClient_HttpRequestHandler_WriteStreamAsync_System_Net_HttpWebRequest_System_IO_Stream_System_Byte___
+  commentId: M:BasicRestClient.RestClient.HttpRequestHandler.WriteStreamAsync(System.Net.HttpWebRequest,System.IO.Stream,System.Byte[])
+  name.vb: WriteStreamAsync(HttpWebRequest, Stream, Byte())
+  fullName: BasicRestClient.RestClient.HttpRequestHandler.WriteStreamAsync(System.Net.HttpWebRequest, System.IO.Stream, System.Byte[])
+  fullName.vb: BasicRestClient.RestClient.HttpRequestHandler.WriteStreamAsync(System.Net.HttpWebRequest, System.IO.Stream, System.Byte())
+- uid: BasicRestClient.RestClient.HttpResponse
+  name: HttpResponse
+  href: api/BasicRestClient.RestClient.HttpResponse.html#BasicRestClient_RestClient_HttpResponse
+  commentId: T:BasicRestClient.RestClient.HttpResponse
+  fullName: BasicRestClient.RestClient.HttpResponse
+- uid: BasicRestClient.RestClient.HttpResponse.#ctor
+  name: HttpResponse()
+  href: api/BasicRestClient.RestClient.HttpResponse.html#BasicRestClient_RestClient_HttpResponse__ctor
+  commentId: M:BasicRestClient.RestClient.HttpResponse.#ctor
+  fullName: BasicRestClient.RestClient.HttpResponse.HttpResponse()
+- uid: BasicRestClient.RestClient.HttpResponse.#ctor(System.Net.HttpWebRequest,System.Byte[])
+  name: HttpResponse(HttpWebRequest, Byte[])
+  href: api/BasicRestClient.RestClient.HttpResponse.html#BasicRestClient_RestClient_HttpResponse__ctor_System_Net_HttpWebRequest_System_Byte___
+  commentId: M:BasicRestClient.RestClient.HttpResponse.#ctor(System.Net.HttpWebRequest,System.Byte[])
+  name.vb: HttpResponse(HttpWebRequest, Byte())
+  fullName: BasicRestClient.RestClient.HttpResponse.HttpResponse(System.Net.HttpWebRequest, System.Byte[])
+  fullName.vb: BasicRestClient.RestClient.HttpResponse.HttpResponse(System.Net.HttpWebRequest, System.Byte())
+- uid: BasicRestClient.RestClient.HttpResponse.#ctor(System.String,System.Int32)
+  name: HttpResponse(String, Int32)
+  href: api/BasicRestClient.RestClient.HttpResponse.html#BasicRestClient_RestClient_HttpResponse__ctor_System_String_System_Int32_
+  commentId: M:BasicRestClient.RestClient.HttpResponse.#ctor(System.String,System.Int32)
+  fullName: BasicRestClient.RestClient.HttpResponse.HttpResponse(System.String, System.Int32)
+- uid: BasicRestClient.RestClient.HttpResponse.#ctor(System.String,System.Net.WebHeaderCollection,System.Int32,System.Byte[],System.Int64)
+  name: HttpResponse(String, WebHeaderCollection, Int32, Byte[], Int64)
+  href: api/BasicRestClient.RestClient.HttpResponse.html#BasicRestClient_RestClient_HttpResponse__ctor_System_String_System_Net_WebHeaderCollection_System_Int32_System_Byte___System_Int64_
+  commentId: M:BasicRestClient.RestClient.HttpResponse.#ctor(System.String,System.Net.WebHeaderCollection,System.Int32,System.Byte[],System.Int64)
+  name.vb: HttpResponse(String, WebHeaderCollection, Int32, Byte(), Int64)
+  fullName: BasicRestClient.RestClient.HttpResponse.HttpResponse(System.String, System.Net.WebHeaderCollection, System.Int32, System.Byte[], System.Int64)
+  fullName.vb: BasicRestClient.RestClient.HttpResponse.HttpResponse(System.String, System.Net.WebHeaderCollection, System.Int32, System.Byte(), System.Int64)
+- uid: BasicRestClient.RestClient.HttpResponse.Body
+  name: Body
+  href: api/BasicRestClient.RestClient.HttpResponse.html#BasicRestClient_RestClient_HttpResponse_Body
+  commentId: P:BasicRestClient.RestClient.HttpResponse.Body
+  fullName: BasicRestClient.RestClient.HttpResponse.Body
+- uid: BasicRestClient.RestClient.HttpResponse.Elapsed
+  name: Elapsed
+  href: api/BasicRestClient.RestClient.HttpResponse.html#BasicRestClient_RestClient_HttpResponse_Elapsed
+  commentId: P:BasicRestClient.RestClient.HttpResponse.Elapsed
+  fullName: BasicRestClient.RestClient.HttpResponse.Elapsed
+- uid: BasicRestClient.RestClient.HttpResponse.GetBodyAsString
+  name: GetBodyAsString()
+  href: api/BasicRestClient.RestClient.HttpResponse.html#BasicRestClient_RestClient_HttpResponse_GetBodyAsString
+  commentId: M:BasicRestClient.RestClient.HttpResponse.GetBodyAsString
+  fullName: BasicRestClient.RestClient.HttpResponse.GetBodyAsString()
+- uid: BasicRestClient.RestClient.HttpResponse.Headers
+  name: Headers
+  href: api/BasicRestClient.RestClient.HttpResponse.html#BasicRestClient_RestClient_HttpResponse_Headers
+  commentId: P:BasicRestClient.RestClient.HttpResponse.Headers
+  fullName: BasicRestClient.RestClient.HttpResponse.Headers
+- uid: BasicRestClient.RestClient.HttpResponse.Status
+  name: Status
+  href: api/BasicRestClient.RestClient.HttpResponse.html#BasicRestClient_RestClient_HttpResponse_Status
+  commentId: P:BasicRestClient.RestClient.HttpResponse.Status
+  fullName: BasicRestClient.RestClient.HttpResponse.Status
+- uid: BasicRestClient.RestClient.HttpResponse.Url
+  name: Url
+  href: api/BasicRestClient.RestClient.HttpResponse.html#BasicRestClient_RestClient_HttpResponse_Url
+  commentId: P:BasicRestClient.RestClient.HttpResponse.Url
+  fullName: BasicRestClient.RestClient.HttpResponse.Url
+- uid: BasicRestClient.RestClient.HttpResponseEventArgs
+  name: HttpResponseEventArgs
+  href: api/BasicRestClient.RestClient.HttpResponseEventArgs.html#BasicRestClient_RestClient_HttpResponseEventArgs
+  commentId: T:BasicRestClient.RestClient.HttpResponseEventArgs
+  fullName: BasicRestClient.RestClient.HttpResponseEventArgs
+- uid: BasicRestClient.RestClient.HttpResponseEventArgs.#ctor(BasicRestClient.RestClient.HttpResponse)
+  name: HttpResponseEventArgs(HttpResponse)
+  href: api/BasicRestClient.RestClient.HttpResponseEventArgs.html#BasicRestClient_RestClient_HttpResponseEventArgs__ctor_BasicRestClient_RestClient_HttpResponse_
+  commentId: M:BasicRestClient.RestClient.HttpResponseEventArgs.#ctor(BasicRestClient.RestClient.HttpResponse)
+  fullName: BasicRestClient.RestClient.HttpResponseEventArgs.HttpResponseEventArgs(BasicRestClient.RestClient.HttpResponse)
+- uid: BasicRestClient.RestClient.HttpResponseEventArgs.Response
+  name: Response
+  href: api/BasicRestClient.RestClient.HttpResponseEventArgs.html#BasicRestClient_RestClient_HttpResponseEventArgs_Response
+  commentId: P:BasicRestClient.RestClient.HttpResponseEventArgs.Response
+  fullName: BasicRestClient.RestClient.HttpResponseEventArgs.Response
+- uid: BasicRestClient.RestClient.HttpWebRequestAsyncState
+  name: HttpWebRequestAsyncState
+  href: api/BasicRestClient.RestClient.HttpWebRequestAsyncState.html#BasicRestClient_RestClient_HttpWebRequestAsyncState
+  commentId: T:BasicRestClient.RestClient.HttpWebRequestAsyncState
+  fullName: BasicRestClient.RestClient.HttpWebRequestAsyncState
+- uid: BasicRestClient.RestClient.HttpWebRequestAsyncState.Exception
+  name: Exception
+  href: api/BasicRestClient.RestClient.HttpWebRequestAsyncState.html#BasicRestClient_RestClient_HttpWebRequestAsyncState_Exception
+  commentId: P:BasicRestClient.RestClient.HttpWebRequestAsyncState.Exception
+  fullName: BasicRestClient.RestClient.HttpWebRequestAsyncState.Exception
+- uid: BasicRestClient.RestClient.HttpWebRequestAsyncState.HttpWebRequest
+  name: HttpWebRequest
+  href: api/BasicRestClient.RestClient.HttpWebRequestAsyncState.html#BasicRestClient_RestClient_HttpWebRequestAsyncState_HttpWebRequest
+  commentId: P:BasicRestClient.RestClient.HttpWebRequestAsyncState.HttpWebRequest
+  fullName: BasicRestClient.RestClient.HttpWebRequestAsyncState.HttpWebRequest
+- uid: BasicRestClient.RestClient.HttpWebRequestAsyncState.RequestBytes
+  name: RequestBytes
+  href: api/BasicRestClient.RestClient.HttpWebRequestAsyncState.html#BasicRestClient_RestClient_HttpWebRequestAsyncState_RequestBytes
+  commentId: P:BasicRestClient.RestClient.HttpWebRequestAsyncState.RequestBytes
+  fullName: BasicRestClient.RestClient.HttpWebRequestAsyncState.RequestBytes
+- uid: BasicRestClient.RestClient.HttpWebRequestAsyncState.State
+  name: State
+  href: api/BasicRestClient.RestClient.HttpWebRequestAsyncState.html#BasicRestClient_RestClient_HttpWebRequestAsyncState_State
+  commentId: P:BasicRestClient.RestClient.HttpWebRequestAsyncState.State
+  fullName: BasicRestClient.RestClient.HttpWebRequestAsyncState.State
+- uid: BasicRestClient.RestClient.HttpWebResponseAsyncState
+  name: HttpWebResponseAsyncState
+  href: api/BasicRestClient.RestClient.HttpWebResponseAsyncState.html#BasicRestClient_RestClient_HttpWebResponseAsyncState
+  commentId: T:BasicRestClient.RestClient.HttpWebResponseAsyncState
+  fullName: BasicRestClient.RestClient.HttpWebResponseAsyncState
+- uid: BasicRestClient.RestClient.HttpWebResponseAsyncState.Exception
+  name: Exception
+  href: api/BasicRestClient.RestClient.HttpWebResponseAsyncState.html#BasicRestClient_RestClient_HttpWebResponseAsyncState_Exception
+  commentId: P:BasicRestClient.RestClient.HttpWebResponseAsyncState.Exception
+  fullName: BasicRestClient.RestClient.HttpWebResponseAsyncState.Exception
+- uid: BasicRestClient.RestClient.HttpWebResponseAsyncState.HttpWebRequest
+  name: HttpWebRequest
+  href: api/BasicRestClient.RestClient.HttpWebResponseAsyncState.html#BasicRestClient_RestClient_HttpWebResponseAsyncState_HttpWebRequest
+  commentId: P:BasicRestClient.RestClient.HttpWebResponseAsyncState.HttpWebRequest
+  fullName: BasicRestClient.RestClient.HttpWebResponseAsyncState.HttpWebRequest
+- uid: BasicRestClient.RestClient.HttpWebResponseAsyncState.State
+  name: State
+  href: api/BasicRestClient.RestClient.HttpWebResponseAsyncState.html#BasicRestClient_RestClient_HttpWebResponseAsyncState_State
+  commentId: P:BasicRestClient.RestClient.HttpWebResponseAsyncState.State
+  fullName: BasicRestClient.RestClient.HttpWebResponseAsyncState.State
+- uid: BasicRestClient.RestClient.HttpWebResponseAsyncState.WebResponse
+  name: WebResponse
+  href: api/BasicRestClient.RestClient.HttpWebResponseAsyncState.html#BasicRestClient_RestClient_HttpWebResponseAsyncState_WebResponse
+  commentId: P:BasicRestClient.RestClient.HttpWebResponseAsyncState.WebResponse
+  fullName: BasicRestClient.RestClient.HttpWebResponseAsyncState.WebResponse
+- uid: BasicRestClient.RestClient.IRequestHandler
+  name: IRequestHandler
+  href: api/BasicRestClient.RestClient.IRequestHandler.html#BasicRestClient_RestClient_IRequestHandler
+  commentId: T:BasicRestClient.RestClient.IRequestHandler
+  fullName: BasicRestClient.RestClient.IRequestHandler
+- uid: BasicRestClient.RestClient.IRequestHandler.OnError(BasicRestClient.RestClient.HttpRequestException)
+  name: OnError(HttpRequestException)
+  href: api/BasicRestClient.RestClient.IRequestHandler.html#BasicRestClient_RestClient_IRequestHandler_OnError_BasicRestClient_RestClient_HttpRequestException_
+  commentId: M:BasicRestClient.RestClient.IRequestHandler.OnError(BasicRestClient.RestClient.HttpRequestException)
+  fullName: BasicRestClient.RestClient.IRequestHandler.OnError(BasicRestClient.RestClient.HttpRequestException)
+- uid: BasicRestClient.RestClient.IRequestHandler.OpenConnection(System.String)
+  name: OpenConnection(String)
+  href: api/BasicRestClient.RestClient.IRequestHandler.html#BasicRestClient_RestClient_IRequestHandler_OpenConnection_System_String_
+  commentId: M:BasicRestClient.RestClient.IRequestHandler.OpenConnection(System.String)
+  fullName: BasicRestClient.RestClient.IRequestHandler.OpenConnection(System.String)
+- uid: BasicRestClient.RestClient.IRequestHandler.OpenInput(System.Net.HttpWebRequest)
+  name: OpenInput(HttpWebRequest)
+  href: api/BasicRestClient.RestClient.IRequestHandler.html#BasicRestClient_RestClient_IRequestHandler_OpenInput_System_Net_HttpWebRequest_
+  commentId: M:BasicRestClient.RestClient.IRequestHandler.OpenInput(System.Net.HttpWebRequest)
+  fullName: BasicRestClient.RestClient.IRequestHandler.OpenInput(System.Net.HttpWebRequest)
+- uid: BasicRestClient.RestClient.IRequestHandler.OpenInputAsync(BasicRestClient.RestClient.HttpWebRequestAsyncState)
+  name: OpenInputAsync(HttpWebRequestAsyncState)
+  href: api/BasicRestClient.RestClient.IRequestHandler.html#BasicRestClient_RestClient_IRequestHandler_OpenInputAsync_BasicRestClient_RestClient_HttpWebRequestAsyncState_
+  commentId: M:BasicRestClient.RestClient.IRequestHandler.OpenInputAsync(BasicRestClient.RestClient.HttpWebRequestAsyncState)
+  fullName: BasicRestClient.RestClient.IRequestHandler.OpenInputAsync(BasicRestClient.RestClient.HttpWebRequestAsyncState)
+- uid: BasicRestClient.RestClient.IRequestHandler.OpenOutput(System.Net.HttpWebRequest)
+  name: OpenOutput(HttpWebRequest)
+  href: api/BasicRestClient.RestClient.IRequestHandler.html#BasicRestClient_RestClient_IRequestHandler_OpenOutput_System_Net_HttpWebRequest_
+  commentId: M:BasicRestClient.RestClient.IRequestHandler.OpenOutput(System.Net.HttpWebRequest)
+  fullName: BasicRestClient.RestClient.IRequestHandler.OpenOutput(System.Net.HttpWebRequest)
+- uid: BasicRestClient.RestClient.IRequestHandler.OpenOutputAsync(System.Net.HttpWebRequest)
+  name: OpenOutputAsync(HttpWebRequest)
+  href: api/BasicRestClient.RestClient.IRequestHandler.html#BasicRestClient_RestClient_IRequestHandler_OpenOutputAsync_System_Net_HttpWebRequest_
+  commentId: M:BasicRestClient.RestClient.IRequestHandler.OpenOutputAsync(System.Net.HttpWebRequest)
+  fullName: BasicRestClient.RestClient.IRequestHandler.OpenOutputAsync(System.Net.HttpWebRequest)
+- uid: BasicRestClient.RestClient.IRequestHandler.PrepareConnection(System.Net.HttpWebRequest,System.String,System.String,System.String,System.Int32,System.Int32,System.String)
+  name: PrepareConnection(HttpWebRequest, String, String, String, Int32, Int32, String)
+  href: api/BasicRestClient.RestClient.IRequestHandler.html#BasicRestClient_RestClient_IRequestHandler_PrepareConnection_System_Net_HttpWebRequest_System_String_System_String_System_String_System_Int32_System_Int32_System_String_
+  commentId: M:BasicRestClient.RestClient.IRequestHandler.PrepareConnection(System.Net.HttpWebRequest,System.String,System.String,System.String,System.Int32,System.Int32,System.String)
+  fullName: BasicRestClient.RestClient.IRequestHandler.PrepareConnection(System.Net.HttpWebRequest, System.String, System.String, System.String, System.Int32, System.Int32, System.String)
+- uid: BasicRestClient.RestClient.IRequestHandler.WriteStream(System.IO.Stream,System.Byte[])
+  name: WriteStream(Stream, Byte[])
+  href: api/BasicRestClient.RestClient.IRequestHandler.html#BasicRestClient_RestClient_IRequestHandler_WriteStream_System_IO_Stream_System_Byte___
+  commentId: M:BasicRestClient.RestClient.IRequestHandler.WriteStream(System.IO.Stream,System.Byte[])
+  name.vb: WriteStream(Stream, Byte())
+  fullName: BasicRestClient.RestClient.IRequestHandler.WriteStream(System.IO.Stream, System.Byte[])
+  fullName.vb: BasicRestClient.RestClient.IRequestHandler.WriteStream(System.IO.Stream, System.Byte())
+- uid: BasicRestClient.RestClient.IRequestHandler.WriteStreamAsync(System.Net.HttpWebRequest,System.IO.Stream,System.Byte[])
+  name: WriteStreamAsync(HttpWebRequest, Stream, Byte[])
+  href: api/BasicRestClient.RestClient.IRequestHandler.html#BasicRestClient_RestClient_IRequestHandler_WriteStreamAsync_System_Net_HttpWebRequest_System_IO_Stream_System_Byte___
+  commentId: M:BasicRestClient.RestClient.IRequestHandler.WriteStreamAsync(System.Net.HttpWebRequest,System.IO.Stream,System.Byte[])
+  name.vb: WriteStreamAsync(HttpWebRequest, Stream, Byte())
+  fullName: BasicRestClient.RestClient.IRequestHandler.WriteStreamAsync(System.Net.HttpWebRequest, System.IO.Stream, System.Byte[])
+  fullName.vb: BasicRestClient.RestClient.IRequestHandler.WriteStreamAsync(System.Net.HttpWebRequest, System.IO.Stream, System.Byte())
+- uid: BasicRestClient.RestClient.IRequestLogger
+  name: IRequestLogger
+  href: api/BasicRestClient.RestClient.IRequestLogger.html#BasicRestClient_RestClient_IRequestLogger
+  commentId: T:BasicRestClient.RestClient.IRequestLogger
+  fullName: BasicRestClient.RestClient.IRequestLogger
+- uid: BasicRestClient.RestClient.IRequestLogger.IsLoggingEnabled
+  name: IsLoggingEnabled()
+  href: api/BasicRestClient.RestClient.IRequestLogger.html#BasicRestClient_RestClient_IRequestLogger_IsLoggingEnabled
+  commentId: M:BasicRestClient.RestClient.IRequestLogger.IsLoggingEnabled
+  fullName: BasicRestClient.RestClient.IRequestLogger.IsLoggingEnabled()
+- uid: BasicRestClient.RestClient.IRequestLogger.Log(System.String)
+  name: Log(String)
+  href: api/BasicRestClient.RestClient.IRequestLogger.html#BasicRestClient_RestClient_IRequestLogger_Log_System_String_
+  commentId: M:BasicRestClient.RestClient.IRequestLogger.Log(System.String)
+  fullName: BasicRestClient.RestClient.IRequestLogger.Log(System.String)
+- uid: BasicRestClient.RestClient.IRequestLogger.LogRequest(System.Net.HttpWebRequest,System.Object)
+  name: LogRequest(HttpWebRequest, Object)
+  href: api/BasicRestClient.RestClient.IRequestLogger.html#BasicRestClient_RestClient_IRequestLogger_LogRequest_System_Net_HttpWebRequest_System_Object_
+  commentId: M:BasicRestClient.RestClient.IRequestLogger.LogRequest(System.Net.HttpWebRequest,System.Object)
+  fullName: BasicRestClient.RestClient.IRequestLogger.LogRequest(System.Net.HttpWebRequest, System.Object)
+- uid: BasicRestClient.RestClient.IRequestLogger.LogResponse(BasicRestClient.RestClient.HttpResponse)
+  name: LogResponse(HttpResponse)
+  href: api/BasicRestClient.RestClient.IRequestLogger.html#BasicRestClient_RestClient_IRequestLogger_LogResponse_BasicRestClient_RestClient_HttpResponse_
+  commentId: M:BasicRestClient.RestClient.IRequestLogger.LogResponse(BasicRestClient.RestClient.HttpResponse)
+  fullName: BasicRestClient.RestClient.IRequestLogger.LogResponse(BasicRestClient.RestClient.HttpResponse)
+- uid: BasicRestClient.RestClient.MimePart
+  name: MimePart
+  href: api/BasicRestClient.RestClient.MimePart.html#BasicRestClient_RestClient_MimePart
+  commentId: T:BasicRestClient.RestClient.MimePart
+  fullName: BasicRestClient.RestClient.MimePart
+- uid: BasicRestClient.RestClient.MimePart.Data
+  name: Data
+  href: api/BasicRestClient.RestClient.MimePart.html#BasicRestClient_RestClient_MimePart_Data
+  commentId: P:BasicRestClient.RestClient.MimePart.Data
+  fullName: BasicRestClient.RestClient.MimePart.Data
+- uid: BasicRestClient.RestClient.MimePart.GenerateHeaderFooterData(System.String)
+  name: GenerateHeaderFooterData(String)
+  href: api/BasicRestClient.RestClient.MimePart.html#BasicRestClient_RestClient_MimePart_GenerateHeaderFooterData_System_String_
+  commentId: M:BasicRestClient.RestClient.MimePart.GenerateHeaderFooterData(System.String)
+  fullName: BasicRestClient.RestClient.MimePart.GenerateHeaderFooterData(System.String)
+- uid: BasicRestClient.RestClient.MimePart.Header
+  name: Header
+  href: api/BasicRestClient.RestClient.MimePart.html#BasicRestClient_RestClient_MimePart_Header
+  commentId: P:BasicRestClient.RestClient.MimePart.Header
+  fullName: BasicRestClient.RestClient.MimePart.Header
+- uid: BasicRestClient.RestClient.MimePart.Headers
+  name: Headers
+  href: api/BasicRestClient.RestClient.MimePart.html#BasicRestClient_RestClient_MimePart_Headers
+  commentId: P:BasicRestClient.RestClient.MimePart.Headers
+  fullName: BasicRestClient.RestClient.MimePart.Headers
+- uid: BasicRestClient.RestClient.ParameterMap
+  name: ParameterMap
+  href: api/BasicRestClient.RestClient.ParameterMap.html#BasicRestClient_RestClient_ParameterMap
+  commentId: T:BasicRestClient.RestClient.ParameterMap
+  fullName: BasicRestClient.RestClient.ParameterMap
+- uid: BasicRestClient.RestClient.ParameterMap.Add(System.String,System.String)
+  name: Add(String, String)
+  href: api/BasicRestClient.RestClient.ParameterMap.html#BasicRestClient_RestClient_ParameterMap_Add_System_String_System_String_
+  commentId: M:BasicRestClient.RestClient.ParameterMap.Add(System.String,System.String)
+  fullName: BasicRestClient.RestClient.ParameterMap.Add(System.String, System.String)
+- uid: BasicRestClient.RestClient.ParameterMap.Clear
+  name: Clear()
+  href: api/BasicRestClient.RestClient.ParameterMap.html#BasicRestClient_RestClient_ParameterMap_Clear
+  commentId: M:BasicRestClient.RestClient.ParameterMap.Clear
+  fullName: BasicRestClient.RestClient.ParameterMap.Clear()
+- uid: BasicRestClient.RestClient.ParameterMap.ContainsKey(System.String)
+  name: ContainsKey(String)
+  href: api/BasicRestClient.RestClient.ParameterMap.html#BasicRestClient_RestClient_ParameterMap_ContainsKey_System_String_
+  commentId: M:BasicRestClient.RestClient.ParameterMap.ContainsKey(System.String)
+  fullName: BasicRestClient.RestClient.ParameterMap.ContainsKey(System.String)
+- uid: BasicRestClient.RestClient.ParameterMap.ContainsValue(System.String)
+  name: ContainsValue(String)
+  href: api/BasicRestClient.RestClient.ParameterMap.html#BasicRestClient_RestClient_ParameterMap_ContainsValue_System_String_
+  commentId: M:BasicRestClient.RestClient.ParameterMap.ContainsValue(System.String)
+  fullName: BasicRestClient.RestClient.ParameterMap.ContainsValue(System.String)
+- uid: BasicRestClient.RestClient.ParameterMap.Count
+  name: Count()
+  href: api/BasicRestClient.RestClient.ParameterMap.html#BasicRestClient_RestClient_ParameterMap_Count
+  commentId: M:BasicRestClient.RestClient.ParameterMap.Count
+  fullName: BasicRestClient.RestClient.ParameterMap.Count()
+- uid: BasicRestClient.RestClient.ParameterMap.Get(System.String)
+  name: Get(String)
+  href: api/BasicRestClient.RestClient.ParameterMap.html#BasicRestClient_RestClient_ParameterMap_Get_System_String_
+  commentId: M:BasicRestClient.RestClient.ParameterMap.Get(System.String)
+  fullName: BasicRestClient.RestClient.ParameterMap.Get(System.String)
+- uid: BasicRestClient.RestClient.ParameterMap.IsEmpty
+  name: IsEmpty()
+  href: api/BasicRestClient.RestClient.ParameterMap.html#BasicRestClient_RestClient_ParameterMap_IsEmpty
+  commentId: M:BasicRestClient.RestClient.ParameterMap.IsEmpty
+  fullName: BasicRestClient.RestClient.ParameterMap.IsEmpty()
+- uid: BasicRestClient.RestClient.ParameterMap.KeySet
+  name: KeySet()
+  href: api/BasicRestClient.RestClient.ParameterMap.html#BasicRestClient_RestClient_ParameterMap_KeySet
+  commentId: M:BasicRestClient.RestClient.ParameterMap.KeySet
+  fullName: BasicRestClient.RestClient.ParameterMap.KeySet()
+- uid: BasicRestClient.RestClient.ParameterMap.Parse(System.Collections.Generic.Dictionary{System.String,System.String})
+  name: Parse(Dictionary<String, String>)
+  href: api/BasicRestClient.RestClient.ParameterMap.html#BasicRestClient_RestClient_ParameterMap_Parse_System_Collections_Generic_Dictionary_System_String_System_String__
+  commentId: M:BasicRestClient.RestClient.ParameterMap.Parse(System.Collections.Generic.Dictionary{System.String,System.String})
+  name.vb: Parse(Dictionary(Of String, String))
+  fullName: BasicRestClient.RestClient.ParameterMap.Parse(System.Collections.Generic.Dictionary<System.String, System.String>)
+  fullName.vb: BasicRestClient.RestClient.ParameterMap.Parse(System.Collections.Generic.Dictionary(Of System.String, System.String))
+- uid: BasicRestClient.RestClient.ParameterMap.Remove(System.String)
+  name: Remove(String)
+  href: api/BasicRestClient.RestClient.ParameterMap.html#BasicRestClient_RestClient_ParameterMap_Remove_System_String_
+  commentId: M:BasicRestClient.RestClient.ParameterMap.Remove(System.String)
+  fullName: BasicRestClient.RestClient.ParameterMap.Remove(System.String)
+- uid: BasicRestClient.RestClient.ParameterMap.Set(System.String,System.String)
+  name: Set(String, String)
+  href: api/BasicRestClient.RestClient.ParameterMap.html#BasicRestClient_RestClient_ParameterMap_Set_System_String_System_String_
+  commentId: M:BasicRestClient.RestClient.ParameterMap.Set(System.String,System.String)
+  fullName: BasicRestClient.RestClient.ParameterMap.Set(System.String, System.String)
+- uid: BasicRestClient.RestClient.ParameterMap.ToNameValueCollection
+  name: ToNameValueCollection()
+  href: api/BasicRestClient.RestClient.ParameterMap.html#BasicRestClient_RestClient_ParameterMap_ToNameValueCollection
+  commentId: M:BasicRestClient.RestClient.ParameterMap.ToNameValueCollection
+  fullName: BasicRestClient.RestClient.ParameterMap.ToNameValueCollection()
+- uid: BasicRestClient.RestClient.ParameterMap.UrlEncode
+  name: UrlEncode()
+  href: api/BasicRestClient.RestClient.ParameterMap.html#BasicRestClient_RestClient_ParameterMap_UrlEncode
+  commentId: M:BasicRestClient.RestClient.ParameterMap.UrlEncode
+  fullName: BasicRestClient.RestClient.ParameterMap.UrlEncode()
+- uid: BasicRestClient.RestClient.ParameterMap.UrlEncodeBytes
+  name: UrlEncodeBytes()
+  href: api/BasicRestClient.RestClient.ParameterMap.html#BasicRestClient_RestClient_ParameterMap_UrlEncodeBytes
+  commentId: M:BasicRestClient.RestClient.ParameterMap.UrlEncodeBytes
+  fullName: BasicRestClient.RestClient.ParameterMap.UrlEncodeBytes()
+- uid: BasicRestClient.RestClient.ParameterMap.Values
+  name: Values()
+  href: api/BasicRestClient.RestClient.ParameterMap.html#BasicRestClient_RestClient_ParameterMap_Values
+  commentId: M:BasicRestClient.RestClient.ParameterMap.Values
+  fullName: BasicRestClient.RestClient.ParameterMap.Values()
+- uid: BasicRestClient.RestClient.RestClient
+  name: RestClient
+  href: api/BasicRestClient.RestClient.RestClient.html#BasicRestClient_RestClient_RestClient
+  commentId: T:BasicRestClient.RestClient.RestClient
+  fullName: BasicRestClient.RestClient.RestClient
+- uid: BasicRestClient.RestClient.RestClient.#ctor
+  name: RestClient()
+  href: api/BasicRestClient.RestClient.RestClient.html#BasicRestClient_RestClient_RestClient__ctor
+  commentId: M:BasicRestClient.RestClient.RestClient.#ctor
+  fullName: BasicRestClient.RestClient.RestClient.RestClient()
+- uid: BasicRestClient.RestClient.RestClient.#ctor(System.Boolean,System.Int32)
+  name: RestClient(Boolean, Int32)
+  href: api/BasicRestClient.RestClient.RestClient.html#BasicRestClient_RestClient_RestClient__ctor_System_Boolean_System_Int32_
+  commentId: M:BasicRestClient.RestClient.RestClient.#ctor(System.Boolean,System.Int32)
+  fullName: BasicRestClient.RestClient.RestClient.RestClient(System.Boolean, System.Int32)
+- uid: BasicRestClient.RestClient.RestClient.#ctor(System.String)
+  name: RestClient(String)
+  href: api/BasicRestClient.RestClient.RestClient.html#BasicRestClient_RestClient_RestClient__ctor_System_String_
+  commentId: M:BasicRestClient.RestClient.RestClient.#ctor(System.String)
+  fullName: BasicRestClient.RestClient.RestClient.RestClient(System.String)
+- uid: BasicRestClient.RestClient.RestClient.#ctor(System.String,BasicRestClient.RestClient.IRequestHandler)
+  name: RestClient(String, IRequestHandler)
+  href: api/BasicRestClient.RestClient.RestClient.html#BasicRestClient_RestClient_RestClient__ctor_System_String_BasicRestClient_RestClient_IRequestHandler_
+  commentId: M:BasicRestClient.RestClient.RestClient.#ctor(System.String,BasicRestClient.RestClient.IRequestHandler)
+  fullName: BasicRestClient.RestClient.RestClient.RestClient(System.String, BasicRestClient.RestClient.IRequestHandler)
+- uid: BasicRestClient.RestClient.RestClient.#ctor(System.String,BasicRestClient.RestClient.IRequestHandler,System.Boolean)
+  name: RestClient(String, IRequestHandler, Boolean)
+  href: api/BasicRestClient.RestClient.RestClient.html#BasicRestClient_RestClient_RestClient__ctor_System_String_BasicRestClient_RestClient_IRequestHandler_System_Boolean_
+  commentId: M:BasicRestClient.RestClient.RestClient.#ctor(System.String,BasicRestClient.RestClient.IRequestHandler,System.Boolean)
+  fullName: BasicRestClient.RestClient.RestClient.RestClient(System.String, BasicRestClient.RestClient.IRequestHandler, System.Boolean)
+- uid: BasicRestClient.RestClient.RestClient.#ctor(System.String,System.Boolean,System.Int32)
+  name: RestClient(String, Boolean, Int32)
+  href: api/BasicRestClient.RestClient.RestClient.html#BasicRestClient_RestClient_RestClient__ctor_System_String_System_Boolean_System_Int32_
+  commentId: M:BasicRestClient.RestClient.RestClient.#ctor(System.String,System.Boolean,System.Int32)
+  fullName: BasicRestClient.RestClient.RestClient.RestClient(System.String, System.Boolean, System.Int32)
+- uid: BasicRestClient.RestClient.RestClient.#ctor(System.String,System.Int32)
+  name: RestClient(String, Int32)
+  href: api/BasicRestClient.RestClient.RestClient.html#BasicRestClient_RestClient_RestClient__ctor_System_String_System_Int32_
+  commentId: M:BasicRestClient.RestClient.RestClient.#ctor(System.String,System.Int32)
+  fullName: BasicRestClient.RestClient.RestClient.RestClient(System.String, System.Int32)
+- uid: BasicRestClient.RestClient.RestClient.LogRequest
+  name: LogRequest
+  href: api/BasicRestClient.RestClient.RestClient.html#BasicRestClient_RestClient_RestClient_LogRequest
+  commentId: P:BasicRestClient.RestClient.RestClient.LogRequest
+  fullName: BasicRestClient.RestClient.RestClient.LogRequest
+- uid: BasicRestClient.RestClient.StreamMimePart
+  name: StreamMimePart
+  href: api/BasicRestClient.RestClient.StreamMimePart.html#BasicRestClient_RestClient_StreamMimePart
+  commentId: T:BasicRestClient.RestClient.StreamMimePart
+  fullName: BasicRestClient.RestClient.StreamMimePart
+- uid: BasicRestClient.RestClient.StreamMimePart.Data
+  name: Data
+  href: api/BasicRestClient.RestClient.StreamMimePart.html#BasicRestClient_RestClient_StreamMimePart_Data
+  commentId: P:BasicRestClient.RestClient.StreamMimePart.Data
+  fullName: BasicRestClient.RestClient.StreamMimePart.Data
+- uid: BasicRestClient.RestClient.StreamMimePart.SetStream(System.IO.Stream)
+  name: SetStream(Stream)
+  href: api/BasicRestClient.RestClient.StreamMimePart.html#BasicRestClient_RestClient_StreamMimePart_SetStream_System_IO_Stream_
+  commentId: M:BasicRestClient.RestClient.StreamMimePart.SetStream(System.IO.Stream)
+  fullName: BasicRestClient.RestClient.StreamMimePart.SetStream(System.IO.Stream)
+- uid: BasicRestClient.RestClient.StringMimePart
+  name: StringMimePart
+  href: api/BasicRestClient.RestClient.StringMimePart.html#BasicRestClient_RestClient_StringMimePart
+  commentId: T:BasicRestClient.RestClient.StringMimePart
+  fullName: BasicRestClient.RestClient.StringMimePart
+- uid: BasicRestClient.RestClient.StringMimePart.Data
+  name: Data
+  href: api/BasicRestClient.RestClient.StringMimePart.html#BasicRestClient_RestClient_StringMimePart_Data
+  commentId: P:BasicRestClient.RestClient.StringMimePart.Data
+  fullName: BasicRestClient.RestClient.StringMimePart.Data
+- uid: BasicRestClient.RestClient.StringMimePart.StringData
+  name: StringData
+  href: api/BasicRestClient.RestClient.StringMimePart.html#BasicRestClient_RestClient_StringMimePart_StringData
+  commentId: P:BasicRestClient.RestClient.StringMimePart.StringData
+  fullName: BasicRestClient.RestClient.StringMimePart.StringData
+- uid: BasicRestClient.RestClient.StringUtil
+  name: StringUtil
+  href: api/BasicRestClient.RestClient.StringUtil.html#BasicRestClient_RestClient_StringUtil
+  commentId: T:BasicRestClient.RestClient.StringUtil
+  fullName: BasicRestClient.RestClient.StringUtil
+- uid: BasicRestClient.RestClient.StringUtil.Capitalize(System.String)
+  name: Capitalize(String)
+  href: api/BasicRestClient.RestClient.StringUtil.html#BasicRestClient_RestClient_StringUtil_Capitalize_System_String_
+  commentId: M:BasicRestClient.RestClient.StringUtil.Capitalize(System.String)
+  fullName: BasicRestClient.RestClient.StringUtil.Capitalize(System.String)
+- uid: BasicRestClient.RestClient.StringUtil.GetAsciiBytes(System.String)
+  name: GetAsciiBytes(String)
+  href: api/BasicRestClient.RestClient.StringUtil.html#BasicRestClient_RestClient_StringUtil_GetAsciiBytes_System_String_
+  commentId: M:BasicRestClient.RestClient.StringUtil.GetAsciiBytes(System.String)
+  fullName: BasicRestClient.RestClient.StringUtil.GetAsciiBytes(System.String)
+- uid: BasicRestClient.RestClient.StringUtil.GetAsciiString(System.Byte[])
+  name: GetAsciiString(Byte[])
+  href: api/BasicRestClient.RestClient.StringUtil.html#BasicRestClient_RestClient_StringUtil_GetAsciiString_System_Byte___
+  commentId: M:BasicRestClient.RestClient.StringUtil.GetAsciiString(System.Byte[])
+  name.vb: GetAsciiString(Byte())
+  fullName: BasicRestClient.RestClient.StringUtil.GetAsciiString(System.Byte[])
+  fullName.vb: BasicRestClient.RestClient.StringUtil.GetAsciiString(System.Byte())
+- uid: BasicRestClient.RestClient.StringUtil.GetString(System.Byte[])
+  name: GetString(Byte[])
+  href: api/BasicRestClient.RestClient.StringUtil.html#BasicRestClient_RestClient_StringUtil_GetString_System_Byte___
+  commentId: M:BasicRestClient.RestClient.StringUtil.GetString(System.Byte[])
+  name.vb: GetString(Byte())
+  fullName: BasicRestClient.RestClient.StringUtil.GetString(System.Byte[])
+  fullName.vb: BasicRestClient.RestClient.StringUtil.GetString(System.Byte())
+- uid: BasicRestClient.RestClient.StringUtil.HasMaxLength(System.String,System.Int32)
+  name: HasMaxLength(String, Int32)
+  href: api/BasicRestClient.RestClient.StringUtil.html#BasicRestClient_RestClient_StringUtil_HasMaxLength_System_String_System_Int32_
+  commentId: M:BasicRestClient.RestClient.StringUtil.HasMaxLength(System.String,System.Int32)
+  fullName: BasicRestClient.RestClient.StringUtil.HasMaxLength(System.String, System.Int32)
+- uid: BasicRestClient.RestClient.StringUtil.HasMiniLength(System.String,System.Int32)
+  name: HasMiniLength(String, Int32)
+  href: api/BasicRestClient.RestClient.StringUtil.html#BasicRestClient_RestClient_StringUtil_HasMiniLength_System_String_System_Int32_
+  commentId: M:BasicRestClient.RestClient.StringUtil.HasMiniLength(System.String,System.Int32)
+  fullName: BasicRestClient.RestClient.StringUtil.HasMiniLength(System.String, System.Int32)
+- uid: BasicRestClient.RestClient.StringUtil.IsAlphanumeric(System.String)
+  name: IsAlphanumeric(String)
+  href: api/BasicRestClient.RestClient.StringUtil.html#BasicRestClient_RestClient_StringUtil_IsAlphanumeric_System_String_
+  commentId: M:BasicRestClient.RestClient.StringUtil.IsAlphanumeric(System.String)
+  fullName: BasicRestClient.RestClient.StringUtil.IsAlphanumeric(System.String)
+- uid: BasicRestClient.RestClient.StringUtil.IsBoolean(System.Object)
+  name: IsBoolean(Object)
+  href: api/BasicRestClient.RestClient.StringUtil.html#BasicRestClient_RestClient_StringUtil_IsBoolean_System_Object_
+  commentId: M:BasicRestClient.RestClient.StringUtil.IsBoolean(System.Object)
+  fullName: BasicRestClient.RestClient.StringUtil.IsBoolean(System.Object)
+- uid: BasicRestClient.RestClient.StringUtil.IsEmpty(System.String)
+  name: IsEmpty(String)
+  href: api/BasicRestClient.RestClient.StringUtil.html#BasicRestClient_RestClient_StringUtil_IsEmpty_System_String_
+  commentId: M:BasicRestClient.RestClient.StringUtil.IsEmpty(System.String)
+  fullName: BasicRestClient.RestClient.StringUtil.IsEmpty(System.String)
+- uid: BasicRestClient.RestClient.StringUtil.IsEqual(System.String,System.String)
+  name: IsEqual(String, String)
+  href: api/BasicRestClient.RestClient.StringUtil.html#BasicRestClient_RestClient_StringUtil_IsEqual_System_String_System_String_
+  commentId: M:BasicRestClient.RestClient.StringUtil.IsEqual(System.String,System.String)
+  fullName: BasicRestClient.RestClient.StringUtil.IsEqual(System.String, System.String)
+- uid: BasicRestClient.RestClient.StringUtil.IsEqual(System.String,System.String,System.Boolean)
+  name: IsEqual(String, String, Boolean)
+  href: api/BasicRestClient.RestClient.StringUtil.html#BasicRestClient_RestClient_StringUtil_IsEqual_System_String_System_String_System_Boolean_
+  commentId: M:BasicRestClient.RestClient.StringUtil.IsEqual(System.String,System.String,System.Boolean)
+  fullName: BasicRestClient.RestClient.StringUtil.IsEqual(System.String, System.String, System.Boolean)
+- uid: BasicRestClient.RestClient.StringUtil.IsMoney(System.String,System.String)
+  name: IsMoney(String, String)
+  href: api/BasicRestClient.RestClient.StringUtil.html#BasicRestClient_RestClient_StringUtil_IsMoney_System_String_System_String_
+  commentId: M:BasicRestClient.RestClient.StringUtil.IsMoney(System.String,System.String)
+  fullName: BasicRestClient.RestClient.StringUtil.IsMoney(System.String, System.String)
+- uid: BasicRestClient.RestClient.StringUtil.IsNumeric(System.String)
+  name: IsNumeric(String)
+  href: api/BasicRestClient.RestClient.StringUtil.html#BasicRestClient_RestClient_StringUtil_IsNumeric_System_String_
+  commentId: M:BasicRestClient.RestClient.StringUtil.IsNumeric(System.String)
+  fullName: BasicRestClient.RestClient.StringUtil.IsNumeric(System.String)
+- uid: BasicRestClient.RestClient.StringUtil.IsPhoneNumber(System.String)
+  name: IsPhoneNumber(String)
+  href: api/BasicRestClient.RestClient.StringUtil.html#BasicRestClient_RestClient_StringUtil_IsPhoneNumber_System_String_
+  commentId: M:BasicRestClient.RestClient.StringUtil.IsPhoneNumber(System.String)
+  fullName: BasicRestClient.RestClient.StringUtil.IsPhoneNumber(System.String)
+- uid: BasicRestClient.RestClient.StringUtil.IsPhoneNumber(System.String,System.String)
+  name: IsPhoneNumber(String, String)
+  href: api/BasicRestClient.RestClient.StringUtil.html#BasicRestClient_RestClient_StringUtil_IsPhoneNumber_System_String_System_String_
+  commentId: M:BasicRestClient.RestClient.StringUtil.IsPhoneNumber(System.String,System.String)
+  fullName: BasicRestClient.RestClient.StringUtil.IsPhoneNumber(System.String, System.String)
+- uid: BasicRestClient.RestClient.StringUtil.IsSafeChar(System.Char)
+  name: IsSafeChar(Char)
+  href: api/BasicRestClient.RestClient.StringUtil.html#BasicRestClient_RestClient_StringUtil_IsSafeChar_System_Char_
+  commentId: M:BasicRestClient.RestClient.StringUtil.IsSafeChar(System.Char)
+  fullName: BasicRestClient.RestClient.StringUtil.IsSafeChar(System.Char)
+- uid: BasicRestClient.RestClient.StringUtil.IsSafeString(System.String)
+  name: IsSafeString(String)
+  href: api/BasicRestClient.RestClient.StringUtil.html#BasicRestClient_RestClient_StringUtil_IsSafeString_System_String_
+  commentId: M:BasicRestClient.RestClient.StringUtil.IsSafeString(System.String)
+  fullName: BasicRestClient.RestClient.StringUtil.IsSafeString(System.String)
+- uid: BasicRestClient.RestClient.StringUtil.IsUuid(System.String)
+  name: IsUuid(String)
+  href: api/BasicRestClient.RestClient.StringUtil.html#BasicRestClient_RestClient_StringUtil_IsUuid_System_String_
+  commentId: M:BasicRestClient.RestClient.StringUtil.IsUuid(System.String)
+  fullName: BasicRestClient.RestClient.StringUtil.IsUuid(System.String)
+- uid: BasicRestClient.RestClient.StringUtil.IsValidDate(System.String,System.String)
+  name: IsValidDate(String, String)
+  href: api/BasicRestClient.RestClient.StringUtil.html#BasicRestClient_RestClient_StringUtil_IsValidDate_System_String_System_String_
+  commentId: M:BasicRestClient.RestClient.StringUtil.IsValidDate(System.String,System.String)
+  fullName: BasicRestClient.RestClient.StringUtil.IsValidDate(System.String, System.String)
+- uid: BasicRestClient.RestClient.StringUtil.IsValidDateTime(System.String,System.String)
+  name: IsValidDateTime(String, String)
+  href: api/BasicRestClient.RestClient.StringUtil.html#BasicRestClient_RestClient_StringUtil_IsValidDateTime_System_String_System_String_
+  commentId: M:BasicRestClient.RestClient.StringUtil.IsValidDateTime(System.String,System.String)
+  fullName: BasicRestClient.RestClient.StringUtil.IsValidDateTime(System.String, System.String)
+- uid: BasicRestClient.RestClient.StringUtil.IsValidEmail(System.String)
+  name: IsValidEmail(String)
+  href: api/BasicRestClient.RestClient.StringUtil.html#BasicRestClient_RestClient_StringUtil_IsValidEmail_System_String_
+  commentId: M:BasicRestClient.RestClient.StringUtil.IsValidEmail(System.String)
+  fullName: BasicRestClient.RestClient.StringUtil.IsValidEmail(System.String)
+- uid: BasicRestClient.RestClient.StringUtil.IsValidFileName(System.String,System.Boolean)
+  name: IsValidFileName(String, Boolean)
+  href: api/BasicRestClient.RestClient.StringUtil.html#BasicRestClient_RestClient_StringUtil_IsValidFileName_System_String_System_Boolean_
+  commentId: M:BasicRestClient.RestClient.StringUtil.IsValidFileName(System.String,System.Boolean)
+  fullName: BasicRestClient.RestClient.StringUtil.IsValidFileName(System.String, System.Boolean)
+- uid: BasicRestClient.RestClient.StringUtil.IsValidGhMsisdn(System.String,System.String)
+  name: IsValidGhMsisdn(String, String)
+  href: api/BasicRestClient.RestClient.StringUtil.html#BasicRestClient_RestClient_StringUtil_IsValidGhMsisdn_System_String_System_String_
+  commentId: M:BasicRestClient.RestClient.StringUtil.IsValidGhMsisdn(System.String,System.String)
+  fullName: BasicRestClient.RestClient.StringUtil.IsValidGhMsisdn(System.String, System.String)
+- uid: BasicRestClient.RestClient.StringUtil.IsValidIp(System.String)
+  name: IsValidIp(String)
+  href: api/BasicRestClient.RestClient.StringUtil.html#BasicRestClient_RestClient_StringUtil_IsValidIp_System_String_
+  commentId: M:BasicRestClient.RestClient.StringUtil.IsValidIp(System.String)
+  fullName: BasicRestClient.RestClient.StringUtil.IsValidIp(System.String)
+- uid: BasicRestClient.RestClient.StringUtil.IsValidIPv4(System.String)
+  name: IsValidIPv4(String)
+  href: api/BasicRestClient.RestClient.StringUtil.html#BasicRestClient_RestClient_StringUtil_IsValidIPv4_System_String_
+  commentId: M:BasicRestClient.RestClient.StringUtil.IsValidIPv4(System.String)
+  fullName: BasicRestClient.RestClient.StringUtil.IsValidIPv4(System.String)
+- uid: BasicRestClient.RestClient.StringUtil.IsValidIPv6(System.String)
+  name: IsValidIPv6(String)
+  href: api/BasicRestClient.RestClient.StringUtil.html#BasicRestClient_RestClient_StringUtil_IsValidIPv6_System_String_
+  commentId: M:BasicRestClient.RestClient.StringUtil.IsValidIPv6(System.String)
+  fullName: BasicRestClient.RestClient.StringUtil.IsValidIPv6(System.String)
+- uid: BasicRestClient.RestClient.StringUtil.IsValidTime(System.String)
+  name: IsValidTime(String)
+  href: api/BasicRestClient.RestClient.StringUtil.html#BasicRestClient_RestClient_StringUtil_IsValidTime_System_String_
+  commentId: M:BasicRestClient.RestClient.StringUtil.IsValidTime(System.String)
+  fullName: BasicRestClient.RestClient.StringUtil.IsValidTime(System.String)
+- uid: BasicRestClient.RestClient.StringUtil.IsValidTimeAs24H(System.String)
+  name: IsValidTimeAs24H(String)
+  href: api/BasicRestClient.RestClient.StringUtil.html#BasicRestClient_RestClient_StringUtil_IsValidTimeAs24H_System_String_
+  commentId: M:BasicRestClient.RestClient.StringUtil.IsValidTimeAs24H(System.String)
+  fullName: BasicRestClient.RestClient.StringUtil.IsValidTimeAs24H(System.String)
+- uid: BasicRestClient.RestClient.StringUtil.IsValidUrl(System.String)
+  name: IsValidUrl(String)
+  href: api/BasicRestClient.RestClient.StringUtil.html#BasicRestClient_RestClient_StringUtil_IsValidUrl_System_String_
+  commentId: M:BasicRestClient.RestClient.StringUtil.IsValidUrl(System.String)
+  fullName: BasicRestClient.RestClient.StringUtil.IsValidUrl(System.String)
+- uid: BasicRestClient.RestClient.StringUtil.IsWord(System.String)
+  name: IsWord(String)
+  href: api/BasicRestClient.RestClient.StringUtil.html#BasicRestClient_RestClient_StringUtil_IsWord_System_String_
+  commentId: M:BasicRestClient.RestClient.StringUtil.IsWord(System.String)
+  fullName: BasicRestClient.RestClient.StringUtil.IsWord(System.String)
+- uid: BasicRestClient.RestClient.StringUtil.Sanitize(System.String)
+  name: Sanitize(String)
+  href: api/BasicRestClient.RestClient.StringUtil.html#BasicRestClient_RestClient_StringUtil_Sanitize_System_String_
+  commentId: M:BasicRestClient.RestClient.StringUtil.Sanitize(System.String)
+  fullName: BasicRestClient.RestClient.StringUtil.Sanitize(System.String)
+- uid: BasicRestClient.RestClient.StringUtil.StripQuotes(System.String)
+  name: StripQuotes(String)
+  href: api/BasicRestClient.RestClient.StringUtil.html#BasicRestClient_RestClient_StringUtil_StripQuotes_System_String_
+  commentId: M:BasicRestClient.RestClient.StringUtil.StripQuotes(System.String)
+  fullName: BasicRestClient.RestClient.StringUtil.StripQuotes(System.String)
+- uid: BasicRestClient.RestClient.StringUtil.ToStringWithNullAsEmpty(System.Object)
+  name: ToStringWithNullAsEmpty(Object)
+  href: api/BasicRestClient.RestClient.StringUtil.html#BasicRestClient_RestClient_StringUtil_ToStringWithNullAsEmpty_System_Object_
+  commentId: M:BasicRestClient.RestClient.StringUtil.ToStringWithNullAsEmpty(System.Object)
+  fullName: BasicRestClient.RestClient.StringUtil.ToStringWithNullAsEmpty(System.Object)

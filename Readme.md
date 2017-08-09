@@ -35,6 +35,7 @@ Moreover file upload functionalities have been added to make file upload smooth 
     - By default SSL errors are ignored
     - To verify SSL certificate you have to set the SSLCertificate property of the RestClient class after implementing the AbstractSSLPolicy class
     - The AbstractSSLPolicy helps implement the SSL certificate verification mechanism.
+* One can now see the elapsed time in milliseconds of the request/response cycle in the HttpResponse class. This helps to check the time spent by a request to be processed.
 
 ## **License**
 [Apache License 2.0](http://www.apache.org/licenses/LICENSE-2.0.txt)
@@ -86,11 +87,11 @@ Example code to post data from a Web Server with a Basic Authorization. This exa
                 try
                 {
                     string resource = "/messages/";
-                    HttpResponse response = httpClient.Post(resource, parameters);
+                    HttpResponse response = httpClient.Post(resource, "application/json", parameters);
                     Console.WriteLine("Message Sent: Server Response Status " + response.Status);
 
                     resource = "/account/profile";
-                    response = httpClient.Get(resource);
+                    response = httpClient.Get(resource, "application/json");
                     Console.WriteLine("Account Profile : Server Response Status " + response.Status);
                     GetAccountProfileAsync();
 
@@ -120,7 +121,7 @@ Example code to post data from a Web Server with a Basic Authorization. This exa
                 httpClient.ReadWriteTimeout = 200;
 
                 const string resource = "/account/profile";
-                var response = await httpClient.GetAsync(resource);
+                var response = await httpClient.GetAsync(resource, "application/json");
                 Console.WriteLine();
                 Console.WriteLine("Account Profile : Server Response Status " + response.Status);
             }
@@ -132,7 +133,7 @@ Example code to post data from a Web Server with a Basic Authorization. This exa
                 httpClient.ConnectionTimeout = 200;
                 httpClient.ReadWriteTimeout = 200;
 
-                var response = await httpClient.PostAsync(resource, parameters);
+                var response = await httpClient.PostAsync(resource, "application/json", parameters);
                 Console.WriteLine();
                 if(response != null) Console.WriteLine("Send Message Async : Server Response Status " + response.Status);  
                 else Console.WriteLine("Send Message Async : NO RESPONSE" );

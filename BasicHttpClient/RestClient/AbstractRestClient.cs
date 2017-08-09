@@ -2,6 +2,7 @@
 
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.IO;
 using System.Net;
 using System.Text;
@@ -37,6 +38,11 @@ namespace BasicRestClient.RestClient {
         protected bool Connected;
 
         /// <summary>
+        /// Timer that helps us know how long an http request has lasted
+        /// </summary>
+        private Stopwatch _stopwatch;
+
+        /// <summary>
         /// </summary>
         /// <param name="baseUrl"></param>
         /// <param name="requestHandler"></param>
@@ -52,6 +58,7 @@ namespace BasicRestClient.RestClient {
             ReadWriteTimeout = 8000;
             // Default 8s, reasonably short if accidentally called from the UI thread
             SSLCertificate = string.Empty;
+            _stopwatch = new Stopwatch();
         }
 
         /// <summary>
@@ -153,10 +160,14 @@ namespace BasicRestClient.RestClient {
 
                 // Write the request
                 if (content != null)
+                {
+                    _stopwatch.Start();
                     WriteOutptStream(httpWebRequest, content);
+                }
 
                 //Let us read the response
-                using (var serverResponse = httpWebRequest.GetResponse() as HttpWebResponse
+                var serverResponse = httpWebRequest.GetResponse() as HttpWebResponse;
+                using (serverResponse
                     ) {
                     if (serverResponse != null) {
                         using (var inputStream = RequestHandler.OpenInput(httpWebRequest)) {
@@ -171,15 +182,17 @@ namespace BasicRestClient.RestClient {
                                         buffer.Length - bytesRead);
                                     totalBytesRead += bytesRead;
                                 }
+                                _stopwatch.Stop();
 
                                 response =
                                     new HttpResponse(
                                         serverResponse.ResponseUri.AbsoluteUri,
                                         serverResponse.Headers,
                                         Convert.ToInt32(serverResponse.StatusCode),
-                                        buffer);
+                                        buffer, _stopwatch.ElapsedMilliseconds);
                             }
                             else {
+                                _stopwatch.Stop();
                                 using (var sr = new StreamReader(inputStream)) {
                                     var buffer = Encoding.ASCII.GetBytes(sr.ReadToEnd());
                                     response =
@@ -187,7 +200,7 @@ namespace BasicRestClient.RestClient {
                                             serverResponse.ResponseUri.AbsoluteUri,
                                             serverResponse.Headers,
                                             Convert.ToInt32(serverResponse.StatusCode),
-                                            buffer);
+                                            buffer, _stopwatch.ElapsedMilliseconds);
                                 }
                             }
                         }
@@ -196,7 +209,6 @@ namespace BasicRestClient.RestClient {
 
                 if (Complete != null)
                     Complete(this, new HttpResponseEventArgs(response));
-
                 FireSuccessEvent(response);
                 return response;
             }
@@ -204,7 +216,9 @@ namespace BasicRestClient.RestClient {
                 if (e.GetType() == typeof (WebException)) {
                     var ex = e as WebException;
                     try {
+                        _stopwatch.Stop();
                         response = ReadStreamError(ex);
+                        response.Elapsed = _stopwatch.ElapsedMilliseconds;
                     }
                     catch (Exception ee) {
                         // Must catch IOException, but swallow to show first cause only
@@ -290,6 +304,7 @@ namespace BasicRestClient.RestClient {
                 HttpWebRequestAsyncState requestAsyncState;
                 // Write the request
                 if (content != null) {
+                    _stopwatch.Start();
                     requestAsyncState =
                         await WriteOutptStreamAsync(httpWebRequest, content);
                     if (requestAsyncState.Exception != null) {
@@ -319,10 +334,11 @@ namespace BasicRestClient.RestClient {
                         using (var stream = serverResponse.GetResponseStream())
                         using (var sr = new StreamReader(stream)) {
                             var buffer = Encoding.ASCII.GetBytes(sr.ReadToEnd());
+                            _stopwatch.Stop();
                             response = new HttpResponse(address,
                                 headers,
                                 statusCode,
-                                buffer);
+                                buffer, _stopwatch.ElapsedMilliseconds);
                         }
                     }
                 }
@@ -330,11 +346,12 @@ namespace BasicRestClient.RestClient {
                     if (responseAsyncState.Exception.GetType() == typeof (WebException)) {
                         var ex = responseAsyncState.Exception as WebException;
                         if (ex != null) {
+                            _stopwatch.Stop();
                             response = ex.Status == WebExceptionStatus.Timeout
                                 ? new HttpResponse(httpWebRequest.RequestUri.AbsoluteUri,
                                     null,
                                     (int) ex.Status,
-                                    null)
+                                    null, _stopwatch.ElapsedMilliseconds)
                                 : ReadStreamError(ex);
                         }
                     }
@@ -352,7 +369,9 @@ namespace BasicRestClient.RestClient {
                 if (e.GetType() == typeof (WebException)) {
                     var ex = e as WebException;
                     try {
+                        _stopwatch.Stop();
                         response = ReadStreamError(ex);
+                        response.Elapsed = _stopwatch.ElapsedMilliseconds;
                     }
                     catch (Exception ee) {
                         // Must catch IOException, but swallow to show first cause only
@@ -828,17 +847,10 @@ namespace BasicRestClient.RestClient {
         /// <param name="parameters">HTTP Payload</param>
         /// <returns>Response object <see cref="HttpResponse" /></returns>
         public HttpResponse Delete(string path,
-            ParameterMap parameters) {
-            return Execute(new HttpDelete(path, parameters));
-        }
-
-        /// <summary>
-        ///     Execute a DELETE request and return the response.
-        /// </summary>
-        /// <param name="path">Resource path</param>
-        /// <returns>Response object <see cref="HttpResponse" /></returns>
-        public HttpResponse Delete(string path) {
-            return Delete(path, null);
+            ParameterMap parameters = null)
+        {
+            return Execute(new HttpDelete(path,
+                parameters));
         }
 
         /// <summary>
@@ -848,8 +860,10 @@ namespace BasicRestClient.RestClient {
         /// <param name="parameters">HTTP Payload</param>
         /// <returns>Response object <see cref="HttpResponse" /></returns>
         public async Task<HttpResponse> DeleteAsync(string path,
-            ParameterMap parameters) {
-            return await ExecuteAsync(new HttpDelete(path, parameters));
+            ParameterMap parameters)
+        {
+            return await ExecuteAsync(new HttpDelete(path,
+                parameters));
         }
 
         /// <summary>
@@ -857,8 +871,10 @@ namespace BasicRestClient.RestClient {
         /// </summary>
         /// <param name="path">Resource path</param>
         /// <returns>Response object <see cref="HttpResponse" /></returns>
-        public async Task<HttpResponse> DeleteAsync(string path) {
-            return await DeleteAsync(path, null);
+        public async Task<HttpResponse> DeleteAsync(string path)
+        {
+            return await DeleteAsync(path,
+                null);
         }
 
         /// <summary>
@@ -870,8 +886,11 @@ namespace BasicRestClient.RestClient {
         /// <returns>Response object <see cref="HttpResponse" /></returns>
         public HttpResponse Delete(string path,
             string accept,
-            ParameterMap parameters) {
-            return Execute(new HttpDelete(path, parameters) {
+            ParameterMap parameters)
+        {
+            return Execute(new HttpDelete(path,
+                parameters)
+            {
                 Accept = accept
             });
         }
@@ -884,57 +903,76 @@ namespace BasicRestClient.RestClient {
         /// <param name="parameters">HTTP Payload</param>
         /// <returns>Response object</returns>
         public HttpResponse Get(string path,
-            ParameterMap parameters) {
-            return Execute(new HttpGet(path, parameters));
-        }
-
-        /// <summary>
-        ///     Execute a GET request and return the response.
-        /// </summary>
-        /// <param name="path">Resource path</param>
-        /// <returns></returns>
-        public HttpResponse Get(string path) {
-            return Get(path, null);
+            ParameterMap parameters = null)
+        {
+            return Execute(new HttpGet(path,
+                parameters));
         }
 
         /// <summary>
         ///     Execute a GET request asynchronously.
         /// </summary>
         /// <param name="path">Resource Path</param>
+        /// <param name="accept">Accept header</param>
         /// <param name="parameters">Query String data</param>
         /// <returns>Response object <see cref="HttpResponse" /></returns>
         public async Task<HttpResponse> GetAsync(string path,
-            ParameterMap parameters) {
-            return await ExecuteAsync(new HttpGet(path, parameters));
+            string accept,
+            ParameterMap parameters)
+        {
+            var get = new HttpGet(path,
+                parameters)
+            {
+                Accept = accept
+            };
+            return await ExecuteAsync(get);
         }
 
         /// <summary>
         ///     Execute a GET request asynchronously.
         /// </summary>
         /// <param name="parameters">Query String data</param>
+        /// <param name="accept">Accept header</param>
         /// <returns>Response object <see cref="HttpResponse" /></returns>
-        public async Task<HttpResponse> GetAsync(ParameterMap parameters) {
-            return await ExecuteAsync(new HttpGet(null, parameters));
+        public async Task<HttpResponse> GetAsync(ParameterMap parameters,
+            string accept)
+        {
+            var get = new HttpGet(null,
+                parameters)
+            {
+                Accept = accept
+            };
+            return await ExecuteAsync(get);
         }
 
         /// <summary>
         ///     Execute a GET request asynchronously.
         /// </summary>
         /// <param name="path">Resource Path</param>
+        /// <param name="accept">Accept header</param>
         /// <returns>Response object <see cref="HttpResponse" /></returns>
-        public async Task<HttpResponse> GetAsync(string path) {
-            return await GetAsync(path, null);
+        public async Task<HttpResponse> GetAsync(string path,
+            string accept)
+        {
+            return await GetAsync(path,
+                accept,
+                null);
         }
 
         /// <summary>
         ///     Execute a POST request with parameter map and return the response.
         /// </summary>
         /// <param name="path">Resource path</param>
+        /// <param name="accept">Accept header</param>
         /// <param name="parameters">HTTP Payload</param>
         /// <returns>Response object <see cref="HttpResponse" /></returns>
         public HttpResponse Post(string path,
-            ParameterMap parameters) {
-            return Execute(new HttpPost(path, parameters));
+            string accept,
+            ParameterMap parameters)
+        {
+            return Execute(new HttpPost(path,
+                accept,
+                parameters));
         }
 
         /// <summary>
@@ -942,45 +980,70 @@ namespace BasicRestClient.RestClient {
         /// </summary>
         /// <param name="path">Resource path</param>
         /// <param name="contentType">Content Type</param>
+        /// <param name="accept">Accept header</param>
         /// <param name="data">Raw data to send</param>
         /// <returns>Response object</returns>
         public HttpResponse Post(string path,
             string contentType,
-            byte[] data) {
-            return Execute(new HttpPost(path, null, contentType, data));
+            string accept,
+            byte[] data)
+        {
+            return Execute(new HttpPost(path,
+                null,
+                contentType,
+                accept,
+                data));
         }
 
         /// <summary>
         ///     Execute a Post request asynchronously.
         /// </summary>
         /// <param name="path">Resource Url</param>
+        /// <param name="accept">Accept header</param>
         /// <param name="parameters">POST Payload</param>
         /// <returns>Response Object <see cref="HttpResponse" /></returns>
         public async Task<HttpResponse> PostAsync(string path,
-            ParameterMap parameters) {
-            return await ExecuteAsync(new HttpPost(path, parameters));
+            string accept,
+            ParameterMap parameters)
+        {
+            return await ExecuteAsync(new HttpPost(path,
+                accept,
+                parameters));
         }
 
         /// <summary>
         ///     Execute a Post request asynchronously.
         /// </summary>
         /// <param name="path">Resource path</param>
+        /// <param name="accept">Accept header</param>
         /// <param name="contentType">The Request content type</param>
         /// <param name="data">POST Payload</param>
         /// <returns>Response Object <see cref="HttpResponse" /></returns>
         public async Task<HttpResponse> PostAsync(string path,
+            string accept,
             string contentType,
-            byte[] data) {
-            return await ExecuteAsync(new HttpPost(path, null, contentType, data));
+            byte[] data)
+        {
+            return await ExecuteAsync(new HttpPost(path,
+                null,
+                contentType,
+                accept,
+                data));
         }
 
         /// <summary>
         ///     Execute a Post request asynchronously
         /// </summary>
+        /// <param name="path">Resource path</param>
         /// <param name="parameters">POST Payload</param>
+        /// <param name="accept">Accept header</param>
         /// <returns>Response Object <see cref="HttpResponse" /></returns>
-        public async Task<HttpResponse> PostAsync(ParameterMap parameters) {
-            return await ExecuteAsync(new HttpPost(null, parameters));
+        public async Task<HttpResponse> PostAsync(string path, ParameterMap parameters,
+            string accept)
+        {
+            return await ExecuteAsync(new HttpPost(path,
+                accept,
+                parameters));
         }
 
         /// <summary>
@@ -989,33 +1052,42 @@ namespace BasicRestClient.RestClient {
         ///     This is not a common use case, so it is not included here.
         /// </summary>
         /// <param name="path">Resource path</param>
+        /// <param name="accept">Accept header</param>
         /// <param name="parameters">HTTP Payload</param>
         /// <returns>Response object <see cref="HttpResponse" /></returns>
         public HttpResponse Put(string path,
-            ParameterMap parameters) {
-            return Execute(new HttpPut(path, parameters));
-        }
-
-        /// <summary>
-        ///     Execute a PUT request without parameter map and return the response.
-        /// </summary>
-        /// <param name="path">Resource path</param>
-        /// <returns></returns>
-        public HttpResponse Put(string path) {
-            return Put(path, null);
+            string accept,
+            ParameterMap parameters = null)
+        {
+            var put = new HttpPut(path,
+                parameters)
+            {
+                Accept = accept
+            };
+            return Execute(put);
         }
 
         /// <summary>
         ///     Execute a raw PUT request with the content type return the response.
         /// </summary>
         /// <param name="path">Resource path</param>
+        /// <param name="accept">Accept header</param>
         /// <param name="contentType">Content Type</param>
         /// <param name="data">Raw data to send</param>
         /// <returns>Response object <see cref="HttpResponse" /></returns>
         public HttpResponse Put(string path,
             string contentType,
-            byte[] data) {
-            return Execute(new HttpPut(path, null, contentType, data));
+            string accept,
+            byte[] data)
+        {
+            var put = new HttpPut(path,
+                null,
+                contentType,
+                data)
+            {
+                Accept = accept
+            };
+            return Execute(put);
         }
 
         /// <summary>
@@ -1024,20 +1096,36 @@ namespace BasicRestClient.RestClient {
         ///     This is not a common use case, so it is not included here.
         /// </summary>
         /// <param name="path">Resource path</param>
+        /// <param name="accept">Accept Header</param>
         /// <param name="parameters">HTTP Payload</param>
         /// <returns>Response object <see cref="HttpResponse" /></returns>
         public async Task<HttpResponse> PutAsync(string path,
-            ParameterMap parameters) {
-            return await ExecuteAsync(new HttpPut(path, parameters));
+            string accept,
+            ParameterMap parameters)
+        {
+            var put = new HttpPut(path,
+                parameters)
+            {
+                Accept = accept
+            };
+            return await ExecuteAsync(put);
         }
 
         /// <summary>
         ///     Execute a PUT request asynchronously.
         /// </summary>
         /// <param name="path">Resource Path</param>
+        /// <param name="accept">Accept header</param>
         /// <returns>Response object <see cref="HttpResponse" /></returns>
-        public async Task<HttpResponse> PutAsync(string path) {
-            return await ExecuteAsync(new HttpPut(path, null));
+        public async Task<HttpResponse> PutAsync(string path,
+            string accept)
+        {
+            var put = new HttpPut(path,
+                null)
+            {
+                Accept = accept
+            };
+            return await ExecuteAsync(put);
         }
 
         /// <summary>
@@ -1045,12 +1133,22 @@ namespace BasicRestClient.RestClient {
         /// </summary>
         /// <param name="path">Resource path</param>
         /// <param name="contentType">Content Type</param>
+        /// <param name="accept">Accept header</param>
         /// <param name="data">Raw data to send</param>
         /// <returns>Response object Response object <see cref="HttpResponse" /></returns>
         public async Task<HttpResponse> PutAsync(string path,
             string contentType,
-            byte[] data) {
-            return await ExecuteAsync(new HttpPut(path, null, contentType, data));
+            string accept,
+            byte[] data)
+        {
+            var put = new HttpPut(path,
+                null,
+                contentType,
+                data)
+            {
+                Accept = accept
+            };
+            return await ExecuteAsync(put);
         }
 
         /// <summary>
@@ -1061,8 +1159,10 @@ namespace BasicRestClient.RestClient {
         /// <param name="parameters">HTTP Payload</param>
         /// <returns>Response object <see cref="HttpResponse" /></returns>
         public HttpResponse Head(string path,
-            ParameterMap parameters) {
-            return Execute(new HttpHead(path, parameters));
+            ParameterMap parameters)
+        {
+            return Execute(new HttpHead(path,
+                parameters));
         }
 
         /// <summary>
@@ -1074,16 +1174,20 @@ namespace BasicRestClient.RestClient {
         /// <param name="parameters">HTTP Payload</param>
         /// <returns>Response object <see cref="HttpResponse" /></returns>
         public async Task<HttpResponse> HeadAsync(string path,
-            ParameterMap parameters) {
-            return await ExecuteAsync(new HttpHead(path, parameters));
+            ParameterMap parameters)
+        {
+            return await ExecuteAsync(new HttpHead(path,
+                parameters));
         }
 
         /// <summary>
         ///     Execute a HEAD request asynchronously
         /// </summary>
         /// <returns></returns>
-        public async Task<HttpResponse> HeadAsync() {
-            return await HeadAsync(null, null);
+        public async Task<HttpResponse> HeadAsync()
+        {
+            return await HeadAsync(null,
+                null);
         }
 
         /// <summary>
@@ -1092,18 +1196,22 @@ namespace BasicRestClient.RestClient {
         /// <param name="username">Username</param>
         /// <param name="password">password</param>
         public void BasicAuth(string username,
-            string password) {
+            string password)
+        {
             var encoded = string.Format("Basic {0}",
-                Convert.ToBase64String(
-                    Encoding.UTF8.GetBytes(string.Format("{0}:{1}", username, password))));
-            RequestHeaders.Add("Authorization", encoded);
+                Convert.ToBase64String(Encoding.UTF8.GetBytes(string.Format("{0}:{1}",
+                    username,
+                    password))));
+            RequestHeaders.Add("Authorization",
+                encoded);
         }
 
         /// <summary>
         ///     Use to retrieve the HTTP Payload
         /// </summary>
         /// <returns></returns>
-        public ParameterMap Payload() {
+        public ParameterMap Payload()
+        {
             return new ParameterMap();
         }
 
