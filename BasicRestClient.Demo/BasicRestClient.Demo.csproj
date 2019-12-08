@@ -78,10 +78,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="api\index.md" />
     <None Include="App.config" />
-    <None Include="articles\intro.md" />
-    <None Include="articles\toc.md" />
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
